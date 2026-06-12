@@ -68,7 +68,7 @@ export function BottomNav({ active, onNavigate }) {
   const items = [
     { key: 'home', label: 'クエスト', icon: 'play', screen: { type: 'home' } },
     { key: 'wordbook', label: '単語帳', icon: 'book-open', screen: { type: 'wordbook' } },
-    { key: 'my', label: 'マイ', icon: 'bookmark', screen: { type: 'my' } },
+    { key: 'my', label: 'タグ', icon: 'bookmark', screen: { type: 'my' } },
     { key: 'stats', label: '統計', icon: 'bar-chart', screen: { type: 'stats' } },
   ];
   return (

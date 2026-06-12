@@ -118,11 +118,6 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
             </div>
           </div>
         )}
-
-        {/* 常設のフィードバック導線（いつでも Tally アンケートを開ける） */}
-        <div className="mt-auto pt-2">
-          <FeedbackLink url={SURVEY_URL} />
-        </div>
       </div>
       <BottomNav active="my" onNavigate={onNavigate} />
     </div>
@@ -252,6 +247,11 @@ export function StatsScreen({ appState, onNavigate }) {
               );
             })}
           </div>
+        </div>
+
+        {/* 常設のフィードバック導線（統計ページ最下部・いつでも Tally アンケートを開ける） */}
+        <div className="pt-2">
+          <FeedbackLink url={SURVEY_URL} />
         </div>
       </div>
       <BottomNav active="stats" onNavigate={onNavigate} />

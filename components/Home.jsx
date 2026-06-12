@@ -66,20 +66,32 @@ export function HomeScreen({ appState, onNavigate }) {
   const allDone = !nextLevel;
   const [activeIdx, setActiveIdx] = useState(() => { const i = LEVELS.indexOf(curLevel); return i >= 0 ? i : 0; });
 
-  // モバイルでタブが横スクロール（オーバーフロー）する場合、初期表示を右端＝最新レベルにする。
-  // デスクトップで全タブが見えているときは scrollWidth ≒ clientWidth のため実質 no-op。
+  // モバイルでタブが横スクロール（オーバーフロー）する場合、初期表示の右端を
+  // 「解禁済みの最高レベル」タブに合わせる。ロック中のレベルはさらに右へスクロールすれば見える。
+  // 解禁が Lv1 のみなら左端（スクロール 0）。デスクトップで全タブが見えているときは実質 no-op。
   const tabScrollRef = useRef(null);
+  // 解禁済みの最高レベルの index（level i は i===0 もしくは前レベル全クリアで解禁）。
+  let topUnlockedIdx = 0;
+  for (let i = 1; i < LEVELS.length; i++) {
+    if (LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id))) topUnlockedIdx = i;
+    else break;
+  }
   useEffect(() => {
-    // レイアウト確定（Webフォント反映・タブ幅確定）後に右端へ寄せるため rAF を二重にネスト。
+    // レイアウト確定（Webフォント反映・タブ幅確定）後に位置を計算するため rAF を二重にネスト。
     let raf2;
     const raf1 = requestAnimationFrame(() => {
       raf2 = requestAnimationFrame(() => {
         const el = tabScrollRef.current;
-        if (el) el.scrollLeft = el.scrollWidth;
+        if (!el) return;
+        const tab = el.querySelector('[data-tab-idx="' + topUnlockedIdx + '"]');
+        if (!tab) return;
+        // 解禁最高レベルのタブの右端を、コンテナの右端に合わせる。
+        const target = tab.offsetLeft + tab.offsetWidth - el.clientWidth;
+        el.scrollLeft = Math.max(0, target);
       });
     });
     return () => { cancelAnimationFrame(raf1); if (raf2) cancelAnimationFrame(raf2); };
-  }, []);
+  }, [topUnlockedIdx]);
 
   return (
     <div className="flex-1 flex flex-col max-w-md lg:max-w-[980px] lg:shadow-[0_10px_60px_rgba(15,23,42,0.10)] w-full mx-auto bg-slate-50 min-h-screen relative overflow-hidden">
@@ -150,7 +162,7 @@ export function HomeScreen({ appState, onNavigate }) {
             const locked = i > 0 && !LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id));
             const active = i === activeIdx;
             return (
-              <button key={l.id} onClick={() => setActiveIdx(i)}
+              <button key={l.id} data-tab-idx={i} onClick={() => setActiveIdx(i)}
                 className={'shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-sm transition-all active:scale-95 ' + (active ? 'bg-slate-800 text-white shadow-md' : 'bg-white text-slate-500 border-2 border-slate-100 hover:border-slate-200')}>
                 {locked && <Icon name="lock" size={12} />}
                 {l.name}
@@ -204,7 +216,7 @@ export function HomeScreen({ appState, onNavigate }) {
 
                       <div className="flex-1 text-left">
                         <div className="flex items-center gap-2">
-                          <span className={'font-black text-lg ' + (isWordLocked ? 'text-slate-300' : 'text-slate-700')}>{isWordLocked ? '???' : (word ? word.word : wordId)}</span>
+                          <span className={'font-black text-lg ' + (isWordLocked ? 'text-slate-400' : 'text-slate-700')}>{word ? word.word : wordId}</span>
                           {isFirstNext && <span className="bg-rose-500 text-white text-[0.6rem] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">Next</span>}
                         </div>
                       </div>
@@ -286,7 +298,7 @@ export function WordbookScreen({ appState, onToggleBookmark, onToggleSavedSense,
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-0.5">
-                          <span className={'text-xl font-black ' + (isCleared ? 'text-slate-800' : 'text-slate-400')}>{isCleared ? word.word : '???'}</span>
+                          <span className={'text-xl font-black ' + (isCleared ? 'text-slate-800' : 'text-slate-400')}>{word.word}</span>
                           <span className="text-[0.6rem] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded-full shrink-0 whitespace-nowrap">{word.faces.length}用法</span>
                         </div>
                         {isCleared && history ? (
