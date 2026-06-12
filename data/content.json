@@ -1530,19 +1530,19 @@
           "note": "反復・訓練による習得。learn English「英語を学ぶ」。"
         },
         {
-          "name": "〈知る・わかる〉",
+          "name": "〈認識〉",
           "meaning": "「〜を知る・わかる」",
           "type": "learn + 名詞（情報・事実）",
           "note": "情報を得て知ること。I learned the news.「その知らせを知った」。Weblio でも「〔…のことを〕（聞いて）知る」として立項。"
         },
         {
-          "name": "〈できるようになる〉",
+          "name": "〈習得完了〉",
           "meaning": "「〜できるようになる」",
           "type": "learn + to do",
           "note": "過程を経た習得の完成。learned to swim「泳げるようになった」。"
         },
         {
-          "name": "〈聞いて知る〉",
+          "name": "〈伝聞〉",
           "meaning": "「〜と知る・〜と聞いて知る」",
           "type": "learn + that節",
           "note": "I learned that he was sick.「彼が病気だと知った」。情報を聞いて知ること。"
@@ -1558,7 +1558,7 @@
         {
           "en": "The elevator isn't working today.",
           "jpBefore": "今日はエレベーターが",
-          "answer": "動いて（いない）",
+          "answer": "動く",
           "jpAfter": "。",
           "jpFull": "今日はエレベーターが動いていない。",
           "cue": "機械が動く・作動する"
