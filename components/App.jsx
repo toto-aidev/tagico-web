@@ -70,7 +70,7 @@ export default function App() {
     setAppState((s) => store.toggleSavedSense(s, wordId, senseIdx));
 
   const handleQuizDone = (scores) => {
-    if (screen.type !== 'quiz') return;
+    if (screen.type !== 'quiz' && screen.type !== 'review') return;
     const wasLevel1Mastered = store.isLevel1Mastered(appState);
     const newAppState = store.recordScores(appState, scores);
     setAppState(newAppState);
@@ -78,6 +78,23 @@ export default function App() {
     // Level 1（5語）を「今」完走したタイミングで一度だけアンケート誘導を出す
     if (!wasLevel1Mastered && store.isLevel1Mastered(newAppState) && !store.hasSurveyBeenPrompted()) {
       setShowSurvey(true);
+    }
+
+    // 間違い復習モード：1セッション（全プール1周）消化後にホームへ戻る
+    // このセッションで既に解いた単語（accumulated）を除いた次の語を探す
+    if (screen.type === 'review') {
+      const accumulated = [...sessionScores, ...scores];
+      setSessionScores(accumulated);
+      const donIds = new Set(accumulated.map((s) => s.wordId));
+      // 今回のセッション開始時点のプールから、まだ解いていない語を次として選ぶ
+      const sessionPool = screen.sessionPool || (appState.reviewPool || []);
+      const nextReviewId = sessionPool.find((id) => !donIds.has(id));
+      if (nextReviewId) {
+        setScreen({ type: 'review', wordIds: [nextReviewId], sessionPool });
+      } else {
+        handleNavigate({ type: 'home' });
+      }
+      return;
     }
 
     // リトライ（結果画面の誤答クリック）から来た場合は完了後ホームへ戻る
@@ -92,15 +109,20 @@ export default function App() {
     const level = getLevel(screen.levelId);
     const allWordIds = (level && level.wordIds) || [];
     const sessionDone = new Set(accumulated.map((s) => s.wordId));
-    const nextWordId = allWordIds.find((id) => !sessionDone.has(id) && !newAppState.cleared.includes(id));
+    // 次の単語は completed（完走済み含む）を除いた未完走語の中から
+    const nextWordId = allWordIds.find(
+      (id) => !sessionDone.has(id) && !(newAppState.completed || newAppState.cleared).includes(id)
+    );
 
-    // 効果音：この回答でレベルを「今」全クリア＝解禁したらファンファーレ。
-    // 単語ごとの正解/不正解音は答え合わせ時（Quiz の handleReveal）で鳴らす。
-    const levelNowCleared =
-      allWordIds.length > 0 && allWordIds.every((id) => newAppState.cleared.includes(id));
-    const levelWasCleared =
-      allWordIds.length > 0 && allWordIds.every((id) => appState.cleared.includes(id));
-    if (levelNowCleared && !levelWasCleared) sfx.play('fanfare');
+    // 効果音：この回答でレベルを「今」全完走＝解禁したらファンファーレ。
+    // 完走判定は completed で行う（誤答・答え見含む）。
+    const newCompleted = newAppState.completed || newAppState.cleared;
+    const prevCompleted = appState.completed || appState.cleared;
+    const levelNowCompleted =
+      allWordIds.length > 0 && allWordIds.every((id) => newCompleted.includes(id));
+    const levelWasCompleted =
+      allWordIds.length > 0 && allWordIds.every((id) => prevCompleted.includes(id));
+    if (levelNowCompleted && !levelWasCompleted) sfx.play('fanfare');
 
     if (nextWordId) setScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId] });
     else setScreen({ type: 'result', levelId: screen.levelId, scores: accumulated });
@@ -127,13 +149,14 @@ export default function App() {
     const sessionDone = new Set(sessionScores.map((s) => s.wordId));
     const currentWordId = screen.wordIds && screen.wordIds[0];
     if (currentWordId) sessionDone.add(currentWordId);
-    const hasNext = allWordIds.some((id) => !sessionDone.has(id) && !appState.cleared.includes(id));
+    const completed = appState.completed || appState.cleared;
+    const hasNext = allWordIds.some((id) => !sessionDone.has(id) && !completed.includes(id));
 
-    // レベル内位置表示用：未クリア語を順に解いている文脈でのみ渡す
-    const levelUncleared = allWordIds.filter((id) => !appState.cleared.includes(id));
-    const isLevelContext = levelUncleared.length > 0 && !screen.isRetry;
+    // レベル内位置表示用：未完走語を順に解いている文脈でのみ渡す
+    const levelUncompleted = allWordIds.filter((id) => !completed.includes(id));
+    const isLevelContext = levelUncompleted.length > 0 && !screen.isRetry;
     const levelWordIndex = isLevelContext ? sessionScores.length : null;
-    const levelWordCount = isLevelContext ? levelUncleared.length + sessionScores.length : null;
+    const levelWordCount = isLevelContext ? levelUncompleted.length + sessionScores.length : null;
 
     return (
       <QuizScreen
@@ -149,6 +172,36 @@ export default function App() {
         onBack={handleQuizBack}
         levelWordIndex={levelWordIndex}
         levelWordCount={levelWordCount}
+      />
+    );
+  }
+
+  if (screen.type === 'review') {
+    // sessionPool: このセッションで消化するプール（開始時点で確定・変化しない）
+    const sessionPool = screen.sessionPool || (appState.reviewPool || []);
+    // 復習する単語ID：screen.wordIds があればそれ、なければプールの先頭
+    const wordIds = screen.wordIds || (sessionPool.length > 0 ? [sessionPool[0]] : []);
+    const reviewTotal = sessionPool.length;
+    // 位置表示：復習モードは「復習 n/N」表示（sessionScores で何問目か）
+    const reviewIndex = sessionScores.length;
+
+    const doneInSession = new Set(sessionScores.map((s) => s.wordId));
+    if (wordIds[0]) doneInSession.add(wordIds[0]);
+    return (
+      <QuizScreen
+        key={wordIds.join(',') + '-review'}
+        levelId={null}
+        wordIds={wordIds}
+        hasNext={sessionPool.some((id) => !doneInSession.has(id))}
+        bookmarks={appState.bookmarks}
+        onToggleBookmark={handleToggleBookmark}
+        savedSenses={appState.savedSenses}
+        onToggleSavedSense={handleToggleSavedSense}
+        onDone={handleQuizDone}
+        onBack={handleQuizBack}
+        levelWordIndex={reviewTotal > 0 ? reviewIndex : null}
+        levelWordCount={reviewTotal > 0 ? reviewTotal : null}
+        isReviewMode={true}
       />
     );
   }

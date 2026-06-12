@@ -78,12 +78,15 @@ function TagicoLogo() {
 export function HomeScreen({ appState, onNavigate }) {
   const allIds = LEVELS.flatMap((l) => l.wordIds);
   const masteredCount = appState.cleared.filter((id) => allIds.indexOf(id) >= 0).length;
+  // 完走判定は completed を使う（誤答・答え見含む）
+  const completed = appState.completed || appState.cleared;
 
-  const nextLevel = LEVELS.find((l) => l.wordIds.some((id) => !appState.cleared.includes(id)));
-  const nextWordId = nextLevel && nextLevel.wordIds.find((id) => !appState.cleared.includes(id));
+  const nextLevel = LEVELS.find((l) => l.wordIds.some((id) => !completed.includes(id)));
+  const nextWordId = nextLevel && nextLevel.wordIds.find((id) => !completed.includes(id));
 
-  // 現在のレベル（次にやるレベル。全クリアなら最後のレベル）
+  // 現在のレベル（次にやるレベル。全完走なら最後のレベル）
   const curLevel = nextLevel || LEVELS[LEVELS.length - 1];
+  // 進捗バーは cleared（全問正解）で表示（実績）
   const curCleared = curLevel ? curLevel.wordIds.filter((id) => appState.cleared.includes(id)).length : 0;
   const allDone = !nextLevel;
   const [activeIdx, setActiveIdx] = useState(() => { const i = LEVELS.indexOf(curLevel); return i >= 0 ? i : 0; });
@@ -92,10 +95,11 @@ export function HomeScreen({ appState, onNavigate }) {
   // 「解禁済みの最高レベル」タブに合わせる。ロック中のレベルはさらに右へスクロールすれば見える。
   // 解禁が Lv1 のみなら左端（スクロール 0）。デスクトップで全タブが見えているときは実質 no-op。
   const tabScrollRef = useRef(null);
-  // 解禁済みの最高レベルの index（level i は i===0 もしくは前レベル全クリアで解禁）。
+  // 解禁済みの最高レベルの index（level i は i===0 もしくは前レベル全完走で解禁）。
+  // 解禁は completed（誤答・答え見含む完走）で判定する。
   let topUnlockedIdx = 0;
   for (let i = 1; i < LEVELS.length; i++) {
-    if (LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id))) topUnlockedIdx = i;
+    if (LEVELS[i - 1].wordIds.every((id) => completed.includes(id))) topUnlockedIdx = i;
     else break;
   }
   useEffect(() => {
@@ -142,7 +146,7 @@ export function HomeScreen({ appState, onNavigate }) {
                 <span className="text-sm font-bold text-slate-400">語 マスター</span>
               </div>
               <p className="text-[0.65rem] font-bold text-slate-400 mt-0.5">
-                {allDone ? '全レベル制覇！おめでとう 🎉' : 'あと ' + (curLevel.wordIds.length - curCleared) + ' 語で ' + curLevel.name + ' クリア'}
+                {allDone ? '全レベル制覇！おめでとう 🎉' : 'あと ' + curLevel.wordIds.filter((id) => !completed.includes(id)).length + ' 語で ' + curLevel.name + ' 完走'}
               </p>
             </div>
             <div className="w-11 h-11 rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center shrink-0">
@@ -180,11 +184,35 @@ export function HomeScreen({ appState, onNavigate }) {
         </div>
       )}
 
+      {/* 間違い復習カード：プールが空でない時だけ表示 */}
+      {(appState.reviewPool || []).length > 0 && (
+        <div className="px-6 mb-4 relative z-10">
+          <button
+            onClick={() => onNavigate({ type: 'review' })}
+            className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-rose-50 border-2 border-rose-200 hover:border-rose-300 active:scale-[0.98] transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-500 flex items-center justify-center shrink-0">
+                <Icon name="rotate-ccw" size={18} />
+              </div>
+              <div className="text-left">
+                <p className="font-black text-base text-rose-700">間違い復習</p>
+                <p className="text-xs font-bold text-rose-400">{(appState.reviewPool || []).length} 語 が待っています</p>
+              </div>
+            </div>
+            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-rose-500 text-white text-xs font-black shrink-0">
+              {(appState.reviewPool || []).length}
+            </span>
+          </button>
+        </div>
+      )}
+
       {/* レベルタブ（解禁が増えても1レベルだけ表示＝縦に伸びない） */}
       <div className="px-6 mb-3 relative z-10">
         <div ref={tabScrollRef} className="flex gap-2 overflow-x-auto pb-1">
           {LEVELS.map((l, i) => {
-            const locked = i > 0 && !LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id));
+            // レベル解禁は completed（完走）で判定。cleared（全問正解）は不要
+            const locked = i > 0 && !LEVELS[i - 1].wordIds.every((id) => completed.includes(id));
             const active = i === activeIdx;
             return (
               <button key={l.id} data-tab-idx={i} onClick={() => { sfx.play('tap'); setActiveIdx(i); }}
@@ -202,7 +230,8 @@ export function HomeScreen({ appState, onNavigate }) {
           const levelIdx = activeIdx;
           const level = LEVELS[levelIdx];
           const prevLevel = levelIdx > 0 ? LEVELS[levelIdx - 1] : null;
-          const levelLocked = prevLevel ? !prevLevel.wordIds.every((id) => appState.cleared.includes(id)) : false;
+          // レベルロックも completed で判定
+          const levelLocked = prevLevel ? !prevLevel.wordIds.every((id) => completed.includes(id)) : false;
           const globalOffset = LEVELS.slice(0, levelIdx).reduce((s, l) => s + l.wordIds.length, 0);
           return (
             <div>
@@ -210,14 +239,16 @@ export function HomeScreen({ appState, onNavigate }) {
                 {level.wordIds.map((wordId, wIdx) => {
                   const word = getWord(wordId);
                   const isCleared = appState.cleared.includes(wordId);
+                  const isCompleted = completed.includes(wordId);
+                  // 単語のロック：前の単語が completed（完走）していれば解禁
                   const prevWordId = wIdx > 0 ? level.wordIds[wIdx - 1] : null;
-                  const prevWordCleared = prevWordId ? appState.cleared.includes(prevWordId) : true;
-                  const isWordLocked = levelLocked || (wIdx > 0 && !prevWordCleared);
-                  const isNext = !isCleared && !isWordLocked;
+                  const prevWordCompleted = prevWordId ? completed.includes(prevWordId) : true;
+                  const isWordLocked = levelLocked || (wIdx > 0 && !prevWordCompleted);
+                  const isNext = !isCompleted && !isWordLocked;
                   const isFirstNext =
                     isNext &&
-                    level.wordIds.slice(0, wIdx).every((id) => appState.cleared.includes(id)) &&
-                    levelIdx === LEVELS.findIndex((l) => l.wordIds.some((id) => !appState.cleared.includes(id)));
+                    level.wordIds.slice(0, wIdx).every((id) => completed.includes(id)) &&
+                    levelIdx === LEVELS.findIndex((l) => l.wordIds.some((id) => !completed.includes(id)));
                   const history = appState.history[wordId];
                   const globalNum = globalOffset + wIdx + 1;
 
@@ -228,15 +259,23 @@ export function HomeScreen({ appState, onNavigate }) {
                       onClick={() => !isWordLocked && onNavigate({ type: 'quiz', levelId: level.id, wordIds: [wordId] })}
                       className={'w-full flex items-center gap-4 p-4 rounded-2xl transition-all ' + (
                         isCleared ? 'bg-white border-2 border-teal-100 opacity-80'
+                          : isCompleted ? 'bg-white border-2 border-slate-200 opacity-80'
                           : isFirstNext ? 'bg-white border-2 border-rose-400 shadow-md'
                           : isWordLocked ? 'bg-slate-100/50 border-2 border-transparent text-slate-400 cursor-not-allowed'
                           : 'bg-white border-2 border-slate-100 shadow-sm hover:border-teal-200'
                       )}
                     >
                       <div className={'w-10 h-10 rounded-xl flex items-center justify-center font-black ' + (
-                        isCleared ? 'bg-teal-100 text-teal-600' : isFirstNext ? 'bg-rose-100 text-rose-500' : isWordLocked ? 'bg-slate-200 text-slate-400' : 'bg-slate-100 text-slate-600'
+                        isCleared ? 'bg-teal-100 text-teal-600'
+                          : isCompleted ? 'bg-slate-100 text-slate-500'
+                          : isFirstNext ? 'bg-rose-100 text-rose-500'
+                          : isWordLocked ? 'bg-slate-200 text-slate-400'
+                          : 'bg-slate-100 text-slate-600'
                       )}>
-                        {isCleared ? <Icon name="check-circle" size={20} color="#14b8a6" /> : isWordLocked ? <Icon name="lock" size={16} /> : globalNum}
+                        {isCleared ? <Icon name="check-circle" size={20} color="#14b8a6" />
+                          : isCompleted ? <Icon name="rotate-ccw" size={16} color="#94a3b8" />
+                          : isWordLocked ? <Icon name="lock" size={16} />
+                          : globalNum}
                       </div>
 
                       <div className="flex-1 text-left">
@@ -295,7 +334,7 @@ export function WordbookScreen({ appState, onToggleBookmark, onToggleSavedSense,
         </div>
         <div>
           <h1 className="text-xl font-black text-slate-800 tracking-tight">単語帳</h1>
-          <p className="text-xs font-bold text-slate-400">{appState.cleared.length} / {uniqueIds.length} 語 解禁</p>
+          <p className="text-xs font-bold text-slate-400">{(appState.completed || appState.cleared).filter((id) => uniqueIds.indexOf(id) >= 0).length} / {uniqueIds.length} 語 解禁</p>
         </div>
       </div>
 

@@ -65,12 +65,12 @@ function fireConfetti() {
   confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#2DD4BF', '#FF6B6B', '#FCD34D', '#FFFFFF'] });
 }
 
-export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount }) {
+export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount, isReviewMode }) {
   const level = getLevel(levelId);
   const wordIds = propWordIds || (level && level.wordIds) || [];
 
   const [wordIdx, setWordIdx] = useState(0);
-  const [states, setStates] = useState(() => wordIds.map(() => ({ assignments: {}, focused: 0, phase: 'quiz', trapHit: false })));
+  const [states, setStates] = useState(() => wordIds.map(() => ({ assignments: {}, focused: 0, phase: 'quiz', trapHit: false, seeAnswer: false })));
   const [scores, setScores] = useState([]);
 
   const currentId = wordIds[wordIdx];
@@ -151,7 +151,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     sfx.play('ui'); // 「答えを見る」：汎用クリック
     const auto = {};
     word.senses.forEach((s, i) => { auto[i] = s.answer; });
-    updateWs({ assignments: auto, phase: 'revealed', trapHit: false });
+    updateWs({ assignments: auto, phase: 'revealed', trapHit: false, seeAnswer: true });
   };
 
   const handleNext = () => {
@@ -159,7 +159,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     // 最後の単語＝「結果を見る」はファンファーレ判定が App 側で走るので、ここでは中間遷移のみ鳴らす。
     if (wordIdx < wordIds.length - 1) sfx.play('next'); // 次の単語へ：軽い上昇のひと押し
     const correct = word.senses.filter((s, i) => ws.assignments[i] === s.answer).length;
-    const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit }];
+    const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit, seeAnswer: ws.seeAnswer || false }];
     setScores(newScores);
     if (wordIdx < wordIds.length - 1) setWordIdx((i) => i + 1);
     else onDone(newScores);
@@ -178,11 +178,12 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         correct: w.senses.filter((s, i) => st.assignments[i] === s.answer).length,
         total: w.senses.length,
         trapHit: st.trapHit,
+        seeAnswer: st.seeAnswer || false,
       }));
     onBack(revealedScores);
   };
 
-  if (!word || !level) {
+  if (!word || (!level && !isReviewMode)) {
     return <div className="flex items-center justify-center min-h-screen bg-slate-50"><p className="text-slate-400">Loading...</p></div>;
   }
 
@@ -198,9 +199,11 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         </button>
         <div className="flex-1 min-w-0">
           <p className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest">
-            {level.name}
+            {isReviewMode ? '間違い復習' : (level && level.name)}
             {levelWordIndex !== null && levelWordCount !== null && (
-              <span className="ml-1.5 normal-case">&middot; {levelWordIndex + 1}/{levelWordCount}語目</span>
+              <span className="ml-1.5 normal-case">
+                &middot; {isReviewMode ? '復習 ' : ''}{levelWordIndex + 1}/{levelWordCount}語目
+              </span>
             )}
           </p>
           <p className="text-xl font-black text-slate-800 tracking-tight">{word.word}</p>
