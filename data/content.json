@@ -1325,6 +1325,815 @@
         }
       ],
       "trivia": "<b>off + 食べ物・習慣</b>は「もう欲しくない／離れた」：I've gone off coffee.（コーヒーが飲みたくなくなった）。基準から「離れる」イメージが、味の <b>a bit off</b>（少し傷んでいる）にもつながります。"
+    },
+    {
+      "id": "if",
+      "word": "if",
+      "trap": "もし",
+      "senses": [
+        {
+          "en": "If it rains tomorrow, we will stay home.",
+          "jpBefore": "明日雨が降っ",
+          "answer": "たら",
+          "jpAfter": "、家にいよう。",
+          "jpFull": "明日雨が降ったら、家にいよう。",
+          "cue": "条件"
+        },
+        {
+          "en": "If he is poor, he is at least honest.",
+          "jpBefore": "彼は貧しい",
+          "answer": "としても",
+          "jpAfter": "、少なくとも正直だ。",
+          "jpFull": "彼は貧しいとしても、少なくとも正直だ。",
+          "cue": "譲歩（even if）",
+          "hint": "even if と同じ「〜でも」。条件と訳し分ける"
+        },
+        {
+          "en": "I don't know if he will come.",
+          "jpBefore": "彼が来る",
+          "answer": "かどうか",
+          "jpAfter": "わからない。",
+          "jpFull": "彼が来るかどうかわからない。",
+          "cue": "名詞節（whether）",
+          "hint": "know の目的語になる名詞節。whether に置換できる"
+        },
+        {
+          "en": "If I were a bird, I could fly to you.",
+          "jpBefore": "もし私が鳥",
+          "answer": "なら",
+          "jpAfter": "、君のところへ飛んでいけるのに。",
+          "jpFull": "もし私が鳥なら、君のところへ飛んでいけるのに。",
+          "cue": "仮定法",
+          "hint": "現実に反する仮定。帰結節に would/could 等"
+        }
+      ],
+      "coreImage": {
+        "headline": "「もし」だけじゃない。条件・譲歩・名詞節・仮定法。",
+        "lead": "if の芯は〈ある条件を立てて、その先を見る〉。立てた条件が①実現しうる前提なら条件、②逆接の前提なら譲歩（even if）、③know などの後ろなら名詞節「〜かどうか」、④現実に反する前提なら仮定法。「もし」と機械的に訳すと、名詞節と譲歩でつまずきます。"
+      },
+      "faces": [
+        {
+          "name": "〈条件〉",
+          "meaning": "「〜ば、〜たら、〜なら、〜場合」",
+          "type": "If SV, SV.",
+          "note": "実現しうる前提を立てる。最も基本。"
+        },
+        {
+          "name": "〈譲歩〉",
+          "meaning": "「〜でも、〜しても」",
+          "type": "If SV（= even if）",
+          "note": "前提を認めても結論は変わらない。even if で言い換え可。"
+        },
+        {
+          "name": "〈名詞節〉",
+          "meaning": "「〜かどうか」",
+          "type": "know / ask / wonder + if SV",
+          "note": "動詞の目的語。whether に置換できるのが目印。"
+        },
+        {
+          "name": "〈仮定法〉",
+          "meaning": "「（もし）〜なら（…のに）」",
+          "type": "If S were/過去形 …, S would/could …",
+          "note": "現実に反する仮定。帰結節に would/could/might。"
+        }
+      ],
+      "trivia": "<b>if 節と whether 節の使い分け</b>：名詞節の「〜かどうか」は if でも whether でもよいが、<b>主語・前置詞の後・to不定詞の前</b>では whether しか使えません。Whether he comes (or not) is important. を If 〜 では始められない、が見分けの鍵。"
+    },
+    {
+      "id": "when",
+      "word": "when",
+      "trap": "いつ",
+      "senses": [
+        {
+          "en": "When I was a child, I lived in London.",
+          "jpBefore": "子どもだっ",
+          "answer": "た時",
+          "jpAfter": "、私はロンドンに住んでいた。",
+          "jpFull": "子どもだった時、私はロンドンに住んでいた。",
+          "cue": "時"
+        },
+        {
+          "en": "When you heat ice, it melts.",
+          "jpBefore": "氷を熱",
+          "answer": "すると",
+          "jpAfter": "、溶ける。",
+          "jpFull": "氷を熱すると、溶ける。",
+          "cue": "継起・条件的"
+        },
+        {
+          "en": "He walks to work when he could take the bus.",
+          "jpBefore": "バスに乗れる",
+          "answer": "のに",
+          "jpAfter": "、彼は歩いて通勤する。",
+          "jpFull": "バスに乗れるのに、彼は歩いて通勤する。",
+          "cue": "譲歩・対比",
+          "hint": "「〜なのに」。対比・逆接を表す when"
+        },
+        {
+          "en": "I'll give it to you when you say 'please'.",
+          "jpBefore": "「お願い」と言っ",
+          "answer": "たら",
+          "jpAfter": "、これをあげよう。",
+          "jpFull": "「お願い」と言ったら、これをあげよう。",
+          "cue": "条件・仮定",
+          "hint": "「〜したら」。条件を表す when"
+        }
+      ],
+      "coreImage": {
+        "headline": "疑問詞「いつ」だけじゃない。接続詞 when の4つの顔。",
+        "lead": "接続詞の when は〈二つの出来事を時間の軸でつなぐ〉。同時なら時「〜する時」、片方が起これば必ずもう片方も起こるなら継起「〜すると」、つないだ二つが食い違えば譲歩「〜なのに」、片方が条件になれば「〜したら」。疑問詞「いつ」のつもりで読むと文がねじれます。"
+      },
+      "faces": [
+        {
+          "name": "〈時〉",
+          "meaning": "「〜する時（に）」",
+          "type": "When SV, SV.",
+          "note": "二つの出来事が同じ時間帯にある。最も基本。"
+        },
+        {
+          "name": "〈継起〉",
+          "meaning": "「〜すると」",
+          "type": "When SV, SV.",
+          "note": "一般的真理・習慣でよく出る。When you heat ice, it melts."
+        },
+        {
+          "name": "〈譲歩・対比〉",
+          "meaning": "「〜なのに、〜である一方で」",
+          "type": "SV when SV.",
+          "note": "つないだ二事が食い違う。though に近い。"
+        },
+        {
+          "name": "〈条件〉",
+          "meaning": "「〜したら、〜する場合には」",
+          "type": "When SV, S will V.",
+          "note": "if に近いが、起こることがほぼ確実な前提。"
+        }
+      ],
+      "trivia": "<b>when と if の差</b>：when は「起こることを前提」に時を示し、if は「起こるか不確実」な条件を立てます。When you arrive, call me.（着いたら＝着く前提）と If you arrive late, call me.（遅れたら＝遅れるかは不明）の差。"
+    },
+    {
+      "id": "any",
+      "word": "any",
+      "trap": "いくつかの",
+      "senses": [
+        {
+          "en": "I don't have any money.",
+          "jpBefore": "お金は",
+          "answer": "少しも（ない）",
+          "jpAfter": "持っていない。",
+          "jpFull": "お金は少しも持っていない。",
+          "cue": "否定文",
+          "hint": "否定文では not 〜 any で「少しも〜ない」と全否定を強める"
+        },
+        {
+          "en": "Do you have any questions?",
+          "jpBefore": "何か",
+          "answer": "少しでも",
+          "jpAfter": "質問はありますか。",
+          "jpFull": "何か少しでも質問はありますか。",
+          "cue": "疑問文",
+          "hint": "疑問文では「少しでも・一つでも」。some だと「（何か）あるでしょ」と余裕のニュアンス"
+        },
+        {
+          "en": "Any child can solve this puzzle.",
+          "jpBefore": "",
+          "answer": "どんな（〜でも）",
+          "jpAfter": "子どもでもこのパズルは解ける。",
+          "jpFull": "どんな子どもでもこのパズルは解ける。",
+          "cue": "肯定文",
+          "hint": "肯定文では「どんな〜でも」。任意の一つを選んでも成り立つ"
+        }
+      ],
+      "coreImage": {
+        "headline": "「いくつか」じゃない。文の種類で表情が変わる。",
+        "lead": "any の芯は〈範囲の中のどれでも・任意の一つ〉。この一つの芯が、文の種類で訳語を変えます。否定文なら「少しも（ない）」、疑問文なら「少しでも」、肯定文なら「どんな〜でも」。some（＝具体的にいくつか）と混同して「いくつかの」と訳すと、any のニュアンスが消えます。"
+      },
+      "faces": [
+        {
+          "name": "〈否定文〉",
+          "meaning": "「少しも〜ない」",
+          "type": "not 〜 any + 名詞",
+          "note": "全否定を強める。I don't have any water.「水は少しもない」。"
+        },
+        {
+          "name": "〈疑問文〉",
+          "meaning": "「少しでも、一つでも」",
+          "type": "Do you have any 〜?",
+          "note": "some を使うと「（何か）あるよね」と余裕。any は切迫した響き。"
+        },
+        {
+          "name": "〈肯定文〉",
+          "meaning": "「どんな〜でも」",
+          "type": "any + 名詞（単/複どちらも可）",
+          "note": "任意の一つを選んでも成り立つ。比較級と相性◎（any worse）。"
+        }
+      ],
+      "trivia": "<b>any は比較級と相性がいい</b>：If you feel any worse, call me.「少しでも悪化したら呼んで」。肯定文の any は後ろの名詞が単数・複数どちらも取れます（I like any sport. / You can choose any books.）。"
+    },
+    {
+      "id": "for",
+      "word": "for",
+      "trap": "〜のために",
+      "senses": [
+        {
+          "en": "It will rain, for the barometer is falling.",
+          "jpBefore": "雨が降るだろう、",
+          "answer": "というのも",
+          "jpAfter": "気圧計が下がっているから。",
+          "jpFull": "雨が降るだろう、というのも気圧計が下がっているから。",
+          "cue": "接続詞・理由",
+          "hint": "前の文の理由を後から付け足す。文語的。because と違い文頭に置けない"
+        },
+        {
+          "en": "It is necessary for you to study hard.",
+          "jpBefore": "あなた",
+          "answer": "が",
+          "jpAfter": "一生懸命勉強する必要がある。",
+          "jpFull": "あなたが一生懸命勉強する必要がある。",
+          "cue": "意味上の主語",
+          "hint": "for X to do の for。X は to do の意味上の主語。「〜が…する」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「〜のために」だけじゃない。理由の接続詞、意味上の主語の for。",
+        "lead": "for は基本「〜のために・〜にとって」の前置詞ですが、和訳で差がつくのは別の二つ。①〈接続詞〉の for は前文の理由を後出しで補い「というのも〜だから」。②〈for X to do〉の for は to不定詞の意味上の主語を示し「Xが…する」。どちらも「〜のために」と訳すと文が壊れます。"
+      },
+      "faces": [
+        {
+          "name": "〈接続詞・理由〉",
+          "meaning": "「というのも、なぜなら」",
+          "type": "SV, for SV.",
+          "note": "前文への補足説明。文語的。文頭には置けない（because との差）。"
+        },
+        {
+          "name": "〈意味上の主語〉",
+          "meaning": "「〜が（…する）」",
+          "type": "形容詞/名詞 + for X + to do",
+          "note": "It is hard for me to swim.「私が泳ぐのは難しい」。for X が to do の主語。"
+        }
+      ],
+      "trivia": "<b>for と because の違い</b>：because は理由そのものを直接示し文頭にも置けますが、接続詞 for は前の文を述べた<b>後に</b>「（その根拠は）〜だから」と補足する形でしか使えません。また人の性質を述べる形容詞（kind 等）では for ではなく <b>of</b>（It is kind of you to help.）を使います。"
+    },
+    {
+      "id": "find",
+      "word": "find",
+      "trap": "見つける",
+      "senses": [
+        {
+          "en": "I found the book very interesting.",
+          "jpBefore": "私はその本がとても面白い",
+          "answer": "とわかった",
+          "jpAfter": "。",
+          "jpFull": "私はその本がとても面白いとわかった。",
+          "cue": "find O C",
+          "hint": "第5文型 find O C。「OがCだと思う・わかる」。O is C の関係"
+        },
+        {
+          "en": "He woke up and found himself lying on the grass.",
+          "jpBefore": "目を覚ますと、彼は芝生に寝転んで",
+          "answer": "いることに気づいた",
+          "jpAfter": "。",
+          "jpFull": "目を覚ますと、彼は芝生に寝転んでいることに気づいた。",
+          "cue": "find oneself C",
+          "hint": "find oneself C =「気づくと（いつの間にか）Cの状態にいる」≒ S be/become C"
+        }
+      ],
+      "coreImage": {
+        "headline": "「見つける」の先に、第5文型の find がある。",
+        "lead": "find の芯は〈探していたものに行き当たる〉。これが第5文型 find O C になると、行き当たる先が〈O が C だという事実〉になり「O が C だとわかる・思う」。find oneself C は「気づけば（いつの間にか）C の状態にいる」。「見つける」一本で訳すと SVOC が崩れます。"
+      },
+      "faces": [
+        {
+          "name": "〈他動詞〉",
+          "meaning": "「〜を見つける」",
+          "type": "find + O",
+          "note": "基本義。探していたもの・偶然のものに行き当たる。"
+        },
+        {
+          "name": "〈find O C〉",
+          "meaning": "「OがCだとわかる・思う」",
+          "type": "find + O + C",
+          "note": "O is C の関係。I found it hard to believe.「信じがたいとわかった」。"
+        },
+        {
+          "name": "〈find oneself C〉",
+          "meaning": "「気づくとCの状態にいる」",
+          "type": "find + oneself + C",
+          "note": "≒ S be/become C。She found herself a mother.「気づけば母になっていた」。"
+        }
+      ],
+      "trivia": "<b>SVOC の訳のコツ</b>：find / think / believe などの O C は「O＝C」の関係なので、<b>「O が C である」と主語‐述語で訳す</b>と自然になります。I found the test easy.→「テストは易しいとわかった」。"
+    },
+    {
+      "id": "learn",
+      "word": "learn",
+      "trap": "教える",
+      "senses": [
+        {
+          "en": "I learned the truth from her.",
+          "jpBefore": "私は彼女から真実を",
+          "answer": "知った",
+          "jpAfter": "。",
+          "jpFull": "私は彼女から真実を知った。",
+          "cue": "learn A（知る・わかる）",
+          "hint": "learn A は「Aを学ぶ」だけでなく「Aを知る・わかる」。情報を得る意味"
+        },
+        {
+          "en": "The baby learned to walk at ten months.",
+          "jpBefore": "赤ちゃんは10か月で歩",
+          "answer": "けるようになった",
+          "jpAfter": "。",
+          "jpFull": "赤ちゃんは10か月で歩けるようになった。",
+          "cue": "learn to do",
+          "hint": "learn to do は過程を経て「doできるようになる」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「教える」ではない。learn は〈身につく・わかる〉側。",
+        "lead": "learn は teach（教える）の逆で、知識や技能が〈自分の側に入ってくる〉動詞。learn A は「Aを学ぶ」だけでなく「Aを知る・わかる」。learn to do は過程を経て「doできるようになる」。teach と取り違えて「教える」と訳すと主客が逆転します。"
+      },
+      "faces": [
+        {
+          "name": "〈learn A〉",
+          "meaning": "「Aを学ぶ、Aを知る・わかる」",
+          "type": "learn + 名詞",
+          "note": "知識・技能の習得に加え「（情報を）知る」。I learned the news.「その知らせを知った」。"
+        },
+        {
+          "name": "〈learn to do〉",
+          "meaning": "「doできるようになる」",
+          "type": "learn + to do",
+          "note": "過程を経た習得。learned to swim「泳げるようになった」。"
+        }
+      ],
+      "trivia": "<b>learn は teach の対</b>：teach が「（外へ）教える」のに対し learn は「（内へ）身につく・わかる」。だから learn の主語は<b>学ぶ側・知る側</b>になります。I learned that he was sick.「彼が病気だと知った」。"
+    },
+    {
+      "id": "work",
+      "word": "work",
+      "trap": "作品",
+      "senses": [
+        {
+          "en": "My father works for a bank.",
+          "jpBefore": "父は銀行で",
+          "answer": "働いている",
+          "jpAfter": "。",
+          "jpFull": "父は銀行で働いている。",
+          "cue": "働く"
+        },
+        {
+          "en": "The elevator isn't working today.",
+          "jpBefore": "今日はエレベーターが",
+          "answer": "動いて（いない）",
+          "jpAfter": "。",
+          "jpFull": "今日はエレベーターが動いていない。",
+          "cue": "機械が動く・作動する",
+          "hint": "機械・装置が主語のとき work は「動く・作動する」"
+        },
+        {
+          "en": "This medicine really works.",
+          "jpBefore": "この薬は本当に",
+          "answer": "効く",
+          "jpAfter": "。",
+          "jpFull": "この薬は本当に効く。",
+          "cue": "効く・うまくいく",
+          "hint": "薬・計画・方法が主語なら「効く・うまくいく」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「働く」は人だけ。機械は「動く」、薬は「効く」。",
+        "lead": "work の芯は〈きちんと機能して結果を出す〉。主語が人なら「働く」、機械なら「動く・作動する」、薬や計画なら「効く・うまくいく」。日本語では別の動詞になりますが、英語ではどれも一つの work。名詞「仕事・作品」と取り違えないよう、文中の品詞をまず見ます。"
+      },
+      "faces": [
+        {
+          "name": "〈働く〉",
+          "meaning": "「働く、勤める」",
+          "type": "S（人）+ work",
+          "note": "基本義。work for / work at / work as。"
+        },
+        {
+          "name": "〈機械が動く〉",
+          "meaning": "「動く、作動する」",
+          "type": "S（機械）+ work",
+          "note": "否定でよく出る。It doesn't work.「動かない・効かない」。"
+        },
+        {
+          "name": "〈効く・うまくいく〉",
+          "meaning": "「効く、うまくいく」",
+          "type": "S（薬/計画）+ work",
+          "note": "The plan worked.「計画はうまくいった」。"
+        }
+      ],
+      "trivia": "<b>It works! の万能さ</b>：work は主語次第で「動く／効く／うまくいく／（手段が）通用する」と訳が変わる便利動詞。Does this app work offline?「このアプリはオフラインでも動く？」のように、まず主語が何かを見て訳語を選びます。"
+    },
+    {
+      "id": "rather",
+      "word": "rather",
+      "trap": "すぐに",
+      "senses": [
+        {
+          "en": "He is a writer rather than a teacher.",
+          "jpBefore": "彼は教師というより",
+          "answer": "むしろ",
+          "jpAfter": "作家だ。",
+          "jpFull": "彼は教師というよりむしろ作家だ。",
+          "cue": "むしろ（A rather than B）",
+          "hint": "A rather than B「BというよりむしろA」"
+        },
+        {
+          "en": "The exam was rather difficult.",
+          "jpBefore": "試験は",
+          "answer": "かなり",
+          "jpAfter": "難しかった。",
+          "jpFull": "試験はかなり難しかった。",
+          "cue": "かなり（程度）",
+          "hint": "形容詞の前で程度を強める「かなり・なかなか」"
+        },
+        {
+          "en": "I'm feeling rather tired today.",
+          "jpBefore": "今日は",
+          "answer": "やや",
+          "jpAfter": "疲れている。",
+          "jpFull": "今日はやや疲れている。",
+          "cue": "やや（控えめ）",
+          "hint": "控えめに「やや・少し」。文脈で「かなり」と訳し分ける"
+        },
+        {
+          "en": "I would rather stay home.",
+          "jpBefore": "私は",
+          "answer": "どちらかといえば",
+          "jpAfter": "家にいたい。",
+          "jpFull": "私はどちらかといえば家にいたい。",
+          "cue": "どちらかといえば（would rather）",
+          "hint": "would rather do「どちらかといえば〜したい」"
+        }
+      ],
+      "coreImage": {
+        "headline": "コアは〈天秤が傾く〉。だから「むしろ」も「かなり」も。",
+        "lead": "rather の芯は〈天秤がどちらかに傾く〉イメージ。二択の比較で傾けば「むしろ」、程度の目盛りで傾けば「かなり／やや」、好みで傾けば「どちらかといえば」。一つの傾きの感覚が、文脈で四つの訳語に分かれます。"
+      },
+      "faces": [
+        {
+          "name": "〈むしろ〉",
+          "meaning": "「むしろ、いっそ」",
+          "type": "A rather than B",
+          "note": "二択の比較。BというよりA。"
+        },
+        {
+          "name": "〈かなり〉",
+          "meaning": "「かなり、なかなか」",
+          "type": "rather + 形容詞/副詞",
+          "note": "程度を強める。やや否定的な含みを持つことも。"
+        },
+        {
+          "name": "〈やや〉",
+          "meaning": "「やや、少し」",
+          "type": "rather + 形容詞",
+          "note": "控えめな程度。文脈で「かなり」と訳し分ける。"
+        },
+        {
+          "name": "〈どちらかといえば〉",
+          "meaning": "「どちらかといえば（〜したい）」",
+          "type": "would rather do (than)",
+          "note": "好み・選択。I'd rather not.「できれば遠慮したい」。"
+        }
+      ],
+      "trivia": "<b>rather の程度は文脈次第</b>：rather は同じ「かなり／やや」でも、良いこと（rather good「なかなか良い」）にも悪いこと（rather difficult「かなり難しい」）にも付き、しばしば<b>予想とのズレ</b>（意外と〜）をにじませます。"
+    },
+    {
+      "id": "out of",
+      "word": "out of",
+      "trap": "〜の外の",
+      "senses": [
+        {
+          "en": "She walked out of the room.",
+          "jpBefore": "彼女は部屋",
+          "answer": "から（外へ）",
+          "jpAfter": "出ていった。",
+          "jpFull": "彼女は部屋から外へ出ていった。",
+          "cue": "〜から外へ（=from）",
+          "hint": "=from。中から外へ。ほとんどがこの意味"
+        },
+        {
+          "en": "We are out of sugar.",
+          "jpBefore": "砂糖",
+          "answer": "が切れて",
+          "jpAfter": "いる。",
+          "jpFull": "砂糖が切れている。",
+          "cue": "〜が不足して（=short of）",
+          "hint": "=short of。「〜が不足して・尽きて」。be out of 〜"
+        }
+      ],
+      "coreImage": {
+        "headline": "基本は「〜から外へ」。たまに「〜が切れて」。",
+        "lead": "out of の芯は〈中から外へ抜け出る〉。空間なら「〜から（外へ）」（＝from）。その「外に出てしまって、もう中に無い」状態が転じて「〜が尽きて・不足して」（＝short of）。ほとんどは前者ですが、be out of 〜 の形では後者を疑います。"
+      },
+      "faces": [
+        {
+          "name": "〈〜から外へ〉",
+          "meaning": "「〜から（外へ）」",
+          "type": "動詞 + out of + 場所",
+          "note": "=from。get out of bed / run out of the house。最頻。"
+        },
+        {
+          "name": "〈不足・尽きて〉",
+          "meaning": "「〜が切れて、不足して」",
+          "type": "be / run + out of + 名詞",
+          "note": "=short of。run out of time「時間が尽きる」。"
+        }
+      ],
+      "trivia": "<b>out of の派生イディオム</b>：out of order「故障して（正常の状態から外れて）」、out of the question「論外で」、out of date「時代遅れで」。いずれも「あるべき枠の外に出ている」という芯から説明できます。"
+    },
+    {
+      "id": "deny",
+      "word": "deny",
+      "trap": "拒む",
+      "senses": [
+        {
+          "en": "He denied stealing the money.",
+          "jpBefore": "彼はお金を盗んだことを",
+          "answer": "否定した",
+          "jpAfter": "。",
+          "jpFull": "彼はお金を盗んだことを否定した。",
+          "cue": "否定する",
+          "hint": "事実を「否定する・認めない」。deny doing / deny that SV"
+        },
+        {
+          "en": "They denied him the right to vote.",
+          "jpBefore": "彼らは彼",
+          "answer": "に（〜を）与えなかった",
+          "jpAfter": "投票する権利を。",
+          "jpFull": "彼らは彼に投票する権利を与えなかった。",
+          "cue": "deny 人 モノ（与えない）",
+          "hint": "deny A B =「AにBを与えない・認めない」。give の対義"
+        }
+      ],
+      "coreImage": {
+        "headline": "「否定する」と「与えない」。giveの裏返しの顔がある。",
+        "lead": "deny の中心は「（事実を）否定する・認めない」。これが第4文型 deny 人 モノ になると、「人にモノを与えることを認めない」→「人にモノを与えない・人からモノを奪う」になります。give（人にモノを与える）のちょうど裏返し。後者を知らないと第4文型の deny で詰まります。"
+      },
+      "faces": [
+        {
+          "name": "〈否定する〉",
+          "meaning": "「否定する、認めない」",
+          "type": "deny + doing / that SV",
+          "note": "事実・関与を否定。否定の that 節は取れず deny doing が普通。"
+        },
+        {
+          "name": "〈deny 人 モノ〉",
+          "meaning": "「人にモノを与えない・認めない」",
+          "type": "deny + 人 + モノ",
+          "note": "give の対義。He was denied access.「アクセスを与えられなかった」（受動でよく出る）。"
+        }
+      ],
+      "trivia": "<b>deny ↔ give</b>：give A B「AにBを与える」の真逆が deny A B「AにBを与えない」。<b>deny は to不定詞も that の否定節も取らず</b>、「〜しないと言う」は deny doing か say that S don't 〜 で表します。"
+    },
+    {
+      "id": "art",
+      "word": "art",
+      "trap": "アート",
+      "senses": [
+        {
+          "en": "She is studying modern art.",
+          "jpBefore": "彼女は現代",
+          "answer": "美術",
+          "jpAfter": "を学んでいる。",
+          "jpFull": "彼女は現代美術を学んでいる。",
+          "cue": "美術・芸術"
+        },
+        {
+          "en": "the art of conversation",
+          "jpBefore": "会話の",
+          "answer": "技術",
+          "jpAfter": "",
+          "jpFull": "会話の技術",
+          "cue": "技術・コツ",
+          "hint": "the art of 〜「〜の技術・コツ」。熟練を要する技能"
+        }
+      ],
+      "coreImage": {
+        "headline": "「美術」だけじゃない。熟練の「技術」も art。",
+        "lead": "art は「美術・芸術」が基本ですが、もう一つ「（熟練を要する）技術・コツ」の意味があります。the art of 〜「〜の技術」が典型。形容詞も二系統で、美術系は artistic「芸術的な」、技術系は artificial「人工の（技で作った）」と分かれます。"
+      },
+      "faces": [
+        {
+          "name": "〈美術・芸術〉",
+          "meaning": "「美術、芸術」",
+          "type": "art / the arts",
+          "note": "a work of art「芸術作品」。形容詞は artistic。"
+        },
+        {
+          "name": "〈技術・コツ〉",
+          "meaning": "「技術、コツ、わざ」",
+          "type": "the art of 〜",
+          "note": "the art of war「兵法」。熟練を要する技能。"
+        }
+      ],
+      "trivia": "<b>art から派生した二つの形容詞</b>：「美術」由来は <b>artistic</b>「芸術的な」、「技術（人の手わざ）」由来は <b>artificial</b>「人工の」。同じ art が語源でも意味が分かれます。"
+    },
+    {
+      "id": "image",
+      "word": "image",
+      "trap": "イメージ",
+      "senses": [
+        {
+          "en": "The company improved its public image.",
+          "jpBefore": "その会社は世間の",
+          "answer": "印象",
+          "jpAfter": "を良くした。",
+          "jpFull": "その会社は世間の印象を良くした。",
+          "cue": "印象"
+        },
+        {
+          "en": "He saw his image in the mirror.",
+          "jpBefore": "彼は鏡に映った自分の",
+          "answer": "姿",
+          "jpAfter": "を見た。",
+          "jpFull": "彼は鏡に映った自分の姿を見た。",
+          "cue": "像・姿",
+          "hint": "鏡・レンズに映る像、自分の姿"
+        },
+        {
+          "en": "The dove is an image of peace.",
+          "jpBefore": "ハトは平和の",
+          "answer": "象徴",
+          "jpAfter": "だ。",
+          "jpFull": "ハトは平和の象徴だ。",
+          "cue": "象徴・体現",
+          "hint": "何かを体現するもの・象徴"
+        },
+        {
+          "en": "The satellite sent back images of Mars.",
+          "jpBefore": "衛星は火星の",
+          "answer": "画像",
+          "jpAfter": "を送ってきた。",
+          "jpFull": "衛星は火星の画像を送ってきた。",
+          "cue": "画像・映像"
+        }
+      ],
+      "coreImage": {
+        "headline": "カタカナ「イメージ」では足りない、5つの顔。",
+        "lead": "image の芯は〈実体を写し取ったもの〉。心に写れば「印象」、鏡やレンズに写れば「像・姿」、抽象を写し取れば「象徴・体現」、機械が写せば「画像・映像」。日本語の「イメージ（＝なんとなくの印象）」だけで捉えると、「像・姿・象徴・画像」の訳を取り逃します。"
+      },
+      "faces": [
+        {
+          "name": "〈印象〉",
+          "meaning": "「印象、イメージ」",
+          "type": "public/brand image",
+          "note": "人・企業などが与える心象。"
+        },
+        {
+          "name": "〈像・姿〉",
+          "meaning": "「像、姿」",
+          "type": "image in the mirror",
+          "note": "鏡・水面・レンズに映ったもの、彫像。"
+        },
+        {
+          "name": "〈象徴・体現〉",
+          "meaning": "「象徴、化身」",
+          "type": "an image of 〜",
+          "note": "the very image of his father「父親そっくり（生き写し）」。"
+        },
+        {
+          "name": "〈画像・映像〉",
+          "meaning": "「画像、映像」",
+          "type": "digital/satellite image",
+          "note": "コンピュータ・カメラ上の像。"
+        }
+      ],
+      "trivia": "<b>the (very) image of 〜</b>「〜の生き写し・そっくり」：She is the image of her mother.「彼女は母親にそっくりだ」。「印象」だけでなく「姿・象徴」へ広がる image の幅を示す慣用表現です。"
+    },
+    {
+      "id": "despite",
+      "word": "despite",
+      "trap": "〜のために",
+      "senses": [
+        {
+          "en": "Despite the heavy rain, they went out.",
+          "jpBefore": "激しい雨",
+          "answer": "にもかかわらず",
+          "jpAfter": "、彼らは出かけた。",
+          "jpFull": "激しい雨にもかかわらず、彼らは出かけた。",
+          "cue": "前置詞（後ろは名詞）",
+          "hint": "despite + 名詞。後ろに SV は続かない（接続詞ではない）"
+        },
+        {
+          "en": "He passed despite making many mistakes.",
+          "jpBefore": "多くのミスをした",
+          "answer": "のに",
+          "jpAfter": "、彼は合格した。",
+          "jpFull": "多くのミスをしたのに、彼は合格した。",
+          "cue": "despite + 動名詞",
+          "hint": "SV を続けたいときは despite + 動名詞、または in spite of。接続詞なら although"
+        }
+      ],
+      "coreImage": {
+        "headline": "「〜にもかかわらず」。ただし後ろは必ず名詞。",
+        "lead": "despite は「〜にもかかわらず」の前置詞。意味は although とほぼ同じですが、品詞が違います。although は接続詞なので後ろに SV、despite は前置詞なので後ろに名詞（句）。SV を続けたいときは despite the fact that SV か despite + 動名詞、または in spite of を使います。"
+      },
+      "faces": [
+        {
+          "name": "〈前置詞〉",
+          "meaning": "「〜にもかかわらず」",
+          "type": "despite + 名詞",
+          "note": "=in spite of。後ろは名詞句。although(接続詞)と品詞が違う。"
+        },
+        {
+          "name": "〈despite + 動名詞〉",
+          "meaning": "「〜したのに、〜にもかかわらず」",
+          "type": "despite + Ving",
+          "note": "SV相当を言いたいとき。despite the fact that SV も可。"
+        }
+      ],
+      "trivia": "<b>despite vs although</b>：意味は同じ「〜にもかかわらず」でも、<b>despite は前置詞（後ろは名詞）／although は接続詞（後ろは SV）</b>。Despite the rain ＝ Although it rained。混同して despite the rain fell とは書けません。なお despite of は誤り（in spite of が正しい）。"
+    },
+    {
+      "id": "in fact",
+      "word": "in fact",
+      "trap": "事実上",
+      "senses": [
+        {
+          "en": "He looks young, but in fact he is sixty.",
+          "jpBefore": "彼は若く見えるが、",
+          "answer": "実際は",
+          "jpAfter": "60歳だ。",
+          "jpFull": "彼は若く見えるが、実際は60歳だ。",
+          "cue": "実際は（具体化・対比）",
+          "hint": "前の内容を受けて「実のところ」と事実を述べる"
+        },
+        {
+          "en": "It's not cold; in fact, it's quite warm.",
+          "jpBefore": "寒くない。",
+          "answer": "それどころか",
+          "jpAfter": "かなり暖かい。",
+          "jpFull": "寒くない。それどころか、かなり暖かい。",
+          "cue": "それどころか（上書き・強調）",
+          "hint": "前言を打ち消して上書きし、さらに強める「それどころか」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「実際は」だけじゃない。「それどころか」と畳みかける。",
+        "lead": "in fact は前の内容に〈事実を突き合わせる〉表現。見かけや予想に対して「実際は…」と具体化する顔と、前言を打ち消したうえで「それどころか（もっと…）」と上書き・強調する顔があります。後者を知らないと、逆接の畳みかけを読み違えます。"
+      },
+      "faces": [
+        {
+          "name": "〈実際は〉",
+          "meaning": "「実際（は）、実のところ」",
+          "type": "…, in fact …",
+          "note": "見かけ・予想に対し事実を提示。具体化・補強。"
+        },
+        {
+          "name": "〈それどころか〉",
+          "meaning": "「それどころか、むしろ」",
+          "type": "not …; in fact …",
+          "note": "前言を否定して上書きし、さらに強める。"
+        }
+      ],
+      "trivia": "<b>in fact の二面性</b>：直前が肯定なら「実のところ（補強）」、直前が否定なら「それどころか（上書き）」になりがち。as a matter of fact / actually も同様に、文脈で「実は」と「それどころか」を使い分けます。"
+    },
+    {
+      "id": "after all",
+      "word": "after all",
+      "trap": "〜のあとで",
+      "senses": [
+        {
+          "en": "It rained, so the trip was cancelled after all.",
+          "jpBefore": "雨が降ったので、旅行は",
+          "answer": "結局",
+          "jpAfter": "中止になった。",
+          "jpFull": "雨が降ったので、旅行は結局中止になった。",
+          "cue": "結局（予想に反して）",
+          "hint": "文末に置き「（あれこれあって）結局・やはり」。予想に反する結果"
+        },
+        {
+          "en": "Don't blame him; after all, he is only a child.",
+          "jpBefore": "彼を責めないで。",
+          "answer": "なにしろ",
+          "jpAfter": "まだ子どもなんだから。",
+          "jpFull": "彼を責めないで。なにしろまだ子どもなんだから。",
+          "cue": "なにしろ・だって（理由の後出し）",
+          "hint": "前文の理由を後から補足「だって・なにしろ〜なんだから」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「結局」と「なにしろ」。位置と役割で見分ける。",
+        "lead": "after all には二つの顔。①文末で「（予想に反して）結局・やはり」と結果を述べる顔。②文頭・文中で「だって・なにしろ〜なのだから」と前言の理由を後出しで補う顔。同じ語でも、結果を言うのか理由を補うのかで役割が逆になります。"
+      },
+      "faces": [
+        {
+          "name": "〈結局〉",
+          "meaning": "「結局、やはり」",
+          "type": "… after all.（文末）",
+          "note": "予想に反する結末。He came after all.「結局やって来た」。"
+        },
+        {
+          "name": "〈なにしろ・だって〉",
+          "meaning": "「だって、なにしろ〜だから」",
+          "type": "After all, SV.（理由の補足）",
+          "note": "前言の根拠を後出し。相手を納得させる。"
+        }
+      ],
+      "trivia": "<b>位置で見分ける after all</b>：<b>文末</b>なら「結局（予想に反する結果）」、<b>文頭・文中</b>で理由を述べていれば「なにしろ・だって（前言の根拠）」のことが多い。Why worry? After all, it's just a game.「なぜ心配を？だって、ただのゲームじゃないか」。"
     }
   ],
   "levels": [
@@ -1362,6 +2171,33 @@
         "have",
         "it",
         "off"
+      ]
+    },
+    {
+      "id": "level4",
+      "name": "Level 4",
+      "wordIds": [
+        "if",
+        "when",
+        "any",
+        "for",
+        "rather",
+        "despite",
+        "out of",
+        "in fact",
+        "after all"
+      ]
+    },
+    {
+      "id": "level5",
+      "name": "Level 5",
+      "wordIds": [
+        "find",
+        "learn",
+        "work",
+        "deny",
+        "art",
+        "image"
       ]
     }
   ]
