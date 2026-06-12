@@ -643,14 +643,6 @@
           "jpAfter": "、私は理解した。",
           "jpFull": "その時になって初めて、私は理解した。",
           "cue": "時の強調"
-        },
-        {
-          "en": "I only just caught the train.",
-          "jpBefore": "私は",
-          "answer": "ぎりぎり",
-          "jpAfter": "電車に間に合った。",
-          "jpFull": "私はぎりぎり電車に間に合った。",
-          "cue": "ぎりぎり"
         }
       ],
       "coreImage": {
@@ -679,11 +671,6 @@
           "meaning": "「〜して初めて」",
           "type": "only + 時の表現",
           "note": "文頭に出ると後ろが倒置になりやすい。"
-        },
-        {
-          "name": "〈ぎりぎり〉",
-          "meaning": "「やっと・かろうじて」",
-          "type": "only just"
         }
       ],
       "trivia": "文頭の <b>Only + 時/場所 + 倒置</b>（Only then did I understand.）は入試頻出。only が文頭に出たら倒置を疑う。"
@@ -708,14 +695,6 @@
           "jpAfter": "5分しかかからない。",
           "jpFull": "それはほんの5分しかかからない。",
           "cue": "少なさ"
-        },
-        {
-          "en": "That's just what I needed.",
-          "jpBefore": "それは",
-          "answer": "まさに",
-          "jpAfter": "私が欲しかったものだ。",
-          "jpFull": "それはまさに私が欲しかったものだ。",
-          "cue": "一致"
         },
         {
           "en": "Just wait a moment, please.",
@@ -860,16 +839,8 @@
     {
       "id": "of",
       "word": "of",
-      "trap": "〜の",
+      "trap": "の",
       "senses": [
-        {
-          "en": "the roof of the house",
-          "jpBefore": "その家",
-          "answer": "の",
-          "jpAfter": "屋根",
-          "jpFull": "その家の屋根",
-          "cue": "所有・所属"
-        },
         {
           "en": "the city of Rome",
           "jpBefore": "ローマ",
@@ -881,16 +852,15 @@
         {
           "en": "I am afraid of dogs.",
           "jpBefore": "私は犬",
-          "answer": "が",
+          "answer": "について",
           "jpAfter": "こわい。",
           "jpFull": "私は犬がこわい。",
-          "cue": "内容",
-          "hint": "be afraid of＝「〜について怖がる」"
+          "cue": "内容"
         },
         {
           "en": "This ring is made of gold.",
           "jpBefore": "この指輪は金",
-          "answer": "でできている",
+          "answer": "から・で",
           "jpAfter": "。",
           "jpFull": "この指輪は金でできている。",
           "cue": "構成要素"
@@ -898,7 +868,7 @@
         {
           "en": "One of my friends lives in Paris.",
           "jpBefore": "私の友達",
-          "answer": "のうちの",
+          "answer": "のうちの・の中で",
           "jpAfter": "一人はパリに住んでいる。",
           "jpFull": "私の友達のうちの一人はパリに住んでいる。",
           "cue": "部分・全体"
@@ -906,11 +876,10 @@
         {
           "en": "He is a man of great courage.",
           "jpBefore": "彼は大変な勇気",
-          "answer": "のある",
+          "answer": "という性質を持った",
           "jpAfter": "男だ。",
           "jpFull": "彼は大変な勇気のある男だ。",
-          "cue": "性質",
-          "hint": "a man of courage＝「勇気という性質を持つ男」"
+          "cue": "性質"
         },
         {
           "en": "the discovery of America",
@@ -918,86 +887,66 @@
           "answer": "を",
           "jpAfter": "発見すること",
           "jpFull": "アメリカを発見すること",
-          "cue": "名詞構文の目的語",
-          "hint": "discover America の of。of の後ろが意味上の目的語"
-        },
-        {
-          "en": "The thief robbed her of her bag.",
-          "jpBefore": "泥棒は彼女",
-          "answer": "から",
-          "jpAfter": "バッグを奪った。",
-          "jpFull": "泥棒は彼女からバッグを奪った。",
-          "cue": "分離",
-          "hint": "rob A of B＝「AからBを奪う」"
+          "cue": "名詞構文の目的語"
         },
         {
           "en": "He died of cancer.",
           "jpBefore": "彼はがん",
-          "answer": "で",
+          "answer": "で・のために",
           "jpAfter": "亡くなった。",
           "jpFull": "彼はがんで亡くなった。",
-          "cue": "原因",
-          "hint": "die of＝「〜で死ぬ」"
+          "cue": "原因"
         }
       ],
       "coreImage": {
         "headline": "切り離して、どこから来たかを示す。",
-        "lead": "of の芯は「AからBを取り出す／Aに結びつける」という関係。所有・同格・内容・構成・部分・性質・名詞構文・分離・原因——どれも“何と何を結ぶか”がちがうだけです。「of＝〜の」と機械的に訳すと、内容・名詞構文・分離・原因でつまずきます。"
+        "lead": "ofの訳し方は多岐にわたります。「of=の」という固定観念は今日で捨てましょう。ただし、結局のところコアイメージは「AとBを結びつける」という関係です。"
       },
       "faces": [
         {
           "name": "〈所有・所属〉",
           "meaning": "「〜の」",
-          "type": "名詞 + of + 名詞",
-          "note": "the car of him / the roof of the house。"
+          "type": "名詞 + of + 名詞"
         },
         {
           "name": "〈同格〉",
           "meaning": "「〜という」",
-          "type": "名詞 + of + 名詞",
-          "note": "the country of Japan「日本という国」。前後が同じものを指す。"
+          "type": "名詞 + of + 名詞"
         },
         {
           "name": "〈内容〉",
           "meaning": "「〜について」",
-          "type": "think / afraid / information + of",
-          "note": "think of「〜について考える」/ be afraid of。"
+          "type": "think / afraid / information + of"
         },
         {
           "name": "〈構成要素〉",
           "meaning": "「〜でできた／〜で構成された」",
-          "type": "be made / consist + of",
-          "note": "be made of「〜でできている」/ consist of。"
+          "type": "be made / consist + of"
         },
         {
           "name": "〈部分・全体〉",
           "meaning": "「〜のうちの／〜の中で」",
-          "type": "数量・最上級 + of + 名詞",
-          "note": "one of my friends / the tallest of the three。"
+          "type": "数量・最上級 + of + 名詞"
         },
         {
           "name": "〈性質〉",
           "meaning": "「〜のある／〜という性質の」",
-          "type": "名詞 + of + 抽象名詞",
-          "note": "a man of courage / a boy of eight。of + 抽象名詞は形容詞のはたらき。"
+          "type": "名詞 + of + 抽象名詞"
         },
         {
           "name": "〈名詞構文の主語・目的語〉",
           "meaning": "「〜が／〜を」",
-          "type": "動作名詞 + of + 名詞",
-          "note": "the discovery of America「アメリカを発見すること」/ the lack of him「彼がいないこと」。"
+          "type": "動作名詞 + of + 名詞"
         },
         {
           "name": "〈分離〉",
           "meaning": "「〜から」",
-          "type": "rob / deprive A + of + B",
-          "note": "rob me of money「私からお金を奪う」。"
+          "type": "rob / deprive A + of + B"
         },
         {
           "name": "〈原因〉",
           "meaning": "「〜で／〜のために」",
-          "type": "die / be tired + of",
-          "note": "die of hunger「飢えで死ぬ」。"
+          "type": "die / be tired + of"
         }
       ],
       "trivia": "<b>名詞構文の of</b> は主語にも目的語にもなる：the killing of innocent people は「無実の人々<b>を</b>殺すこと」（目的語）、the lack of him は「彼<b>が</b>いないこと」（主語）。前後の動詞・名詞の関係で見分けます。"
