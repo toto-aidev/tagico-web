@@ -137,8 +137,8 @@ function StatChip({ value, label, sub, color }) {
 }
 
 // ===== 実績ブロック：ティア制5系統 =====
-// fill が必要なアイコン名の集合
-const FILL_ICONS = new Set(['star', 'bookmark', 'sparkles']);
+// fill が必要なアイコン名の集合（stroke-only アイコンには fill が効かないため star のみ登録）
+const FILL_ICONS = new Set(['star']);
 
 function AchievementsBlock({ appState }) {
   return (
@@ -147,7 +147,7 @@ function AchievementsBlock({ appState }) {
       <div className="flex flex-col gap-4">
         {ACHIEVEMENT_GROUPS.map((group) => {
           const col = GROUP_COLOR[group.color];
-          const { earnedIdx, nextTier, nextValue, nextThreshold } = getGroupStatus(group, appState);
+          const { earnedIndices, nextTier, nextValue, nextThreshold } = getGroupStatus(group, appState);
           const tiers = group.tiers;
           const isComplete = nextTier === null;
 
@@ -156,8 +156,14 @@ function AchievementsBlock({ appState }) {
             ? 100
             : Math.min(100, Math.round((nextValue / nextThreshold) * 100));
 
-          // 進行中ティアより先（ロック中）のティアインデックス群
-          const lockedStart = isComplete ? tiers.length : earnedIdx + 2;
+          // earnedIndices の集合（ロック判定を O(1) にするため Set 化）
+          const earnedSet = new Set(earnedIndices);
+
+          // ロック中のティアインデックス群（進行中以外の未獲得）
+          const nextTierIdx = isComplete ? -1 : tiers.indexOf(nextTier);
+          const lockedIndices = tiers
+            .map((_, i) => i)
+            .filter((i) => !earnedSet.has(i) && i !== nextTierIdx);
 
           // 最終ティアのアイコン（vocab だけ trophy に切り替え）
           const getIcon = (tierIdx) => {
@@ -184,19 +190,22 @@ function AchievementsBlock({ appState }) {
                 )}
               </div>
 
-              {/* 獲得済みバッジ列 */}
-              {earnedIdx >= 0 && (
+              {/* 獲得済みバッジ列（earnedIndices の順に出す） */}
+              {earnedIndices.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 pl-9">
-                  {tiers.slice(0, earnedIdx + 1).map((tier, i) => (
-                    <div
-                      key={tier.label}
-                      title={tier.desc}
-                      className={'flex items-center gap-1 px-2 py-0.5 rounded-full ' + col.bg + ' ' + col.text}
-                    >
-                      <Icon name={getIcon(i)} size={11} fill={FILL_ICONS.has(getIcon(i)) ? 'currentColor' : undefined} />
-                      <span className="text-[0.65rem] font-black">{tier.label}</span>
-                    </div>
-                  ))}
+                  {earnedIndices.map((i) => {
+                    const tier = tiers[i];
+                    return (
+                      <div
+                        key={tier.label}
+                        title={tier.desc}
+                        className={'flex items-center gap-1 px-2 py-0.5 rounded-full ' + col.bg + ' ' + col.text}
+                      >
+                        <Icon name={getIcon(i)} size={11} fill={FILL_ICONS.has(getIcon(i)) ? 'currentColor' : undefined} />
+                        <span className="text-[0.65rem] font-black">{tier.label}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
 
@@ -220,18 +229,21 @@ function AchievementsBlock({ appState }) {
                 </div>
               )}
 
-              {/* ロック中のティア（最大3件まで表示） */}
-              {lockedStart < tiers.length && (
+              {/* ロック中のティア（件数制限なし・全ティアを表示） */}
+              {lockedIndices.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 pl-9">
-                  {tiers.slice(lockedStart, lockedStart + 3).map((tier) => (
-                    <div
-                      key={tier.label}
-                      className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 opacity-60"
-                    >
-                      <Icon name="lock" size={10} />
-                      <span className="text-[0.65rem] font-bold">???</span>
-                    </div>
-                  ))}
+                  {lockedIndices.map((i) => {
+                    const tier = tiers[i];
+                    return (
+                      <div
+                        key={tier.label}
+                        className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 opacity-60"
+                      >
+                        <Icon name="lock" size={10} />
+                        <span className="text-[0.65rem] font-bold">???</span>
+                      </div>
+                    );
+                  })}
                 </div>
               )}
             </div>
