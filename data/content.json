@@ -854,7 +854,7 @@
           "jpBefore": "私は犬",
           "answer": "について",
           "jpAfter": "こわい。",
-          "jpFull": "私は犬についてこわい。",
+          "jpFull": "私は犬がこわい。",
           "cue": "内容"
         },
         {
@@ -862,7 +862,7 @@
           "jpBefore": "この指輪は金",
           "answer": "から・で",
           "jpAfter": "。",
-          "jpFull": "この指輪は金から・でできている。",
+          "jpFull": "この指輪は金でできている。",
           "cue": "構成要素"
         },
         {
@@ -878,7 +878,7 @@
           "jpBefore": "彼は大変な勇気",
           "answer": "という性質を持った",
           "jpAfter": "男だ。",
-          "jpFull": "彼は大変な勇気という性質を持った男だ。",
+          "jpFull": "彼はとても勇気のある男だ。",
           "cue": "性質"
         },
         {
@@ -1066,7 +1066,7 @@
         {
           "en": "I had my hair cut yesterday.",
           "jpBefore": "私は昨日、髪を切って",
-          "answer": "もらった",
+          "answer": "させる・してもらう",
           "jpAfter": "。",
           "jpFull": "私は昨日、髪を切ってもらった。",
           "cue": "使役"
@@ -1356,18 +1356,18 @@
         {
           "en": "Any student can learn this skill with practice.",
           "jpBefore": "",
-          "answer": "どんな",
+          "answer": "どんな〜でも",
           "jpAfter": "生徒でも練習次第でこのスキルは身につく。",
           "jpFull": "どんな生徒でも練習次第でこのスキルは身につく。",
-          "cue": "どんな〜でも"
+          "cue": "任意"
         },
         {
           "en": "I looked in every drawer, but I could not find any keys.",
           "jpBefore": "引き出しを全部探したが、鍵が",
-          "answer": "少しも",
+          "answer": "少しも（〜ない）",
           "jpAfter": "見つからなかった。",
           "jpFull": "引き出しを全部探したが、鍵が少しも見つからなかった。",
-          "cue": "少しも（〜ない）"
+          "cue": "全否定強調"
         },
         {
           "en": "If you have any concerns, feel free to let me know.",
@@ -1375,7 +1375,7 @@
           "answer": "少しでも",
           "jpAfter": "気になることがあれば、遠慮なく言ってください。",
           "jpFull": "少しでも気になることがあれば、遠慮なく言ってください。",
-          "cue": "少しでも"
+          "cue": "最小限"
         }
       ],
       "coreImage": {
@@ -1384,19 +1384,19 @@
       },
       "faces": [
         {
-          "name": "〈どんな〜でも〉",
+          "name": "〈任意〉",
           "meaning": "「どんな〜でも／どれでも」",
           "type": "any + 名詞（肯定文）",
           "note": "任意の一つを選んでも成り立つ。Any colour will do.「何色でもよい」。"
         },
         {
-          "name": "〈少しも〜ない〉",
+          "name": "〈全否定強調〉",
           "meaning": "「少しも（〜ない）」",
           "type": "not 〜 any + 名詞",
           "note": "全否定を強める。I don't have any water.「水は少しもない」。"
         },
         {
-          "name": "〈少しでも〉",
+          "name": "〈最小限〉",
           "meaning": "「少しでも、一つでも」",
           "type": "疑問文・if 節 + any",
           "note": "If you feel any worse, call me.「少しでも悪化したら呼んで」。"
@@ -1412,7 +1412,7 @@
         {
           "en": "It will rain, for the barometer is falling.",
           "jpBefore": "雨が降るだろう、",
-          "answer": "というのも",
+          "answer": "（というのも）〜だから・ため",
           "jpAfter": "気圧計が下がっているから。",
           "jpFull": "雨が降るだろう、というのも気圧計が下がっているから。",
           "cue": "接続詞・理由"
@@ -1444,7 +1444,10 @@
           "note": "It is hard for me to swim.「私が泳ぐのは難しい」。for X が to do の主語。"
         }
       ],
-      "trivia": "<b>for と because の違い</b>：because は理由そのものを直接示し文頭にも置けますが、接続詞 for は前の文を述べた<b>後に</b>「（その根拠は）〜だから」と補足する形でしか使えません。また人の性質を述べる形容詞（kind 等）では for ではなく <b>of</b>（It is kind of you to help.）を使います。"
+      "trivia": [
+        "<b>for と because の違い</b>：because は理由そのものを直接示し文頭にも置けますが、接続詞 for は前の文を述べた<b>後に</b>「（その根拠は）〜だから」と補足する形でしか使えません。",
+        "人の性質を述べる形容詞（kind 等）では for ではなく <b>of</b> を使います（It is kind of you to help.）。for と of の使い分けも要注意です。"
+      ]
     },
     {
       "id": "find",
@@ -1532,6 +1535,12 @@
           "meaning": "「doできるようになる」",
           "type": "learn + to do",
           "note": "過程を経た習得。learned to swim「泳げるようになった」。"
+        },
+        {
+          "name": "〈learn that節〉",
+          "meaning": "「〜と知る・〜と聞いて知る」",
+          "type": "learn + that節",
+          "note": "I learned that he was sick.「彼が病気だと知った」。情報を（聞いて）知ること。Weblioでも「〔…のことを〕（聞いて）知る」として立項されている。"
         }
       ],
       "trivia": "<b>learn は teach の対</b>：teach が「（外へ）教える」のに対し learn は「（内へ）身につく・わかる」側です。だから learn の主語は<b>学ぶ側・知る側</b>になります。"
