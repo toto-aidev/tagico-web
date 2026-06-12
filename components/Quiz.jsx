@@ -23,6 +23,9 @@ const IRREGULAR = {
   will: ["won't", 'wills', 'willing'],
   take: ['takes', 'took', 'taken', 'taking'],
   know: ['knows', 'knew', 'known', 'knowing'],
+  have: ['has', 'had', 'having'],
+  find: ['finds', 'found', 'finding'],
+  deny: ['denies', 'denied', 'denying'],
 };
 
 function splitAtWord(sentence, baseWord) {
