@@ -5,7 +5,9 @@
 import React, { useState } from 'react';
 import Icon from '@/components/Icon';
 import { SummaryBody, BottomNav } from '@/components/Summary';
+import { FeedbackLink } from '@/components/Survey';
 import { LEVELS, getWord } from '@/lib/content';
+import { SURVEY_URL } from '@/lib/store';
 
 // ===== マイ単語帳：ブックマークした用法まとめを集めた自分専用の単語帳 =====
 export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSense, onNavigate }) {
@@ -116,6 +118,11 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
             </div>
           </div>
         )}
+
+        {/* 常設のフィードバック導線（いつでも Tally アンケートを開ける） */}
+        <div className="mt-auto pt-2">
+          <FeedbackLink url={SURVEY_URL} />
+        </div>
       </div>
       <BottomNav active="my" onNavigate={onNavigate} />
     </div>
