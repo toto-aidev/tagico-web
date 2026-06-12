@@ -1853,7 +1853,7 @@
           "jpAfter": "を送ってきた。",
           "jpFull": "衛星は火星の画像を送ってきた。",
           "cue": "画像・映像",
-          "hint": "satellite image（衛星画像）のように、カメラ・センサーで撮影した画像全般を指す。"
+          "hint": "satellite：衛星"
         }
       ],
       "coreImage": {
@@ -2122,7 +2122,7 @@
     {
       "id": "sense",
       "word": "sense",
-      "trap": "感じ",
+      "trap": "感覚",
       "senses": [
         {
           "en": "What you are saying does not make sense to me.",
@@ -2133,31 +2133,31 @@
           "cue": "意味・道理"
         },
         {
-          "en": "Humans gather information through the five senses.",
-          "jpBefore": "人間は",
-          "answer": "五感",
-          "jpAfter": "を通じて情報を集める。",
-          "jpFull": "人間は五感を通じて情報を集める。",
-          "cue": "感覚"
-        },
-        {
           "en": "She had the good sense to keep quiet about it.",
           "jpBefore": "彼女はそれについて黙っているだけの",
           "answer": "分別",
           "jpAfter": "があった。",
           "jpFull": "彼女はそれについて黙っているだけの分別があった。",
           "cue": "良識・判断力"
+        },
+        {
+          "en": "She finally found a sense of belonging in the new team.",
+          "jpBefore": "彼女はついに新しいチームに",
+          "answer": "帰属意識",
+          "jpAfter": "を感じた。",
+          "jpFull": "彼女はついに新しいチームに帰属意識を感じた。",
+          "cue": "意識・〜感"
         }
       ],
       "coreImage": {
-        "headline": "「感覚」だけじゃない。make sense の「意味」、common sense の「分別」。",
-        "lead": "sense はまず身体の〈感覚〉が基本ですが、和訳で問われるのは〈意味・道理〉（make sense「筋が通る」）と〈良識・判断力〉（common sense「常識」）です。カタカナ「感じ」だけで覚えていると他の二つを取り逃します。"
+        "headline": "「感覚」だけじゃない。make sense の「意味」、common sense の「分別」、a sense of belonging の「帰属意識」。",
+        "lead": "sense は〈意味・道理〉（make sense「筋が通る」）、〈良識・判断力〉（common sense「常識」）、〈意識・〜感〉（a sense of belonging「帰属意識」）と広がります。「感覚」はよく知られた訳ですが、文脈によっては全く別の顔を見せます。"
       },
       "faces": [
         {
           "name": "〈感覚〉",
           "meaning": "「感覚、〜感」",
-          "type": "the five senses / a sense of N",
+          "type": "the five senses / a keen sense of smell",
           "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。"
         },
         {
@@ -2171,6 +2171,12 @@
           "meaning": "「分別、常識」",
           "type": "common/good sense, have the sense to do",
           "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。"
+        },
+        {
+          "name": "〈意識・〜感〉",
+          "meaning": "「意識、〜感」",
+          "type": "a sense of belonging / satisfaction / urgency",
+          "note": "a sense of belonging（帰属意識）、a sense of satisfaction（満足感）、a sense of urgency（緊迫感）。抽象名詞と組み合わせて「〜感・〜意識」を表す。"
         }
       ],
       "trivia": "<b>make sense は『意味』用法</b>：sense の「道理・筋」という意味から、make sense は直訳すると「筋を作る」→「意味が通る・筋が通る」となります。主語が物・発言なら「理屈が通る」、It makes sense to do なら「〜するのももっともだ」という意味です。同じ語源でも five senses(感覚)、common sense(良識)とは訳語がまったく変わる多義語の典型です。"
