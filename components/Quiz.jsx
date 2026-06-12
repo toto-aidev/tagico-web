@@ -65,7 +65,7 @@ function fireConfetti() {
   confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#2DD4BF', '#FF6B6B', '#FCD34D', '#FFFFFF'] });
 }
 
-export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack }) {
+export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount }) {
   const level = getLevel(levelId);
   const wordIds = propWordIds || (level && level.wordIds) || [];
 
@@ -197,7 +197,12 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
           <Icon name="arrow-left" size={20} />
         </button>
         <div className="flex-1 min-w-0">
-          <p className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest">{level.name}</p>
+          <p className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest">
+            {level.name}
+            {levelWordIndex !== null && levelWordCount !== null && (
+              <span className="ml-1.5 normal-case">&middot; {levelWordIndex + 1}/{levelWordCount}語目</span>
+            )}
+          </p>
           <p className="text-xl font-black text-slate-800 tracking-tight">{word.word}</p>
         </div>
         {ws.phase === 'revealed' && (
@@ -432,8 +437,13 @@ export function ResultScreen({ scores, levelId, appState, onNavigate }) {
           if (!word) return null;
           const isFullScore = score.correct === score.total;
           const isCleared = appState.cleared.includes(score.wordId);
+          const hasError = !isFullScore;
           return (
-            <div key={score.wordId} className="tg-fadeup rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
+            <div
+              key={score.wordId}
+              onClick={hasError ? () => onNavigate({ type: 'quiz', levelId, wordIds: [score.wordId], isRetry: true }) : undefined}
+              className={'tg-fadeup rounded-3xl p-5 bg-white border-2 shadow-sm transition-all ' + (hasError ? 'border-rose-200 cursor-pointer hover:border-rose-300 active:scale-[0.98]' : 'border-slate-100')}
+            >
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2.5">
                   <span className="text-lg font-black text-slate-700">{word.word}</span>
@@ -443,10 +453,17 @@ export function ResultScreen({ scores, levelId, appState, onNavigate }) {
                     </span>
                   )}
                 </div>
-                <span className={'flex items-center gap-1 px-2.5 py-1 rounded-xl text-sm font-bold ' + (isFullScore ? 'bg-teal-100 text-teal-600' : 'bg-rose-100 text-rose-500')}>
-                  {isFullScore ? <Icon name="check" size={14} strokeWidth={3} /> : <Icon name="x" size={14} strokeWidth={3} />}
-                  {score.correct}/{score.total}
-                </span>
+                <div className="flex items-center gap-2">
+                  {hasError && (
+                    <span className="text-[0.65rem] font-bold text-rose-400 flex items-center gap-1">
+                      <Icon name="rotate-ccw" size={11} strokeWidth={3} /> やり直し
+                    </span>
+                  )}
+                  <span className={'flex items-center gap-1 px-2.5 py-1 rounded-xl text-sm font-bold ' + (isFullScore ? 'bg-teal-100 text-teal-600' : 'bg-rose-100 text-rose-500')}>
+                    {isFullScore ? <Icon name="check" size={14} strokeWidth={3} /> : <Icon name="x" size={14} strokeWidth={3} />}
+                    {score.correct}/{score.total}
+                  </span>
+                </div>
               </div>
 
               <div className="flex items-center gap-2 mb-3">

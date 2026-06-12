@@ -80,6 +80,12 @@ export default function App() {
       setShowSurvey(true);
     }
 
+    // リトライ（結果画面の誤答クリック）から来た場合は完了後ホームへ戻る
+    if (screen.isRetry) {
+      handleNavigate({ type: 'home' });
+      return;
+    }
+
     const accumulated = [...sessionScores, ...scores];
     setSessionScores(accumulated);
 
@@ -123,6 +129,12 @@ export default function App() {
     if (currentWordId) sessionDone.add(currentWordId);
     const hasNext = allWordIds.some((id) => !sessionDone.has(id) && !appState.cleared.includes(id));
 
+    // レベル内位置表示用：未クリア語を順に解いている文脈でのみ渡す
+    const levelUncleared = allWordIds.filter((id) => !appState.cleared.includes(id));
+    const isLevelContext = levelUncleared.length > 0 && !screen.isRetry;
+    const levelWordIndex = isLevelContext ? sessionScores.length : null;
+    const levelWordCount = isLevelContext ? levelUncleared.length + sessionScores.length : null;
+
     return (
       <QuizScreen
         key={(screen.wordIds || []).join(',') || screen.levelId}
@@ -135,6 +147,8 @@ export default function App() {
         onToggleSavedSense={handleToggleSavedSense}
         onDone={handleQuizDone}
         onBack={handleQuizBack}
+        levelWordIndex={levelWordIndex}
+        levelWordCount={levelWordCount}
       />
     );
   }
