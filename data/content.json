@@ -85,15 +85,15 @@
           "answer": "として",
           "jpAfter": "尊敬している。",
           "jpFull": "私は彼をリーダーとして尊敬している。",
-          "cue": "資格"
+          "cue": "前置詞〈資格〉"
         },
         {
           "en": "As it was late, we went home.",
           "jpBefore": "遅くなった",
-          "answer": "ので",
+          "answer": "なので",
           "jpAfter": "、私たちは帰宅した。",
           "jpFull": "遅くなったので、私たちは帰宅した。",
-          "cue": "理由"
+          "cue": "接続詞〈理由〉"
         },
         {
           "en": "As we grow older, time flies faster.",
@@ -101,7 +101,7 @@
           "answer": "につれて",
           "jpAfter": "、時間が経つのが速くなる。",
           "jpFull": "年を取るにつれて、時間が経つのが速くなる。",
-          "cue": "比例"
+          "cue": "接続詞〈比例〉"
         },
         {
           "en": "She hummed as she cooked.",
@@ -109,7 +109,7 @@
           "answer": "しながら",
           "jpAfter": "鼻歌を歌った。",
           "jpFull": "彼女は料理をしながら鼻歌を歌った。",
-          "cue": "時",
+          "cue": "接続詞〈時〉",
           "hint": "hum＝「鼻歌を歌う」"
         },
         {
@@ -118,15 +118,15 @@
           "answer": "ように",
           "jpAfter": "やりなさい。",
           "jpFull": "私がやって見せたようにやりなさい。",
-          "cue": "様態"
+          "cue": "接続詞〈様態〉"
         },
         {
           "en": "Young as he is, he is wise.",
           "jpBefore": "彼は若い",
-          "answer": "けれども",
+          "answer": "確かに〜だが",
           "jpAfter": "、賢い。",
-          "jpFull": "彼は若いけれども、賢い。",
-          "cue": "譲歩",
+          "jpFull": "確かに彼は若いが、賢い。",
+          "cue": "接続詞〈譲歩〉",
           "hint": "wise＝「賢い」"
         },
         {
@@ -140,9 +140,15 @@
       ],
       "coreImage": {
         "headline": "as の用法は大きく3つ。前置詞・接続詞・擬似関係代名詞。",
-        "lead": "接続詞だけでも時・理由・譲歩・比例・様態の5つの顔があります。文脈によって訳し方を選ぶ必要があります。"
+        "lead": "接続詞だけでも5つの顔があります。文脈によって訳し方を選ぶ必要があります。"
       },
       "faces": [
+        {
+          "name": "前置詞〈資格〉",
+          "meaning": "「〜として」",
+          "type": "as + 名詞",
+          "note": "SV を伴わない。"
+        },
         {
           "name": "接続詞〈時〉",
           "meaning": "「〜する時／〜しながら」",
@@ -154,12 +160,6 @@
           "meaning": "「〜なので／〜だから」",
           "type": "as + S V",
           "note": "因果関係。"
-        },
-        {
-          "name": "接続詞〈譲歩〉",
-          "meaning": "「〜だけれども」",
-          "type": "形容詞/副詞/名詞 + as + S V",
-          "note": "倒置形。"
         },
         {
           "name": "接続詞〈比例〉",
@@ -174,25 +174,28 @@
           "note": "様子・指示の踏襲。"
         },
         {
-          "name": "前置詞〈資格〉",
-          "meaning": "「〜として」",
-          "type": "as + 名詞",
-          "note": "SV を伴わない。"
+          "name": "接続詞〈譲歩〉",
+          "meaning": "「確かに〜だが」",
+          "type": "形容詞/副詞/名詞 + as + S V",
+          "note": "倒置形。"
         },
         {
           "name": "擬似関係代名詞",
-          "meaning": "「〜のような…」",
-          "type": "such / the same 〜 as ...",
-          "note": "such / the same とのセットが目印。"
+          "meaning": "「〜する…」（）",
+          "type": "N as + S V",
+          "note": "whichやthatといった関係代名詞と同様の働き。"
         },
         {
-          "name": "構文",
+          "name": "as 〜 as 構文〈比較〉",
           "meaning": "「同じくらい」",
-          "type": "as 〜 as",
+          "type": "as [比較級の原型] as + S V",
           "note": "決まった形として覚える。"
         }
       ],
-      "trivia": "〈譲歩〉の as は <b>倒置構文が必須</b>（形容詞/副詞/名詞 + as + S V）。通常語順だと別の意味になる。"
+      "trivia": [
+        "〈譲歩〉の as は <b>倒置構文が必須</b>（形容詞/副詞/名詞 + as + S V）。通常語順だと別の意味になる。",
+        "擬似関係代名詞のasは<b>As is (often) the case with A</b>（Aにはよくあることだが）というイディオムが有名。通常の関係代名詞と異なり、文頭に置くことが可能。"
+      ]
     },
     {
       "id": "but",
@@ -282,7 +285,7 @@
           "answer": "という",
           "jpAfter": "知らせは私たちを驚かせた。",
           "jpFull": "彼が勝ったという知らせは私たちを驚かせた。",
-          "cue": "同格"
+          "cue": "接続詞〈同格〉（名詞節）"
         },
         {
           "en": "It's not that difficult.",
@@ -291,14 +294,6 @@
           "jpAfter": "難しくはない。",
           "jpFull": "それほど難しくはない。",
           "cue": "副詞"
-        },
-        {
-          "en": "He ran so fast that I couldn't catch him.",
-          "jpBefore": "彼は、私が追いつけない",
-          "answer": "ほど",
-          "jpAfter": "速く走った。",
-          "jpFull": "彼は、私が追いつけないほど速く走った。",
-          "cue": "構文"
         },
         {
           "en": "He is the man that I met on the train.",
@@ -327,6 +322,18 @@
           "note": "that book / those books。"
         },
         {
+          "name": "関係代名詞",
+          "meaning": "「〜する…」（訳さない）",
+          "type": "先行詞 + that + 不完全文",
+          "note": "the man that I met。"
+        },
+        {
+          "name": "副詞（口語）",
+          "meaning": "「それほど」",
+          "type": "that + 形容詞/副詞",
+          "note": "not that difficult など。"
+        },
+        {
           "name": "接続詞〈名詞節〉",
           "meaning": "「〜と（いうこと）」",
           "type": "動詞など + that + 完全文",
@@ -336,28 +343,13 @@
           "name": "接続詞〈同格〉",
           "meaning": "「〜という…」",
           "type": "名詞 + that + 完全文",
-          "note": "the fact that S V。名詞の中身を説明。"
-        },
-        {
-          "name": "副詞（口語）",
-          "meaning": "「それほど」",
-          "type": "that + 形容詞/副詞",
-          "note": "not that difficult など。"
-        },
-        {
-          "name": "関係代名詞",
-          "meaning": "「〜する…」（訳さない）",
-          "type": "先行詞 + that + 不完全文",
-          "note": "the man that I met。"
-        },
-        {
-          "name": "構文",
-          "meaning": "「とても〜なので…／…ほど〜」",
-          "type": "so / such 〜 that …",
-          "note": "決まった形として覚える。"
+          "note": "fact / reason / ideaなど、抽象名詞の中身を説明。"
         }
       ],
-      "trivia": "受験ではマイナーだが、<b>関係副詞の that</b> もある：先行詞が時・場所・理由で、後ろが完全文の形。例: the day that I met him（= on which の代用）"
+      "trivia": [
+        "接続詞の三つ目の用法として、特殊な〈構文〉を作るものがある。「so / such 〜 that … 構文」「強調構文」「形式主語構文」など。",
+        "受験ではマイナーだが、<b>関係副詞の that</b> もある：先行詞が時・場所・理由で、後ろが完全文の形。例: the day that I met him（= on which の代用）"
+      ]
     },
     {
       "id": "will",
