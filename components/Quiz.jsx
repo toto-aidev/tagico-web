@@ -22,6 +22,7 @@ const IRREGULAR = {
   get: ['gets', 'got', 'gotten', 'getting'],
   will: ["won't", 'wills', 'willing'],
   take: ['takes', 'took', 'taken', 'taking'],
+  know: ['knows', 'knew', 'known', 'knowing'],
 };
 
 function splitAtWord(sentence, baseWord) {

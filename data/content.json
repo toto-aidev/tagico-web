@@ -2134,6 +2134,242 @@
         }
       ],
       "trivia": "<b>位置で見分ける after all</b>：<b>文末</b>なら「結局（予想に反する結果）」、<b>文頭・文中</b>で理由を述べていれば「なにしろ・だって（前言の根拠）」のことが多い。Why worry? After all, it's just a game.「なぜ心配を？だって、ただのゲームじゃないか」。"
+    },
+    {
+      "id": "so",
+      "word": "so",
+      "trap": "とても",
+      "senses": [
+        {
+          "en": "Don't worry, it isn't so difficult.",
+          "jpBefore": "心配しないで、",
+          "answer": "それほど",
+          "jpAfter": "難しくはないよ。",
+          "jpFull": "心配しないで、それほど難しくはないよ。",
+          "cue": "副詞・程度",
+          "hint": "so は本来 very ではなく「それほど・そんなに」。否定文・比較の文脈で「想定したほどには〜ない」と参照先を含む"
+        },
+        {
+          "en": "She said she would come, and I hope so.",
+          "jpBefore": "彼女は来ると言ったし、",
+          "answer": "そう",
+          "jpAfter": "なることを願う。",
+          "jpFull": "彼女は来ると言ったし、そうなることを願う。",
+          "cue": "副詞・様態/代用",
+          "hint": "think so / hope so / do so / if so の so。前に出た内容を受けて「そう・そのように」"
+        },
+        {
+          "en": "My knee started hurting, so I stopped running.",
+          "jpBefore": "膝が痛み始めた、",
+          "answer": "だから",
+          "jpAfter": "私は走るのをやめた。",
+          "jpFull": "膝が痛み始めた、だから私は走るのをやめた。",
+          "cue": "接続詞・結果",
+          "hint": "前文を原因として結果を導く接続詞。「だから・そのため・よって」"
+        }
+      ],
+      "coreImage": {
+        "headline": "「とても」と訳すと外す。程度の「それほど」、代用の「そう」、結果の「だから」。",
+        "lead": "so を反射的に「とても(very)」と訳すのは落とし穴。本来は①〈程度〉「それほど・そんなに」で、参照先(どれほどか)を含み否定文・比較で生きます。②〈様態・代用〉think so / do so の so は前出の内容を受け「そう」。③文頭でなく文中に来て前文の帰結を導けば〈接続詞〉「だから」。"
+      },
+      "faces": [
+        {
+          "name": "〈程度・副詞〉",
+          "meaning": "「それほど、そんなに」",
+          "type": "so + 形容詞/副詞",
+          "note": "≠very。「想定した基準ほど〜だ／ない」と参照先を含む。否定文・比較で多用。"
+        },
+        {
+          "name": "〈様態・代用・副詞〉",
+          "meaning": "「そう、そのように」",
+          "type": "think/hope/do so, if so",
+          "note": "前に出た節・動詞句を受けて繰り返しを避ける。do so は前出の動作の代用。"
+        },
+        {
+          "name": "〈結果・接続詞〉",
+          "meaning": "「だから、そのため」",
+          "type": "SV, so SV.",
+          "note": "前文を原因、後文を結果として結ぶ。文頭ではなく節と節の間に置く。"
+        }
+      ],
+      "trivia": "<b>so…that 構文は別物</b>：so good <b>that</b> 〜「とても〜なので…だ」の so は後ろの that 節が「どれほどか」を示す相関構文で、ここでの程度・様態・接続詞のどれとも違います。<b>so + 形容詞 + a + 名詞</b>(so beautiful a girl = such a beautiful girl)という語順も、so があくまで形容詞を強調している証拠です。"
+    },
+    {
+      "id": "know",
+      "word": "know",
+      "trap": "知る",
+      "senses": [
+        {
+          "en": "Wait a little longer, and you will know the truth.",
+          "jpBefore": "もう少し待てば、君は真実を",
+          "answer": "知ることになる",
+          "jpAfter": "。",
+          "jpFull": "もう少し待てば、君は真実を知ることになる。",
+          "cue": "動作・認識",
+          "hint": "will / soon を伴うと状態ではなく変化。「知っている」ではなく「(これから)知る・分かる」"
+        },
+        {
+          "en": "A baby soon learns to know its mother's face.",
+          "jpBefore": "赤ん坊はすぐに母親の顔を",
+          "answer": "見分ける",
+          "jpAfter": "ようになる。",
+          "jpFull": "赤ん坊はすぐに母親の顔を見分けるようになる。",
+          "cue": "識別・判断",
+          "hint": "know A / know A from B で「A を見分ける・識別する」。違いが分かるの know"
+        },
+        {
+          "en": "I have known her since we were children.",
+          "jpBefore": "私は子どもの頃から彼女を",
+          "answer": "知っている",
+          "jpAfter": "。",
+          "jpFull": "私は子どもの頃から彼女を知っている。",
+          "cue": "状態・継続",
+          "hint": "状態動詞。進行形にせず完了形で継続を表す。「ずっと知っている・知り合いだ」"
+        }
+      ],
+      "coreImage": {
+        "headline": "状態の「知っている」だけじゃない。文脈で「知る」、識別の「見分ける」。",
+        "lead": "know は基本〈状態〉「知っている・分かっている」で進行形にしません。ただ和訳で差がつくのは文脈です。①will/soon を伴うと〈動作・認識〉に傾き「(これから)知る・知ることになる」。②know A from B のように対象を識別するときは「見分ける」。同じ動詞でも、状態か変化かを文脈で訳し分けるのが Tagico の核心です。"
+      },
+      "faces": [
+        {
+          "name": "〈状態〉",
+          "meaning": "「知っている、分かっている」",
+          "type": "have known / know O",
+          "note": "進行形不可。完了形で継続を表す。最も基本の用法。"
+        },
+        {
+          "name": "〈動作・認識〉",
+          "meaning": "「知る、(これから)分かる」",
+          "type": "will/soon know",
+          "note": "状態から状態への変化(知らない→知る)を切り取る文脈。未来・助動詞を伴いやすい。"
+        },
+        {
+          "name": "〈識別・判断〉",
+          "meaning": "「見分ける、識別する」",
+          "type": "know A from B / know the difference",
+          "note": "対象を区別して判別する know。「A と B の違いが分かる」。"
+        }
+      ],
+      "trivia": "<b>know は状態動詞</b>なので原則 I am knowing とは言えません。一方で <b>get to know</b>「(次第に)知り合う・知るようになる」や <b>will know</b> は「知らない→知っている」への<b>変化</b>を表すため、和訳では「知る」と動作的に訳すのが自然になります。状態か変化かを見抜くのが訳し分けの鍵です。"
+    },
+    {
+      "id": "on",
+      "word": "on",
+      "trap": "の上に",
+      "senses": [
+        {
+          "en": "He gave a lecture on Roman history.",
+          "jpBefore": "彼はローマ史",
+          "answer": "について",
+          "jpAfter": "講義をした。",
+          "jpFull": "彼はローマ史についての講義をした。",
+          "cue": "主題・専門",
+          "hint": "book/lecture/report on 〜。about より専門的・学術的。受験生の盲点。「〜に関する」"
+        },
+        {
+          "en": "There was a small spider on the ceiling.",
+          "jpBefore": "天井に小さなクモが",
+          "answer": "くっついて",
+          "jpAfter": "いた。",
+          "jpFull": "天井に小さなクモがくっついていた。",
+          "cue": "接触",
+          "hint": "on の核は「上」ではなく「接触」。天井・壁でも on。上下を問わず面にくっつく"
+        },
+        {
+          "en": "Whether we go out depends on the weather.",
+          "jpBefore": "外出するかどうかは天気",
+          "answer": "次第だ",
+          "jpAfter": "。",
+          "jpFull": "外出するかどうかは天気次第だ。",
+          "cue": "依存",
+          "hint": "depend on / rely on の on。「〜に依存して・〜次第で」。基盤に乗っているイメージ"
+        }
+      ],
+      "coreImage": {
+        "headline": "「上に」は半分だけ。主題の「について」、接触の「くっついて」、依存の「次第で」。",
+        "lead": "on を「〜の上に」だけで覚えると訳を外します。on の核は<b>接触</b>で、①天井や壁でも on(「くっついて」)。和訳で一番盲点なのが②〈主題〉a lecture on 〜「〜について」で、about より専門的・学術的。さらに③depend on の on は基盤に乗る感覚から「〜次第で・〜に依存して」。"
+      },
+      "faces": [
+        {
+          "name": "〈主題〉",
+          "meaning": "「〜について、〜に関する」",
+          "type": "book/lecture/report on N",
+          "note": "about より専門的・学術的。漫画『チ。』の英題 Orb: On the Movements of the Earth もこの on。受験生の盲点。"
+        },
+        {
+          "name": "〈接触〉",
+          "meaning": "「〜にくっついて」",
+          "type": "on + 面(壁・天井含む)",
+          "note": "on の核イメージは上下ではなく「接触」。a fly on the ceiling のように天井でも on。"
+        },
+        {
+          "name": "〈依存〉",
+          "meaning": "「〜次第で、〜に依存して」",
+          "type": "depend/rely on N",
+          "note": "土台に乗っている感覚から。「〜を基盤にして・〜にかかっている」。"
+        }
+      ],
+      "trivia": "<b>主題の on は about より硬い</b>：日常会話では a book about dogs ですが、学術書・論文・講義では a paper on dogs のように on を使うと専門的な響きになります。類義は <b>of / about / over</b>。核が「接触」である on は、turn the TV on(電源が回路に「つながる」)のように、物理的接触から比喩的な「進行中・作動中」へも広がります。"
+    },
+    {
+      "id": "sense",
+      "word": "sense",
+      "trap": "感じ",
+      "senses": [
+        {
+          "en": "What you are saying does not make sense to me.",
+          "jpBefore": "君の言っていることは私には",
+          "answer": "意味が通らない",
+          "jpAfter": "。",
+          "jpFull": "君の言っていることは私には意味が通らない。",
+          "cue": "意味・道理",
+          "hint": "make sense「意味が通る・筋が通る」。in a sense なら「ある意味で」。『意味・道理』の sense"
+        },
+        {
+          "en": "Humans gather information through the five senses.",
+          "jpBefore": "人間は",
+          "answer": "五感",
+          "jpAfter": "を通じて情報を集める。",
+          "jpFull": "人間は五感を通じて情報を集める。",
+          "cue": "感覚",
+          "hint": "the five senses「五感」、a sense of smell「嗅覚」。身体の『感覚』の sense"
+        },
+        {
+          "en": "She had the good sense to keep quiet about it.",
+          "jpBefore": "彼女はそれについて黙っているだけの",
+          "answer": "分別",
+          "jpAfter": "があった。",
+          "jpFull": "彼女はそれについて黙っているだけの分別があった。",
+          "cue": "良識・判断力",
+          "hint": "common sense「常識」、good sense「分別」、have the sense to do。『良識』の sense"
+        }
+      ],
+      "coreImage": {
+        "headline": "「感覚」だけじゃない。make sense の「意味」、common sense の「分別」。",
+        "lead": "sense はまず身体の①〈感覚〉(the five senses「五感」)。しかし和訳で問われるのは別の二つ。②〈意味・道理〉で、make sense は「意味が通る・筋が通る」、in a sense は「ある意味で」。③〈良識・判断力〉で common sense「常識」、good sense「分別」。同じ語が「感じる力」から「筋道」「わきまえ」へ広がります。"
+      },
+      "faces": [
+        {
+          "name": "〈感覚〉",
+          "meaning": "「感覚、〜感」",
+          "type": "the five senses / a sense of N",
+          "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。"
+        },
+        {
+          "name": "〈意味・道理〉",
+          "meaning": "「意味、道理、筋」",
+          "type": "make sense / in a sense",
+          "note": "make sense「意味が通る・筋が通る」。in a sense「ある意味で」。道理・筋道としての sense。"
+        },
+        {
+          "name": "〈良識・判断力〉",
+          "meaning": "「分別、常識」",
+          "type": "common/good sense, have the sense to do",
+          "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。"
+        }
+      ],
+      "trivia": "<b>make sense は『意味』用法</b>：sense の「道理・筋」という意味から、make sense は直訳すると「筋を作る」→「意味が通る・筋が通る」。主語が物・発言なら「理屈が通る」、It makes sense to do なら「〜するのももっともだ」。同じ語源でも five senses(感覚)、common sense(良識)とは訳語がまったく変わる多義語の典型です。"
     }
   ],
   "levels": [
@@ -2185,7 +2421,9 @@
         "despite",
         "out of",
         "in fact",
-        "after all"
+        "after all",
+        "so",
+        "on"
       ]
     },
     {
@@ -2197,7 +2435,9 @@
         "work",
         "deny",
         "art",
-        "image"
+        "image",
+        "know",
+        "sense"
       ]
     }
   ]
