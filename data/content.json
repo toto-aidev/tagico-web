@@ -887,8 +887,7 @@
           "answer": "を",
           "jpAfter": "発見すること",
           "jpFull": "アメリカを発見すること",
-          "cue": "名詞構文の目的語",
-          "hint": "名詞構文として"
+          "cue": "名詞構文の目的語"
         },
         {
           "en": "He died of cancer.",
@@ -1149,7 +1148,7 @@
           "type": "It is 〜 that ..."
         },
         {
-          "name": "⑥〈it seems/appears that〉",
+          "name": "⑥ it seems/appears that構文",
           "meaning": "「（訳さない）」",
           "type": "It seems / appears that …"
         }
@@ -1351,7 +1350,7 @@
     {
       "id": "any",
       "word": "any",
-      "trap": "いくつかの",
+      "trap": "一つも〜ない",
       "senses": [
         {
           "en": "Any student can learn this skill with practice.",
@@ -1362,11 +1361,11 @@
           "cue": "任意"
         },
         {
-          "en": "I looked in every drawer, but I could not find any keys.",
-          "jpBefore": "引き出しを全部探したが、鍵が",
+          "en": "I searched everywhere, but I could not find any water.",
+          "jpBefore": "どこを探しても、水が",
           "answer": "少しも（〜ない）",
           "jpAfter": "見つからなかった。",
-          "jpFull": "引き出しを全部探したが、鍵が少しも見つからなかった。",
+          "jpFull": "どこを探しても、水が少しも見つからなかった。",
           "cue": "全否定強調"
         },
         {
@@ -1483,13 +1482,13 @@
           "note": "基本義。探していたもの・偶然のものに行き当たる。"
         },
         {
-          "name": "〈find O C〉",
+          "name": "find O C",
           "meaning": "「OがCだとわかる・思う」",
           "type": "find + O + C",
           "note": "O is C の関係。I found it hard to believe.「信じがたいとわかった」。"
         },
         {
-          "name": "〈find oneself C〉",
+          "name": "find oneself C",
           "meaning": "「気づくとCの状態にいる」",
           "type": "find + oneself + C",
           "note": "≒ S be/become C。She found herself a mother.「気づけば母になっていた」。"
@@ -1525,19 +1524,19 @@
       },
       "faces": [
         {
-          "name": "〈learn A〉",
+          "name": "learn A",
           "meaning": "「Aを学ぶ、Aを知る・わかる」",
           "type": "learn + 名詞",
           "note": "知識・技能の習得に加え「（情報を）知る」。I learned the news.「その知らせを知った」。"
         },
         {
-          "name": "〈learn to do〉",
+          "name": "learn to do",
           "meaning": "「doできるようになる」",
           "type": "learn + to do",
           "note": "過程を経た習得。learned to swim「泳げるようになった」。"
         },
         {
-          "name": "〈learn that節〉",
+          "name": "learn that節",
           "meaning": "「〜と知る・〜と聞いて知る」",
           "type": "learn + that節",
           "note": "I learned that he was sick.「彼が病気だと知った」。情報を（聞いて）知ること。Weblioでも「〔…のことを〕（聞いて）知る」として立項されている。"
@@ -1581,19 +1580,19 @@
       },
       "faces": [
         {
-          "name": "〈働く〉",
+          "name": "〈労働〉",
           "meaning": "「働く、勤める」",
           "type": "S（人）+ work",
           "note": "基本義。work for / work at / work as。"
         },
         {
-          "name": "〈機械が動く〉",
+          "name": "〈作動〉",
           "meaning": "「動く、作動する」",
           "type": "S（機械）+ work",
           "note": "否定でよく出る。It doesn't work.「動かない・効かない」。"
         },
         {
-          "name": "〈効く・うまくいく〉",
+          "name": "〈機能〉",
           "meaning": "「効く、うまくいく」",
           "type": "S（薬/計画）+ work",
           "note": "The plan worked.「計画はうまくいった」。"
@@ -1604,7 +1603,7 @@
     {
       "id": "rather",
       "word": "rather",
-      "trap": "すぐに",
+      "trap": "非常に",
       "senses": [
         {
           "en": "He is a writer rather than a teacher.",
@@ -1612,23 +1611,15 @@
           "answer": "むしろ",
           "jpAfter": "作家だ。",
           "jpFull": "彼は教師というよりむしろ作家だ。",
-          "cue": "むしろ（A rather than B）"
+          "cue": "〈対比〉"
         },
         {
           "en": "The exam was rather difficult.",
           "jpBefore": "試験は",
-          "answer": "かなり",
+          "answer": "かなり・やや",
           "jpAfter": "難しかった。",
           "jpFull": "試験はかなり難しかった。",
-          "cue": "かなり（程度）"
-        },
-        {
-          "en": "I'm feeling rather tired today.",
-          "jpBefore": "今日は",
-          "answer": "やや",
-          "jpAfter": "疲れている。",
-          "jpFull": "今日はやや疲れている。",
-          "cue": "やや（控えめ）"
+          "cue": "〈程度〉"
         },
         {
           "en": "I would rather stay home.",
@@ -1636,40 +1627,34 @@
           "answer": "どちらかといえば",
           "jpAfter": "家にいたい。",
           "jpFull": "私はどちらかといえば家にいたい。",
-          "cue": "どちらかといえば（would rather）"
+          "cue": "〈選好〉"
         }
       ],
       "coreImage": {
         "headline": "コアは〈天秤が傾く〉。だから「むしろ」も「かなり」も。",
-        "lead": "rather の芯は〈天秤がどちらかに傾く〉イメージです。二択の比較で傾けば「むしろ」、程度の目盛りで傾けば「かなり／やや」、好みで傾けば「どちらかといえば」。一つの傾きの感覚が、文脈で四つの訳語に分かれます。"
+        "lead": "rather の芯は〈天秤がどちらかに傾く〉イメージです。二択の比較で傾けば「むしろ」、程度の目盛りで傾けば「かなり・やや」、好みで傾けば「どちらかといえば」。一つの傾きの感覚が、文脈で三つの訳語に分かれます。"
       },
       "faces": [
         {
-          "name": "〈むしろ〉",
+          "name": "〈対比〉",
           "meaning": "「むしろ、いっそ」",
           "type": "A rather than B",
           "note": "二択の比較。BというよりA。"
         },
         {
-          "name": "〈かなり〉",
-          "meaning": "「かなり、なかなか」",
+          "name": "〈程度〉",
+          "meaning": "「かなり・やや」",
           "type": "rather + 形容詞/副詞",
-          "note": "程度を強める。やや否定的な含みを持つことも。"
+          "note": "程度を示す。文脈・文体・話し手の予想で「かなり」か「やや」かが変わる。"
         },
         {
-          "name": "〈やや〉",
-          "meaning": "「やや、少し」",
-          "type": "rather + 形容詞",
-          "note": "控えめな程度。文脈で「かなり」と訳し分ける。"
-        },
-        {
-          "name": "〈どちらかといえば〉",
+          "name": "〈選好〉",
           "meaning": "「どちらかといえば（〜したい）」",
           "type": "would rather do (than)",
           "note": "好み・選択。I'd rather not.「できれば遠慮したい」。"
         }
       ],
-      "trivia": "<b>rather の程度は文脈次第</b>：rather は同じ「かなり／やや」でも、良いこと（rather good「なかなか良い」）にも悪いこと（rather difficult「かなり難しい」）にも付き、しばしば<b>予想とのズレ</b>（意外と〜）をにじませます。"
+      "trivia": "<b>rather の程度は文脈次第</b>：rather は同じ程度副詞でも、良いこと（rather good「なかなか良い」）にも悪いこと（rather difficult「かなり難しい」）にも付き、しばしば<b>予想とのズレ</b>（意外と〜）をにじませます。どれほど強いかは文脈と話し手の感覚で決まります。"
     },
     {
       "id": "out of",
@@ -1682,7 +1667,15 @@
           "answer": "から（外へ）",
           "jpAfter": "出ていった。",
           "jpFull": "彼女は部屋から外へ出ていった。",
-          "cue": "〜から外へ（=from）"
+          "cue": "〈起点〉"
+        },
+        {
+          "en": "He asked the question out of curiosity.",
+          "jpBefore": "彼は好奇心",
+          "answer": "から",
+          "jpAfter": "その質問をした。",
+          "jpFull": "彼は好奇心からその質問をした。",
+          "cue": "〈動機・原因〉"
         },
         {
           "en": "We are out of sugar.",
@@ -1690,28 +1683,65 @@
           "answer": "が切れて",
           "jpAfter": "いる。",
           "jpFull": "砂糖が切れている。",
-          "cue": "〜が不足して（=short of）"
+          "cue": "〈不足・枯渇〉"
+        },
+        {
+          "en": "Nine out of ten people agreed.",
+          "jpBefore": "10人",
+          "answer": "のうち",
+          "jpAfter": "9人が賛成した。",
+          "jpFull": "10人のうち9人が賛成した。",
+          "cue": "〈割合〉"
+        },
+        {
+          "en": "The machine is out of order.",
+          "jpBefore": "その機械は",
+          "answer": "故障して",
+          "jpAfter": "いる。",
+          "jpFull": "その機械は故障している。",
+          "cue": "〈状態からの離脱〉"
         }
       ],
       "coreImage": {
-        "headline": "基本は「〜から外へ」。たまに「〜が切れて」。",
-        "lead": "out of の芯は〈中から外へ抜け出る〉ことです。空間なら「〜から（外へ）」（＝from）。その「外に出てしまって、もう中に無い」状態が転じて「〜が尽きて・不足して」（＝short of）という意味になります。ほとんどは前者ですが、be out of 〜 の形では後者を疑いましょう。"
+        "headline": "「〜から外へ」が芯。5つの顔はすべてその広がり。",
+        "lead": "out of の芯は〈中から外へ抜け出る〉ことです。空間なら「〜から（外へ）」、その動作の起点となる感情・気持ちなら「〜から（動機）」、外に出てしまって中に何もない状態なら「〜が切れて」、全体の枠から切り出すなら「〜のうち（割合）」、あるべき状態から外れるなら「故障して・時代遅れで」。いずれも「枠の外に出る」という一つのイメージから説明できます。"
       },
       "faces": [
         {
-          "name": "〈〜から外へ〉",
+          "name": "〈起点〉",
           "meaning": "「〜から（外へ）」",
           "type": "動詞 + out of + 場所",
           "note": "=from。get out of bed / run out of the house。最頻。"
         },
         {
-          "name": "〈不足・尽きて〉",
-          "meaning": "「〜が切れて、不足して」",
+          "name": "〈動機・原因〉",
+          "meaning": "「〜から、〜のために」",
+          "type": "out of + 抽象名詞（感情・動機）",
+          "note": "out of curiosity「好奇心から」/ out of kindness「親切心から」。"
+        },
+        {
+          "name": "〈不足・枯渇〉",
+          "meaning": "「〜が切れて、尽きて」",
           "type": "be / run + out of + 名詞",
           "note": "=short of。run out of time「時間が尽きる」。"
+        },
+        {
+          "name": "〈割合〉",
+          "meaning": "「〜のうち、〜の中から」",
+          "type": "数詞 + out of + 数詞",
+          "note": "nine out of ten「10のうち9」。分子/分母の関係。"
+        },
+        {
+          "name": "〈状態からの離脱〉",
+          "meaning": "「〜でなくなって、〜を外れて」",
+          "type": "be out of + 状態名詞",
+          "note": "out of order「故障して」/ out of date「時代遅れで」/ out of fashion「流行遅れで」。"
         }
       ],
-      "trivia": "<b>out of の派生イディオム</b>：out of order「故障して（正常の状態から外れて）」、out of the question「論外で」、out of date「時代遅れで」などがあります。いずれも「あるべき枠の外に出ている」という芯から説明できます。"
+      "trivia": [
+        "<b>out of order / out of date / out of fashion</b> はすべて「あるべき状態の枠から外れている」という〈状態からの離脱〉用法です。out of the question「論外で（議論の枠外）」も同じ発想です。",
+        "<b>nine out of ten</b> の〈割合〉用法は、「10人という全体の枠から9人を取り出す」というイメージです。out of ten doctors「医師10人のうち」のように、母数を示す数詞のあとに使います。"
+      ]
     },
     {
       "id": "deny",
@@ -1741,19 +1771,22 @@
       },
       "faces": [
         {
-          "name": "〈否定する〉",
+          "name": "〈否定〉",
           "meaning": "「否定する、認めない」",
           "type": "deny + doing / that SV",
           "note": "事実・関与を否定。否定の that 節は取れず deny doing が普通。"
         },
         {
-          "name": "〈deny 人 モノ〉",
+          "name": "〈剥奪〉",
           "meaning": "「人にモノを与えない・認めない」",
           "type": "deny + 人 + モノ",
           "note": "give の対義。He was denied access.「アクセスを与えられなかった」（受動でよく出る）。"
         }
       ],
-      "trivia": "<b>deny ↔ give</b>：give A B「AにBを与える」の真逆が deny A B「AにBを与えない」です。<b>deny は to不定詞も that の否定節も取らず</b>、「〜しないと言う」は deny doing か say that S don't 〜 で表します。"
+      "trivia": [
+        "<b>deny ↔ give</b>：give A B「AにBを与える」の真逆が deny A B「AにBを与えない」です。この〈剥奪〉用法は受動態でよく出ます（He was denied access.「アクセスを与えられなかった」）。",
+        "<b>deny は to不定詞も that の否定節も取りません</b>。「〜しないと言う」は deny doing か say that S don't 〜 で表します。"
+      ]
     },
     {
       "id": "art",
@@ -1867,70 +1900,19 @@
       ],
       "trivia": "<b>the (very) image of 〜</b>「〜の生き写し・そっくり」：She is the image of her mother.「彼女は母親にそっくりだ」。「印象」だけでなく「姿・象徴」へ広がる image の幅を示す慣用表現です。"
     },
-    {
-      "id": "despite",
-      "word": "despite",
-      "trap": "〜のために",
-      "senses": [
-        {
-          "en": "Despite the heavy rain, they went out.",
-          "jpBefore": "激しい雨",
-          "answer": "にもかかわらず",
-          "jpAfter": "、彼らは出かけた。",
-          "jpFull": "激しい雨にもかかわらず、彼らは出かけた。",
-          "cue": "前置詞（後ろは名詞）",
-          "hint": "despite + 名詞。後ろに SV は続かない（接続詞ではない）"
-        },
-        {
-          "en": "He passed despite making many mistakes.",
-          "jpBefore": "多くのミスをした",
-          "answer": "のに",
-          "jpAfter": "、彼は合格した。",
-          "jpFull": "多くのミスをしたのに、彼は合格した。",
-          "cue": "despite + 動名詞",
-          "hint": "SV を続けたいときは despite + 動名詞、または in spite of。接続詞なら although"
-        }
-      ],
-      "coreImage": {
-        "headline": "「〜にもかかわらず」。ただし後ろは必ず名詞。",
-        "lead": "despite は「〜にもかかわらず」の前置詞です。意味は although とほぼ同じですが、品詞が違います。although は接続詞なので後ろに SV、despite は前置詞なので後ろに名詞（句）です。SV を続けたいときは despite the fact that SV か despite + 動名詞、または in spite of を使います。"
-      },
-      "faces": [
-        {
-          "name": "〈前置詞〉",
-          "meaning": "「〜にもかかわらず」",
-          "type": "despite + 名詞",
-          "note": "=in spite of。後ろは名詞句。although(接続詞)と品詞が違う。"
-        },
-        {
-          "name": "〈despite + 動名詞〉",
-          "meaning": "「〜したのに、〜にもかかわらず」",
-          "type": "despite + Ving",
-          "note": "SV相当を言いたいとき。despite the fact that SV も可。"
-        }
-      ],
-      "trivia": "<b>despite vs although</b>：意味は同じ「〜にもかかわらず」でも、<b>despite は前置詞（後ろは名詞）／although は接続詞（後ろは SV）</b>。Despite the rain ＝ Although it rained。混同して despite the rain fell とは書けません。なお despite of は誤りで、in spite of が正しい形です。"
-    },
+
     {
       "id": "in fact",
       "word": "in fact",
-      "trap": "事実上",
+      "trap": "実際は",
       "senses": [
-        {
-          "en": "He looks young, but in fact he is sixty.",
-          "jpBefore": "彼は若く見えるが、",
-          "answer": "実際は",
-          "jpAfter": "60歳だ。",
-          "jpFull": "彼は若く見えるが、実際は60歳だ。",
-          "cue": "実際は（具体化・対比）"
-        },
         {
           "en": "It's not cold; in fact, it's quite warm.",
           "jpBefore": "寒くない。",
           "answer": "それどころか",
           "jpAfter": "かなり暖かい。",
           "jpFull": "寒くない。それどころか、かなり暖かい。",
-          "cue": "それどころか（上書き・強調）"
+          "cue": "〈上書き・強調〉"
         }
       ],
       "coreImage": {
@@ -1939,13 +1921,13 @@
       },
       "faces": [
         {
-          "name": "〈実際は〉",
+          "name": "〈具体化・補強〉",
           "meaning": "「実際（は）、実のところ」",
           "type": "…, in fact …",
           "note": "見かけ・予想に対し事実を提示。具体化・補強。"
         },
         {
-          "name": "〈それどころか〉",
+          "name": "〈上書き・強調〉",
           "meaning": "「それどころか、むしろ」",
           "type": "not …; in fact …",
           "note": "前言を否定して上書きし、さらに強める。"
@@ -1956,23 +1938,15 @@
     {
       "id": "after all",
       "word": "after all",
-      "trap": "〜のあとで",
+      "trap": "結局",
       "senses": [
-        {
-          "en": "It rained, so the trip was cancelled after all.",
-          "jpBefore": "雨が降ったので、旅行は",
-          "answer": "結局",
-          "jpAfter": "中止になった。",
-          "jpFull": "雨が降ったので、旅行は結局中止になった。",
-          "cue": "結局（予想に反して）"
-        },
         {
           "en": "Don't blame him; after all, he is only a child.",
           "jpBefore": "彼を責めないで。",
           "answer": "なにしろ",
           "jpAfter": "まだ子どもなんだから。",
           "jpFull": "彼を責めないで。なにしろまだ子どもなんだから。",
-          "cue": "なにしろ・だって（理由の後出し）"
+          "cue": "〈理由の後出し〉"
         }
       ],
       "coreImage": {
@@ -1981,13 +1955,13 @@
       },
       "faces": [
         {
-          "name": "〈結局〉",
+          "name": "〈帰結〉",
           "meaning": "「結局、やはり」",
           "type": "… after all.（文末）",
           "note": "予想に反する結末。He came after all.「結局やって来た」。"
         },
         {
-          "name": "〈なにしろ・だって〉",
+          "name": "〈理由の後出し〉",
           "meaning": "「だって、なにしろ〜だから」",
           "type": "After all, SV.（理由の補足）",
           "note": "前言の根拠を後出し。相手を納得させる。"
@@ -2269,32 +2243,31 @@
       "id": "level5",
       "name": "Level 5",
       "wordIds": [
-        "despite",
         "out of",
-        "in fact",
-        "after all",
-        "so"
+        "deny",
+        "art",
+        "image",
+        "in fact"
       ]
     },
     {
       "id": "level6",
       "name": "Level 6",
       "wordIds": [
+        "after all",
+        "so",
+        "know",
         "on",
-        "find",
-        "learn",
-        "work",
-        "deny"
+        "sense"
       ]
     },
     {
       "id": "level7",
       "name": "Level 7",
       "wordIds": [
-        "art",
-        "image",
-        "know",
-        "sense"
+        "find",
+        "learn",
+        "work"
       ]
     }
   ]
