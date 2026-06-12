@@ -109,22 +109,29 @@ export default function App() {
     const level = getLevel(screen.levelId);
     const allWordIds = (level && level.wordIds) || [];
     const sessionDone = new Set(accumulated.map((s) => s.wordId));
-    // 次の単語は completed（完走済み含む）を除いた未完走語の中から
-    const nextWordId = allWordIds.find(
-      (id) => !sessionDone.has(id) && !(newAppState.completed || newAppState.cleared).includes(id)
-    );
+
+    // replay モード（「もう一度」）は completed を無視して replayWordIds 全語を順に回す
+    const isReplay = !!screen.replay;
+    const replayWordIds = screen.replayWordIds || allWordIds;
+    const nextWordId = isReplay
+      ? replayWordIds.find((id) => !sessionDone.has(id))
+      : allWordIds.find(
+          (id) => !sessionDone.has(id) && !(newAppState.completed || newAppState.cleared).includes(id)
+        );
 
     // 効果音：この回答でレベルを「今」全完走＝解禁したらファンファーレ。
-    // 完走判定は completed で行う（誤答・答え見含む）。
-    const newCompleted = newAppState.completed || newAppState.cleared;
-    const prevCompleted = appState.completed || appState.cleared;
-    const levelNowCompleted =
-      allWordIds.length > 0 && allWordIds.every((id) => newCompleted.includes(id));
-    const levelWasCompleted =
-      allWordIds.length > 0 && allWordIds.every((id) => prevCompleted.includes(id));
-    if (levelNowCompleted && !levelWasCompleted) sfx.play('fanfare');
+    // 完走判定は completed で行う（誤答・答え見含む）。replay 中は鳴らさない（既存完走済みのため）。
+    if (!isReplay) {
+      const newCompleted = newAppState.completed || newAppState.cleared;
+      const prevCompleted = appState.completed || appState.cleared;
+      const levelNowCompleted =
+        allWordIds.length > 0 && allWordIds.every((id) => newCompleted.includes(id));
+      const levelWasCompleted =
+        allWordIds.length > 0 && allWordIds.every((id) => prevCompleted.includes(id));
+      if (levelNowCompleted && !levelWasCompleted) sfx.play('fanfare');
+    }
 
-    if (nextWordId) setScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId] });
+    if (nextWordId) setScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId], replay: isReplay, replayWordIds: isReplay ? replayWordIds : undefined });
     else setScreen({ type: 'result', levelId: screen.levelId, scores: accumulated });
   };
 
@@ -150,13 +157,20 @@ export default function App() {
     const currentWordId = screen.wordIds && screen.wordIds[0];
     if (currentWordId) sessionDone.add(currentWordId);
     const completed = appState.completed || appState.cleared;
-    const hasNext = allWordIds.some((id) => !sessionDone.has(id) && !completed.includes(id));
 
-    // レベル内位置表示用：未完走語を順に解いている文脈でのみ渡す
-    const levelUncompleted = allWordIds.filter((id) => !completed.includes(id));
-    const isLevelContext = levelUncompleted.length > 0 && !screen.isRetry;
+    // replay モード（「もう一度」）：completed を無視して replayWordIds 全語を対象にする
+    const isReplay = !!screen.replay;
+    const replayWordIds = screen.replayWordIds || allWordIds;
+    const hasNext = isReplay
+      ? replayWordIds.some((id) => !sessionDone.has(id))
+      : allWordIds.some((id) => !sessionDone.has(id) && !completed.includes(id));
+
+    // レベル内位置表示用：replay は全語数、通常は未完走語数ベース
+    const isLevelContext = !screen.isRetry && (isReplay ? replayWordIds.length > 0 : allWordIds.some((id) => !completed.includes(id)));
     const levelWordIndex = isLevelContext ? sessionScores.length : null;
-    const levelWordCount = isLevelContext ? levelUncompleted.length + sessionScores.length : null;
+    const levelWordCount = isLevelContext
+      ? (isReplay ? replayWordIds.length : allWordIds.filter((id) => !completed.includes(id)).length + sessionScores.length)
+      : null;
 
     return (
       <QuizScreen

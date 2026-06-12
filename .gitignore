@@ -19,3 +19,9 @@ npm-debug.log*
 
 # local tooling
 /.claude/
+
+# data 作業ファイル（誤コミット予防）
+data/_*.py
+data/_draft*.json
+data/_p2p3*.json
+data/_rescued_studio_versions/

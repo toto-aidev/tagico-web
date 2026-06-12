@@ -496,7 +496,7 @@ export function ResultScreen({ scores, levelId, appState, onNavigate }) {
       </div>
 
       <div className="shrink-0 bg-white/90 backdrop-blur-md border-t border-slate-100 p-5 pb-safe z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
-        <button onClick={() => onNavigate({ type: 'quiz', levelId })} className="w-full flex items-center justify-center gap-2 py-4 mb-3 rounded-2xl bg-teal-400 text-white font-black text-lg shadow-[0_6px_0_0_#14b8a6] active:shadow-[0_0px_0_0_#14b8a6] active:translate-y-[6px] transition-all">
+        <button onClick={() => { const lv = getLevel(levelId); const all = (lv && lv.wordIds) || []; onNavigate({ type: 'quiz', levelId, wordIds: all.length > 0 ? [all[0]] : [], replayWordIds: all, replay: true }); }} className="w-full flex items-center justify-center gap-2 py-4 mb-3 rounded-2xl bg-teal-400 text-white font-black text-lg shadow-[0_6px_0_0_#14b8a6] active:shadow-[0_0px_0_0_#14b8a6] active:translate-y-[6px] transition-all">
           <Icon name="rotate-ccw" size={20} strokeWidth={3} /> もう一度
         </button>
         <div className="flex gap-3">
