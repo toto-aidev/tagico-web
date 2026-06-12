@@ -714,7 +714,7 @@
       ],
       "coreImage": {
         "headline": "「ちょうどそこ」に、針を合わせる。",
-        "lead": "ぴたっと一点に針を合わせる言葉です。文脈によって〈時〉〈量〉〈強調〉〈やわらげ〉と訳が変わります。⑤の形容詞用法だけは「公正な」で他と全く別物です。"
+        "lead": "ぴたっと一点に針を合わせる言葉です。副詞として〈完了〉〈少なさ〉〈一致〉〈やわらげ〉の4つに訳し分け、形容詞だけは「公正な」で全く別物です。"
       },
       "faces": [
         {
@@ -1464,7 +1464,7 @@
         {
           "en": "He woke up and found himself lying on the grass.",
           "jpBefore": "目を覚ますと、彼は芝生に寝転んで",
-          "answer": "いることに気づいた",
+          "answer": "〜であることに気づく",
           "jpAfter": "。",
           "jpFull": "目を覚ますと、彼は芝生に寝転んでいることに気づいた。",
           "cue": "find oneself C〈発見的自覚〉"
@@ -1504,7 +1504,7 @@
         {
           "en": "I learned the truth from her.",
           "jpBefore": "私は彼女から真実を",
-          "answer": "知った・わかった",
+          "answer": "知る・わかる",
           "jpAfter": "。",
           "jpFull": "私は彼女から真実を知った。",
           "cue": "learn A〈知る・わかる〉"
@@ -1512,7 +1512,7 @@
         {
           "en": "The baby learned to walk at ten months.",
           "jpBefore": "赤ちゃんは10か月で歩",
-          "answer": "けるようになった",
+          "answer": "〜できるようになる",
           "jpAfter": "。",
           "jpFull": "赤ちゃんは10か月で歩けるようになった。",
           "cue": "learn to do〈できるようになる〉"
@@ -1758,20 +1758,12 @@
     {
       "id": "deny",
       "word": "deny",
-      "trap": "拒む",
+      "trap": "否定する",
       "senses": [
-        {
-          "en": "He denied stealing the money.",
-          "jpBefore": "彼はお金を盗んだことを",
-          "answer": "否定した",
-          "jpAfter": "。",
-          "jpFull": "彼はお金を盗んだことを否定した。",
-          "cue": "否定する"
-        },
         {
           "en": "They denied him the right to vote.",
           "jpBefore": "彼らは彼",
-          "answer": "に（〜を）与えなかった",
+          "answer": "与えない・奪う",
           "jpAfter": "投票する権利を。",
           "jpFull": "彼らは彼に投票する権利を与えなかった。",
           "cue": "deny 人 モノ（与えない）"
@@ -1802,16 +1794,8 @@
     {
       "id": "art",
       "word": "art",
-      "trap": "アート",
+      "trap": "芸術",
       "senses": [
-        {
-          "en": "She is studying modern art.",
-          "jpBefore": "彼女は現代",
-          "answer": "美術",
-          "jpAfter": "を学んでいる。",
-          "jpFull": "彼女は現代美術を学んでいる。",
-          "cue": "美術・芸術"
-        },
         {
           "en": "the art of conversation",
           "jpBefore": "会話の",
@@ -1844,16 +1828,8 @@
     {
       "id": "image",
       "word": "image",
-      "trap": "イメージ",
+      "trap": "印象",
       "senses": [
-        {
-          "en": "The company improved its public image.",
-          "jpBefore": "その会社は世間の",
-          "answer": "印象",
-          "jpAfter": "を良くした。",
-          "jpFull": "その会社は世間の印象を良くした。",
-          "cue": "印象"
-        },
         {
           "en": "He saw his image in the mirror.",
           "jpBefore": "彼は鏡に映った自分の",
@@ -1876,7 +1852,8 @@
           "answer": "画像",
           "jpAfter": "を送ってきた。",
           "jpFull": "衛星は火星の画像を送ってきた。",
-          "cue": "画像・映像"
+          "cue": "画像・映像",
+          "hint": "satellite image（衛星画像）のように、カメラ・センサーで撮影した画像全般を指す。"
         }
       ],
       "coreImage": {
@@ -2041,12 +2018,12 @@
     {
       "id": "know",
       "word": "know",
-      "trap": "知る",
+      "trap": "知っている",
       "senses": [
         {
           "en": "Wait a little longer, and you will know the truth.",
           "jpBefore": "もう少し待てば、君は真実を",
-          "answer": "知ることになる",
+          "answer": "知る",
           "jpAfter": "。",
           "jpFull": "もう少し待てば、君は真実を知ることになる。",
           "cue": "動作・認識"
@@ -2058,14 +2035,6 @@
           "jpAfter": "ようになる。",
           "jpFull": "赤ん坊はすぐに母親の顔を見分けるようになる。",
           "cue": "識別・判断"
-        },
-        {
-          "en": "I have known her since we were children.",
-          "jpBefore": "私は子どもの頃から彼女を",
-          "answer": "知っている",
-          "jpAfter": "。",
-          "jpFull": "私は子どもの頃から彼女を知っている。",
-          "cue": "状態・継続"
         }
       ],
       "coreImage": {
