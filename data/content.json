@@ -1289,23 +1289,15 @@
     {
       "id": "when",
       "word": "when",
-      "trap": "いつ",
+      "trap": "時",
       "senses": [
-        {
-          "en": "When I was a child, I lived in London.",
-          "jpBefore": "子どもだっ",
-          "answer": "た時",
-          "jpAfter": "、私はロンドンに住んでいた。",
-          "jpFull": "子どもだった時、私はロンドンに住んでいた。",
-          "cue": "時"
-        },
         {
           "en": "When you heat ice, it melts.",
           "jpBefore": "氷を熱",
           "answer": "すると",
           "jpAfter": "、溶ける。",
           "jpFull": "氷を熱すると、溶ける。",
-          "cue": "継起・条件的"
+          "cue": "継起"
         },
         {
           "en": "He walks to work when he could take the bus.",
@@ -1321,12 +1313,12 @@
           "answer": "たら",
           "jpAfter": "、これをあげよう。",
           "jpFull": "「お願い」と言ったら、これをあげよう。",
-          "cue": "条件・仮定"
+          "cue": "条件"
         }
       ],
       "coreImage": {
-        "headline": "疑問詞「いつ」だけじゃない。接続詞 when の4つの顔。",
-        "lead": "接続詞の when は〈二つの出来事を時間の軸でつなぐ〉働きをします。同時なら時「〜する時」、片方が起これば必ずもう片方も起こるなら継起「〜すると」、つないだ二つが食い違えば譲歩「〜なのに」、片方が条件になれば「〜したら」。疑問詞「いつ」のつもりで読むと文がねじれます。"
+        "headline": "疑問詞「いつ」だけじゃない。接続詞 when の3つの顔。",
+        "lead": "接続詞の when は〈二つの出来事を時間の軸でつなぐ〉働きをします。つながりが「片方が起こればもう片方も必ず」なら〈継起〉「〜すると」、つないだ二つが食い違えば〈譲歩・対比〉「〜のに」、片方が条件になれば〈条件〉「〜したら」です。疑問詞「いつ」のつもりで読むと文がねじれます。"
       },
       "faces": [
         {
@@ -1362,55 +1354,55 @@
       "trap": "いくつかの",
       "senses": [
         {
-          "en": "I don't have any money.",
-          "jpBefore": "お金は",
-          "answer": "少しも（ない）",
-          "jpAfter": "持っていない。",
-          "jpFull": "お金は少しも持っていない。",
-          "cue": "否定文"
-        },
-        {
-          "en": "Do you have any questions?",
-          "jpBefore": "何か",
-          "answer": "少しでも",
-          "jpAfter": "質問はありますか。",
-          "jpFull": "何か少しでも質問はありますか。",
-          "cue": "疑問文"
-        },
-        {
-          "en": "Any child can solve this puzzle.",
+          "en": "Any student can learn this skill with practice.",
           "jpBefore": "",
-          "answer": "どんな（〜でも）",
-          "jpAfter": "子どもでもこのパズルは解ける。",
-          "jpFull": "どんな子どもでもこのパズルは解ける。",
-          "cue": "肯定文"
+          "answer": "どんな",
+          "jpAfter": "生徒でも練習次第でこのスキルは身につく。",
+          "jpFull": "どんな生徒でも練習次第でこのスキルは身につく。",
+          "cue": "どんな〜でも"
+        },
+        {
+          "en": "I looked in every drawer, but I could not find any keys.",
+          "jpBefore": "引き出しを全部探したが、鍵が",
+          "answer": "少しも",
+          "jpAfter": "見つからなかった。",
+          "jpFull": "引き出しを全部探したが、鍵が少しも見つからなかった。",
+          "cue": "少しも（〜ない）"
+        },
+        {
+          "en": "If you have any concerns, feel free to let me know.",
+          "jpBefore": "",
+          "answer": "少しでも",
+          "jpAfter": "気になることがあれば、遠慮なく言ってください。",
+          "jpFull": "少しでも気になることがあれば、遠慮なく言ってください。",
+          "cue": "少しでも"
         }
       ],
       "coreImage": {
-        "headline": "「いくつか」じゃない。文の種類で表情が変わる。",
-        "lead": "any の芯は〈範囲の中のどれでも・任意の一つ〉です。この一つの芯が、文の種類で訳語を変えます。否定文なら「少しも（ない）」、疑問文なら「少しでも」、肯定文なら「どんな〜でも」。some（＝具体的にいくつか）と混同して「いくつかの」と訳すと、any のニュアンスが消えます。"
+        "headline": "「いくつかの」じゃない。訳し方が変わる、3つの any。",
+        "lead": "any の芯は〈範囲の中のどれでもよい・任意の一つ〉です。「どんな〜でも」「少しも（ない）」「少しでも」と、文脈によって訳し方が変わります。辞書（Weblio・LDOCE・Oxford）もこの3つの顔を別々の語義として立てています。some（＝具体的にいくつか）と混同して「いくつかの」と訳すと、any のニュアンスが消えます。"
       },
       "faces": [
         {
-          "name": "〈否定文〉",
-          "meaning": "「少しも〜ない」",
+          "name": "〈どんな〜でも〉",
+          "meaning": "「どんな〜でも／どれでも」",
+          "type": "any + 名詞（肯定文）",
+          "note": "任意の一つを選んでも成り立つ。Any colour will do.「何色でもよい」。"
+        },
+        {
+          "name": "〈少しも〜ない〉",
+          "meaning": "「少しも（〜ない）」",
           "type": "not 〜 any + 名詞",
           "note": "全否定を強める。I don't have any water.「水は少しもない」。"
         },
         {
-          "name": "〈疑問文〉",
+          "name": "〈少しでも〉",
           "meaning": "「少しでも、一つでも」",
-          "type": "Do you have any 〜?",
-          "note": "some を使うと「（何か）あるよね」と余裕。any は切迫した響き。"
-        },
-        {
-          "name": "〈肯定文〉",
-          "meaning": "「どんな〜でも」",
-          "type": "any + 名詞（単/複どちらも可）",
-          "note": "任意の一つを選んでも成り立つ。比較級と相性◎（any worse）。"
+          "type": "疑問文・if 節 + any",
+          "note": "If you feel any worse, call me.「少しでも悪化したら呼んで」。"
         }
       ],
-      "trivia": "<b>any は比較級と相性がいい</b>：If you feel any worse, call me.「少しでも悪化したら呼んで」。肯定文の any は後ろの名詞が単数・複数どちらも取れます（I like any sport. / You can choose any books.）。"
+      "trivia": "<b>any と some の使い分け</b>：肯定文では通常 some を使います（I have some questions.）。any を肯定文に使うと「どんな〜でも」という任意性が出ます（Any question is welcome.）。「いくつかの」と訳したくなったら、それは some のニュアンスです。"
     },
     {
       "id": "for",
