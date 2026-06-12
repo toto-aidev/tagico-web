@@ -854,7 +854,7 @@
           "jpBefore": "私は犬",
           "answer": "について",
           "jpAfter": "こわい。",
-          "jpFull": "私は犬がこわい。",
+          "jpFull": "私は犬についてこわい。",
           "cue": "内容"
         },
         {
@@ -862,7 +862,7 @@
           "jpBefore": "この指輪は金",
           "answer": "から・で",
           "jpAfter": "。",
-          "jpFull": "この指輪は金でできている。",
+          "jpFull": "この指輪は金から・でできている。",
           "cue": "構成要素"
         },
         {
@@ -878,7 +878,7 @@
           "jpBefore": "彼は大変な勇気",
           "answer": "という性質を持った",
           "jpAfter": "男だ。",
-          "jpFull": "彼は大変な勇気のある男だ。",
+          "jpFull": "彼は大変な勇気という性質を持った男だ。",
           "cue": "性質"
         },
         {
@@ -957,19 +957,11 @@
       "trap": "〜と一緒に",
       "senses": [
         {
-          "en": "She lives with her parents.",
-          "jpBefore": "彼女は両親",
-          "answer": "と一緒に",
-          "jpAfter": "暮らしている。",
-          "jpFull": "彼女は両親と一緒に暮らしている。",
-          "cue": "同伴"
-        },
-        {
-          "en": "the man with a beard",
-          "jpBefore": "あごひげ",
-          "answer": "を生やした",
+          "en": "a man with a hat",
+          "jpBefore": "帽子",
+          "answer": "を持った",
           "jpAfter": "男性",
-          "jpFull": "あごひげを生やした男性",
+          "jpFull": "帽子を持った男性",
           "cue": "所持・所有"
         },
         {
@@ -986,13 +978,12 @@
           "answer": "だ状態で",
           "jpAfter": "本を読んでいた。",
           "jpFull": "彼は脚を組んだ状態で本を読んでいた。",
-          "cue": "付帯状況",
-          "hint": "with O C「OがCの状態で」"
+          "cue": "付帯状況"
         },
         {
           "en": "She was trembling with fear.",
           "jpBefore": "彼女は恐怖",
-          "answer": "のために",
+          "answer": "で・のために",
           "jpAfter": "震えていた。",
           "jpFull": "彼女は恐怖のために震えていた。",
           "cue": "原因・理由"
@@ -1003,8 +994,7 @@
           "answer": "に賛成",
           "jpAfter": "ですか？",
           "jpFull": "私の意見に賛成ですか？",
-          "cue": "一致・賛成",
-          "hint": "be with＝「〜に賛成して」。対立は against"
+          "cue": "一致・賛成"
         }
       ],
       "coreImage": {
@@ -1065,15 +1055,6 @@
           "cue": "所有"
         },
         {
-          "en": "You have to wear a seatbelt.",
-          "jpBefore": "シートベルトを締め",
-          "answer": "なければならない",
-          "jpAfter": "。",
-          "jpFull": "シートベルトを締めなければならない。",
-          "cue": "義務",
-          "hint": "have to V「〜しなければならない」"
-        },
-        {
           "en": "I usually have breakfast at seven.",
           "jpBefore": "私はたいてい7時に朝食を",
           "answer": "とる",
@@ -1087,8 +1068,7 @@
           "answer": "もらった",
           "jpAfter": "。",
           "jpFull": "私は昨日、髪を切ってもらった。",
-          "cue": "使役",
-          "hint": "have O C「OをCの状態にする・OにCさせる」"
+          "cue": "使役"
         }
       ],
       "coreImage": {
@@ -1121,7 +1101,7 @@
           "note": "have him call / have it repaired。"
         }
       ],
-      "trivia": "<b>have + 過去分詞</b>は現在完了形（〜してしまった／〜したことがある）をつくりますが、これは助動詞としての別働き。意味は文脈しだいで一定の訳が決まらないため、この4用法とは分けて押さえます。なお <b>have to</b>（客観的な必要）と <b>must</b>（話し手の判断）は否定で別物：don't have to「〜しなくてよい」、must not「〜してはいけない」。"
+      "trivia": "<b>have + 過去分詞</b>は現在完了形（〜してしまった／〜したことがある）をつくりますが、これは助動詞としての別働き。意味は文脈しだいで一定の訳が決まらないため、この3用法とは分けて押さえます。"
     },
     {
       "id": "it",
@@ -1134,8 +1114,7 @@
           "answer": "（訳さない）",
           "jpAfter": "ジョンだった。",
           "jpFull": "窓を割ったのは、ジョンだった。",
-          "cue": "強調構文",
-          "hint": "It is 〜 that ... の it。強調の枠組みで、訳には出さない"
+          "cue": "強調構文"
         }
       ],
       "coreImage": {
@@ -1225,8 +1204,7 @@
           "answer": "引き",
           "jpAfter": "だった。",
           "jpFull": "すべてが20パーセント引きだった。",
-          "cue": "基準からずれ・割引",
-          "hint": "通常価格から「離れて」安くなる off"
+          "cue": "基準からずれ・割引"
         }
       ],
       "coreImage": {
@@ -1286,8 +1264,7 @@
           "answer": "としても",
           "jpAfter": "、少なくとも正直だ。",
           "jpFull": "彼は貧しいとしても、少なくとも正直だ。",
-          "cue": "譲歩（even if）",
-          "hint": "even if と同じ「〜でも」。条件と訳し分ける"
+          "cue": "譲歩（even if）"
         },
         {
           "en": "I don't know if he will come.",
@@ -1295,8 +1272,7 @@
           "answer": "かどうか",
           "jpAfter": "わからない。",
           "jpFull": "彼が来るかどうかわからない。",
-          "cue": "名詞節（whether）",
-          "hint": "know の目的語になる名詞節。whether に置換できる"
+          "cue": "名詞節（whether）"
         },
         {
           "en": "If I were a bird, I could fly to you.",
@@ -1304,8 +1280,7 @@
           "answer": "なら",
           "jpAfter": "、君のところへ飛んでいけるのに。",
           "jpFull": "もし私が鳥なら、君のところへ飛んでいけるのに。",
-          "cue": "仮定法",
-          "hint": "現実に反する仮定。帰結節に would/could 等"
+          "cue": "仮定法"
         }
       ],
       "coreImage": {
@@ -1367,8 +1342,7 @@
           "answer": "のに",
           "jpAfter": "、彼は歩いて通勤する。",
           "jpFull": "バスに乗れるのに、彼は歩いて通勤する。",
-          "cue": "譲歩・対比",
-          "hint": "「〜なのに」。対比・逆接を表す when"
+          "cue": "譲歩・対比"
         },
         {
           "en": "I'll give it to you when you say 'please'.",
@@ -1376,8 +1350,7 @@
           "answer": "たら",
           "jpAfter": "、これをあげよう。",
           "jpFull": "「お願い」と言ったら、これをあげよう。",
-          "cue": "条件・仮定",
-          "hint": "「〜したら」。条件を表す when"
+          "cue": "条件・仮定"
         }
       ],
       "coreImage": {
@@ -1423,8 +1396,7 @@
           "answer": "少しも（ない）",
           "jpAfter": "持っていない。",
           "jpFull": "お金は少しも持っていない。",
-          "cue": "否定文",
-          "hint": "否定文では not 〜 any で「少しも〜ない」と全否定を強める"
+          "cue": "否定文"
         },
         {
           "en": "Do you have any questions?",
@@ -1432,8 +1404,7 @@
           "answer": "少しでも",
           "jpAfter": "質問はありますか。",
           "jpFull": "何か少しでも質問はありますか。",
-          "cue": "疑問文",
-          "hint": "疑問文では「少しでも・一つでも」。some だと「（何か）あるでしょ」と余裕のニュアンス"
+          "cue": "疑問文"
         },
         {
           "en": "Any child can solve this puzzle.",
@@ -1441,8 +1412,7 @@
           "answer": "どんな（〜でも）",
           "jpAfter": "子どもでもこのパズルは解ける。",
           "jpFull": "どんな子どもでもこのパズルは解ける。",
-          "cue": "肯定文",
-          "hint": "肯定文では「どんな〜でも」。任意の一つを選んでも成り立つ"
+          "cue": "肯定文"
         }
       ],
       "coreImage": {
@@ -1482,8 +1452,7 @@
           "answer": "というのも",
           "jpAfter": "気圧計が下がっているから。",
           "jpFull": "雨が降るだろう、というのも気圧計が下がっているから。",
-          "cue": "接続詞・理由",
-          "hint": "前の文の理由を後から付け足す。文語的。because と違い文頭に置けない"
+          "cue": "接続詞・理由"
         },
         {
           "en": "It is necessary for you to study hard.",
@@ -1491,8 +1460,7 @@
           "answer": "が",
           "jpAfter": "一生懸命勉強する必要がある。",
           "jpFull": "あなたが一生懸命勉強する必要がある。",
-          "cue": "意味上の主語",
-          "hint": "for X to do の for。X は to do の意味上の主語。「〜が…する」"
+          "cue": "意味上の主語"
         }
       ],
       "coreImage": {
@@ -1526,8 +1494,7 @@
           "answer": "とわかった",
           "jpAfter": "。",
           "jpFull": "私はその本がとても面白いとわかった。",
-          "cue": "find O C",
-          "hint": "第5文型 find O C。「OがCだと思う・わかる」。O is C の関係"
+          "cue": "find O C"
         },
         {
           "en": "He woke up and found himself lying on the grass.",
@@ -1535,8 +1502,7 @@
           "answer": "いることに気づいた",
           "jpAfter": "。",
           "jpFull": "目を覚ますと、彼は芝生に寝転んでいることに気づいた。",
-          "cue": "find oneself C",
-          "hint": "find oneself C =「気づくと（いつの間にか）Cの状態にいる」≒ S be/become C"
+          "cue": "find oneself C"
         }
       ],
       "coreImage": {
@@ -1576,8 +1542,7 @@
           "answer": "知った",
           "jpAfter": "。",
           "jpFull": "私は彼女から真実を知った。",
-          "cue": "learn A（知る・わかる）",
-          "hint": "learn A は「Aを学ぶ」だけでなく「Aを知る・わかる」。情報を得る意味"
+          "cue": "learn A（知る・わかる）"
         },
         {
           "en": "The baby learned to walk at ten months.",
@@ -1585,8 +1550,7 @@
           "answer": "けるようになった",
           "jpAfter": "。",
           "jpFull": "赤ちゃんは10か月で歩けるようになった。",
-          "cue": "learn to do",
-          "hint": "learn to do は過程を経て「doできるようになる」"
+          "cue": "learn to do"
         }
       ],
       "coreImage": {
@@ -1628,8 +1592,7 @@
           "answer": "動いて（いない）",
           "jpAfter": "。",
           "jpFull": "今日はエレベーターが動いていない。",
-          "cue": "機械が動く・作動する",
-          "hint": "機械・装置が主語のとき work は「動く・作動する」"
+          "cue": "機械が動く・作動する"
         },
         {
           "en": "This medicine really works.",
@@ -1637,8 +1600,7 @@
           "answer": "効く",
           "jpAfter": "。",
           "jpFull": "この薬は本当に効く。",
-          "cue": "効く・うまくいく",
-          "hint": "薬・計画・方法が主語なら「効く・うまくいく」"
+          "cue": "効く・うまくいく"
         }
       ],
       "coreImage": {
@@ -1678,8 +1640,7 @@
           "answer": "むしろ",
           "jpAfter": "作家だ。",
           "jpFull": "彼は教師というよりむしろ作家だ。",
-          "cue": "むしろ（A rather than B）",
-          "hint": "A rather than B「BというよりむしろA」"
+          "cue": "むしろ（A rather than B）"
         },
         {
           "en": "The exam was rather difficult.",
@@ -1687,8 +1648,7 @@
           "answer": "かなり",
           "jpAfter": "難しかった。",
           "jpFull": "試験はかなり難しかった。",
-          "cue": "かなり（程度）",
-          "hint": "形容詞の前で程度を強める「かなり・なかなか」"
+          "cue": "かなり（程度）"
         },
         {
           "en": "I'm feeling rather tired today.",
@@ -1696,8 +1656,7 @@
           "answer": "やや",
           "jpAfter": "疲れている。",
           "jpFull": "今日はやや疲れている。",
-          "cue": "やや（控えめ）",
-          "hint": "控えめに「やや・少し」。文脈で「かなり」と訳し分ける"
+          "cue": "やや（控えめ）"
         },
         {
           "en": "I would rather stay home.",
@@ -1705,8 +1664,7 @@
           "answer": "どちらかといえば",
           "jpAfter": "家にいたい。",
           "jpFull": "私はどちらかといえば家にいたい。",
-          "cue": "どちらかといえば（would rather）",
-          "hint": "would rather do「どちらかといえば〜したい」"
+          "cue": "どちらかといえば（would rather）"
         }
       ],
       "coreImage": {
@@ -1752,8 +1710,7 @@
           "answer": "から（外へ）",
           "jpAfter": "出ていった。",
           "jpFull": "彼女は部屋から外へ出ていった。",
-          "cue": "〜から外へ（=from）",
-          "hint": "=from。中から外へ。ほとんどがこの意味"
+          "cue": "〜から外へ（=from）"
         },
         {
           "en": "We are out of sugar.",
@@ -1761,8 +1718,7 @@
           "answer": "が切れて",
           "jpAfter": "いる。",
           "jpFull": "砂糖が切れている。",
-          "cue": "〜が不足して（=short of）",
-          "hint": "=short of。「〜が不足して・尽きて」。be out of 〜"
+          "cue": "〜が不足して（=short of）"
         }
       ],
       "coreImage": {
@@ -1796,8 +1752,7 @@
           "answer": "否定した",
           "jpAfter": "。",
           "jpFull": "彼はお金を盗んだことを否定した。",
-          "cue": "否定する",
-          "hint": "事実を「否定する・認めない」。deny doing / deny that SV"
+          "cue": "否定する"
         },
         {
           "en": "They denied him the right to vote.",
@@ -1805,8 +1760,7 @@
           "answer": "に（〜を）与えなかった",
           "jpAfter": "投票する権利を。",
           "jpFull": "彼らは彼に投票する権利を与えなかった。",
-          "cue": "deny 人 モノ（与えない）",
-          "hint": "deny A B =「AにBを与えない・認めない」。give の対義"
+          "cue": "deny 人 モノ（与えない）"
         }
       ],
       "coreImage": {
@@ -1848,8 +1802,7 @@
           "answer": "技術",
           "jpAfter": "",
           "jpFull": "会話の技術",
-          "cue": "技術・コツ",
-          "hint": "the art of 〜「〜の技術・コツ」。熟練を要する技能"
+          "cue": "技術・コツ"
         }
       ],
       "coreImage": {
@@ -1891,8 +1844,7 @@
           "answer": "姿",
           "jpAfter": "を見た。",
           "jpFull": "彼は鏡に映った自分の姿を見た。",
-          "cue": "像・姿",
-          "hint": "鏡・レンズに映る像、自分の姿"
+          "cue": "像・姿"
         },
         {
           "en": "The dove is an image of peace.",
@@ -1900,8 +1852,7 @@
           "answer": "象徴",
           "jpAfter": "だ。",
           "jpFull": "ハトは平和の象徴だ。",
-          "cue": "象徴・体現",
-          "hint": "何かを体現するもの・象徴"
+          "cue": "象徴・体現"
         },
         {
           "en": "The satellite sent back images of Mars.",
@@ -1999,8 +1950,7 @@
           "answer": "実際は",
           "jpAfter": "60歳だ。",
           "jpFull": "彼は若く見えるが、実際は60歳だ。",
-          "cue": "実際は（具体化・対比）",
-          "hint": "前の内容を受けて「実のところ」と事実を述べる"
+          "cue": "実際は（具体化・対比）"
         },
         {
           "en": "It's not cold; in fact, it's quite warm.",
@@ -2008,8 +1958,7 @@
           "answer": "それどころか",
           "jpAfter": "かなり暖かい。",
           "jpFull": "寒くない。それどころか、かなり暖かい。",
-          "cue": "それどころか（上書き・強調）",
-          "hint": "前言を打ち消して上書きし、さらに強める「それどころか」"
+          "cue": "それどころか（上書き・強調）"
         }
       ],
       "coreImage": {
@@ -2043,8 +1992,7 @@
           "answer": "結局",
           "jpAfter": "中止になった。",
           "jpFull": "雨が降ったので、旅行は結局中止になった。",
-          "cue": "結局（予想に反して）",
-          "hint": "文末に置き「（あれこれあって）結局・やはり」。予想に反する結果"
+          "cue": "結局（予想に反して）"
         },
         {
           "en": "Don't blame him; after all, he is only a child.",
@@ -2052,8 +2000,7 @@
           "answer": "なにしろ",
           "jpAfter": "まだ子どもなんだから。",
           "jpFull": "彼を責めないで。なにしろまだ子どもなんだから。",
-          "cue": "なにしろ・だって（理由の後出し）",
-          "hint": "前文の理由を後から補足「だって・なにしろ〜なんだから」"
+          "cue": "なにしろ・だって（理由の後出し）"
         }
       ],
       "coreImage": {
@@ -2087,8 +2034,7 @@
           "answer": "それほど",
           "jpAfter": "難しくはないよ。",
           "jpFull": "心配しないで、それほど難しくはないよ。",
-          "cue": "副詞・程度",
-          "hint": "so は本来 very ではなく「それほど・そんなに」。否定文・比較の文脈で「想定したほどには〜ない」と参照先を含む"
+          "cue": "副詞・程度"
         },
         {
           "en": "She said she would come, and I hope so.",
@@ -2096,8 +2042,7 @@
           "answer": "そう",
           "jpAfter": "なることを願う。",
           "jpFull": "彼女は来ると言ったし、そうなることを願う。",
-          "cue": "副詞・様態/代用",
-          "hint": "think so / hope so / do so / if so の so。前に出た内容を受けて「そう・そのように」"
+          "cue": "副詞・様態/代用"
         },
         {
           "en": "My knee started hurting, so I stopped running.",
@@ -2105,8 +2050,7 @@
           "answer": "だから",
           "jpAfter": "私は走るのをやめた。",
           "jpFull": "膝が痛み始めた、だから私は走るのをやめた。",
-          "cue": "接続詞・結果",
-          "hint": "前文を原因として結果を導く接続詞。「だから・そのため・よって」"
+          "cue": "接続詞・結果"
         }
       ],
       "coreImage": {
@@ -2146,8 +2090,7 @@
           "answer": "知ることになる",
           "jpAfter": "。",
           "jpFull": "もう少し待てば、君は真実を知ることになる。",
-          "cue": "動作・認識",
-          "hint": "will / soon を伴うと状態ではなく変化。「知っている」ではなく「(これから)知る・分かる」"
+          "cue": "動作・認識"
         },
         {
           "en": "A baby soon learns to know its mother's face.",
@@ -2155,8 +2098,7 @@
           "answer": "見分ける",
           "jpAfter": "ようになる。",
           "jpFull": "赤ん坊はすぐに母親の顔を見分けるようになる。",
-          "cue": "識別・判断",
-          "hint": "know A / know A from B で「A を見分ける・識別する」。違いが分かるの know"
+          "cue": "識別・判断"
         },
         {
           "en": "I have known her since we were children.",
@@ -2164,8 +2106,7 @@
           "answer": "知っている",
           "jpAfter": "。",
           "jpFull": "私は子どもの頃から彼女を知っている。",
-          "cue": "状態・継続",
-          "hint": "状態動詞。進行形にせず完了形で継続を表す。「ずっと知っている・知り合いだ」"
+          "cue": "状態・継続"
         }
       ],
       "coreImage": {
@@ -2205,8 +2146,7 @@
           "answer": "について",
           "jpAfter": "講義をした。",
           "jpFull": "彼はローマ史についての講義をした。",
-          "cue": "主題・専門",
-          "hint": "book/lecture/report on 〜。about より専門的・学術的。受験生の盲点。「〜に関する」"
+          "cue": "主題・専門"
         },
         {
           "en": "There was a small spider on the ceiling.",
@@ -2214,8 +2154,7 @@
           "answer": "くっついて",
           "jpAfter": "いた。",
           "jpFull": "天井に小さなクモがくっついていた。",
-          "cue": "接触",
-          "hint": "on の核は「上」ではなく「接触」。天井・壁でも on。上下を問わず面にくっつく"
+          "cue": "接触"
         },
         {
           "en": "Whether we go out depends on the weather.",
@@ -2223,8 +2162,7 @@
           "answer": "次第だ",
           "jpAfter": "。",
           "jpFull": "外出するかどうかは天気次第だ。",
-          "cue": "依存",
-          "hint": "depend on / rely on の on。「〜に依存して・〜次第で」。基盤に乗っているイメージ"
+          "cue": "依存"
         }
       ],
       "coreImage": {
@@ -2264,8 +2202,7 @@
           "answer": "意味が通らない",
           "jpAfter": "。",
           "jpFull": "君の言っていることは私には意味が通らない。",
-          "cue": "意味・道理",
-          "hint": "make sense「意味が通る・筋が通る」。in a sense なら「ある意味で」。『意味・道理』の sense"
+          "cue": "意味・道理"
         },
         {
           "en": "Humans gather information through the five senses.",
@@ -2273,8 +2210,7 @@
           "answer": "五感",
           "jpAfter": "を通じて情報を集める。",
           "jpFull": "人間は五感を通じて情報を集める。",
-          "cue": "感覚",
-          "hint": "the five senses「五感」、a sense of smell「嗅覚」。身体の『感覚』の sense"
+          "cue": "感覚"
         },
         {
           "en": "She had the good sense to keep quiet about it.",
@@ -2282,8 +2218,7 @@
           "answer": "分別",
           "jpAfter": "があった。",
           "jpFull": "彼女はそれについて黙っているだけの分別があった。",
-          "cue": "良識・判断力",
-          "hint": "common sense「常識」、good sense「分別」、have the sense to do。『良識』の sense"
+          "cue": "良識・判断力"
         }
       ],
       "coreImage": {
