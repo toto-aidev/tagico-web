@@ -8,6 +8,7 @@ import { SummaryBody, BottomNav } from '@/components/Summary';
 import { FeedbackLink } from '@/components/Survey';
 import { LEVELS, getWord } from '@/lib/content';
 import { SURVEY_URL } from '@/lib/store';
+import { ACHIEVEMENT_GROUPS, GROUP_COLOR, getGroupStatus } from '@/lib/achievements';
 
 // ===== マイ単語帳：ブックマークした用法まとめを集めた自分専用の単語帳 =====
 export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSense, onNavigate }) {
@@ -135,6 +136,112 @@ function StatChip({ value, label, sub, color }) {
   );
 }
 
+// ===== 実績ブロック：ティア制5系統 =====
+// fill が必要なアイコン名の集合
+const FILL_ICONS = new Set(['star', 'bookmark', 'sparkles']);
+
+function AchievementsBlock({ appState }) {
+  return (
+    <div className="rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
+      <h2 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">実績</h2>
+      <div className="flex flex-col gap-4">
+        {ACHIEVEMENT_GROUPS.map((group) => {
+          const col = GROUP_COLOR[group.color];
+          const { earnedIdx, nextTier, nextValue, nextThreshold } = getGroupStatus(group, appState);
+          const tiers = group.tiers;
+          const isComplete = nextTier === null;
+
+          // 進行中ティアの進捗率（0〜100）
+          const progressPct = isComplete
+            ? 100
+            : Math.min(100, Math.round((nextValue / nextThreshold) * 100));
+
+          // 進行中ティアより先（ロック中）のティアインデックス群
+          const lockedStart = isComplete ? tiers.length : earnedIdx + 2;
+
+          // 最終ティアのアイコン（vocab だけ trophy に切り替え）
+          const getIcon = (tierIdx) => {
+            if (group.id === 'vocab' && tierIdx === tiers.length - 1) return 'trophy';
+            return group.icon;
+          };
+
+          return (
+            <div key={group.id} className="flex flex-col gap-2">
+              {/* 系統ヘッダ：アイコン + ラベル + コンプリートバッジ */}
+              <div className="flex items-center gap-2">
+                <div className={'w-7 h-7 rounded-xl flex items-center justify-center ' + col.bg + ' ' + col.text}>
+                  <Icon
+                    name={isComplete ? (group.id === 'vocab' ? 'trophy' : group.icon) : group.icon}
+                    size={15}
+                    fill={FILL_ICONS.has(group.icon) ? 'currentColor' : undefined}
+                  />
+                </div>
+                <span className="text-sm font-black text-slate-700">{group.label}</span>
+                {isComplete && (
+                  <span className={'text-[0.6rem] font-bold px-1.5 py-0.5 rounded-full ' + col.bg + ' ' + col.text}>
+                    コンプリート
+                  </span>
+                )}
+              </div>
+
+              {/* 獲得済みバッジ列 */}
+              {earnedIdx >= 0 && (
+                <div className="flex flex-wrap gap-1.5 pl-9">
+                  {tiers.slice(0, earnedIdx + 1).map((tier, i) => (
+                    <div
+                      key={tier.label}
+                      title={tier.desc}
+                      className={'flex items-center gap-1 px-2 py-0.5 rounded-full ' + col.bg + ' ' + col.text}
+                    >
+                      <Icon name={getIcon(i)} size={11} fill={FILL_ICONS.has(getIcon(i)) ? 'currentColor' : undefined} />
+                      <span className="text-[0.65rem] font-black">{tier.label}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* 進行中ティア：進捗バー */}
+              {!isComplete && (
+                <div className="pl-9 flex flex-col gap-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[0.65rem] font-bold text-slate-500">
+                      ティア {nextTier.label}：{nextTier.desc}
+                    </span>
+                    <span className={'text-[0.65rem] font-bold ' + col.text}>
+                      {nextValue}/{nextThreshold}
+                    </span>
+                  </div>
+                  <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div
+                      className={'h-full rounded-full ' + col.bar}
+                      style={{ width: progressPct + '%' }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* ロック中のティア（最大3件まで表示） */}
+              {lockedStart < tiers.length && (
+                <div className="flex flex-wrap gap-1.5 pl-9">
+                  {tiers.slice(lockedStart, lockedStart + 3).map((tier) => (
+                    <div
+                      key={tier.label}
+                      className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-100 text-slate-400 opacity-60"
+                    >
+                      <Icon name="lock" size={10} />
+                      <span className="text-[0.65rem] font-bold">???</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function StatsScreen({ appState, onNavigate }) {
   const allIds = LEVELS.flatMap((l) => l.wordIds);
   const mastered = (appState.cleared || []).filter((id) => allIds.indexOf(id) >= 0).length;
@@ -156,20 +263,6 @@ export function StatsScreen({ appState, onNavigate }) {
     week.push({ key, count: days[key] || 0, label: '日月火水木金土'[d.getDay()], today: i === 0 });
   }
   const weekMax = Math.max(1, ...week.map((w) => w.count));
-
-  // 実績バッジ
-  const badges = [
-    { id: 'first', icon: 'check-circle', label: '最初の一歩', desc: '1語クリア', color: 'teal', earned: mastered >= 1 },
-    { id: 'five', icon: 'star', label: '5語マスター', desc: '5語クリア', color: 'amber', earned: mastered >= 5 },
-    { id: 'all', icon: 'trophy', label: '全制覇', desc: '全単語クリア', color: 'rose', earned: totalWords > 0 && mastered >= totalWords },
-    { id: 'streak', icon: 'flame', label: '7日連続', desc: '7日ストリーク', color: 'rose', earned: streak >= 7 },
-    { id: 'trap', icon: 'sparkles', label: '罠回避マスター', desc: '罠回避10回', color: 'teal', earned: trapAvoids >= 10 },
-    { id: 'book', icon: 'bookmark', label: 'コレクター', desc: 'マイ単語帳に保存', color: 'indigo', earned: (appState.bookmarks || []).length >= 1 },
-  ];
-  const COLOR = {
-    teal: ['bg-teal-100', 'text-teal-500'], amber: ['bg-amber-100', 'text-amber-500'],
-    rose: ['bg-rose-100', 'text-rose-500'], indigo: ['bg-indigo-100', 'text-indigo-500'],
-  };
 
   return (
     <div className="flex flex-col max-w-md lg:max-w-[980px] lg:shadow-[0_10px_60px_rgba(15,23,42,0.10)] w-full mx-auto bg-slate-50 min-h-screen relative overflow-hidden">
@@ -208,6 +301,9 @@ export function StatsScreen({ appState, onNavigate }) {
           </div>
         </div>
 
+        {/* 実績（ティア制5系統） */}
+        <AchievementsBlock appState={appState} />
+
         {/* レベル別の進捗 */}
         <div className="rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
           <h2 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">レベル別の進捗</h2>
@@ -224,25 +320,6 @@ export function StatsScreen({ appState, onNavigate }) {
                   <div className="h-2.5 rounded-full bg-slate-100 overflow-hidden">
                     <div className="h-full rounded-full bg-gradient-to-r from-teal-400 to-teal-300" style={{ width: pct + '%' }} />
                   </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 実績バッジ */}
-        <div className="rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
-          <h2 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">実績</h2>
-          <div className="grid grid-cols-3 gap-3">
-            {badges.map((b) => {
-              const col = COLOR[b.color];
-              return (
-                <div key={b.id} className={'flex flex-col items-center text-center p-3 rounded-2xl border-2 ' + (b.earned ? 'bg-white border-slate-100' : 'bg-slate-50 border-transparent opacity-50')}>
-                  <div className={'w-12 h-12 rounded-2xl flex items-center justify-center mb-2 ' + (b.earned ? col[0] + ' ' + col[1] : 'bg-slate-200 text-slate-400')}>
-                    <Icon name={b.icon} size={22} fill={b.earned && (b.icon === 'star' || b.icon === 'bookmark' || b.icon === 'sparkles') ? 'currentColor' : undefined} />
-                  </div>
-                  <span className="text-[0.7rem] font-black text-slate-700 leading-tight">{b.label}</span>
-                  <span className="text-[0.6rem] font-medium text-slate-400 mt-0.5 leading-tight">{b.desc}</span>
                 </div>
               );
             })}
