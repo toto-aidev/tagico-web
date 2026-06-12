@@ -1,0 +1,895 @@
+{
+  "words": [
+    {
+      "id": "some",
+      "word": "some",
+      "trap": "いくつかの",
+      "senses": [
+        {
+          "en": "Some man called while you were out.",
+          "jpBefore": "",
+          "answer": "とある",
+          "jpAfter": "男の人から電話があったよ。",
+          "jpFull": "とある男の人から電話があったよ。",
+          "cue": "不特定"
+        },
+        {
+          "en": "We still need some time to decide.",
+          "jpBefore": "決めるのに、まだ",
+          "answer": "いくらかの",
+          "jpAfter": "時間が必要だ。",
+          "jpFull": "決めるのに、まだいくらかの時間が必要だ。",
+          "cue": "量"
+        },
+        {
+          "en": "Some 200 people attended the lecture.",
+          "jpBefore": "",
+          "answer": "約",
+          "jpAfter": "200人が講義に出席した。",
+          "jpFull": "約200人が講義に出席した。",
+          "cue": "約",
+          "hint": "lecture＝「講義」"
+        },
+        {
+          "en": "Some people like it, others don't.",
+          "jpBefore": "",
+          "answer": "一部の",
+          "jpAfter": "人は気に入るが、そうでない人もいる。",
+          "jpFull": "一部の人は気に入るが、そうでない人もいる。",
+          "cue": "存在"
+        }
+      ],
+      "coreImage": {
+        "headline": "なんかある、でも、ぼかす。",
+        "lead": "“ある”ことは認めつつ、“どれ・どれだけ”はあえてぼかす言葉です。4つの訳は、ぼかし方がちがうだけです。"
+      },
+      "faces": [
+        {
+          "name": "〈不特定〉",
+          "meaning": "「とある／なんらかの」",
+          "type": "some + 単数可算名詞"
+        },
+        {
+          "name": "〈量〉複数",
+          "meaning": "「いくつかの」",
+          "type": "some + 複数可算名詞"
+        },
+        {
+          "name": "〈量〉不可算",
+          "meaning": "「いくらかの」",
+          "type": "some + 不可算名詞"
+        },
+        {
+          "name": "〈存在〉",
+          "meaning": "「〜なものもある／一部の」",
+          "type": "some + 複数名詞",
+          "note": "文意が一般論。some 〜, others 〜 のセット表現が頻出。"
+        },
+        {
+          "name": "〈約〉",
+          "meaning": "「およそ、約」",
+          "type": "some + 数詞",
+          "note": "some twenty years など。"
+        }
+      ],
+      "trivia": "〈存在〉用法は <b>some 〜, others 〜</b> とセットで頻出。例: Some students prefer online classes; others prefer face-to-face.（オンライン授業を好む生徒もいれば、対面を好む生徒もいる）"
+    },
+    {
+      "id": "as",
+      "word": "as",
+      "trap": "同じくらい",
+      "senses": [
+        {
+          "en": "I respect him as a leader.",
+          "jpBefore": "私は彼をリーダー",
+          "answer": "として",
+          "jpAfter": "尊敬している。",
+          "jpFull": "私は彼をリーダーとして尊敬している。",
+          "cue": "資格"
+        },
+        {
+          "en": "As it was late, we went home.",
+          "jpBefore": "遅くなった",
+          "answer": "ので",
+          "jpAfter": "、私たちは帰宅した。",
+          "jpFull": "遅くなったので、私たちは帰宅した。",
+          "cue": "理由"
+        },
+        {
+          "en": "As we grow older, time flies faster.",
+          "jpBefore": "年を取る",
+          "answer": "につれて",
+          "jpAfter": "、時間が経つのが速くなる。",
+          "jpFull": "年を取るにつれて、時間が経つのが速くなる。",
+          "cue": "比例"
+        },
+        {
+          "en": "She hummed as she cooked.",
+          "jpBefore": "彼女は料理を",
+          "answer": "しながら",
+          "jpAfter": "鼻歌を歌った。",
+          "jpFull": "彼女は料理をしながら鼻歌を歌った。",
+          "cue": "時",
+          "hint": "hum＝「鼻歌を歌う」"
+        },
+        {
+          "en": "Do it as I showed you.",
+          "jpBefore": "私がやって見せた",
+          "answer": "ように",
+          "jpAfter": "やりなさい。",
+          "jpFull": "私がやって見せたようにやりなさい。",
+          "cue": "様態"
+        },
+        {
+          "en": "Young as he is, he is wise.",
+          "jpBefore": "彼は若い",
+          "answer": "けれども",
+          "jpAfter": "、賢い。",
+          "jpFull": "彼は若いけれども、賢い。",
+          "cue": "譲歩",
+          "hint": "wise＝「賢い」"
+        },
+        {
+          "en": "Such books as I have are old.",
+          "jpBefore": "私が持っている",
+          "answer": "ような",
+          "jpAfter": "本は、どれも古い。",
+          "jpFull": "私が持っているような本は、どれも古い。",
+          "cue": "擬似関係代名詞"
+        }
+      ],
+      "coreImage": {
+        "headline": "as の用法は大きく3つ。前置詞・接続詞・擬似関係代名詞。",
+        "lead": "接続詞だけでも時・理由・譲歩・比例・様態の5つの顔があります。文脈によって訳し方を選ぶ必要があります。"
+      },
+      "faces": [
+        {
+          "name": "接続詞〈時〉",
+          "meaning": "「〜する時／〜しながら」",
+          "type": "as + S V",
+          "note": "動作の同時性。"
+        },
+        {
+          "name": "接続詞〈理由〉",
+          "meaning": "「〜なので／〜だから」",
+          "type": "as + S V",
+          "note": "因果関係。"
+        },
+        {
+          "name": "接続詞〈譲歩〉",
+          "meaning": "「〜だけれども」",
+          "type": "形容詞/副詞/名詞 + as + S V",
+          "note": "倒置形。"
+        },
+        {
+          "name": "接続詞〈比例〉",
+          "meaning": "「〜するにつれて」",
+          "type": "as + S V",
+          "note": "程度の変化と連動。"
+        },
+        {
+          "name": "接続詞〈様態〉",
+          "meaning": "「〜のように／〜の通り」",
+          "type": "as + S V",
+          "note": "様子・指示の踏襲。"
+        },
+        {
+          "name": "前置詞〈資格〉",
+          "meaning": "「〜として」",
+          "type": "as + 名詞",
+          "note": "SV を伴わない。"
+        },
+        {
+          "name": "擬似関係代名詞",
+          "meaning": "「〜のような…」",
+          "type": "such / the same 〜 as ...",
+          "note": "such / the same とのセットが目印。"
+        },
+        {
+          "name": "構文",
+          "meaning": "「同じくらい」",
+          "type": "as 〜 as",
+          "note": "決まった形として覚える。"
+        }
+      ],
+      "trivia": "〈譲歩〉の as は <b>倒置構文が必須</b>（形容詞/副詞/名詞 + as + S V）。通常語順だと別の意味になる。"
+    },
+    {
+      "id": "but",
+      "word": "but",
+      "trap": "しかし",
+      "senses": [
+        {
+          "en": "It's not a problem, but a challenge.",
+          "jpBefore": "それは問題ではなく、",
+          "answer": "むしろ",
+          "jpAfter": "チャレンジだ。",
+          "jpFull": "それは問題ではなく、むしろチャレンジだ。",
+          "cue": "構文"
+        },
+        {
+          "en": "Everyone but me has finished.",
+          "jpBefore": "私",
+          "answer": "以外",
+          "jpAfter": "全員が終わっている。",
+          "jpFull": "私以外、全員が終わっている。",
+          "cue": "除外"
+        },
+        {
+          "en": "He is but a child.",
+          "jpBefore": "彼は",
+          "answer": "ほんの",
+          "jpAfter": "子どもにすぎない。",
+          "jpFull": "彼はほんの子どもにすぎない。",
+          "cue": "限定"
+        }
+      ],
+      "coreImage": {
+        "headline": "反転させる、除く、絞る。",
+        "lead": "「but＝しかし」と覚えていると足をすくわれます。逆接はあくまで顔のひとつ。後ろの形を手がかりに見分けましょう。"
+      },
+      "faces": [
+        {
+          "name": "接続詞〈逆接〉",
+          "meaning": "「しかし」",
+          "type": "S V, but S V"
+        },
+        {
+          "name": "構文",
+          "meaning": "「A ではなく B」",
+          "type": "not A but B",
+          "note": "決まった形として覚える。"
+        },
+        {
+          "name": "前置詞〈除外〉",
+          "meaning": "「〜を除いて」(=except)",
+          "type": "but + 名詞・代名詞",
+          "note": "everyone but me / nothing but a fool など。"
+        },
+        {
+          "name": "副詞〈限定〉",
+          "meaning": "「ほんの／ただ〜だけ」(=only)",
+          "type": "be + but + 名詞",
+          "note": "He is but a child. など。古風な言い回し。"
+        }
+      ],
+      "trivia": "<b>cannot but V</b> / <b>cannot help but V</b>（= cannot help doing）「V せざるを得ない」は頻出構文。この but は「〜以外」の前置詞用法。"
+    },
+    {
+      "id": "that",
+      "word": "that",
+      "trap": "ということ",
+      "senses": [
+        {
+          "en": "That dog looks dangerous.",
+          "jpBefore": "",
+          "answer": "あの",
+          "jpAfter": "犬は危なそうだ。",
+          "jpFull": "あの犬は危なそうだ。",
+          "cue": "限定詞"
+        },
+        {
+          "en": "That is exactly what I meant.",
+          "jpBefore": "",
+          "answer": "それ",
+          "jpAfter": "こそ、私が言いたかったことだ。",
+          "jpFull": "それこそ、私が言いたかったことだ。",
+          "cue": "指示代名詞"
+        },
+        {
+          "en": "The news that he won surprised us.",
+          "jpBefore": "彼が勝った",
+          "answer": "という",
+          "jpAfter": "知らせは私たちを驚かせた。",
+          "jpFull": "彼が勝ったという知らせは私たちを驚かせた。",
+          "cue": "同格"
+        },
+        {
+          "en": "It's not that difficult.",
+          "jpBefore": "",
+          "answer": "それほど",
+          "jpAfter": "難しくはない。",
+          "jpFull": "それほど難しくはない。",
+          "cue": "副詞"
+        },
+        {
+          "en": "He ran so fast that I couldn't catch him.",
+          "jpBefore": "彼は、私が追いつけない",
+          "answer": "ほど",
+          "jpAfter": "速く走った。",
+          "jpFull": "彼は、私が追いつけないほど速く走った。",
+          "cue": "構文"
+        },
+        {
+          "en": "He is the man that I met on the train.",
+          "jpBefore": "彼が、私が電車で出会った",
+          "answer": "（訳さない）",
+          "jpAfter": "男性だ。",
+          "jpFull": "彼が、私が電車で出会った男性だ。",
+          "cue": "関係代名詞"
+        }
+      ],
+      "coreImage": {
+        "headline": "向こうを、指でポンと押さえる。",
+        "lead": "指す先が〈物〉か〈これから言う中身〉か〈程度〉かが違うだけです。それぞれの訳は、指し方のちがいです。"
+      },
+      "faces": [
+        {
+          "name": "指示代名詞",
+          "meaning": "「あれ／それ」",
+          "type": "That + V（名詞単独）",
+          "note": "That is my house. など。"
+        },
+        {
+          "name": "限定詞",
+          "meaning": "「あの〜／その〜」",
+          "type": "that + 名詞",
+          "note": "that book / those books。"
+        },
+        {
+          "name": "接続詞〈名詞節〉",
+          "meaning": "「〜と（いうこと）」",
+          "type": "動詞など + that + 完全文",
+          "note": "I think that S V など。"
+        },
+        {
+          "name": "接続詞〈同格〉",
+          "meaning": "「〜という…」",
+          "type": "名詞 + that + 完全文",
+          "note": "the fact that S V。名詞の中身を説明。"
+        },
+        {
+          "name": "副詞（口語）",
+          "meaning": "「それほど」",
+          "type": "that + 形容詞/副詞",
+          "note": "not that difficult など。"
+        },
+        {
+          "name": "関係代名詞",
+          "meaning": "「〜する…」（訳さない）",
+          "type": "先行詞 + that + 不完全文",
+          "note": "the man that I met。"
+        },
+        {
+          "name": "構文",
+          "meaning": "「とても〜なので…／…ほど〜」",
+          "type": "so / such 〜 that …",
+          "note": "決まった形として覚える。"
+        }
+      ],
+      "trivia": "受験ではマイナーだが、<b>関係副詞の that</b> もある：先行詞が時・場所・理由で、後ろが完全文の形。例: the day that I met him（= on which の代用）"
+    },
+    {
+      "id": "will",
+      "word": "will",
+      "trap": "だろう",
+      "senses": [
+        {
+          "en": "I will call you tomorrow.",
+          "jpBefore": "明日電話する",
+          "answer": "つもりだ",
+          "jpAfter": "。",
+          "jpFull": "明日電話するつもりだ。",
+          "cue": "意志"
+        },
+        {
+          "en": "I will be twenty next month.",
+          "jpBefore": "来月で20歳になる",
+          "answer": "（訳さない）",
+          "jpAfter": "。",
+          "jpFull": "来月で20歳になる。",
+          "cue": "確定的な未来"
+        },
+        {
+          "en": "Children will cry.",
+          "jpBefore": "子供は泣く",
+          "answer": "ものだ",
+          "jpAfter": "。",
+          "jpFull": "子供は泣くものだ。",
+          "cue": "習慣・性質"
+        },
+        {
+          "en": "Will you open the door?",
+          "jpBefore": "ドアを開けて",
+          "answer": "くれませんか",
+          "jpAfter": "？",
+          "jpFull": "ドアを開けてくれませんか？",
+          "cue": "依頼"
+        },
+        {
+          "en": "The door won't open.",
+          "jpBefore": "ドアが",
+          "answer": "どうしても〜ない",
+          "jpAfter": "。",
+          "jpFull": "ドアがどうしても開かない。",
+          "cue": "強い拒絶"
+        }
+      ],
+      "coreImage": {
+        "headline": "これからやる意志、そういうもの、やる気を問う。",
+        "lead": "will の芯は「これからやる意志」。そこから〈推量〉〈確定的な未来〉〈習慣・性質〉〈依頼〉〈強い拒絶 won't〉へ枝分かれします。「will＝〜だろう」と機械的に訳すのがいちばんの罠です。"
+      },
+      "faces": [
+        {
+          "name": "〈意志〉",
+          "meaning": "「〜する／〜しよう／〜するつもりだ」",
+          "type": "人 + will + V",
+          "note": "主語の積極的な意志。"
+        },
+        {
+          "name": "〈推量・予測〉",
+          "meaning": "「〜するだろう」",
+          "type": "天気・状況・他者 + will + V",
+          "note": "不確実なことへの予想。話し手の推量が入る。"
+        },
+        {
+          "name": "〈確定的な未来〉",
+          "meaning": "「（訳さない）」",
+          "type": "予定・成り行きで確実に来る未来",
+          "note": "推量が入らないので「だろう」を付けない。"
+        },
+        {
+          "name": "〈習慣・性質〉",
+          "meaning": "「よく〜する／〜するものだ」",
+          "type": "S + will + V",
+          "note": "一般論を示す際に使う。"
+        },
+        {
+          "name": "〈依頼〉",
+          "meaning": "「〜してくれませんか」",
+          "type": "Will you ...?"
+        },
+        {
+          "name": "〈強い拒絶〉",
+          "meaning": "「どうしても〜ない」(won't)",
+          "type": "S + won't + V",
+          "note": "無生物主語にも使う。"
+        }
+      ],
+      "trivia": "主語が「人」で自発的な内容ならまず〈意志〉を、否定の won't なら〈強い拒絶〉を疑う。"
+    },
+    {
+      "id": "would",
+      "word": "would",
+      "trap": "するつもりだった",
+      "senses": [
+        {
+          "en": "That would be wonderful.",
+          "jpBefore": "それは素晴らしい",
+          "answer": "だろう",
+          "jpAfter": "。",
+          "jpFull": "それは素晴らしいだろう。",
+          "cue": "推量"
+        },
+        {
+          "en": "We would often play here as kids.",
+          "jpBefore": "子供の頃、よくここで遊んだり",
+          "answer": "したものだ",
+          "jpAfter": "。",
+          "jpFull": "子供の頃、よくここで遊んだりしたものだ。",
+          "cue": "過去の習慣"
+        },
+        {
+          "en": "Would you open the window?",
+          "jpBefore": "窓を開けて",
+          "answer": "くれませんか",
+          "jpAfter": "。",
+          "jpFull": "窓を開けてくれませんか。",
+          "cue": "依頼"
+        },
+        {
+          "en": "I would help you if I could.",
+          "jpBefore": "できるなら、君を助ける",
+          "answer": "のに",
+          "jpAfter": "。",
+          "jpFull": "できるなら、君を助けるのに。",
+          "cue": "仮定法"
+        },
+        {
+          "en": "I would like a cup of coffee.",
+          "jpBefore": "コーヒーを一杯",
+          "answer": "いただきたい",
+          "jpAfter": "のですが。",
+          "jpFull": "コーヒーを一杯いただきたいのですが。",
+          "cue": "控えめな願望"
+        }
+      ],
+      "coreImage": {
+        "headline": "will を、一歩引いてやわらげる。",
+        "lead": "今ここの断定をぼかして、推量・過去・遠回しへずらします。5つの訳は、ずらし方のちがいです。"
+      },
+      "faces": [
+        {
+          "name": "〈推量〉",
+          "meaning": "「たぶん〜だろう」",
+          "type": "S + would + V",
+          "note": "今の事柄への控えめな推量。"
+        },
+        {
+          "name": "〈過去の習慣〉",
+          "meaning": "「よく〜したものだ」",
+          "type": "would (often) + V",
+          "note": "often と相性がよい。"
+        },
+        {
+          "name": "〈依頼〉",
+          "meaning": "「〜してくれませんか」",
+          "type": "Would you ...?",
+          "note": "Will you ...? より丁寧。"
+        },
+        {
+          "name": "〈仮定法〉",
+          "meaning": "「〜だろうに／のに」",
+          "type": "S + would + V（+ if 節）",
+          "note": "現実には起きないことを表す。"
+        },
+        {
+          "name": "〈控えめな願望〉",
+          "meaning": "「〜したいのですが」",
+          "type": "would like (to V)",
+          "note": "want の丁寧版。"
+        }
+      ],
+      "trivia": "②〈過去の習慣〉は <b>used to</b> との違いに注意：used to は「今はもう〜ない」という現在との対比を含み、状態動詞にも使える。would は状態動詞には使えない。"
+    },
+    {
+      "id": "get",
+      "word": "get",
+      "trap": "買う",
+      "senses": [
+        {
+          "en": "I got first place in the race.",
+          "jpBefore": "レースで1位を",
+          "answer": "取る",
+          "jpAfter": "。",
+          "jpFull": "レースで1位を取った。",
+          "cue": "獲得"
+        },
+        {
+          "en": "We got home very late.",
+          "jpBefore": "私たちはとても遅く家に",
+          "answer": "着く",
+          "jpAfter": "。",
+          "jpFull": "私たちはとても遅く家に着いた。",
+          "cue": "到着"
+        },
+        {
+          "en": "It's getting cold outside.",
+          "jpBefore": "外はだんだん寒く",
+          "answer": "なる",
+          "jpAfter": "。",
+          "jpFull": "外はだんだん寒くなってきた。",
+          "cue": "変化"
+        },
+        {
+          "en": "Oh, now I get it.",
+          "jpBefore": "ああ、やっと",
+          "answer": "わかる",
+          "jpAfter": "。",
+          "jpFull": "ああ、やっとわかった。",
+          "cue": "理解"
+        },
+        {
+          "en": "I got him to help me.",
+          "jpBefore": "私は彼に手伝いを",
+          "answer": "してもらう",
+          "jpAfter": "。",
+          "jpFull": "私は彼に手伝いをしてもらった。",
+          "cue": "使役"
+        }
+      ],
+      "coreImage": {
+        "headline": "手元に、ぐいっと引き寄せる。",
+        "lead": "何もない所から、自分の側へ移してくる動詞です。引き寄せる先が〈成果〉〈場所〉〈状態〉〈理解〉〈人〉と変わるだけです。"
+      },
+      "faces": [
+        {
+          "name": "〈獲得〉",
+          "meaning": "「手に入れる・取る」",
+          "type": "get + 名詞",
+          "note": "成果・賞・物などを引き寄せる。"
+        },
+        {
+          "name": "〈到着〉",
+          "meaning": "「たどり着く」",
+          "type": "get + 場所",
+          "note": "get home / get to the station。"
+        },
+        {
+          "name": "〈変化〉",
+          "meaning": "「〜になる」",
+          "type": "get + 形容詞",
+          "note": "状態の変化。get cold / get tired。"
+        },
+        {
+          "name": "〈理解〉",
+          "meaning": "「わかる」",
+          "type": "get + it / 内容",
+          "note": "I get it. = 理解をつかむ。"
+        },
+        {
+          "name": "〈使役〉",
+          "meaning": "「〜してもらう・させる」",
+          "type": "get + O + to V",
+          "note": "get + O + C も同じ仲間。"
+        }
+      ]
+    },
+    {
+      "id": "only",
+      "word": "only",
+      "trap": "単に",
+      "senses": [
+        {
+          "en": "Only members can enter.",
+          "jpBefore": "会員",
+          "answer": "だけが",
+          "jpAfter": "入れる。",
+          "jpFull": "会員だけが入れる。",
+          "cue": "限定"
+        },
+        {
+          "en": "It costs only five dollars.",
+          "jpBefore": "それは",
+          "answer": "ほんの",
+          "jpAfter": "5ドルだ。",
+          "jpFull": "それはほんの5ドルだ。",
+          "cue": "少なさ強調"
+        },
+        {
+          "en": "She is the only child in the family.",
+          "jpBefore": "彼女はその家の",
+          "answer": "唯一の",
+          "jpAfter": "子供だ。",
+          "jpFull": "彼女はその家の唯一の子供だ。",
+          "cue": "唯一"
+        },
+        {
+          "en": "Only then did I understand.",
+          "jpBefore": "その時",
+          "answer": "になって初めて",
+          "jpAfter": "、私は理解した。",
+          "jpFull": "その時になって初めて、私は理解した。",
+          "cue": "時の強調"
+        },
+        {
+          "en": "I only just caught the train.",
+          "jpBefore": "私は",
+          "answer": "ぎりぎり",
+          "jpAfter": "電車に間に合った。",
+          "jpFull": "私はぎりぎり電車に間に合った。",
+          "cue": "ぎりぎり"
+        }
+      ],
+      "coreImage": {
+        "headline": "ピンと1つに絞る、ほかは無し。",
+        "lead": "絞る対象が〈人・物〉〈数〉〈唯一〉〈時〉〈ぎりぎり〉と変わるだけです。5つの訳は、絞り方のちがいです。"
+      },
+      "faces": [
+        {
+          "name": "〈限定〉",
+          "meaning": "「〜だけ・〜のみ」",
+          "type": "only + 名詞"
+        },
+        {
+          "name": "〈少なさ強調〉",
+          "meaning": "「たった・ほんの」",
+          "type": "only + 数詞"
+        },
+        {
+          "name": "〈唯一〉",
+          "meaning": "「唯一の」",
+          "type": "the only + 名詞",
+          "note": "the とのセットが目印。"
+        },
+        {
+          "name": "〈時の強調〉",
+          "meaning": "「〜して初めて」",
+          "type": "only + 時の表現",
+          "note": "文頭に出ると後ろが倒置になりやすい。"
+        },
+        {
+          "name": "〈ぎりぎり〉",
+          "meaning": "「やっと・かろうじて」",
+          "type": "only just"
+        }
+      ],
+      "trivia": "文頭の <b>Only + 時/場所 + 倒置</b>（Only then did I understand.）は入試頻出。only が文頭に出たら倒置を疑う。"
+    },
+    {
+      "id": "just",
+      "word": "just",
+      "trap": "ちょうど",
+      "senses": [
+        {
+          "en": "I have just arrived at the station.",
+          "jpBefore": "私は",
+          "answer": "たった今",
+          "jpAfter": "駅に着いたところだ。",
+          "jpFull": "私はたった今駅に着いたところだ。",
+          "cue": "完了"
+        },
+        {
+          "en": "It takes just five minutes.",
+          "jpBefore": "それは",
+          "answer": "ほんの",
+          "jpAfter": "5分しかかからない。",
+          "jpFull": "それはほんの5分しかかからない。",
+          "cue": "少なさ"
+        },
+        {
+          "en": "That's just what I needed.",
+          "jpBefore": "それは",
+          "answer": "まさに",
+          "jpAfter": "私が欲しかったものだ。",
+          "jpFull": "それはまさに私が欲しかったものだ。",
+          "cue": "一致"
+        },
+        {
+          "en": "Just wait a moment, please.",
+          "jpBefore": "",
+          "answer": "ちょっと",
+          "jpAfter": "待ってください。",
+          "jpFull": "ちょっと待ってください。",
+          "cue": "やわらげ"
+        },
+        {
+          "en": "It was a just decision.",
+          "jpBefore": "それは",
+          "answer": "公正な",
+          "jpAfter": "決定だった。",
+          "jpFull": "それは公正な決定だった。",
+          "cue": "形容詞"
+        }
+      ],
+      "coreImage": {
+        "headline": "“ちょうどそこ”に、針を合わせる。",
+        "lead": "ぴたっと一点に針を合わせる言葉です。合わせる先が〈時〉〈量〉〈一致〉〈最小限〉〈釣り合い〉と変わるだけです。基本副詞ですが、⑤だけは形容詞です。"
+      },
+      "faces": [
+        {
+          "name": "〈完了〉",
+          "meaning": "「たった今・ちょうど今」",
+          "type": "have just + 過去分詞"
+        },
+        {
+          "name": "〈少なさ〉",
+          "meaning": "「ほんの・たった」",
+          "type": "just + 数量",
+          "note": "only と同義。"
+        },
+        {
+          "name": "〈一致〉",
+          "meaning": "「まさに・ちょうど」",
+          "type": "just + what / the 〜",
+          "note": "ぴったりの一致。"
+        },
+        {
+          "name": "〈やわらげ〉",
+          "meaning": "「ちょっと・ただ」",
+          "type": "Just + 命令文",
+          "note": "命令・依頼の口調をやわらげる。"
+        },
+        {
+          "name": "形容詞",
+          "meaning": "「公正な・正当な」",
+          "type": "a just + 名詞",
+          "note": "justice と同語源。"
+        }
+      ]
+    },
+    {
+      "id": "take",
+      "word": "take",
+      "trap": "連れていく",
+      "senses": [
+        {
+          "en": "Take an umbrella with you.",
+          "jpBefore": "傘を",
+          "answer": "持っていく",
+          "jpAfter": "。",
+          "jpFull": "傘を持っていきなさい。",
+          "cue": "携行"
+        },
+        {
+          "en": "It takes two hours by train.",
+          "jpBefore": "電車で2時間",
+          "answer": "かかる",
+          "jpAfter": "。",
+          "jpFull": "電車で2時間かかる。",
+          "cue": "所要"
+        },
+        {
+          "en": "Let's take a taxi to the station.",
+          "jpBefore": "駅までタクシーに",
+          "answer": "乗る",
+          "jpAfter": "。",
+          "jpFull": "駅までタクシーに乗ろう。",
+          "cue": "利用"
+        },
+        {
+          "en": "Don't take it personally.",
+          "jpBefore": "それを個人的に",
+          "answer": "受け取る",
+          "jpAfter": "な。",
+          "jpFull": "それを個人的に受け取るな。",
+          "cue": "解釈"
+        },
+        {
+          "en": "Let's take a short break.",
+          "jpBefore": "少し休憩を",
+          "answer": "とる",
+          "jpAfter": "。",
+          "jpFull": "少し休憩をとろう。",
+          "cue": "行動"
+        }
+      ],
+      "coreImage": {
+        "headline": "手をのばして、自分の側へ取る。",
+        "lead": "目の前の何かをつかんで持ってくる動詞です。取る対象が〈物〉〈時間〉〈手段〉〈意味〉〈行動〉と変わるだけです。"
+      },
+      "faces": [
+        {
+          "name": "〈携行〉",
+          "meaning": "「持っていく」",
+          "type": "take + 物"
+        },
+        {
+          "name": "〈同行〉",
+          "meaning": "「（人を）連れていく」",
+          "type": "take + 人 + 場所",
+          "note": "目的語が人なら「連れていく」。"
+        },
+        {
+          "name": "〈所要〉",
+          "meaning": "「（時間が）かかる」",
+          "type": "It takes + 時間"
+        },
+        {
+          "name": "〈利用〉",
+          "meaning": "「（乗り物に）乗る」",
+          "type": "take + 交通手段"
+        },
+        {
+          "name": "〈解釈〉",
+          "meaning": "「受け取る・解釈する」",
+          "type": "take + 物事 (+ as / 副詞)",
+          "note": "take it personally など。"
+        },
+        {
+          "name": "〈行動〉",
+          "meaning": "「（行動を）とる」",
+          "type": "take + a break / action",
+          "note": "決まった名詞とのセットで覚える。"
+        }
+      ],
+      "trivia": "<b>bring</b>（持ってくる）との対比で、take は<b>話し手から離れていく方向</b>。"
+    }
+  ],
+  "levels": [
+    {
+      "id": "level1",
+      "name": "Level 1",
+      "label": "万能の機能語",
+      "wordIds": [
+        "some",
+        "as",
+        "but",
+        "that",
+        "will"
+      ]
+    },
+    {
+      "id": "level2",
+      "name": "Level 2",
+      "label": "助動詞・多義動詞",
+      "wordIds": [
+        "would",
+        "get",
+        "only",
+        "just",
+        "take"
+      ]
+    }
+  ]
+}

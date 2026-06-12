@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: #f8fafc;
+}
+
+/* PC幅では一段落ちた背景色（旧 tg-pc 相当をブレークポイントで自動適用） */
+@media (min-width: 1024px) {
+  body {
+    background: #eef2f6;
+  }
+}
+
+/* スクロールバーは隠す */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* セーフエリア（iOS のホームバー回避）。Tailwind に無いので自前定義 */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* framer-motion 相当の最小モーション（reduce 尊重） */
+@keyframes tg-fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes tg-pop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes tg-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-5px);
+  }
+  40% {
+    transform: translateX(5px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+.tg-fadeup {
+  animation: tg-fadeup 0.35s ease both;
+}
+.tg-pop {
+  animation: tg-pop 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+.tg-shake {
+  animation: tg-shake 0.4s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tg-fadeup,
+  .tg-pop,
+  .tg-shake {
+    animation: none;
+  }
+}
+
+/* =========================================================================
+   PC幅レイアウト（旧 Tagico Web v2 の ?pc=1 / html.tg-pc を
+   ブレークポイント（min-width:1024px）での自動適用に置き換えたもの）
+   ・ボトムナビ → 画面下中央のフローティングバー化
+   ========================================================================= */
+@media (min-width: 1024px) {
+  nav.tg-nav {
+    max-width: max-content;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 18px;
+    border-radius: 9999px;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.16);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  nav.tg-nav > div {
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+  nav.tg-nav.pb-safe {
+    padding-bottom: 0;
+  }
+}
