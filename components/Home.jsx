@@ -6,6 +6,28 @@ import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/components/Icon';
 import { SummaryBody, BookmarkButton, BottomNav } from '@/components/Summary';
 import { LEVELS, getWord } from '@/lib/content';
+import * as sfx from '@/lib/sfx';
+
+// 効果音オン/オフのトグル（ヘッダー右上・ストリークバッジの隣に最小限で配置）。
+// 押すと即ミュート状態を localStorage に永続化。オンに戻した瞬間にだけ確認音を鳴らす。
+function SfxToggle() {
+  const [muted, setMutedState] = useState(false);
+  useEffect(() => { setMutedState(sfx.isMuted()); }, []);
+  const onClick = () => {
+    const now = sfx.toggleMuted();
+    setMutedState(now);
+    if (!now) { sfx.unlockAudio(); sfx.play('ui'); } // オンに戻したら鳴ることを確認できる
+  };
+  return (
+    <button
+      onClick={onClick}
+      aria-label={muted ? '効果音をオンにする' : '効果音をオフにする'}
+      className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow-sm border border-slate-100 text-slate-400 hover:text-slate-600 active:scale-95 transition-all"
+    >
+      <Icon name={muted ? 'volume-x' : 'volume-2'} size={16} color={muted ? '#cbd5e1' : '#14b8a6'} />
+    </button>
+  );
+}
 
 // 価格タグの形（lucide tag 由来）。"Tag"ico のブランド motif。
 const TAG_PATH =
@@ -102,9 +124,12 @@ export function HomeScreen({ appState, onNavigate }) {
       <header className="px-6 pt-12 pb-6 relative z-10">
         <div className="flex items-start justify-between mb-8">
           <TagicoLogo />
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white shadow-sm border border-slate-100">
-            <Icon name="flame" size={16} color={appState.streakDays > 0 ? '#f43f5e' : '#cbd5e1'} />
-            <span className={'font-black ' + (appState.streakDays > 0 ? 'text-rose-500' : 'text-slate-400')}>{appState.streakDays}</span>
+          <div className="flex items-center gap-2">
+            <SfxToggle />
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white shadow-sm border border-slate-100">
+              <Icon name="flame" size={16} color={appState.streakDays > 0 ? '#f43f5e' : '#cbd5e1'} />
+              <span className={'font-black ' + (appState.streakDays > 0 ? 'text-rose-500' : 'text-slate-400')}>{appState.streakDays}</span>
+            </div>
           </div>
         </div>
 
@@ -162,7 +187,7 @@ export function HomeScreen({ appState, onNavigate }) {
             const locked = i > 0 && !LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id));
             const active = i === activeIdx;
             return (
-              <button key={l.id} data-tab-idx={i} onClick={() => setActiveIdx(i)}
+              <button key={l.id} data-tab-idx={i} onClick={() => { sfx.play('tap'); setActiveIdx(i); }}
                 className={'shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full font-bold text-sm transition-all active:scale-95 ' + (active ? 'bg-slate-800 text-white shadow-md' : 'bg-white text-slate-500 border-2 border-slate-100 hover:border-slate-200')}>
                 {locked && <Icon name="lock" size={12} />}
                 {l.name}

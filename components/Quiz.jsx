@@ -9,6 +9,7 @@ import Icon from '@/components/Icon';
 import { SummaryBody, BookmarkButton } from '@/components/Summary';
 import { getWord, getLevel } from '@/lib/content';
 import { seededShuffle } from '@/lib/store';
+import * as sfx from '@/lib/sfx';
 
 const IRREGULAR = {
   bear: ['bears', 'bore', 'borne', 'bearing'],
@@ -120,6 +121,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
   const handleChipClick = (chip) => {
     if (ws.phase !== 'quiz') return;
+    sfx.play('tap'); // 選択肢チップのタップ：軽いポップ
     const newAssign = { ...ws.assignments };
     for (const [k, v] of Object.entries(newAssign)) {
       if (v === chip) delete newAssign[Number(k)];
@@ -134,13 +136,19 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
   const handleReveal = () => {
     if (!word) return;
     const correctCount = word.senses.filter((s, i) => ws.assignments[i] === s.answer).length;
-    if (correctCount === word.senses.length) fireConfetti();
+    if (correctCount === word.senses.length) {
+      fireConfetti();
+      sfx.play('correct'); // 全問正解：明るい上昇音
+    } else {
+      sfx.play('wrong'); // 一部不正解：柔らかい低めの音
+    }
     const trapHit = Object.values(ws.assignments).includes(word.trap);
     updateWs({ phase: 'revealed', trapHit });
   };
 
   const handleRevealAnswers = () => {
     if (!word) return;
+    sfx.play('ui'); // 「答えを見る」：汎用クリック
     const auto = {};
     word.senses.forEach((s, i) => { auto[i] = s.answer; });
     updateWs({ assignments: auto, phase: 'revealed', trapHit: false });
@@ -148,11 +156,30 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
   const handleNext = () => {
     if (!word) return;
+    // 最後の単語＝「結果を見る」はファンファーレ判定が App 側で走るので、ここでは中間遷移のみ鳴らす。
+    if (wordIdx < wordIds.length - 1) sfx.play('next'); // 次の単語へ：軽い上昇のひと押し
     const correct = word.senses.filter((s, i) => ws.assignments[i] === s.answer).length;
     const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit }];
     setScores(newScores);
     if (wordIdx < wordIds.length - 1) setWordIdx((i) => i + 1);
     else onDone(newScores);
+  };
+
+  // 戻る（左上の矢印）。現在の単語をすでに「答え合わせ済み（revealed）」なら、
+  // その結果を未確定のまま捨てずに記録してから離脱する。
+  // これにより「1単語だけ解いて即ホームに戻る」操作でも cleared に永続化され、
+  // 次の単語が確実に解禁される（タスクA: 解禁が効かない不具合の修正）。
+  const handleBack = () => {
+    const revealedScores = states
+      .map((st, i) => ({ st, w: getWord(wordIds[i]) }))
+      .filter(({ st, w }) => w && st.phase === 'revealed')
+      .map(({ st, w }) => ({
+        wordId: w.id,
+        correct: w.senses.filter((s, i) => st.assignments[i] === s.answer).length,
+        total: w.senses.length,
+        trapHit: st.trapHit,
+      }));
+    onBack(revealedScores);
   };
 
   if (!word || !level) {
@@ -166,7 +193,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     <div className="flex flex-col max-w-md lg:max-w-[980px] lg:shadow-[0_10px_60px_rgba(15,23,42,0.10)] w-full mx-auto bg-slate-50 h-[100dvh] overflow-hidden relative">
       {/* トップバー */}
       <div className="flex items-center gap-3 px-4 py-3 bg-white/80 backdrop-blur-md border-b border-slate-100 z-10">
-        <button onClick={onBack} className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 active:scale-95 transition-all">
+        <button onClick={handleBack} className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 active:scale-95 transition-all">
           <Icon name="arrow-left" size={20} />
         </button>
         <div className="flex-1 min-w-0">

@@ -12,6 +12,7 @@ import { MyWordbookScreen, StatsScreen } from '@/components/Extra';
 import { SurveyPrompt } from '@/components/Survey';
 import { getLevel } from '@/lib/content';
 import * as store from '@/lib/store';
+import * as sfx from '@/lib/sfx';
 
 export default function App() {
   const [screen, setScreen] = useState({ type: 'home' });
@@ -21,6 +22,24 @@ export default function App() {
 
   useEffect(() => {
     setAppState(store.getState());
+    sfx.initSfx(); // ミュート状態を localStorage から同期
+
+    // iOS/モバイル Safari の autoplay 対策：最初のユーザー操作で AudioContext を unlock/resume。
+    // pointerdown / keydown / touchstart のいずれか最初の1回で解放（以後はリスナー解除）。
+    const unlock = () => {
+      sfx.unlockAudio();
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+      window.removeEventListener('touchstart', unlock);
+    };
+    window.addEventListener('pointerdown', unlock);
+    window.addEventListener('keydown', unlock);
+    window.addEventListener('touchstart', unlock);
+    return () => {
+      window.removeEventListener('pointerdown', unlock);
+      window.removeEventListener('keydown', unlock);
+      window.removeEventListener('touchstart', unlock);
+    };
   }, []);
 
   const dismissSurvey = () => {
@@ -29,8 +48,21 @@ export default function App() {
   };
 
   const handleNavigate = (s) => {
+    sfx.play('ui'); // タブ/画面遷移の汎用クリック
     setSessionScores([]);
     setScreen(s);
+  };
+
+  // クイズ画面で「戻る」を押したときの離脱処理。
+  // 答え合わせ済み（revealed）だが「次へ」で確定していない単語のスコアを記録してから
+  // ホームへ戻る。これで「1単語だけ解いて戻る」操作でも cleared が永続化され、
+  // 次の単語が解禁される（タスクA）。
+  const handleQuizBack = (revealedScores) => {
+    if (revealedScores && revealedScores.length > 0) {
+      const merged = store.recordScores(appState, revealedScores);
+      setAppState(merged);
+    }
+    handleNavigate({ type: 'home' });
   };
 
   const handleToggleBookmark = (wordId) => setAppState((s) => store.toggleBookmark(s, wordId));
@@ -55,6 +87,14 @@ export default function App() {
     const allWordIds = (level && level.wordIds) || [];
     const sessionDone = new Set(accumulated.map((s) => s.wordId));
     const nextWordId = allWordIds.find((id) => !sessionDone.has(id) && !newAppState.cleared.includes(id));
+
+    // 効果音：この回答でレベルを「今」全クリア＝解禁したらファンファーレ。
+    // 単語ごとの正解/不正解音は答え合わせ時（Quiz の handleReveal）で鳴らす。
+    const levelNowCleared =
+      allWordIds.length > 0 && allWordIds.every((id) => newAppState.cleared.includes(id));
+    const levelWasCleared =
+      allWordIds.length > 0 && allWordIds.every((id) => appState.cleared.includes(id));
+    if (levelNowCleared && !levelWasCleared) sfx.play('fanfare');
 
     if (nextWordId) setScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId] });
     else setScreen({ type: 'result', levelId: screen.levelId, scores: accumulated });
@@ -94,7 +134,7 @@ export default function App() {
         savedSenses={appState.savedSenses}
         onToggleSavedSense={handleToggleSavedSense}
         onDone={handleQuizDone}
-        onBack={() => handleNavigate({ type: 'home' })}
+        onBack={handleQuizBack}
       />
     );
   }
