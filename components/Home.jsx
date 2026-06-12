@@ -2,7 +2,7 @@
 
 // components/Home.jsx — ホーム（クエスト） / 単語帳（tagico-studio/v2-app.jsx の画面部分の移植）
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/components/Icon';
 import { SummaryBody, BookmarkButton, BottomNav } from '@/components/Summary';
 import { LEVELS, getWord } from '@/lib/content';
@@ -65,6 +65,21 @@ export function HomeScreen({ appState, onNavigate }) {
   const curCleared = curLevel ? curLevel.wordIds.filter((id) => appState.cleared.includes(id)).length : 0;
   const allDone = !nextLevel;
   const [activeIdx, setActiveIdx] = useState(() => { const i = LEVELS.indexOf(curLevel); return i >= 0 ? i : 0; });
+
+  // モバイルでタブが横スクロール（オーバーフロー）する場合、初期表示を右端＝最新レベルにする。
+  // デスクトップで全タブが見えているときは scrollWidth ≒ clientWidth のため実質 no-op。
+  const tabScrollRef = useRef(null);
+  useEffect(() => {
+    // レイアウト確定（Webフォント反映・タブ幅確定）後に右端へ寄せるため rAF を二重にネスト。
+    let raf2;
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        const el = tabScrollRef.current;
+        if (el) el.scrollLeft = el.scrollWidth;
+      });
+    });
+    return () => { cancelAnimationFrame(raf1); if (raf2) cancelAnimationFrame(raf2); };
+  }, []);
 
   return (
     <div className="flex-1 flex flex-col max-w-md lg:max-w-[980px] lg:shadow-[0_10px_60px_rgba(15,23,42,0.10)] w-full mx-auto bg-slate-50 min-h-screen relative overflow-hidden">
@@ -130,9 +145,8 @@ export function HomeScreen({ appState, onNavigate }) {
 
       {/* レベルタブ（解禁が増えても1レベルだけ表示＝縦に伸びない） */}
       <div className="px-6 mb-3 relative z-10">
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          {LEVELS.map((_, idx) => LEVELS.length - 1 - idx).map((i) => {
-            const l = LEVELS[i];
+        <div ref={tabScrollRef} className="flex gap-2 overflow-x-auto pb-1">
+          {LEVELS.map((l, i) => {
             const locked = i > 0 && !LEVELS[i - 1].wordIds.every((id) => appState.cleared.includes(id));
             const active = i === activeIdx;
             return (
