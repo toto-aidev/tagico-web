@@ -864,6 +864,467 @@
         }
       ],
       "trivia": "<b>bring</b>（持ってくる）との対比で、take は<b>話し手から離れていく方向</b>。"
+    },
+    {
+      "id": "of",
+      "word": "of",
+      "trap": "〜の",
+      "senses": [
+        {
+          "en": "the roof of the house",
+          "jpBefore": "その家",
+          "answer": "の",
+          "jpAfter": "屋根",
+          "jpFull": "その家の屋根",
+          "cue": "所有・所属"
+        },
+        {
+          "en": "the city of Rome",
+          "jpBefore": "ローマ",
+          "answer": "という",
+          "jpAfter": "都市",
+          "jpFull": "ローマという都市",
+          "cue": "同格"
+        },
+        {
+          "en": "I am afraid of dogs.",
+          "jpBefore": "私は犬",
+          "answer": "が",
+          "jpAfter": "こわい。",
+          "jpFull": "私は犬がこわい。",
+          "cue": "内容",
+          "hint": "be afraid of＝「〜について怖がる」"
+        },
+        {
+          "en": "This ring is made of gold.",
+          "jpBefore": "この指輪は金",
+          "answer": "でできている",
+          "jpAfter": "。",
+          "jpFull": "この指輪は金でできている。",
+          "cue": "構成要素"
+        },
+        {
+          "en": "One of my friends lives in Paris.",
+          "jpBefore": "私の友達",
+          "answer": "のうちの",
+          "jpAfter": "一人はパリに住んでいる。",
+          "jpFull": "私の友達のうちの一人はパリに住んでいる。",
+          "cue": "部分・全体"
+        },
+        {
+          "en": "He is a man of great courage.",
+          "jpBefore": "彼は大変な勇気",
+          "answer": "のある",
+          "jpAfter": "男だ。",
+          "jpFull": "彼は大変な勇気のある男だ。",
+          "cue": "性質",
+          "hint": "a man of courage＝「勇気という性質を持つ男」"
+        },
+        {
+          "en": "the discovery of America",
+          "jpBefore": "アメリカ",
+          "answer": "を",
+          "jpAfter": "発見すること",
+          "jpFull": "アメリカを発見すること",
+          "cue": "名詞構文の目的語",
+          "hint": "discover America の of。of の後ろが意味上の目的語"
+        },
+        {
+          "en": "The thief robbed her of her bag.",
+          "jpBefore": "泥棒は彼女",
+          "answer": "から",
+          "jpAfter": "バッグを奪った。",
+          "jpFull": "泥棒は彼女からバッグを奪った。",
+          "cue": "分離",
+          "hint": "rob A of B＝「AからBを奪う」"
+        },
+        {
+          "en": "He died of cancer.",
+          "jpBefore": "彼はがん",
+          "answer": "で",
+          "jpAfter": "亡くなった。",
+          "jpFull": "彼はがんで亡くなった。",
+          "cue": "原因",
+          "hint": "die of＝「〜で死ぬ」"
+        }
+      ],
+      "coreImage": {
+        "headline": "切り離して、どこから来たかを示す。",
+        "lead": "of の芯は「AからBを取り出す／Aに結びつける」という関係。所有・同格・内容・構成・部分・性質・名詞構文・分離・原因——どれも“何と何を結ぶか”がちがうだけです。「of＝〜の」と機械的に訳すと、内容・名詞構文・分離・原因でつまずきます。"
+      },
+      "faces": [
+        {
+          "name": "〈所有・所属〉",
+          "meaning": "「〜の」",
+          "type": "名詞 + of + 名詞",
+          "note": "the car of him / the roof of the house。"
+        },
+        {
+          "name": "〈同格〉",
+          "meaning": "「〜という」",
+          "type": "名詞 + of + 名詞",
+          "note": "the country of Japan「日本という国」。前後が同じものを指す。"
+        },
+        {
+          "name": "〈内容〉",
+          "meaning": "「〜について」",
+          "type": "think / afraid / information + of",
+          "note": "think of「〜について考える」/ be afraid of。"
+        },
+        {
+          "name": "〈構成要素〉",
+          "meaning": "「〜でできた／〜で構成された」",
+          "type": "be made / consist + of",
+          "note": "be made of「〜でできている」/ consist of。"
+        },
+        {
+          "name": "〈部分・全体〉",
+          "meaning": "「〜のうちの／〜の中で」",
+          "type": "数量・最上級 + of + 名詞",
+          "note": "one of my friends / the tallest of the three。"
+        },
+        {
+          "name": "〈性質〉",
+          "meaning": "「〜のある／〜という性質の」",
+          "type": "名詞 + of + 抽象名詞",
+          "note": "a man of courage / a boy of eight。of + 抽象名詞は形容詞のはたらき。"
+        },
+        {
+          "name": "〈名詞構文の主語・目的語〉",
+          "meaning": "「〜が／〜を」",
+          "type": "動作名詞 + of + 名詞",
+          "note": "the discovery of America「アメリカを発見すること」/ the lack of him「彼がいないこと」。"
+        },
+        {
+          "name": "〈分離〉",
+          "meaning": "「〜から」",
+          "type": "rob / deprive A + of + B",
+          "note": "rob me of money「私からお金を奪う」。"
+        },
+        {
+          "name": "〈原因〉",
+          "meaning": "「〜で／〜のために」",
+          "type": "die / be tired + of",
+          "note": "die of hunger「飢えで死ぬ」。"
+        }
+      ],
+      "trivia": "<b>名詞構文の of</b> は主語にも目的語にもなる：the killing of innocent people は「無実の人々<b>を</b>殺すこと」（目的語）、the lack of him は「彼<b>が</b>いないこと」（主語）。前後の動詞・名詞の関係で見分けます。"
+    },
+    {
+      "id": "with",
+      "word": "with",
+      "trap": "〜と一緒に",
+      "senses": [
+        {
+          "en": "She lives with her parents.",
+          "jpBefore": "彼女は両親",
+          "answer": "と一緒に",
+          "jpAfter": "暮らしている。",
+          "jpFull": "彼女は両親と一緒に暮らしている。",
+          "cue": "同伴"
+        },
+        {
+          "en": "the man with a beard",
+          "jpBefore": "あごひげ",
+          "answer": "を生やした",
+          "jpAfter": "男性",
+          "jpFull": "あごひげを生やした男性",
+          "cue": "所持・所有"
+        },
+        {
+          "en": "Cut it with a knife.",
+          "jpBefore": "ナイフ",
+          "answer": "で",
+          "jpAfter": "切りなさい。",
+          "jpFull": "ナイフで切りなさい。",
+          "cue": "道具・手段"
+        },
+        {
+          "en": "He sat reading with his legs crossed.",
+          "jpBefore": "彼は脚を組ん",
+          "answer": "だ状態で",
+          "jpAfter": "本を読んでいた。",
+          "jpFull": "彼は脚を組んだ状態で本を読んでいた。",
+          "cue": "付帯状況",
+          "hint": "with O C「OがCの状態で」"
+        },
+        {
+          "en": "She was trembling with fear.",
+          "jpBefore": "彼女は恐怖",
+          "answer": "のために",
+          "jpAfter": "震えていた。",
+          "jpFull": "彼女は恐怖のために震えていた。",
+          "cue": "原因・理由"
+        },
+        {
+          "en": "Are you with me?",
+          "jpBefore": "私の意見",
+          "answer": "に賛成",
+          "jpAfter": "ですか？",
+          "jpFull": "私の意見に賛成ですか？",
+          "cue": "一致・賛成",
+          "hint": "be with＝「〜に賛成して」。対立は against"
+        }
+      ],
+      "coreImage": {
+        "headline": "そばに添える、くっつける。",
+        "lead": "with の芯は「Aに何かを添える・伴わせる」。一緒にいる相手、持っている特徴、使う道具、伴う状況、伴う感情、寄り添う立場——添える対象が変わるだけです。「with＝〜と」だけだと、道具・付帯状況・原因・賛成を取り逃します。"
+      },
+      "faces": [
+        {
+          "name": "〈同伴〉",
+          "meaning": "「〜と一緒に」",
+          "type": "with + 人",
+          "note": "go with / live with。"
+        },
+        {
+          "name": "〈所持・所有〉",
+          "meaning": "「〜を持って／〜を身につけて」",
+          "type": "名詞 + with + 名詞",
+          "note": "a house with a garden / a man with a beard。"
+        },
+        {
+          "name": "〈道具・手段〉",
+          "meaning": "「〜を使って／〜で」",
+          "type": "動詞 + with + 道具",
+          "note": "write with a pen。文頭では「〜があれば」と条件っぽく訳すことも。"
+        },
+        {
+          "name": "〈付帯状況〉",
+          "meaning": "「OがCの状態で」",
+          "type": "with + O + C（分詞・形容詞・前置詞句）",
+          "note": "with his arms folded「腕を組んで」。"
+        },
+        {
+          "name": "〈原因・理由〉",
+          "meaning": "「〜のために／〜によって」",
+          "type": "感情・状態 + with + 名詞",
+          "note": "shake with cold / pale with fear。"
+        },
+        {
+          "name": "〈一致・賛成 / 対立〉",
+          "meaning": "「〜に賛成して／〜に対して」",
+          "type": "be with / argue with",
+          "note": "Are you with me?（賛成）/ argue with（対立）。"
+        }
+      ],
+      "trivia": "<b>同じ with でも正反対</b>：be with は「賛成」、argue [fight] with は「対立」。文脈で見分けます。付帯状況の <b>with O C</b>（with his eyes closed など）は和訳で頻出。"
+    },
+    {
+      "id": "have",
+      "word": "have",
+      "trap": "持っている",
+      "senses": [
+        {
+          "en": "She has long hair.",
+          "jpBefore": "彼女は長い髪を",
+          "answer": "している",
+          "jpAfter": "。",
+          "jpFull": "彼女は長い髪をしている。",
+          "cue": "所有"
+        },
+        {
+          "en": "You have to wear a seatbelt.",
+          "jpBefore": "シートベルトを締め",
+          "answer": "なければならない",
+          "jpAfter": "。",
+          "jpFull": "シートベルトを締めなければならない。",
+          "cue": "義務",
+          "hint": "have to V「〜しなければならない」"
+        },
+        {
+          "en": "I usually have breakfast at seven.",
+          "jpBefore": "私はたいてい7時に朝食を",
+          "answer": "とる",
+          "jpAfter": "。",
+          "jpFull": "私はたいてい7時に朝食をとる。",
+          "cue": "飲食"
+        },
+        {
+          "en": "I had my hair cut yesterday.",
+          "jpBefore": "私は昨日、髪を切って",
+          "answer": "もらった",
+          "jpAfter": "。",
+          "jpFull": "私は昨日、髪を切ってもらった。",
+          "cue": "使役",
+          "hint": "have O C「OをCの状態にする・OにCさせる」"
+        }
+      ],
+      "coreImage": {
+        "headline": "自分の領域に、抱え込む。",
+        "lead": "have の芯は「自分のところに抱えている」。物・特徴を持つことから、義務（〜することを抱える）、飲食、使役（人に〜させた状態を持つ）へ広がります。「have＝持っている」だけでは義務・使役を取り逃します。"
+      },
+      "faces": [
+        {
+          "name": "〈所有〉",
+          "meaning": "「持っている／〜がある」",
+          "type": "have + 名詞",
+          "note": "have a car / have brown eyes。"
+        },
+        {
+          "name": "〈義務〉",
+          "meaning": "「〜しなければならない」",
+          "type": "have to + V",
+          "note": "must に近い。外からの事情・規則（客観）。"
+        },
+        {
+          "name": "〈飲食〉",
+          "meaning": "「（食べる・飲む・とる）」",
+          "type": "have + 名詞",
+          "note": "have lunch / have a coffee / have a rest。"
+        },
+        {
+          "name": "〈使役〉",
+          "meaning": "「〜させる／〜してもらう」",
+          "type": "have + O + 原形/過去分詞",
+          "note": "have him call / have it repaired。"
+        }
+      ],
+      "trivia": "<b>have + 過去分詞</b>は現在完了形（〜してしまった／〜したことがある）をつくりますが、これは助動詞としての別働き。意味は文脈しだいで一定の訳が決まらないため、この4用法とは分けて押さえます。なお <b>have to</b>（客観的な必要）と <b>must</b>（話し手の判断）は否定で別物：don't have to「〜しなくてよい」、must not「〜してはいけない」。"
+    },
+    {
+      "id": "it",
+      "word": "it",
+      "trap": "それ",
+      "senses": [
+        {
+          "en": "It was John that broke the window.",
+          "jpBefore": "窓を割ったのは、",
+          "answer": "（訳さない）",
+          "jpAfter": "ジョンだった。",
+          "jpFull": "窓を割ったのは、ジョンだった。",
+          "cue": "強調構文",
+          "hint": "It is 〜 that ... の it。強調の枠組みで、訳には出さない"
+        }
+      ],
+      "coreImage": {
+        "headline": "中身は後回し、まず箱だけ置く。",
+        "lead": "it は〈すでに出たもの〉を指す代名詞が基本ですが、天候・状況や、「本当の中身（to do / that 節）」を後ろに回すための“仮の置き場”にもなります。①指示語のとき以外（非人称・状況・形式主語/目的語・強調構文・it seems that）は、基本的に訳しません。"
+      },
+      "faces": [
+        {
+          "name": "①〈指示語〉",
+          "meaning": "「それ／そのこと」",
+          "type": "it（既出の物・事を指す）",
+          "note": "6用法で唯一“訳す”it。前に出た名詞・状況を受ける。"
+        },
+        {
+          "name": "②〈非人称〉",
+          "meaning": "「（訳さない）」",
+          "type": "It + be / V（天気・時間・季節・寒暖・明暗・距離）",
+          "note": "It's cold. / It's five o'clock. 主語の形だけ置く。"
+        },
+        {
+          "name": "③〈状況〉",
+          "meaning": "「（訳さない）」",
+          "type": "Take it easy. / It's your turn.",
+          "note": "その場の漠然とした状況を指す。当事者には分かっている it。"
+        },
+        {
+          "name": "④〈形式主語・目的語構文〉",
+          "meaning": "「（訳さない）」",
+          "type": "It V … {to do / that SV} ／ SV it … {to do / that SV}",
+          "note": "本当の主語・目的語は後ろの to do や that 節。I found it hard to believe him."
+        },
+        {
+          "name": "⑤〈強調構文〉",
+          "meaning": "「（訳さない／〜なのは…だ）」",
+          "type": "It is 〜 that ...",
+          "note": "強調したい語を It is と that ではさむ。that は which/who に置換可・省略可。"
+        },
+        {
+          "name": "⑥〈it seems/appears that〉",
+          "meaning": "「（訳さない）」",
+          "type": "It seems / appears that …",
+          "note": "「（見たところ）…らしい、…のようだ」。"
+        }
+      ],
+      "trivia": "<b>形式主語と強調構文の見分け</b>：It is 〜 that ... で、that 以下が完全文なら形式主語、that 以下が（主語や目的語の）欠けた不完全文なら強調構文。強調構文は that を which/who に置き換えられ、It is 〜 を外しても文が成り立ちます。"
+    },
+    {
+      "id": "off",
+      "word": "off",
+      "trap": "オフ（消す）",
+      "senses": [
+        {
+          "en": "A button came off my coat.",
+          "jpBefore": "コートのボタンが",
+          "answer": "取れた",
+          "jpAfter": "。",
+          "jpFull": "コートのボタンが取れた。",
+          "cue": "物理的分離"
+        },
+        {
+          "en": "He got in the car and drove off.",
+          "jpBefore": "彼は車に乗り、",
+          "answer": "走り去った",
+          "jpAfter": "。",
+          "jpFull": "彼は車に乗り、走り去った。",
+          "cue": "出発・立ち去る"
+        },
+        {
+          "en": "Please switch the lights off.",
+          "jpBefore": "明かりを",
+          "answer": "消して",
+          "jpAfter": "ください。",
+          "jpFull": "明かりを消してください。",
+          "cue": "電源オフ・停止"
+        },
+        {
+          "en": "I'll take tomorrow off.",
+          "jpBefore": "明日は",
+          "answer": "休みを取る",
+          "jpAfter": "つもりだ。",
+          "jpFull": "明日は休みを取るつもりだ。",
+          "cue": "休み"
+        },
+        {
+          "en": "Everything was 20 percent off.",
+          "jpBefore": "すべてが20パーセント",
+          "answer": "引き",
+          "jpAfter": "だった。",
+          "jpFull": "すべてが20パーセント引きだった。",
+          "cue": "基準からずれ・割引",
+          "hint": "通常価格から「離れて」安くなる off"
+        }
+      ],
+      "coreImage": {
+        "headline": "くっついていたものが、離れる。",
+        "lead": "off の芯は「接触していたもの（オンの状態）から完全に離れる」。物理的な分離から、出発・電源オフ・休み・基準からのずれ（割引）へと枝分かれします。「off＝消す」だけで覚えていると、立ち去り・割引でつまずきます。"
+      },
+      "faces": [
+        {
+          "name": "〈物理的分離〉",
+          "meaning": "「（表面から）取れて／外れて」",
+          "type": "動詞 + off",
+          "note": "come off / fall off / take off「脱ぐ・離陸する」。接触面から離れる。"
+        },
+        {
+          "name": "〈出発・立ち去る〉",
+          "meaning": "「去って／出かけて」",
+          "type": "go / drive / set + off / be off",
+          "note": "I'm off.「じゃあ行くね」。その場から遠ざかる。"
+        },
+        {
+          "name": "〈電源オフ・停止〉",
+          "meaning": "「（電源などを）切って／オフで」",
+          "type": "switch / turn + off",
+          "note": "on の反対。繋がっていた回路が切れる。"
+        },
+        {
+          "name": "〈休み〉",
+          "meaning": "「（仕事を）休んで」",
+          "type": "take + 時間 + off / be off",
+          "note": "a day off / I'm off today。日常のルーティンから離れる。"
+        },
+        {
+          "name": "〈基準からずれ・割引〉",
+          "meaning": "「ずれて／〜引きで」",
+          "type": "be a bit off / 数量 + off",
+          "note": "a bit off「少し調子が悪い」/ 10% off「10%引き」。通常から離れる。"
+        }
+      ],
+      "trivia": "<b>off + 食べ物・習慣</b>は「もう欲しくない／離れた」：I've gone off coffee.（コーヒーが飲みたくなくなった）。基準から「離れる」イメージが、味の <b>a bit off</b>（少し傷んでいる）にもつながります。"
     }
   ],
   "levels": [
@@ -889,6 +1350,18 @@
         "only",
         "just",
         "take"
+      ]
+    },
+    {
+      "id": "level3",
+      "name": "Level 3",
+      "label": "前置詞・基本動詞",
+      "wordIds": [
+        "of",
+        "with",
+        "have",
+        "it",
+        "off"
       ]
     }
   ]
