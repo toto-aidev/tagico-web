@@ -75,7 +75,14 @@ export default function Icon({ name, size = 20, color, strokeWidth = 2, fill, st
       {extras.map((e, i) =>
         e.tag === 'circle' ? <circle key={i} {...e.attrs} /> : <rect key={i} {...e.attrs} />
       )}
-      {poly && <polygon points={poly} fill={fill ? 'currentColor' : 'none'} />}
+      {poly && (
+        <polygon
+          points={poly}
+          fill={fill ? 'currentColor' : 'none'}
+          stroke={fill ? 'none' : 'currentColor'}
+          strokeWidth={fill ? 0 : strokeWidth}
+        />
+      )}
       {fillPath && (
         <path
           d={fillPath}
