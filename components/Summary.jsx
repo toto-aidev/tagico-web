@@ -6,23 +6,40 @@
 import React from 'react';
 import Icon from '@/components/Icon';
 
+// lead・trivia 内の〈〉で囲まれた用法名に軽い強調を付ける（teal/amber アクセント）
+// 既存の dangerouslySetInnerHTML と同じ仕組みで <b> タグを使う
+function highlightBrackets(text) {
+  if (!text || typeof text !== 'string') return text;
+  // 〈...〉 → <b class="...">〈...〉</b> に置換
+  return text.replace(/〈([^〉]+)〉/g, '<b class="font-black text-teal-600">〈$1〉</b>');
+}
+
 export function SummaryBody({ word, savedSet, onToggleFace }) {
   return (
     <React.Fragment>
       <div className="rounded-2xl p-4 mb-4 bg-amber-50/50 border border-amber-100">
         <p className="font-black text-amber-600 text-base mb-1">{word.coreImage.headline}</p>
-        <p className="text-amber-700/80 text-sm font-medium leading-relaxed">{word.coreImage.lead}</p>
+        <p className="text-amber-700/80 text-sm font-medium leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: highlightBrackets(word.coreImage.lead) }} />
       </div>
 
-      <div className="flex flex-col gap-2.5">
+      <div className="flex flex-col gap-3">
         {word.faces.map((face, i) => (
-          <div key={i} className="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100">
-            <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-black text-slate-400 shrink-0 shadow-sm">{i + 1}</span>
-            <div className="flex-1 min-w-0 pt-0.5">
-              <span className="font-black text-slate-700">{face.name}</span>
-              <p className="text-slate-500 text-sm font-medium mt-0.5">{face.meaning}</p>
-              {face.type && <span className="inline-block mt-1.5 px-2 py-0.5 rounded bg-slate-200 text-slate-600 text-[0.65rem] font-bold">{face.type}</span>}
-              {face.note && <p className="text-slate-400 text-xs font-medium mt-1.5">{face.note}</p>}
+          <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+            <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-black text-slate-400 shrink-0 shadow-sm mt-0.5">{i + 1}</span>
+            <div className="flex-1 min-w-0">
+              {/* 用法名：最も強調（teal accent + extra bold） */}
+              <p className="font-black text-teal-700 text-[0.95rem] leading-snug">{face.name}</p>
+              {/* 訳：次に強調（中ウェイト・やや濃いグレー） */}
+              <p className="text-slate-600 text-sm font-semibold mt-0.5 leading-snug">{face.meaning}</p>
+              {/* 型：コードっぽく・ミュートカラー */}
+              {face.type && (
+                <span className="inline-block mt-2 px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 text-[0.65rem] font-mono tracking-tight">
+                  {face.type}
+                </span>
+              )}
+              {/* 説明：補足然と・最もミュート */}
+              {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
             </div>
             {onToggleFace && (
               <button
@@ -42,7 +59,7 @@ export function SummaryBody({ word, savedSet, onToggleFace }) {
           <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-500 flex items-center justify-center shrink-0">
             <Icon name="lightbulb" size={15} fill="currentColor" />
           </span>
-          <p className="text-sm text-indigo-700/80 font-medium leading-relaxed self-center" dangerouslySetInnerHTML={{ __html: tv }} />
+          <p className="text-sm text-indigo-700/80 font-medium leading-relaxed self-center" dangerouslySetInnerHTML={{ __html: highlightBrackets(tv) }} />
         </div>
       ))}
     </React.Fragment>
