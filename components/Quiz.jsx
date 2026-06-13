@@ -115,8 +115,17 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
   const handleCardClick = (senseIdx) => {
     if (ws.phase !== 'quiz') return;
-    // 既に解答済みでもクリアせず、フォーカスするだけ（別チップを選べば置き換わる）
-    updateWs({ focused: senseIdx });
+    // 既にチップが配置されているスロットを再タップ → 解除してプールに戻す（トグル）
+    // フォーカスが同スロットに当たっている場合も解除する
+    if (ws.assignments[senseIdx] !== undefined) {
+      const newAssign = { ...ws.assignments };
+      delete newAssign[senseIdx];
+      sfx.play('tap');
+      updateWs({ assignments: newAssign, focused: senseIdx });
+    } else {
+      // 未配置スロット → フォーカスするだけ
+      updateWs({ focused: senseIdx });
+    }
   };
 
   const handleChipClick = (chip) => {
@@ -230,6 +239,8 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
               onClick={() => handleCardClick(i)}
               className={
                 'rounded-3xl p-5 transition-all ' +
+                // クイズフェーズのカードは長押しサブメニューを抑制（revealed後は解説テキストをコピーできるよう外す）
+                (ws.phase === 'quiz' ? 'quiz-interactive ' : '') +
                 (isCorrect ? 'tg-pop ' : isWrong ? 'tg-shake ' : '') +
                 (ws.phase === 'revealed'
                   ? isCorrect ? 'bg-teal-50 border-2 border-teal-200'
@@ -313,7 +324,8 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
       </div>
 
       {/* 選択肢プール ＋ 操作ボタン（flex の子として下部に固定→本文は常にこの上に収まる） */}
-      <div className="shrink-0 bg-white/90 backdrop-blur-md border-t border-slate-100 p-5 pb-safe pt-4 z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+      {/* quiz-interactive: チップ・ボタンの長押しサブメニュー／テキスト選択を抑制 */}
+      <div className="quiz-interactive shrink-0 bg-white/90 backdrop-blur-md border-t border-slate-100 p-5 pb-safe pt-4 z-20 shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
         {ws.phase === 'quiz' && (
           <div className="tg-fadeup">
             <div className="flex flex-wrap gap-2.5 mb-4 justify-center">
