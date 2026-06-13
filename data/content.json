@@ -1459,7 +1459,7 @@
         {
           "en": "He woke up and found himself lying on the grass.",
           "jpBefore": "目を覚ますと、彼は芝生に寝転んで",
-          "answer": "〜であることに気づく",
+          "answer": "気づく",
           "jpAfter": "。",
           "jpFull": "目を覚ますと、彼は芝生に寝転んでいることに気づいた。",
           "cue": "find oneself C〈発見的自覚〉"
