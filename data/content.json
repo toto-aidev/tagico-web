@@ -617,7 +617,7 @@
         {
           "en": "Only members can enter.",
           "jpBefore": "会員",
-          "answer": "だけが",
+          "answer": "〜だけ／しか〜ない",
           "jpAfter": "入れる。",
           "jpFull": "会員だけが入れる。",
           "cue": "限定"
@@ -757,14 +757,6 @@
       "trap": "連れていく",
       "senses": [
         {
-          "en": "Take an umbrella with you.",
-          "jpBefore": "傘を",
-          "answer": "持っていく",
-          "jpAfter": "。",
-          "jpFull": "傘を持っていきなさい。",
-          "cue": "携行"
-        },
-        {
           "en": "It takes two hours by train.",
           "jpBefore": "電車で2時間",
           "answer": "かかる",
@@ -852,11 +844,11 @@
           "cue": "同格"
         },
         {
-          "en": "I am afraid of dogs.",
-          "jpBefore": "私は犬",
+          "en": "What do you think of this plan?",
+          "jpBefore": "あなたはこのプラン",
           "answer": "について",
-          "jpAfter": "こわい。",
-          "jpFull": "私は犬がこわい。",
+          "jpAfter": "どう思いますか？",
+          "jpFull": "あなたはこのプランについてどう思いますか？",
           "cue": "内容"
         },
         {
@@ -977,9 +969,9 @@
         },
         {
           "en": "He sat reading with his legs crossed.",
-          "jpBefore": "彼は脚を組ん",
-          "answer": "だ状態で",
-          "jpAfter": "本を読んでいた。",
+          "jpBefore": "",
+          "answer": "〜の状態で",
+          "jpAfter": "彼は脚を組んだ状態で本を読んでいた。",
           "jpFull": "彼は脚を組んだ状態で本を読んでいた。",
           "cue": "付帯状況"
         },
