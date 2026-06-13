@@ -44,7 +44,9 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
               <Icon name="tag" size={28} fill="currentColor" />
             </div>
             <p className="font-black text-slate-600 mb-1">まだ何も保存されていません</p>
-            <p className="text-sm font-medium text-slate-400 leading-relaxed">クイズ後の「用法まとめ」内、各用法の <span className="inline-flex align-middle items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-600 text-[0.6rem] font-bold"><Icon name="bookmark" size={9} fill="currentColor" />忘れがち</span> を押すと、ここに集まります。</p>
+            <p className="text-sm font-medium text-slate-400 leading-relaxed">
+              単語カードの <span className="inline-flex align-middle items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-500 text-[0.6rem] font-bold"><Icon name="tag" size={9} fill="currentColor" />タグ</span> で単語を保存するか、用法まとめの各用法の <span className="inline-flex align-middle items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-600 text-[0.6rem] font-bold"><Icon name="bookmark" size={9} fill="currentColor" />忘れがち</span> を押すと、ここに集まります。
+            </p>
           </div>
         )}
 
@@ -110,7 +112,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
               </div>
               {isOpen && (
                 <div className="tg-fadeup px-4 pb-4 border-t border-slate-100 pt-4">
-                  <SummaryBody word={word} />
+                  <SummaryBody word={word} savedSet={appState.savedSenses} onToggleFace={onToggleSavedSense} />
                 </div>
               )}
             </div>
