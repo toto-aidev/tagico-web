@@ -44,19 +44,28 @@ const ICON_POLYGONS = {
   play: '6 3 20 12 6 21',
 };
 
+// fill で塗る path 系（polygon より複雑な形状。Tagico タグ型など）
+const ICON_FILL_PATHS = {
+  // "Tag"ico ブランドモチーフ：Home.jsx の TAG_PATH と同一形状
+  tag: 'M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z',
+};
+
 export default function Icon({ name, size = 20, color, strokeWidth = 2, fill, style, className }) {
   const d = ICON_PATHS[name];
   const extras = ICON_EXTRAS[name] || [];
   const poly = ICON_POLYGONS[name];
+  const fillPath = ICON_FILL_PATHS[name];
+  // fill系（polygon / fill path）はストロークなし。stroke系はストロークあり
+  const isFillOnly = !!(poly || fillPath);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill={poly ? (fill ? 'currentColor' : 'none') : 'none'}
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
+      fill="none"
+      stroke={isFillOnly ? 'none' : 'currentColor'}
+      strokeWidth={isFillOnly ? 0 : strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
       className={className}
@@ -67,6 +76,14 @@ export default function Icon({ name, size = 20, color, strokeWidth = 2, fill, st
         e.tag === 'circle' ? <circle key={i} {...e.attrs} /> : <rect key={i} {...e.attrs} />
       )}
       {poly && <polygon points={poly} fill={fill ? 'currentColor' : 'none'} />}
+      {fillPath && (
+        <path
+          d={fillPath}
+          fill={fill ? 'currentColor' : 'none'}
+          stroke={fill ? 'none' : 'currentColor'}
+          strokeWidth={fill ? 0 : strokeWidth}
+        />
+      )}
       {d &&
         d.split(' M').map((seg, i) => (
           <path key={'p' + i} d={i === 0 ? seg : 'M' + seg} fill="none" />

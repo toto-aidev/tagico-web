@@ -58,7 +58,7 @@ export function BookmarkButton({ active, onClick, size = 18 }) {
       aria-label="マイ単語帳に保存"
       title={active ? 'マイ単語帳から外す' : 'マイ単語帳に保存'}
     >
-      <Icon name="bookmark" size={size} fill={active ? 'currentColor' : undefined} />
+      <Icon name="tag" size={size} fill={active ? 'currentColor' : undefined} />
     </button>
   );
 }
@@ -68,7 +68,7 @@ export function BottomNav({ active, onNavigate }) {
   const items = [
     { key: 'home', label: 'クエスト', icon: 'play', screen: { type: 'home' } },
     { key: 'wordbook', label: '単語帳', icon: 'book-open', screen: { type: 'wordbook' } },
-    { key: 'my', label: 'タグ', icon: 'bookmark', screen: { type: 'my' } },
+    { key: 'my', label: 'タグ', icon: 'tag', screen: { type: 'my' } },
     { key: 'stats', label: '統計', icon: 'bar-chart', screen: { type: 'stats' } },
   ];
   return (
@@ -79,7 +79,7 @@ export function BottomNav({ active, onNavigate }) {
           return (
             <button key={it.key} onClick={() => onNavigate(it.screen)} className={'flex flex-col items-center gap-1 transition-colors ' + (on ? 'text-teal-500' : 'text-slate-400 hover:text-slate-600')}>
               <div className={'px-3 py-1.5 rounded-xl ' + (on ? 'bg-teal-50' : '')}>
-                <Icon name={it.icon} size={22} fill={on && (it.icon === 'play' || it.icon === 'bookmark') ? 'currentColor' : undefined} />
+                <Icon name={it.icon} size={22} fill={on && (it.icon === 'play' || it.icon === 'tag') ? 'currentColor' : undefined} />
               </div>
               <span className="text-[0.62rem] font-bold">{it.label}</span>
             </button>

@@ -29,7 +29,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
 
       <div className="flex items-center gap-4 px-5 py-4 bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-20 shadow-sm">
         <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-rose-100 text-rose-500">
-          <Icon name="bookmark" size={20} fill="currentColor" />
+          <Icon name="tag" size={20} fill="currentColor" />
         </div>
         <div>
           <h1 className="text-xl font-black text-slate-800 tracking-tight">マイ単語帳</h1>
@@ -41,7 +41,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
         {savedItems.length === 0 && words.length === 0 && (
           <div className="mt-16 flex flex-col items-center text-center px-8">
             <div className="w-16 h-16 rounded-3xl bg-rose-100 text-rose-400 flex items-center justify-center mb-4">
-              <Icon name="bookmark" size={28} />
+              <Icon name="tag" size={28} fill="currentColor" />
             </div>
             <p className="font-black text-slate-600 mb-1">まだ何も保存されていません</p>
             <p className="text-sm font-medium text-slate-400 leading-relaxed">クイズ後の「用法まとめ」内、各用法の <span className="inline-flex align-middle items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-600 text-[0.6rem] font-bold"><Icon name="bookmark" size={9} fill="currentColor" />忘れがち</span> を押すと、ここに集まります。</p>
@@ -80,7 +80,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
         {words.length > 0 && (
           <div>
             <h2 className="text-xs font-black text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center"><Icon name="bookmark" size={11} fill="currentColor" /></span>
+              <span className="w-5 h-5 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center"><Icon name="tag" size={11} fill="currentColor" /></span>
               ブックマークした単語（{words.length}）
             </h2>
             <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:content-start">
@@ -91,7 +91,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
               <div className="flex items-center gap-3 p-4">
                 <button onClick={() => toggle(word.id)} className="flex-1 flex items-center gap-3 text-left min-w-0">
                   <div className="w-11 h-11 rounded-2xl bg-rose-100 text-rose-500 flex items-center justify-center shrink-0">
-                    <Icon name="bookmark" size={18} fill="currentColor" />
+                    <Icon name="tag" size={18} fill="currentColor" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
