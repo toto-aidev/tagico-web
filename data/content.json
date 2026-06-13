@@ -208,7 +208,7 @@
           "answer": "むしろ",
           "jpAfter": "チャレンジだ。",
           "jpFull": "それは問題ではなく、むしろチャレンジだ。",
-          "cue": "構文"
+          "cue": "not A but B 構文"
         },
         {
           "en": "Everyone but me has finished.",
@@ -238,7 +238,7 @@
           "type": "S V, but S V"
         },
         {
-          "name": "構文",
+          "name": "not A but B 構文",
           "meaning": "「A ではなく B」",
           "type": "not A but B",
           "note": "決まった形として覚える。"
