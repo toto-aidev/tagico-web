@@ -181,9 +181,9 @@
         },
         {
           "name": "擬似関係代名詞",
-          "meaning": "「〜する…」（）",
-          "type": "N as + S V",
-          "note": "whichやthatといった関係代名詞と同様の働き。"
+          "meaning": "「〜するような…／〜する…」（訳さない）",
+          "type": "such / the same 〜 as ...",
+          "note": "such / the same とのコロケーションが目印です。"
         },
         {
           "name": "as 〜 as 構文〈比較〉",
