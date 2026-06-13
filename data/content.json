@@ -1610,16 +1610,8 @@
     {
       "id": "rather",
       "word": "rather",
-      "trap": "非常に",
+      "trap": "むしろ",
       "senses": [
-        {
-          "en": "He is a writer rather than a teacher.",
-          "jpBefore": "彼は教師というより",
-          "answer": "むしろ",
-          "jpAfter": "作家だ。",
-          "jpFull": "彼は教師というよりむしろ作家だ。",
-          "cue": "〈対比〉"
-        },
         {
           "en": "The exam was rather difficult.",
           "jpBefore": "試験は",
@@ -1801,8 +1793,8 @@
         }
       ],
       "coreImage": {
-        "headline": "「美術」だけじゃない。熟練の「技術」も art。",
-        "lead": "art は「美術・芸術」が基本ですが、もう一つ「（熟練を要する）技術・コツ」の意味があります。the art of 〜「〜の技術」が典型です。形容詞も二系統で、美術系は artistic「芸術的な」、技術系は artificial「人工の（技で作った）」と分かれます。"
+        "headline": "「芸術」だけじゃない。熟練の「技術」も art。",
+        "lead": "art は「芸術」が基本ですが、もう一つ「（熟練を要する）技術・コツ」の意味があります。the art of 〜「〜の技術」が典型です。形容詞も二系統で、美術系は artistic「芸術的な」、技術系は artificial「人工の（技で作った）」と分かれます。"
       },
       "faces": [
         {
@@ -2016,12 +2008,12 @@
       "trap": "知っている",
       "senses": [
         {
-          "en": "Wait a little longer, and you will know the truth.",
-          "jpBefore": "もう少し待てば、君は真実を",
+          "en": "You will know the answer soon.",
+          "jpBefore": "君はすぐに答えを",
           "answer": "知る",
-          "jpAfter": "。",
-          "jpFull": "もう少し待てば、君は真実を知ることになる。",
-          "cue": "動作・認識"
+          "jpAfter": "ことになる。",
+          "jpFull": "君はすぐに答えを知ることになる。",
+          "cue": "will + soon（動作）"
         },
         {
           "en": "A baby soon learns to know its mother's face.",
@@ -2122,8 +2114,8 @@
         {
           "en": "What you are saying does not make sense to me.",
           "jpBefore": "君の言っていることは私には",
-          "answer": "意味が通らない",
-          "jpAfter": "。",
+          "answer": "意味",
+          "jpAfter": "が通らない。",
           "jpFull": "君の言っていることは私には意味が通らない。",
           "cue": "意味・道理"
         },
