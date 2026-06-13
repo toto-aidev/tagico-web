@@ -199,10 +199,10 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         </button>
         <div className="flex-1 min-w-0">
           <p className="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest">
-            {isReviewMode ? '間違い復習' : (level && level.name)}
+            {isReviewMode ? '復習' : (level && level.name)}
             {levelWordIndex !== null && levelWordCount !== null && (
               <span className="ml-1.5 normal-case">
-                &middot; {isReviewMode ? '復習 ' : ''}{levelWordIndex + 1}/{levelWordCount}語目
+                &middot; {levelWordIndex + 1}/{levelWordCount}語目
               </span>
             )}
           </p>

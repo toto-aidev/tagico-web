@@ -196,7 +196,7 @@ export function HomeScreen({ appState, onNavigate }) {
                 <Icon name="rotate-ccw" size={18} />
               </div>
               <div className="text-left">
-                <p className="font-black text-base text-rose-700">間違い復習</p>
+                <p className="font-black text-base text-rose-700">復習</p>
                 <p className="text-xs font-bold text-rose-400">{(appState.reviewPool || []).length} 語 が待っています</p>
               </div>
             </div>
