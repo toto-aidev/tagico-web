@@ -82,20 +82,17 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
   const summaryRef = useRef(null);
 
   useEffect(() => {
+    // クイズ中のみ：フォーカスしたカードへスクロール。revealed フェーズでは発火しない
+    if (ws.phase !== 'quiz') return;
     if (ws.focused === null || !scrollContainerRef.current) return;
     const card = cardRefs.current[ws.focused];
     if (!card) return;
     scrollContainerRef.current.scrollTo({ top: card.offsetTop - 80, behavior: 'smooth' });
-  }, [ws.focused]);
+  }, [ws.focused, ws.phase]);
 
-  useEffect(() => {
-    if (ws.phase !== 'revealed') return;
-    const timer = setTimeout(() => {
-      if (!scrollContainerRef.current || !summaryRef.current) return;
-      scrollContainerRef.current.scrollTo({ top: summaryRef.current.offsetTop - 24, behavior: 'smooth' });
-    }, 600);
-    return () => clearTimeout(timer);
-  }, [ws.phase]);
+  // バグ修正（2026-06-14）: 答え合わせ後に summaryRef（用法まとめ）へ自動スクロールしていたが、
+  // ユーザーは問題カードの正誤解説を先に確認したいため、自動スクロールを廃止。
+  // ユーザー自身でスクロールして用法まとめを確認できる。
 
   useEffect(() => {
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTo({ top: 0 });
