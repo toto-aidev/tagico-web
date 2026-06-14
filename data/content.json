@@ -11,7 +11,8 @@
           "answer": "とある",
           "jpAfter": "男の人から電話があったよ。",
           "jpFull": "とある男の人から電話があったよ。",
-          "cue": "不特定"
+          "cue": "不特定",
+          "id": "some__とある"
         },
         {
           "en": "We still need some time to decide.",
@@ -19,7 +20,8 @@
           "answer": "いくらかの",
           "jpAfter": "時間が必要だ。",
           "jpFull": "決めるのに、まだいくらかの時間が必要だ。",
-          "cue": "量"
+          "cue": "量",
+          "id": "some__いくらかの"
         },
         {
           "en": "Some 200 people attended the lecture.",
@@ -28,7 +30,8 @@
           "jpAfter": "200人が講義に出席した。",
           "jpFull": "約200人が講義に出席した。",
           "cue": "約",
-          "hint": "lecture＝「講義」"
+          "hint": "lecture＝「講義」",
+          "id": "some__約"
         },
         {
           "en": "Some people like it, others don't.",
@@ -36,7 +39,8 @@
           "answer": "一部の",
           "jpAfter": "人は気に入るが、そうでない人もいる。",
           "jpFull": "一部の人は気に入るが、そうでない人もいる。",
-          "cue": "存在"
+          "cue": "存在",
+          "id": "some__一部の"
         }
       ],
       "coreImage": {
@@ -85,7 +89,8 @@
           "answer": "として",
           "jpAfter": "尊敬している。",
           "jpFull": "私は彼をリーダーとして尊敬している。",
-          "cue": "前置詞〈資格〉"
+          "cue": "前置詞〈資格〉",
+          "id": "as__として"
         },
         {
           "en": "As it was late, we went home.",
@@ -93,7 +98,8 @@
           "answer": "なので",
           "jpAfter": "、私たちは帰宅した。",
           "jpFull": "遅くなったので、私たちは帰宅した。",
-          "cue": "接続詞〈理由〉"
+          "cue": "接続詞〈理由〉",
+          "id": "as__なので"
         },
         {
           "en": "As we grow older, time flies faster.",
@@ -101,7 +107,8 @@
           "answer": "につれて",
           "jpAfter": "、時間が経つのが速くなる。",
           "jpFull": "年を取るにつれて、時間が経つのが速くなる。",
-          "cue": "接続詞〈比例〉"
+          "cue": "接続詞〈比例〉",
+          "id": "as__につれて"
         },
         {
           "en": "She hummed as she cooked.",
@@ -110,7 +117,8 @@
           "jpAfter": "鼻歌を歌った。",
           "jpFull": "彼女は料理をしながら鼻歌を歌った。",
           "cue": "接続詞〈時〉",
-          "hint": "hum＝「鼻歌を歌う」"
+          "hint": "hum＝「鼻歌を歌う」",
+          "id": "as__しながら"
         },
         {
           "en": "Do it as I showed you.",
@@ -118,7 +126,8 @@
           "answer": "ように",
           "jpAfter": "やりなさい。",
           "jpFull": "私がやって見せたようにやりなさい。",
-          "cue": "接続詞〈様態〉"
+          "cue": "接続詞〈様態〉",
+          "id": "as__ように"
         },
         {
           "en": "Young as he is, he is wise.",
@@ -127,7 +136,8 @@
           "jpAfter": "、賢い。",
           "jpFull": "確かに彼は若いが、賢い。",
           "cue": "接続詞〈譲歩〉",
-          "hint": "wise＝「賢い」"
+          "hint": "wise＝「賢い」",
+          "id": "as__確かに_だが"
         },
         {
           "en": "Such books as I have are old.",
@@ -135,7 +145,8 @@
           "answer": "ような",
           "jpAfter": "本は、どれも古い。",
           "jpFull": "私が持っているような本は、どれも古い。",
-          "cue": "擬似関係代名詞"
+          "cue": "擬似関係代名詞",
+          "id": "as__ような"
         }
       ],
       "coreImage": {
@@ -208,7 +219,8 @@
           "answer": "むしろ",
           "jpAfter": "チャレンジだ。",
           "jpFull": "それは問題ではなく、むしろチャレンジだ。",
-          "cue": "not A but B 構文"
+          "cue": "not A but B 構文",
+          "id": "but__むしろ"
         },
         {
           "en": "Everyone but me has finished.",
@@ -216,7 +228,8 @@
           "answer": "以外",
           "jpAfter": "全員が終わっている。",
           "jpFull": "私以外、全員が終わっている。",
-          "cue": "除外"
+          "cue": "除外",
+          "id": "but__以外"
         },
         {
           "en": "He is but a child.",
@@ -224,7 +237,8 @@
           "answer": "ほんの",
           "jpAfter": "子どもにすぎない。",
           "jpFull": "彼はほんの子どもにすぎない。",
-          "cue": "限定"
+          "cue": "限定",
+          "id": "but__ほんの"
         }
       ],
       "coreImage": {
@@ -269,7 +283,8 @@
           "answer": "あの",
           "jpAfter": "犬は危なそうだ。",
           "jpFull": "あの犬は危なそうだ。",
-          "cue": "限定詞"
+          "cue": "限定詞",
+          "id": "that__あの"
         },
         {
           "en": "That is exactly what I meant.",
@@ -277,7 +292,8 @@
           "answer": "それ",
           "jpAfter": "こそ、私が言いたかったことだ。",
           "jpFull": "それこそ、私が言いたかったことだ。",
-          "cue": "指示代名詞"
+          "cue": "指示代名詞",
+          "id": "that__それ"
         },
         {
           "en": "The news that he won surprised us.",
@@ -285,7 +301,8 @@
           "answer": "という",
           "jpAfter": "知らせは私たちを驚かせた。",
           "jpFull": "彼が勝ったという知らせは私たちを驚かせた。",
-          "cue": "接続詞〈同格〉（名詞節）"
+          "cue": "接続詞〈同格〉（名詞節）",
+          "id": "that__という"
         },
         {
           "en": "It's not that difficult.",
@@ -293,7 +310,8 @@
           "answer": "それほど",
           "jpAfter": "難しくはない。",
           "jpFull": "それほど難しくはない。",
-          "cue": "副詞"
+          "cue": "副詞",
+          "id": "that__それほど"
         },
         {
           "en": "He is the man that I met on the train.",
@@ -301,7 +319,8 @@
           "answer": "（訳さない）",
           "jpAfter": "男性だ。",
           "jpFull": "彼が、私が電車で出会った男性だ。",
-          "cue": "関係代名詞"
+          "cue": "関係代名詞",
+          "id": "that__訳さない"
         }
       ],
       "coreImage": {
@@ -362,7 +381,8 @@
           "answer": "つもりだ",
           "jpAfter": "。",
           "jpFull": "明日電話するつもりだ。",
-          "cue": "意志"
+          "cue": "意志",
+          "id": "will__つもりだ"
         },
         {
           "en": "I will be twenty next month.",
@@ -370,7 +390,8 @@
           "answer": "（訳さない）",
           "jpAfter": "。",
           "jpFull": "来月で20歳になる。",
-          "cue": "確定的な未来"
+          "cue": "確定的な未来",
+          "id": "will__訳さない"
         },
         {
           "en": "Children will cry.",
@@ -378,7 +399,8 @@
           "answer": "ものだ",
           "jpAfter": "。",
           "jpFull": "子供は泣くものだ。",
-          "cue": "習慣・性質"
+          "cue": "習慣・性質",
+          "id": "will__ものだ"
         },
         {
           "en": "Will you open the door?",
@@ -386,7 +408,8 @@
           "answer": "くれませんか",
           "jpAfter": "？",
           "jpFull": "ドアを開けてくれませんか？",
-          "cue": "依頼"
+          "cue": "依頼",
+          "id": "will__くれませんか"
         },
         {
           "en": "The door won't open.",
@@ -394,7 +417,8 @@
           "answer": "どうしても〜ない",
           "jpAfter": "。",
           "jpFull": "ドアがどうしても開かない。",
-          "cue": "強い拒絶"
+          "cue": "強い拒絶",
+          "id": "will__どうしても_ない"
         }
       ],
       "coreImage": {
@@ -453,7 +477,8 @@
           "answer": "だろう",
           "jpAfter": "。",
           "jpFull": "それは素晴らしいだろう。",
-          "cue": "推量"
+          "cue": "推量",
+          "id": "would__だろう"
         },
         {
           "en": "We would often play here as kids.",
@@ -461,7 +486,8 @@
           "answer": "したものだ",
           "jpAfter": "。",
           "jpFull": "子供の頃、よくここで遊んだりしたものだ。",
-          "cue": "過去の習慣"
+          "cue": "過去の習慣",
+          "id": "would__したものだ"
         },
         {
           "en": "Would you open the window?",
@@ -469,7 +495,8 @@
           "answer": "くれませんか",
           "jpAfter": "。",
           "jpFull": "窓を開けてくれませんか。",
-          "cue": "依頼"
+          "cue": "依頼",
+          "id": "would__くれませんか"
         },
         {
           "en": "I would help you if I could.",
@@ -477,7 +504,8 @@
           "answer": "のに",
           "jpAfter": "。",
           "jpFull": "できるなら、君を助けるのに。",
-          "cue": "仮定法"
+          "cue": "仮定法",
+          "id": "would__のに"
         },
         {
           "en": "I would like a cup of coffee.",
@@ -485,7 +513,8 @@
           "answer": "いただきたい",
           "jpAfter": "のですが。",
           "jpFull": "コーヒーを一杯いただきたいのですが。",
-          "cue": "控えめな願望"
+          "cue": "控えめな願望",
+          "id": "would__いただきたい"
         }
       ],
       "coreImage": {
@@ -537,7 +566,8 @@
           "answer": "取る",
           "jpAfter": "。",
           "jpFull": "レースで1位を取った。",
-          "cue": "獲得"
+          "cue": "獲得",
+          "id": "get__取る"
         },
         {
           "en": "We got home very late.",
@@ -545,7 +575,8 @@
           "answer": "着く",
           "jpAfter": "。",
           "jpFull": "私たちはとても遅く家に着いた。",
-          "cue": "到着"
+          "cue": "到着",
+          "id": "get__着く"
         },
         {
           "en": "It's getting cold outside.",
@@ -553,7 +584,8 @@
           "answer": "なる",
           "jpAfter": "。",
           "jpFull": "外はだんだん寒くなってきた。",
-          "cue": "変化"
+          "cue": "変化",
+          "id": "get__なる"
         },
         {
           "en": "Oh, now I get it.",
@@ -561,7 +593,8 @@
           "answer": "わかる",
           "jpAfter": "。",
           "jpFull": "ああ、やっとわかった。",
-          "cue": "理解"
+          "cue": "理解",
+          "id": "get__わかる"
         },
         {
           "en": "I got him to help me.",
@@ -569,7 +602,8 @@
           "answer": "してもらう",
           "jpAfter": "。",
           "jpFull": "私は彼に手伝いをしてもらった。",
-          "cue": "使役"
+          "cue": "使役",
+          "id": "get__してもらう"
         }
       ],
       "coreImage": {
@@ -620,7 +654,8 @@
           "answer": "〜だけ／しか〜ない",
           "jpAfter": "入れる。",
           "jpFull": "会員だけが入れる。",
-          "cue": "限定"
+          "cue": "限定",
+          "id": "only__だけ_しか_ない"
         },
         {
           "en": "It costs only five dollars.",
@@ -628,7 +663,8 @@
           "answer": "ほんの",
           "jpAfter": "5ドルだ。",
           "jpFull": "それはほんの5ドルだ。",
-          "cue": "少なさ強調"
+          "cue": "少なさ強調",
+          "id": "only__ほんの"
         },
         {
           "en": "She is the only child in the family.",
@@ -636,7 +672,8 @@
           "answer": "唯一の",
           "jpAfter": "子供だ。",
           "jpFull": "彼女はその家の唯一の子供だ。",
-          "cue": "唯一"
+          "cue": "唯一",
+          "id": "only__唯一の"
         },
         {
           "en": "Only then did I understand.",
@@ -644,7 +681,8 @@
           "answer": "になって初めて",
           "jpAfter": "、私は理解した。",
           "jpFull": "その時になって初めて、私は理解した。",
-          "cue": "時の強調"
+          "cue": "時の強調",
+          "id": "only__になって初めて"
         }
       ],
       "coreImage": {
@@ -688,7 +726,8 @@
           "answer": "たった今",
           "jpAfter": "駅に着いたところだ。",
           "jpFull": "私はたった今駅に着いたところだ。",
-          "cue": "完了"
+          "cue": "完了",
+          "id": "just__たった今"
         },
         {
           "en": "It takes just five minutes.",
@@ -696,7 +735,8 @@
           "answer": "ほんの",
           "jpAfter": "5分しかかからない。",
           "jpFull": "それはほんの5分しかかからない。",
-          "cue": "少なさ"
+          "cue": "少なさ",
+          "id": "just__ほんの"
         },
         {
           "en": "Just wait a moment, please.",
@@ -704,7 +744,8 @@
           "answer": "ちょっと",
           "jpAfter": "待ってください。",
           "jpFull": "ちょっと待ってください。",
-          "cue": "やわらげ"
+          "cue": "やわらげ",
+          "id": "just__ちょっと"
         },
         {
           "en": "It was a just decision.",
@@ -712,7 +753,8 @@
           "answer": "公正な",
           "jpAfter": "決定だった。",
           "jpFull": "それは公正な決定だった。",
-          "cue": "形容詞"
+          "cue": "形容詞",
+          "id": "just__公正な"
         }
       ],
       "coreImage": {
@@ -762,7 +804,8 @@
           "answer": "かかる",
           "jpAfter": "。",
           "jpFull": "電車で2時間かかる。",
-          "cue": "所要"
+          "cue": "所要",
+          "id": "take__かかる"
         },
         {
           "en": "Let's take a taxi to the station.",
@@ -770,7 +813,8 @@
           "answer": "乗る",
           "jpAfter": "。",
           "jpFull": "駅までタクシーに乗ろう。",
-          "cue": "利用"
+          "cue": "利用",
+          "id": "take__乗る"
         },
         {
           "en": "Don't take it personally.",
@@ -778,7 +822,8 @@
           "answer": "受け取る",
           "jpAfter": "な。",
           "jpFull": "それを個人的に受け取るな。",
-          "cue": "解釈"
+          "cue": "解釈",
+          "id": "take__受け取る"
         },
         {
           "en": "Let's take a short break.",
@@ -786,7 +831,8 @@
           "answer": "とる",
           "jpAfter": "。",
           "jpFull": "少し休憩をとろう。",
-          "cue": "行動"
+          "cue": "行動",
+          "id": "take__とる"
         }
       ],
       "coreImage": {
@@ -841,7 +887,8 @@
           "answer": "という",
           "jpAfter": "都市",
           "jpFull": "ローマという都市",
-          "cue": "同格"
+          "cue": "同格",
+          "id": "of__という"
         },
         {
           "en": "What do you think of this plan?",
@@ -849,7 +896,8 @@
           "answer": "について",
           "jpAfter": "どう思いますか？",
           "jpFull": "あなたはこのプランについてどう思いますか？",
-          "cue": "内容"
+          "cue": "内容",
+          "id": "of__について"
         },
         {
           "en": "This ring is made of gold.",
@@ -857,7 +905,8 @@
           "answer": "から・で",
           "jpAfter": "。",
           "jpFull": "この指輪は金でできている。",
-          "cue": "構成要素"
+          "cue": "構成要素",
+          "id": "of__から・で"
         },
         {
           "en": "One of my friends lives in Paris.",
@@ -865,7 +914,8 @@
           "answer": "のうちの・の中で",
           "jpAfter": "一人はパリに住んでいる。",
           "jpFull": "私の友達のうちの一人はパリに住んでいる。",
-          "cue": "部分・全体"
+          "cue": "部分・全体",
+          "id": "of__のうちの・の中で"
         },
         {
           "en": "He is a man of great courage.",
@@ -873,7 +923,8 @@
           "answer": "という性質を持った",
           "jpAfter": "男だ。",
           "jpFull": "彼はとても勇気のある男だ。",
-          "cue": "性質"
+          "cue": "性質",
+          "id": "of__という性質を持った"
         },
         {
           "en": "the discovery of America",
@@ -882,7 +933,8 @@
           "jpAfter": "発見すること",
           "jpFull": "アメリカを発見すること",
           "cue": "名詞構文の目的語",
-          "hint": "名詞構文として"
+          "hint": "名詞構文として",
+          "id": "of__を"
         },
         {
           "en": "He died of cancer.",
@@ -890,7 +942,8 @@
           "answer": "で・のために",
           "jpAfter": "亡くなった。",
           "jpFull": "彼はがんで亡くなった。",
-          "cue": "原因"
+          "cue": "原因",
+          "id": "of__で・のために"
         }
       ],
       "coreImage": {
@@ -957,7 +1010,8 @@
           "answer": "を持った",
           "jpAfter": "男性",
           "jpFull": "帽子を持った男性",
-          "cue": "所持・所有"
+          "cue": "所持・所有",
+          "id": "with__を持った"
         },
         {
           "en": "Cut it with a knife.",
@@ -965,7 +1019,8 @@
           "answer": "で",
           "jpAfter": "切りなさい。",
           "jpFull": "ナイフで切りなさい。",
-          "cue": "道具・手段"
+          "cue": "道具・手段",
+          "id": "with__で"
         },
         {
           "en": "He sat reading with his legs crossed.",
@@ -973,7 +1028,8 @@
           "answer": "〜の状態で",
           "jpAfter": "彼は脚を組んだ状態で本を読んでいた。",
           "jpFull": "彼は脚を組んだ状態で本を読んでいた。",
-          "cue": "付帯状況"
+          "cue": "付帯状況",
+          "id": "with__の状態で"
         },
         {
           "en": "She was trembling with fear.",
@@ -981,7 +1037,8 @@
           "answer": "で・のために",
           "jpAfter": "震えていた。",
           "jpFull": "彼女は恐怖のために震えていた。",
-          "cue": "原因・理由"
+          "cue": "原因・理由",
+          "id": "with__で・のために"
         },
         {
           "en": "Are you with me?",
@@ -989,7 +1046,8 @@
           "answer": "に賛成",
           "jpAfter": "ですか？",
           "jpFull": "私の意見に賛成ですか？",
-          "cue": "一致・賛成"
+          "cue": "一致・賛成",
+          "id": "with__に賛成"
         }
       ],
       "coreImage": {
@@ -1047,7 +1105,8 @@
           "answer": "している",
           "jpAfter": "。",
           "jpFull": "彼女は長い髪をしている。",
-          "cue": "所有"
+          "cue": "所有",
+          "id": "have__している"
         },
         {
           "en": "I usually have breakfast at seven.",
@@ -1055,7 +1114,8 @@
           "answer": "とる",
           "jpAfter": "。",
           "jpFull": "私はたいてい7時に朝食をとる。",
-          "cue": "飲食"
+          "cue": "飲食",
+          "id": "have__とる"
         },
         {
           "en": "I had my hair cut yesterday.",
@@ -1063,7 +1123,8 @@
           "answer": "させる・してもらう",
           "jpAfter": "。",
           "jpFull": "私は昨日、髪を切ってもらった。",
-          "cue": "使役"
+          "cue": "使役",
+          "id": "have__させる・してもらう"
         }
       ],
       "coreImage": {
@@ -1109,7 +1170,8 @@
           "answer": "（訳さない）",
           "jpAfter": "ジョンだった。",
           "jpFull": "窓を割ったのは、ジョンだった。",
-          "cue": "強調構文"
+          "cue": "強調構文",
+          "id": "it__訳さない"
         }
       ],
       "coreImage": {
@@ -1161,7 +1223,8 @@
           "answer": "取れて・外れて",
           "jpAfter": "しまった。",
           "jpFull": "コートのボタンが取れてしまった。",
-          "cue": "物理的分離"
+          "cue": "物理的分離",
+          "id": "off__取れて・外れて"
         },
         {
           "en": "He got in the car and drove off.",
@@ -1169,7 +1232,8 @@
           "answer": "去って",
           "jpAfter": "いった。",
           "jpFull": "彼は車に乗り、去っていった。",
-          "cue": "出発・立ち去る"
+          "cue": "出発・立ち去る",
+          "id": "off__去って"
         },
         {
           "en": "I'll take tomorrow off.",
@@ -1177,7 +1241,8 @@
           "answer": "休んで",
           "jpAfter": "いるつもりだ。",
           "jpFull": "明日は休んでいるつもりだ。",
-          "cue": "休み"
+          "cue": "休み",
+          "id": "off__休んで"
         },
         {
           "en": "Everything was 20 percent off.",
@@ -1185,7 +1250,8 @@
           "answer": "引き",
           "jpAfter": "だった。",
           "jpFull": "すべてが20パーセント引きだった。",
-          "cue": "基準からずれ・割引"
+          "cue": "基準からずれ・割引",
+          "id": "off__引き"
         }
       ],
       "coreImage": {
@@ -1237,7 +1303,8 @@
           "answer": "としても",
           "jpAfter": "、少なくとも正直だ。",
           "jpFull": "彼は貧しいとしても、少なくとも正直だ。",
-          "cue": "譲歩（even if）"
+          "cue": "譲歩（even if）",
+          "id": "if__としても"
         },
         {
           "en": "I don't know if he will come.",
@@ -1245,7 +1312,8 @@
           "answer": "かどうか",
           "jpAfter": "わからない。",
           "jpFull": "彼が来るかどうかわからない。",
-          "cue": "名詞節（whether）"
+          "cue": "名詞節（whether）",
+          "id": "if__かどうか"
         }
       ],
       "coreImage": {
@@ -1291,7 +1359,8 @@
           "answer": "すると",
           "jpAfter": "、溶ける。",
           "jpFull": "氷を熱すると、溶ける。",
-          "cue": "継起"
+          "cue": "継起",
+          "id": "when__すると"
         },
         {
           "en": "He walks to work when he could take the bus.",
@@ -1299,7 +1368,8 @@
           "answer": "のに",
           "jpAfter": "、彼は歩いて通勤する。",
           "jpFull": "バスに乗れるのに、彼は歩いて通勤する。",
-          "cue": "譲歩・対比"
+          "cue": "譲歩・対比",
+          "id": "when__のに"
         },
         {
           "en": "I'll give it to you when you say 'please'.",
@@ -1307,7 +1377,8 @@
           "answer": "たら",
           "jpAfter": "、これをあげよう。",
           "jpFull": "「お願い」と言ったら、これをあげよう。",
-          "cue": "条件"
+          "cue": "条件",
+          "id": "when__たら"
         }
       ],
       "coreImage": {
@@ -1353,7 +1424,8 @@
           "answer": "どんな〜でも",
           "jpAfter": "生徒でも練習次第でこのスキルは身につく。",
           "jpFull": "どんな生徒でも練習次第でこのスキルは身につく。",
-          "cue": "任意"
+          "cue": "任意",
+          "id": "any__どんな_でも"
         },
         {
           "en": "I searched everywhere, but I could not find any water.",
@@ -1361,7 +1433,8 @@
           "answer": "少しも（〜ない）",
           "jpAfter": "見つからなかった。",
           "jpFull": "どこを探しても、水が少しも見つからなかった。",
-          "cue": "全否定強調"
+          "cue": "全否定強調",
+          "id": "any__少しも_ない"
         },
         {
           "en": "If you have any concerns, feel free to let me know.",
@@ -1369,7 +1442,8 @@
           "answer": "少しでも",
           "jpAfter": "気になることがあれば、遠慮なく言ってください。",
           "jpFull": "少しでも気になることがあれば、遠慮なく言ってください。",
-          "cue": "最小限"
+          "cue": "最小限",
+          "id": "any__少しでも"
         }
       ],
       "coreImage": {
@@ -1409,7 +1483,8 @@
           "answer": "（というのも）〜だから・ため",
           "jpAfter": "気圧計が下がっているから。",
           "jpFull": "雨が降るだろう、というのも気圧計が下がっているから。",
-          "cue": "接続詞・理由"
+          "cue": "接続詞・理由",
+          "id": "for__というのも_だから・ため"
         },
         {
           "en": "It is necessary for you to study hard.",
@@ -1417,7 +1492,8 @@
           "answer": "が",
           "jpAfter": "一生懸命勉強する必要がある。",
           "jpFull": "あなたが一生懸命勉強する必要がある。",
-          "cue": "意味上の主語"
+          "cue": "意味上の主語",
+          "id": "for__が"
         }
       ],
       "coreImage": {
@@ -1454,7 +1530,8 @@
           "answer": "わかる",
           "jpAfter": "。",
           "jpFull": "私はその本がとても面白いとわかった。",
-          "cue": "find O C〈認識〉"
+          "cue": "find O C〈認識〉",
+          "id": "find__わかる"
         },
         {
           "en": "He woke up and found himself lying on the grass.",
@@ -1462,7 +1539,8 @@
           "answer": "気づく",
           "jpAfter": "。",
           "jpFull": "目を覚ますと、彼は芝生に寝転んでいることに気づいた。",
-          "cue": "find oneself C〈発見的自覚〉"
+          "cue": "find oneself C〈発見的自覚〉",
+          "id": "find__気づく"
         }
       ],
       "coreImage": {
@@ -1502,7 +1580,8 @@
           "answer": "知る・わかる",
           "jpAfter": "。",
           "jpFull": "私は彼女から真実を知った。",
-          "cue": "learn A〈知る・わかる〉"
+          "cue": "learn A〈知る・わかる〉",
+          "id": "learn__知る・わかる"
         },
         {
           "en": "The baby learned to walk at ten months.",
@@ -1510,7 +1589,8 @@
           "answer": "〜できるようになる",
           "jpAfter": "。",
           "jpFull": "赤ちゃんは10か月で歩けるようになった。",
-          "cue": "learn to do〈できるようになる〉"
+          "cue": "learn to do〈できるようになる〉",
+          "id": "learn__できるようになる"
         }
       ],
       "coreImage": {
@@ -1556,7 +1636,8 @@
           "answer": "動く",
           "jpAfter": "。",
           "jpFull": "今日はエレベーターが動いていない。",
-          "cue": "機械が動く・作動する"
+          "cue": "機械が動く・作動する",
+          "id": "work__動く"
         },
         {
           "en": "This medicine really works.",
@@ -1564,7 +1645,8 @@
           "answer": "効く",
           "jpAfter": "。",
           "jpFull": "この薬は本当に効く。",
-          "cue": "効く・うまくいく"
+          "cue": "効く・うまくいく",
+          "id": "work__効く"
         },
         {
           "en": "She admired the works of Shakespeare.",
@@ -1572,7 +1654,8 @@
           "answer": "作品",
           "jpAfter": "に感銘を受けた。",
           "jpFull": "彼女はシェイクスピアの作品に感銘を受けた。",
-          "cue": "名詞〈作品〉"
+          "cue": "名詞〈作品〉",
+          "id": "work__作品"
         }
       ],
       "coreImage": {
@@ -1618,7 +1701,8 @@
           "answer": "かなり・やや",
           "jpAfter": "難しかった。",
           "jpFull": "試験はかなり難しかった。",
-          "cue": "〈程度〉"
+          "cue": "〈程度〉",
+          "id": "rather__かなり・やや"
         },
         {
           "en": "I would rather stay home.",
@@ -1626,7 +1710,8 @@
           "answer": "どちらかといえば",
           "jpAfter": "家にいたい。",
           "jpFull": "私はどちらかといえば家にいたい。",
-          "cue": "〈選好〉"
+          "cue": "〈選好〉",
+          "id": "rather__どちらかといえば"
         }
       ],
       "coreImage": {
@@ -1666,7 +1751,8 @@
           "answer": "から（外へ）",
           "jpAfter": "出ていった。",
           "jpFull": "彼女は部屋から外へ出ていった。",
-          "cue": "〈起点〉"
+          "cue": "〈起点〉",
+          "id": "out of__から_外へ"
         },
         {
           "en": "He asked the question out of curiosity.",
@@ -1674,7 +1760,8 @@
           "answer": "から",
           "jpAfter": "その質問をした。",
           "jpFull": "彼は好奇心からその質問をした。",
-          "cue": "〈動機・原因〉"
+          "cue": "〈動機・原因〉",
+          "id": "out of__から"
         },
         {
           "en": "We are out of sugar.",
@@ -1682,7 +1769,8 @@
           "answer": "が切れて",
           "jpAfter": "いる。",
           "jpFull": "砂糖が切れている。",
-          "cue": "〈不足・枯渇〉"
+          "cue": "〈不足・枯渇〉",
+          "id": "out of__が切れて"
         },
         {
           "en": "Nine out of ten people agreed.",
@@ -1690,7 +1778,8 @@
           "answer": "のうち",
           "jpAfter": "9人が賛成した。",
           "jpFull": "10人のうち9人が賛成した。",
-          "cue": "〈割合〉"
+          "cue": "〈割合〉",
+          "id": "out of__のうち"
         },
         {
           "en": "The machine is out of order.",
@@ -1698,7 +1787,8 @@
           "answer": "故障して",
           "jpAfter": "いる。",
           "jpFull": "その機械は故障している。",
-          "cue": "〈状態からの離脱〉"
+          "cue": "〈状態からの離脱〉",
+          "id": "out of__故障して"
         }
       ],
       "coreImage": {
@@ -1753,7 +1843,8 @@
           "answer": "与えない・奪う",
           "jpAfter": "投票する権利を。",
           "jpFull": "彼らは彼に投票する権利を与えなかった。",
-          "cue": "deny 人 モノ（与えない）"
+          "cue": "deny 人 モノ（与えない）",
+          "id": "deny__与えない・奪う"
         }
       ],
       "coreImage": {
@@ -1789,7 +1880,8 @@
           "answer": "技術",
           "jpAfter": "",
           "jpFull": "会話の技術",
-          "cue": "技術・コツ"
+          "cue": "技術・コツ",
+          "id": "art__技術"
         }
       ],
       "coreImage": {
@@ -1823,7 +1915,8 @@
           "answer": "姿",
           "jpAfter": "を見た。",
           "jpFull": "彼は鏡に映った自分の姿を見た。",
-          "cue": "像・姿"
+          "cue": "像・姿",
+          "id": "image__姿"
         },
         {
           "en": "The dove is an image of peace.",
@@ -1831,7 +1924,8 @@
           "answer": "象徴",
           "jpAfter": "だ。",
           "jpFull": "ハトは平和の象徴だ。",
-          "cue": "象徴・体現"
+          "cue": "象徴・体現",
+          "id": "image__象徴"
         },
         {
           "en": "The satellite sent back images of Mars.",
@@ -1840,7 +1934,8 @@
           "jpAfter": "を送ってきた。",
           "jpFull": "衛星は火星の画像を送ってきた。",
           "cue": "画像・映像",
-          "hint": "satellite：衛星"
+          "hint": "satellite：衛星",
+          "id": "image__画像"
         }
       ],
       "coreImage": {
@@ -1886,7 +1981,8 @@
           "answer": "それどころか",
           "jpAfter": "かなり暖かい。",
           "jpFull": "寒くない。それどころか、かなり暖かい。",
-          "cue": "〈上書き・強調〉"
+          "cue": "〈上書き・強調〉",
+          "id": "in fact__それどころか"
         }
       ],
       "coreImage": {
@@ -1920,7 +2016,8 @@
           "answer": "なにしろ",
           "jpAfter": "まだ子どもなんだから。",
           "jpFull": "彼を責めないで。なにしろまだ子どもなんだから。",
-          "cue": "〈理由の後出し〉"
+          "cue": "〈理由の後出し〉",
+          "id": "after all__なにしろ"
         }
       ],
       "coreImage": {
@@ -1954,7 +2051,8 @@
           "answer": "それほど",
           "jpAfter": "難しくはないよ。",
           "jpFull": "心配しないで、それほど難しくはないよ。",
-          "cue": "副詞・程度"
+          "cue": "副詞・程度",
+          "id": "so__それほど"
         },
         {
           "en": "She said she would come, and I hope so.",
@@ -1962,7 +2060,8 @@
           "answer": "そう",
           "jpAfter": "なることを願う。",
           "jpFull": "彼女は来ると言ったし、そうなることを願う。",
-          "cue": "副詞・様態/代用"
+          "cue": "副詞・様態/代用",
+          "id": "so__そう"
         },
         {
           "en": "My knee started hurting, so I stopped running.",
@@ -1970,7 +2069,8 @@
           "answer": "だから",
           "jpAfter": "私は走るのをやめた。",
           "jpFull": "膝が痛み始めた、だから私は走るのをやめた。",
-          "cue": "接続詞・結果"
+          "cue": "接続詞・結果",
+          "id": "so__だから"
         }
       ],
       "coreImage": {
@@ -2013,7 +2113,8 @@
           "answer": "知る",
           "jpAfter": "ことになる。",
           "jpFull": "君はすぐに答えを知ることになる。",
-          "cue": "will + soon（動作）"
+          "cue": "will + soon（動作）",
+          "id": "know__知る"
         },
         {
           "en": "A baby soon learns to know its mother's face.",
@@ -2021,7 +2122,8 @@
           "answer": "見分ける",
           "jpAfter": "ようになる。",
           "jpFull": "赤ん坊はすぐに母親の顔を見分けるようになる。",
-          "cue": "識別・判断"
+          "cue": "識別・判断",
+          "id": "know__見分ける"
         }
       ],
       "coreImage": {
@@ -2061,7 +2163,8 @@
           "answer": "について",
           "jpAfter": "講義をした。",
           "jpFull": "彼はローマ史についての講義をした。",
-          "cue": "主題・専門"
+          "cue": "主題・専門",
+          "id": "on__について"
         },
         {
           "en": "There was a small spider on the ceiling.",
@@ -2069,7 +2172,8 @@
           "answer": "くっついて",
           "jpAfter": "いた。",
           "jpFull": "天井に小さなクモがくっついていた。",
-          "cue": "接触"
+          "cue": "接触",
+          "id": "on__くっついて"
         },
         {
           "en": "Whether we go out depends on the weather.",
@@ -2077,7 +2181,8 @@
           "answer": "次第だ",
           "jpAfter": "。",
           "jpFull": "外出するかどうかは天気次第だ。",
-          "cue": "依存"
+          "cue": "依存",
+          "id": "on__次第だ"
         }
       ],
       "coreImage": {
@@ -2117,7 +2222,8 @@
           "answer": "意味",
           "jpAfter": "が通らない。",
           "jpFull": "君の言っていることは私には意味が通らない。",
-          "cue": "意味・道理"
+          "cue": "意味・道理",
+          "id": "sense__意味"
         },
         {
           "en": "She had the good sense to keep quiet about it.",
@@ -2125,7 +2231,8 @@
           "answer": "分別",
           "jpAfter": "があった。",
           "jpFull": "彼女はそれについて黙っているだけの分別があった。",
-          "cue": "良識・判断力"
+          "cue": "良識・判断力",
+          "id": "sense__分別"
         },
         {
           "en": "She finally found a sense of belonging in the new team.",
@@ -2133,7 +2240,8 @@
           "answer": "意識・〜感",
           "jpAfter": "を感じた。",
           "jpFull": "彼女はついに新しいチームに帰属意識を感じた。",
-          "cue": "意識・〜感"
+          "cue": "意識・〜感",
+          "id": "sense__意識・_感"
         }
       ],
       "coreImage": {

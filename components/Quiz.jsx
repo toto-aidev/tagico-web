@@ -2,6 +2,11 @@
 
 // components/Quiz.jsx — クイズ画面 ＋ 結果画面（Pop テーマ / Polyseme Quest）
 // tagico-studio/v2-quiz.jsx の移植。挙動は同一、confetti は npm パッケージに置換。
+// 2026-06-14: SRS 復習モード対応（isSrsReview / srsContext prop）
+//   - handleNext で senseResults（語義別正誤）を score に追加し App.jsx へ渡す
+//   - isSrsReview=true 時: カードの上部に「過去の自分」演出バナーを表示
+//     （より凝った案: sense ごとのカードをグレーアウト＋过去の誤答日を蛍光ハイライト等、
+//      TODO: srsContext.senseIds でフィルタして「今回復習対象の語義」だけ強調する）
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import confetti from 'canvas-confetti';
@@ -65,7 +70,9 @@ function fireConfetti() {
   confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#2DD4BF', '#FF6B6B', '#FCD34D', '#FFFFFF'] });
 }
 
-export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount, isReviewMode }) {
+// isSrsReview: true なら SRS 語義単位の復習モード（「過去の自分」演出を表示）
+// srsContext: { senseIds: string[], earliestMiss: string|null } — 今回復習対象の情報
+export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount, isReviewMode, isSrsReview, srsContext }) {
   const level = getLevel(levelId);
   const wordIds = propWordIds || (level && level.wordIds) || [];
 
@@ -90,9 +97,14 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     scrollContainerRef.current.scrollTo({ top: card.offsetTop - 80, behavior: 'smooth' });
   }, [ws.focused, ws.phase]);
 
-  // バグ修正（2026-06-14）: 答え合わせ後に summaryRef（用法まとめ）へ自動スクロールしていたが、
-  // ユーザーは問題カードの正誤解説を先に確認したいため、自動スクロールを廃止。
-  // ユーザー自身でスクロールして用法まとめを確認できる。
+  // 答え合わせ後（revealed）に画面先頭（問題01）へジャンプ。
+  // ユーザーが上から正誤を確認しながら下の用法まとめへスクロールできる流れにする。
+  // クイズ入力中（phase='quiz'）のチップ選択では発火しない。
+  useEffect(() => {
+    if (ws.phase !== 'revealed') return;
+    if (!scrollContainerRef.current) return;
+    scrollContainerRef.current.scrollTo({ top: 0 });
+  }, [ws.phase]);
 
   useEffect(() => {
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTo({ top: 0 });
@@ -172,7 +184,12 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     // 最後の単語＝「結果を見る」はファンファーレ判定が App 側で走るので、ここでは中間遷移のみ鳴らす。
     if (wordIdx < wordIds.length - 1) sfx.play('next'); // 次の単語へ：軽い上昇のひと押し
     const correct = word.senses.filter((s, i) => ws.assignments[i] === s.answer).length;
-    const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit, seeAnswer: ws.seeAnswer || false }];
+    // senseResults: 語義単位の正誤（SRS に渡すため sense.id を含める）
+    const senseResults = word.senses.map((s, i) => ({
+      senseId: s.id || (word.id + ':' + i), // id がない場合はフォールバック（移行期対策）
+      correct: ws.assignments[i] === s.answer,
+    }));
+    const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit, seeAnswer: ws.seeAnswer || false, senseResults }];
     setScores(newScores);
     if (wordIdx < wordIds.length - 1) setWordIdx((i) => i + 1);
     else onDone(newScores);
@@ -231,6 +248,23 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
       {/* 語義カード */}
       <div ref={scrollContainerRef} className="relative flex-1 min-h-0 px-5 py-6 flex flex-col gap-4 overflow-y-auto">
+        {/* SRS 復習モード：「過去の自分」演出バナー */}
+        {isSrsReview && srsContext && srsContext.earliestMiss && (
+          <div className="flex items-start gap-3 px-4 py-3 rounded-2xl bg-amber-50 border border-amber-200">
+            <Icon name="clock" size={18} color="#d97706" />
+            <div className="min-w-0">
+              <p className="text-xs font-black text-amber-700">
+                {srsContext.earliestMiss} に間違えた問題
+              </p>
+              <p className="text-[0.7rem] font-medium text-amber-600 mt-0.5">
+                過去の自分に勝とう
+              </p>
+              {/* TODO（改善余地）: srsContext.senseIds を使って「今回復習対象の語義」だけを
+                   強調表示する（対象外の語義カードをグレーアウト等）。
+                   また、過去の誤答チップ名を小さく表示する（recordMiss 時に wrongAnswer も保存する）。 */}
+            </div>
+          </div>
+        )}
         {word.senses.map((sense, i) => {
           const assigned = ws.assignments[i];
           const isFocused = ws.focused === i && ws.phase === 'quiz';
@@ -303,6 +337,16 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         {/* 用法まとめ */}
         {ws.phase === 'revealed' && (
           <div ref={summaryRef} className="flex flex-col gap-4">
+            {/* SRS 復習・全問正解時の「克服！」演出 */}
+            {isSrsReview && perfectScore && (
+              <div className="tg-pop flex items-center gap-3 px-4 py-3 rounded-2xl bg-teal-400 text-white">
+                <Icon name="check-circle" size={20} color="#fff" />
+                <div>
+                  <p className="text-sm font-black">克服！</p>
+                  <p className="text-[0.7rem] font-medium text-teal-50">過去の自分に勝ちました 🎉</p>
+                </div>
+              </div>
+            )}
             {/* 罠の結果（用法まとめブロックの上に配置） */}
             <div className={'tg-fadeup flex items-start gap-3 p-4 rounded-2xl ' + (ws.trapHit ? 'bg-rose-50 border border-rose-100' : 'bg-teal-50 border border-teal-100')}>
               {ws.trapHit ? <Icon name="alert-triangle" size={20} color="#f43f5e" /> : <Icon name="check" size={20} color="#14b8a6" strokeWidth={3} />}

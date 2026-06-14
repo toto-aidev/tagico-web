@@ -13,15 +13,18 @@ import { SurveyPrompt } from '@/components/Survey';
 import { getLevel } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
+import * as srs from '@/lib/srs';
 
 export default function App() {
   const [screen, setScreen] = useState({ type: 'home' });
   const [appState, setAppState] = useState(null); // マウント後に localStorage から読む
   const [sessionScores, setSessionScores] = useState([]);
   const [showSurvey, setShowSurvey] = useState(false); // Level 1 完走後アンケート誘導（一度きり）
+  const [srsState, setSrsState] = useState(null); // SRS データ（マウント後に読む）
 
   useEffect(() => {
     setAppState(store.getState());
+    setSrsState(srs.getSrs()); // SRS データを localStorage から読む
     sfx.initSfx(); // ミュート状態を localStorage から同期
 
     // iOS/モバイル Safari の autoplay 対策：最初のユーザー操作で AudioContext を unlock/resume。
@@ -70,10 +73,40 @@ export default function App() {
     setAppState((s) => store.toggleSavedSense(s, wordId, senseIdx));
 
   const handleQuizDone = (scores) => {
-    if (screen.type !== 'quiz' && screen.type !== 'review') return;
+    if (screen.type !== 'quiz' && screen.type !== 'review' && screen.type !== 'srs-review') return;
     const wasLevel1Mastered = store.isLevel1Mastered(appState);
     const newAppState = store.recordScores(appState, scores);
     setAppState(newAppState);
+
+    // SRS: 語義単位ミスを記録
+    // SRS 復習モード中の再ミスは recordReviewMiss で +1日後期日を追加
+    if (srsState) {
+      const today = srs.todayLocalStr();
+      const srsMisses = store.extractSrsMisses(scores);
+      let newSrsState = srsState;
+      if (screen.type === 'srs-review') {
+        // 復習中の再ミス: +1日後期日追加
+        srsMisses.forEach(({ senseId }) => {
+          newSrsState = srs.recordReviewMiss(newSrsState, senseId, today);
+        });
+        // 正解した語義は reviewedOn に記録
+        scores.forEach((score) => {
+          if (!score.senseResults) return;
+          score.senseResults.forEach((sr) => {
+            if (sr.correct) {
+              newSrsState = srs.recordReview(newSrsState, sr.senseId, today);
+            }
+          });
+        });
+      } else {
+        // 通常クイズ: 初回ミスを登録
+        srsMisses.forEach(({ senseId, wordId }) => {
+          newSrsState = srs.recordMiss(newSrsState, senseId, wordId, today);
+        });
+      }
+      srs.saveSrs(newSrsState);
+      setSrsState(newSrsState);
+    }
 
     // Level 1（5語）を「今」完走したタイミングで一度だけアンケート誘導を出す
     if (!wasLevel1Mastered && store.isLevel1Mastered(newAppState) && !store.hasSurveyBeenPrompted()) {
@@ -91,6 +124,26 @@ export default function App() {
       const nextReviewId = sessionPool.find((id) => !donIds.has(id));
       if (nextReviewId) {
         setScreen({ type: 'review', wordIds: [nextReviewId], sessionPool });
+      } else {
+        handleNavigate({ type: 'home' });
+      }
+      return;
+    }
+
+    // SRS 復習モード：今日の期日語義を単語単位で1周
+    if (screen.type === 'srs-review') {
+      const accumulated = [...sessionScores, ...scores];
+      setSessionScores(accumulated);
+      const doneWordIds = new Set(accumulated.map((s) => s.wordId));
+      const sessionWords = screen.sessionWords || [];
+      const nextWord = sessionWords.find((w) => !doneWordIds.has(w.wordId));
+      if (nextWord) {
+        setScreen({
+          type: 'srs-review',
+          wordIds: [nextWord.wordId],
+          srsContext: { senseIds: nextWord.senseIds, earliestMiss: nextWord.earliestMiss },
+          sessionWords,
+        });
       } else {
         handleNavigate({ type: 'home' });
       }
@@ -138,6 +191,27 @@ export default function App() {
   // 初回マウント前（SSR / ハイドレーション直後）は背景だけのプレースホルダー
   if (!appState) return <div className="min-h-screen bg-slate-50" />;
 
+  // SRS: 今日の復習件数を計算（srsState が null の間は 0 扱い）
+  const todayStr = srs.todayLocalStr();
+  const todaySrsItems = srsState ? srs.getTodayReviewItems(srsState, todayStr) : [];
+  const srsReviewCount = todaySrsItems.length;
+
+  // SRS 復習開始ハンドラ: 今日の復習語義を単語単位にグループ化してセッション開始
+  const handleSrsReview = () => {
+    if (!srsState || srsReviewCount === 0) return;
+    sfx.play('ui');
+    setSessionScores([]);
+    const sessionWords = srs.groupReviewByWord(todaySrsItems);
+    if (sessionWords.length === 0) return;
+    const first = sessionWords[0];
+    setScreen({
+      type: 'srs-review',
+      wordIds: [first.wordId],
+      srsContext: { senseIds: first.senseIds, earliestMiss: first.earliestMiss },
+      sessionWords,
+    });
+  };
+
   const surveyOverlay = showSurvey ? (
     <SurveyPrompt url={store.SURVEY_URL} onDismiss={dismissSurvey} />
   ) : null;
@@ -145,7 +219,12 @@ export default function App() {
   if (screen.type === 'home')
     return (
       <React.Fragment>
-        <HomeScreen appState={appState} onNavigate={handleNavigate} />
+        <HomeScreen
+          appState={appState}
+          onNavigate={handleNavigate}
+          srsReviewCount={srsReviewCount}
+          onSrsReview={handleSrsReview}
+        />
         {surveyOverlay}
       </React.Fragment>
     );
@@ -216,6 +295,41 @@ export default function App() {
         levelWordIndex={reviewTotal > 0 ? reviewIndex : null}
         levelWordCount={reviewTotal > 0 ? reviewTotal : null}
         isReviewMode={true}
+      />
+    );
+  }
+
+  if (screen.type === 'srs-review') {
+    // SRS 語義単位の復習モード
+    const sessionWords = screen.sessionWords || [];
+    const wordIds = screen.wordIds || (sessionWords.length > 0 ? [sessionWords[0].wordId] : []);
+    const srsContextForScreen = screen.srsContext || (
+      sessionWords.length > 0
+        ? { senseIds: sessionWords[0].senseIds, earliestMiss: sessionWords[0].earliestMiss }
+        : null
+    );
+    const reviewTotal = sessionWords.length;
+    const reviewIndex = sessionScores.length;
+    const doneInSession = new Set(sessionScores.map((s) => s.wordId));
+    if (wordIds[0]) doneInSession.add(wordIds[0]);
+
+    return (
+      <QuizScreen
+        key={wordIds.join(',') + '-srs-review'}
+        levelId={null}
+        wordIds={wordIds}
+        hasNext={sessionWords.some((w) => !doneInSession.has(w.wordId))}
+        bookmarks={appState.bookmarks}
+        onToggleBookmark={handleToggleBookmark}
+        savedSenses={appState.savedSenses}
+        onToggleSavedSense={handleToggleSavedSense}
+        onDone={handleQuizDone}
+        onBack={handleQuizBack}
+        levelWordIndex={reviewTotal > 0 ? reviewIndex : null}
+        levelWordCount={reviewTotal > 0 ? reviewTotal : null}
+        isReviewMode={true}
+        isSrsReview={true}
+        srsContext={srsContextForScreen}
       />
     );
   }
