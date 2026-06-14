@@ -1104,44 +1104,12 @@
       "trap": "それ",
       "senses": [
         {
-          "en": "Look at that cloud. It is huge!",
-          "jpBefore": "あの雲を見て。",
-          "answer": "それ・そのこと",
-          "jpAfter": "はものすごく大きい！",
-          "jpFull": "あの雲を見て。それはものすごく大きい！",
-          "cue": "指示語"
-        },
-        {
-          "en": "It has been raining since this morning.",
-          "jpBefore": "",
-          "answer": "（非人称）",
-          "jpAfter": "今朝からずっと雨が降っている。",
-          "jpFull": "今朝からずっと雨が降っている。",
-          "cue": "非人称"
-        },
-        {
-          "en": "It is important to get enough sleep.",
-          "jpBefore": "",
-          "answer": "（形式主語）",
-          "jpAfter": "十分な睡眠を取ることが大切だ。",
-          "jpFull": "十分な睡眠を取ることが大切だ。",
-          "cue": "形式主語"
-        },
-        {
           "en": "It was John that broke the window.",
           "jpBefore": "窓を割ったのは、",
           "answer": "（訳さない）",
           "jpAfter": "ジョンだった。",
           "jpFull": "窓を割ったのは、ジョンだった。",
           "cue": "強調構文"
-        },
-        {
-          "en": "How is it going with your new project?",
-          "jpBefore": "",
-          "answer": "（慣用表現）",
-          "jpAfter": "新しいプロジェクトはどうですか？",
-          "jpFull": "新しいプロジェクトはどうですか？",
-          "cue": "状況"
         }
       ],
       "coreImage": {

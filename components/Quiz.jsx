@@ -98,6 +98,13 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     if (scrollContainerRef.current) scrollContainerRef.current.scrollTo({ top: 0 });
   }, [wordIdx]);
 
+  // 答え合わせ後（revealed）に画面先頭（問題01）へジャンプ
+  useEffect(() => {
+    if (ws.phase !== 'revealed') return;
+    if (!scrollContainerRef.current) return;
+    scrollContainerRef.current.scrollTo({ top: 0 });
+  }, [ws.phase]);
+
   const chipPool = word ? getChipPool(word) : [];
   const usedChips = new Set(Object.values(ws.assignments));
   const allFilled = word ? Object.keys(ws.assignments).length === word.senses.length : false;
