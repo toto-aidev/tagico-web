@@ -209,6 +209,12 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         total: w.senses.length,
         trapHit: st.trapHit,
         seeAnswer: st.seeAnswer || false,
+        // handleNext と同様に語義単位の正誤を含める（SRS 復習モードで「戻る」を押しても
+        // reviewedOn / checkpoints に正誤が記録されるようにするため）
+        senseResults: w.senses.map((s, i) => ({
+          senseId: s.id || (w.id + ':' + i),
+          correct: st.assignments[i] === s.answer,
+        })),
       }));
     onBack(revealedScores);
   };
