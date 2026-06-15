@@ -2275,6 +2275,669 @@
         }
       ],
       "trivia": "<b>make sense は『意味』用法</b>：sense の「道理・筋」という意味から、make sense は直訳すると「筋を作る」→「意味が通る・筋が通る」となります。主語が物・発言なら「理屈が通る」、It makes sense to do なら「〜するのももっともだ」という意味です。同じ語源でも five senses(感覚)、common sense(良識)とは訳語がまったく変わる多義語の典型です。"
+    },
+    {
+      "id": "fire",
+      "word": "fire",
+      "trap": "火",
+      "senses": [
+        {
+          "en": "The manager decided to fire him on the spot.",
+          "jpBefore": "上司はその場で彼を",
+          "answer": "解雇する",
+          "jpAfter": "ことに決めた。",
+          "jpFull": "上司はその場で彼を解雇することに決めた。",
+          "cue": "雇用",
+          "id": "fire__解雇する"
+        },
+        {
+          "en": "The soldiers were ordered to fire at the target.",
+          "jpBefore": "兵士たちは標的に向けて",
+          "answer": "発射する",
+          "jpAfter": "よう命じられた。",
+          "jpFull": "兵士たちは標的に向けて発射するよう命じられた。",
+          "cue": "射撃",
+          "id": "fire__発射する"
+        },
+        {
+          "en": "The reporters fired questions at the spokesman.",
+          "jpBefore": "記者たちは報道官に質問を",
+          "answer": "浴びせる",
+          "jpAfter": "。",
+          "jpFull": "記者たちは報道官に質問を浴びせた。",
+          "cue": "連発",
+          "id": "fire__浴びせる"
+        }
+      ],
+      "coreImage": {
+        "headline": "「火」だけじゃない。職場では「解雇する」、戦場では「発射する」、会見では質問を「浴びせる」。",
+        "lead": "fire は名詞「火」が定番ですが、動詞では「火を放つ」勢いが比喩的に広がります。人をクビにする〈雇用〉、銃を撃つ〈射撃〉、質問を立て続けにぶつける〈連発〉と、いずれも「一気に放つ」イメージでつながっています。"
+      },
+      "faces": [
+        {
+          "name": "〈雇用〉",
+          "meaning": "「解雇する、クビにする」",
+          "type": "fire 人",
+          "note": "口語的にクビにすること。be fired で「解雇される」。反意語は hire「雇う」。"
+        },
+        {
+          "name": "〈射撃〉",
+          "meaning": "「発射する、撃つ」",
+          "type": "fire (a gun / a shot) at 〜",
+          "note": "銃・砲などを撃つ。fire at「〜に向けて撃つ」。"
+        },
+        {
+          "name": "〈連発〉",
+          "meaning": "「(質問などを)浴びせる」",
+          "type": "fire questions at 人",
+          "note": "比喩的に、質問や言葉を立て続けにぶつける。"
+        }
+      ],
+      "trivia": "<b>fire の動詞義はすべて「勢いよく放つ」イメージでつながります</b>。銃を撃つ〈射撃〉が原義に近く、そこから質問を立て続けにぶつける〈連発〉へ広がりました。「解雇する」は「(職場から)放り出す」感覚で、もとは be fired out が縮まった口語表現とされます。"
+    },
+    {
+      "id": "fix",
+      "word": "fix",
+      "trap": "修理する",
+      "senses": [
+        {
+          "en": "Let's fix a date for the next meeting.",
+          "jpBefore": "次の会議の日程を",
+          "answer": "決める",
+          "jpAfter": "ことにしよう。",
+          "jpFull": "次の会議の日程を決めることにしよう。",
+          "cue": "確定",
+          "id": "fix__決める"
+        },
+        {
+          "en": "He fixed his eyes on the screen and did not move.",
+          "jpBefore": "彼は画面に視線を",
+          "answer": "じっと注ぐ",
+          "jpAfter": "、動かなかった。",
+          "jpFull": "彼は画面にじっと視線を注ぎ、動かなかった。",
+          "cue": "固定",
+          "id": "fix__じっと注ぐ"
+        }
+      ],
+      "coreImage": {
+        "headline": "「直す」だけじゃない。日程を「決める」、視線を「じっと注ぐ」。",
+        "lead": "fix の芯にあるのは「ぐらつくものを動かないように据える」イメージです。そこから、流動的な日程を一点に〈確定〉する「決める」、視線を一点に〈固定〉する「じっと注ぐ」へと広がります。「修理する」も「壊れた状態を正常に据え直す」同じ発想です。"
+      },
+      "faces": [
+        {
+          "name": "〈確定〉",
+          "meaning": "「(日時・価格などを)決める」",
+          "type": "fix a date / price",
+          "note": "未定だったものを一つに定める。set a date とほぼ同義。"
+        },
+        {
+          "name": "〈固定〉",
+          "meaning": "「(視線・注意を)じっと注ぐ」",
+          "type": "fix one's eyes / attention on 〜",
+          "note": "fix one's eyes on「〜をじっと見つめる」。一点に据えて動かさない。"
+        }
+      ],
+      "trivia": "<b>fix の芯は「動かないように据える」</b>です。物理的に固定する（fix a shelf to the wall）、日程を一つに定める（fix a date）、視線を一点に注ぐ（fix one's eyes）はすべて同じイメージの展開です。「修理する」も「壊れた状態を正常な状態に据え直す」という発想から来ています。"
+    },
+    {
+      "id": "develop",
+      "word": "develop",
+      "trap": "開発する",
+      "senses": [
+        {
+          "en": "She developed a high fever during the trip.",
+          "jpBefore": "彼女は旅行中に高熱を",
+          "answer": "発症する",
+          "jpAfter": "。",
+          "jpFull": "彼女は旅行中に高熱を発症した。",
+          "cue": "発症",
+          "id": "develop__発症する"
+        },
+        {
+          "en": "It takes about an hour to develop this roll of film.",
+          "jpBefore": "このフィルムを",
+          "answer": "現像する",
+          "jpAfter": "のに約1時間かかる。",
+          "jpFull": "このフィルムを現像するのに約1時間かかる。",
+          "cue": "現像",
+          "id": "develop__現像する"
+        },
+        {
+          "en": "Over the years she developed a habit of reading at dawn.",
+          "jpBefore": "長年かけて、彼女は明け方に読書する習慣を",
+          "answer": "身につける",
+          "jpAfter": "。",
+          "jpFull": "長年かけて、彼女は明け方に読書する習慣を身につけた。",
+          "cue": "習得",
+          "id": "develop__身につける"
+        }
+      ],
+      "coreImage": {
+        "headline": "「開発する」だけじゃない。病気を「発症する」、フィルムを「現像する」、習慣を「身につける」。",
+        "lead": "develop の芯は「内にあるものを次第に展開させる」ことです。隠れていた病気が表に出る〈発症〉、フィルムに潜んだ像を浮かび上がらせる〈現像〉、性質や習慣が徐々に育つ〈習得〉――どれも「だんだん現れてくる」発想でつながります。"
+      },
+      "faces": [
+        {
+          "name": "〈発症〉",
+          "meaning": "「(病気・症状を)発症する」",
+          "type": "develop a disease / fever",
+          "note": "症状が次第に現れること。get よりかたい語感。"
+        },
+        {
+          "name": "〈現像〉",
+          "meaning": "「(写真を)現像する」",
+          "type": "develop film",
+          "note": "フィルムに潜んだ像を薬品で浮かび上がらせる。"
+        },
+        {
+          "name": "〈習得〉",
+          "meaning": "「(性質・習慣・能力を)身につける」",
+          "type": "develop a habit / skill",
+          "note": "時間をかけて徐々に育てる・養う。"
+        }
+      ],
+      "trivia": "<b>develop は「内にあるものを次第に展開させる」</b>のが芯です。語源は「包みを開く（dis- + envelop）」で、envelope（封筒）と同根です。隠れていた病気が表面化する〈発症〉、フィルムの潜像を浮かび上がらせる〈現像〉は、いずれも「中身が外へ現れる」イメージの典型です。"
+    },
+    {
+      "id": "head",
+      "word": "head",
+      "trap": "頭",
+      "senses": [
+        {
+          "en": "After lunch we headed for the station.",
+          "jpBefore": "昼食の後、私たちは駅へ",
+          "answer": "向かう",
+          "jpAfter": "。",
+          "jpFull": "昼食の後、私たちは駅へ向かった。",
+          "cue": "方向",
+          "id": "head__向かう"
+        },
+        {
+          "en": "She now heads the marketing department.",
+          "jpBefore": "彼女は今、マーケティング部を",
+          "answer": "率いる",
+          "jpAfter": "。",
+          "jpFull": "彼女は今、マーケティング部を率いている。",
+          "cue": "統率",
+          "id": "head__率いる"
+        }
+      ],
+      "coreImage": {
+        "headline": "「頭」だけじゃない。動詞で「向かう」、組織を「率いる」。",
+        "lead": "head は名詞「頭」が定番ですが、「先頭・かしら」のイメージから動詞にも広がります。先頭を切って進む〈方向〉「向かう」、集団の頭（かしら）として導く〈統率〉「率いる」――どちらも「先頭に立つ」発想でつながっています。"
+      },
+      "faces": [
+        {
+          "name": "〈方向〉",
+          "meaning": "「(〜へ)向かう、進む」",
+          "type": "head for / to 〜",
+          "note": "head for home「家路につく」。目的地へ先頭を切って進む。"
+        },
+        {
+          "name": "〈統率〉",
+          "meaning": "「(組織を)率いる、長を務める」",
+          "type": "head 組織",
+          "note": "名詞では「(組織の)長」。the head of the school「校長」。"
+        }
+      ],
+      "trivia": "<b>head は「先頭・かしら」のイメージが動詞に展開します</b>。組織の「頭」として導けば〈統率〉「率いる」、自分が先頭を切って進めば〈方向〉「向かう」です。なお「(ボールを)頭で打つ」（サッカーのヘディング）も同じ語の動詞義で、身体の「頭」と直結しています。"
+    },
+    {
+      "id": "sound",
+      "word": "sound",
+      "trap": "音",
+      "senses": [
+        {
+          "en": "Your plan sounds reasonable to me.",
+          "jpBefore": "君の計画は私には妥当に",
+          "answer": "思える",
+          "jpAfter": "。",
+          "jpFull": "君の計画は私には妥当に思える。",
+          "cue": "印象",
+          "id": "sound__思える"
+        },
+        {
+          "en": "The lawyer based her case on a sound argument.",
+          "jpBefore": "弁護士は",
+          "answer": "しっかりした",
+          "jpAfter": "論拠に基づいて訴えた。",
+          "jpFull": "弁護士はしっかりした論拠に基づいて訴えた。",
+          "cue": "堅実",
+          "id": "sound__しっかりした"
+        }
+      ],
+      "coreImage": {
+        "headline": "「音」だけじゃない。動詞で「(〜に)思える」、形容詞で「しっかりした」。",
+        "lead": "sound は名詞「音」が定番ですが、品詞が変わると顔も変わります。動詞では「聞こえる→（聞いた印象から）〜に思える」と〈印象〉を表し、形容詞では「(土台や論理が)ぐらつかない」〈堅実〉を表します。形容詞の sound は実は名詞「音」とは別語源です。"
+      },
+      "faces": [
+        {
+          "name": "〈印象〉",
+          "meaning": "「(〜のように)思える、聞こえる」",
+          "type": "sound + 形容詞 / like 〜",
+          "note": "It sounds good.「よさそうだ」。話を聞いた印象を述べる。"
+        },
+        {
+          "name": "〈堅実〉",
+          "meaning": "「健全な、しっかりした、妥当な」",
+          "type": "a sound argument / mind",
+          "note": "形容詞。論理・健康・判断がぐらつかず確かなさま。safe and sound「無事で」。"
+        }
+      ],
+      "trivia": "<b>形容詞の sound「健全な」は、名詞「音」とは別語源です</b>。「しっかりした・ぐらつかない」が芯で、a sound argument「しっかりした論拠」、a sound mind「健全な精神」、safe and sound「無事で」のように使います。動詞の sound「〜に思える」は「音（声）として聞こえる」→「聞いた印象では」と発展した用法です。"
+    },
+    {
+      "id": "matter",
+      "word": "matter",
+      "trap": "問題",
+      "senses": [
+        {
+          "en": "It does not matter what others think of you.",
+          "jpBefore": "他人が君をどう思おうと",
+          "answer": "重要だ",
+          "jpAfter": "。",
+          "jpFull": "他人が君をどう思おうと重要ではない。",
+          "cue": "重要性",
+          "id": "matter__重要だ"
+        }
+      ],
+      "coreImage": {
+        "headline": "名詞「問題・物質」だけじゃない。動詞では「重要だ」。",
+        "lead": "matter は名詞「問題・物質」が定番ですが、動詞では「重要である・大事だ」を表します。It doesn't matter.「どうでもいい」、Every vote matters.「一票一票が大事だ」のように、主に否定文・疑問文で「問題になるほど大事か」を問う形で使われます。"
+      },
+      "faces": [
+        {
+          "name": "〈問題・物質〉",
+          "meaning": "名詞「問題、事柄、物質」",
+          "type": "a matter of 〜 / 物質としての matter",
+          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。"
+        },
+        {
+          "name": "〈重要性〉",
+          "meaning": "動詞「重要である、大事だ」",
+          "type": "It doesn't matter (that 〜)",
+          "note": "自動詞。否定・疑問文で多用。Does it matter?「それが問題なの？」"
+        }
+      ],
+      "trivia": "<b>動詞の matter「重要だ」は否定文・疑問文で力を発揮します</b>。It doesn't matter.「どうってことない」、What does it matter?「それがどうしたっていうの」が典型です。肯定文でも Every second matters.「一秒一秒が大事だ」のように、「問題にするだけの価値がある＝重要だ」という発想で使われます。"
+    },
+    {
+      "id": "count",
+      "word": "count",
+      "trap": "数える",
+      "senses": [
+        {
+          "en": "In this contest, every point counts.",
+          "jpBefore": "この大会では、一点一点が",
+          "answer": "重要だ",
+          "jpAfter": "。",
+          "jpFull": "この大会では、一点一点が重要だ。",
+          "cue": "重要性",
+          "id": "count__重要だ"
+        },
+        {
+          "en": "You can always count on her in a crisis.",
+          "jpBefore": "危機のとき、君はいつでも彼女を",
+          "answer": "頼りにする",
+          "jpAfter": "ことができる。",
+          "jpFull": "危機のとき、君はいつでも彼女を頼りにすることができる。",
+          "cue": "依存",
+          "id": "count__頼りにする"
+        }
+      ],
+      "coreImage": {
+        "headline": "「数える」だけじゃない。自動詞で「重要だ」、count on で「頼りにする」。",
+        "lead": "count は「数える」が定番ですが、「数に入る＝勘定に入る」発想から意味が広がります。数えるに値する〈重要性〉「重要だ」、頭数として当てにする〈依存〉「count on で頼りにする」――どちらも「カウントできる存在として勘定する」イメージです。"
+      },
+      "faces": [
+        {
+          "name": "〈重要性〉",
+          "meaning": "「重要だ、物を言う」",
+          "type": "Every 〜 counts.",
+          "note": "自動詞。「数に入る価値がある」→「大事だ」。It's the thought that counts.「気持ちが大事」。"
+        },
+        {
+          "name": "〈依存〉",
+          "meaning": "「(count on で)頼りにする、当てにする」",
+          "type": "count on 人/物",
+          "note": "rely on / depend on とほぼ同義。"
+        }
+      ],
+      "trivia": "<b>count は「勘定に入れる」発想で広がります</b>。Every vote counts.「一票一票が物を言う」は「数える価値がある→重要だ」、count on you「君を当てにする」は「君を頭数として勘定に入れる→頼る」という発展です。なお count as「〜とみなす」も「〜として勘定する」という同じ系統の用法です。"
+    },
+    {
+      "id": "last",
+      "word": "last",
+      "trap": "最後の",
+      "senses": [
+        {
+          "en": "These batteries will last for several months.",
+          "jpBefore": "この電池は数か月",
+          "answer": "もつ",
+          "jpAfter": "だろう。",
+          "jpFull": "この電池は数か月もつだろう。",
+          "cue": "持続",
+          "id": "last__もつ"
+        },
+        {
+          "en": "He is the last person to tell a lie.",
+          "jpBefore": "彼は最も嘘をつき",
+          "answer": "そうにない",
+          "jpAfter": "人だ。",
+          "jpFull": "彼は最も嘘をつきそうにない人だ。",
+          "cue": "全否定",
+          "id": "last__そうにない"
+        }
+      ],
+      "coreImage": {
+        "headline": "「最後の」だけじゃない。動詞で「もつ・続く」、the last 〜 to do で「最も〜しそうにない」。",
+        "lead": "last は「最後の」が定番ですが、動詞では「続く・もちこたえる」〈持続〉を表します。また the last person to do は文字どおりなら「〜する最後の人」ですが、実際には「(順番が回ってこないほど)最も〜しそうにない人」という〈全否定〉の強調表現になります。"
+      },
+      "faces": [
+        {
+          "name": "〈持続〉",
+          "meaning": "動詞「続く、もちこたえる、もつ」",
+          "type": "last (for) 期間",
+          "note": "The meeting lasted two hours.「会議は2時間続いた」。continue / endure に近い。"
+        },
+        {
+          "name": "〈全否定〉",
+          "meaning": "「最も〜しそうにない」",
+          "type": "the last 名詞 to do",
+          "note": "「〜する最後の人」→「絶対〜しない人」。強い否定を婉曲に表す。"
+        }
+      ],
+      "trivia": "<b>the last person to do は強い否定の婉曲表現です</b>。He is the last man to give up.「彼は最も諦めそうにない男だ」のように、「(やるとしても)順番が一番最後＝事実上やらない」という発想で「決して〜しない」を表します。動詞 last「続く」は形容詞「最後の」とは違い「持続する」意味で、混同しないよう注意が要ります。"
+    },
+    {
+      "id": "stand",
+      "word": "stand",
+      "trap": "立つ",
+      "senses": [
+        {
+          "en": "I cannot stand his rude attitude any longer.",
+          "jpBefore": "私はもう彼の無礼な態度に",
+          "answer": "耐えられない",
+          "jpAfter": "。",
+          "jpFull": "私はもう彼の無礼な態度に耐えられない。",
+          "cue": "忍耐",
+          "id": "stand__耐えられない"
+        },
+        {
+          "en": "In this dictionary, the symbol stands for a long vowel.",
+          "jpBefore": "この辞書では、その記号は長母音を",
+          "answer": "表す",
+          "jpAfter": "。",
+          "jpFull": "この辞書では、その記号は長母音を表す。",
+          "cue": "象徴",
+          "id": "stand__表す"
+        }
+      ],
+      "coreImage": {
+        "headline": "「立つ」だけじゃない。can't stand で「耐えられない」、stand for で「表す」。",
+        "lead": "stand は「立つ」が定番ですが、「(揺らがず)立っていられる」発想から〈忍耐〉「(can't stand で)耐えられない」へ、「〜の代わりに立つ」発想から〈象徴〉「(stand for で)表す・象徴する」へ広がります。基本義「立つ」を芯に、意味が比喩的に展開しています。"
+      },
+      "faces": [
+        {
+          "name": "〈忍耐〉",
+          "meaning": "「我慢する、耐える」",
+          "type": "can't stand 〜",
+          "note": "主に否定文。can't stand「我慢できない・大嫌いだ」。"
+        },
+        {
+          "name": "〈象徴〉",
+          "meaning": "「(stand for で)表す、象徴する」",
+          "type": "stand for 〜",
+          "note": "略語の説明で頻出。UN stands for the United Nations. 「支持する」の意もある。"
+        }
+      ],
+      "trivia": "<b>can't stand は「立っていられない」発想です</b>。重圧の下でも「立っていられる」のが我慢で、その否定が「耐えられない・大嫌いだ」になります。一方 stand for は「〜の代わりに立つ」→「象徴する・表す」で、略語の説明（UN stands for ...）で頻出します。同じ stand for に「支持する」の意もあります。"
+    },
+    {
+      "id": "tell",
+      "word": "tell",
+      "trap": "話す",
+      "senses": [
+        {
+          "en": "Even an expert cannot tell the fake from the real one.",
+          "jpBefore": "専門家でも本物と偽物を",
+          "answer": "見分ける",
+          "jpAfter": "ことができない。",
+          "jpFull": "専門家でも本物と偽物を見分けることができない。",
+          "cue": "識別",
+          "id": "tell__見分ける"
+        },
+        {
+          "en": "From her face, I could tell that she was lying.",
+          "jpBefore": "彼女の表情から、私は彼女が嘘をついていると",
+          "answer": "わかる",
+          "jpAfter": "。",
+          "jpFull": "彼女の表情から、私は彼女が嘘をついているとわかった。",
+          "cue": "判断",
+          "id": "tell__わかる"
+        }
+      ],
+      "coreImage": {
+        "headline": "「話す」だけじゃない。tell A from B で「見分ける」、can tell で「わかる」。",
+        "lead": "tell は「話す・伝える」が定番ですが、「区別をつける・見て取る」系統の用法が盲点です。tell A from B で二つを〈識別〉「見分ける」、can tell that 〜 で証拠から〈判断〉「(〜だと)わかる」を表します。どちらも「情報を読み取る」発想でつながっています。"
+      },
+      "faces": [
+        {
+          "name": "〈識別〉",
+          "meaning": "「(tell A from B で)見分ける、区別する」",
+          "type": "tell A from B / tell the difference",
+          "note": "二つの違いを判別する。tell right from wrong「善悪を見分ける」。"
+        },
+        {
+          "name": "〈判断〉",
+          "meaning": "「(can tell で)わかる、見て取れる」",
+          "type": "can tell (that 〜)",
+          "note": "証拠・様子から判断して「わかる」。You never can tell.「先のことはわからない」。"
+        }
+      ],
+      "trivia": "<b>tell には「区別をつける・見て取る」系統があります</b>。tell A from B「AとBを見分ける」は「両者の違いを言い当てる」発想で、can はつけてもつけなくても使えます。can tell that 〜「〜だとわかる」は外見や証拠から判断する用法で、I can tell you're tired.「疲れているのが見て取れる」のように使います。"
+    },
+    {
+      "id": "leave",
+      "word": "leave",
+      "trap": "去る",
+      "senses": [
+        {
+          "en": "Please leave the window open for some fresh air.",
+          "jpBefore": "新鮮な空気のため、窓は開けた",
+          "answer": "ままにしておく",
+          "jpAfter": "ください。",
+          "jpFull": "新鮮な空気のため、窓は開けたままにしておいてください。",
+          "cue": "放置",
+          "id": "leave__ままにしておく"
+        },
+        {
+          "en": "Don't worry about the arrangements; leave it to me.",
+          "jpBefore": "手配のことは心配しないで。私に",
+          "answer": "任せる",
+          "jpAfter": "。",
+          "jpFull": "手配のことは心配しないで。私に任せて。",
+          "cue": "委任",
+          "id": "leave__任せる"
+        }
+      ],
+      "coreImage": {
+        "headline": "「去る」だけじゃない。leave O C で「〜のままにしておく」、leave 〜 to で「任せる」。",
+        "lead": "leave は「去る」が定番ですが、芯は「(手を触れずに)その場に残す」ことです。状態をいじらず残す〈放置〉「leave O C で〜のままにしておく」、判断や仕事を相手に残す〈委任〉「leave 〜 to で任せる」――どちらも「自分は手を引いて、後を残す」発想でつながります。"
+      },
+      "faces": [
+        {
+          "name": "〈放置〉",
+          "meaning": "「(leave O C で)〜のままにしておく」",
+          "type": "leave O + 形容詞/分詞",
+          "note": "leave the door open「ドアを開けっぱなしにする」。状態を変えず残す。"
+        },
+        {
+          "name": "〈委任〉",
+          "meaning": "「(leave 〜 to で)任せる、ゆだねる」",
+          "type": "leave 物事 to 人",
+          "note": "Leave it to me.「私に任せて」。判断・仕事を相手にゆだねる。"
+        }
+      ],
+      "trivia": "<b>leave の芯は「その場に残す」です</b>。leave the door open「開けたままにする」は状態を残す〈放置〉、leave it to me「私に任せて」は仕事を相手のもとに残す〈委任〉です。「置き忘れる」（I left my bag on the train.）も「うっかりその場に残す」という同じ発想で、「去る」よりこの「残す」が leave の本質に近いといえます。"
+    },
+    {
+      "id": "race",
+      "word": "race",
+      "trap": "競走",
+      "senses": [
+        {
+          "en": "The law bans discrimination based on race or religion.",
+          "jpBefore": "その法律は",
+          "answer": "人種",
+          "jpAfter": "や宗教に基づく差別を禁じている。",
+          "jpFull": "その法律は人種や宗教に基づく差別を禁じている。",
+          "cue": "民族",
+          "id": "race__人種"
+        }
+      ],
+      "coreImage": {
+        "headline": "「競走」だけじゃない。同じ綴りで「人種・民族」。",
+        "lead": "race は「競走・レース」が定番ですが、まったく別語源の同綴語として「人種・民族」の意味があります。discrimination based on race「人種に基づく差別」、the human race「人類」のように、社会・文化の文脈で頻出します。文脈でどちらの race かを見極めるのが鍵です。"
+      },
+      "faces": [
+        {
+          "name": "〈競走〉",
+          "meaning": "「競走、レース、競争」",
+          "type": "a race / race against 〜",
+          "note": "the arms race「軍拡競争」。動詞で「疾走する」も。定番の意味。"
+        },
+        {
+          "name": "〈民族〉",
+          "meaning": "「人種、民族」",
+          "type": "race / the human race",
+          "note": "the human race「人類」。people of different races「異なる人種の人々」。"
+        }
+      ],
+      "trivia": "<b>「競走」の race と「人種」の race は別語源の同綴語です</b>。「競走」はノルウェー語系、「人種・民族」はイタリア語 razza 由来とされ、たまたま同じ綴りになりました。the human race「人類」のように「人類全体」を指す用法もあり、差別問題（racism）の文脈では必ずこちらの意味になります。"
+    },
+    {
+      "id": "patient",
+      "word": "patient",
+      "trap": "我慢強い",
+      "senses": [
+        {
+          "en": "The doctor is examining a patient right now.",
+          "jpBefore": "医師は今ちょうど",
+          "answer": "患者",
+          "jpAfter": "を診察している。",
+          "jpFull": "医師は今ちょうど患者を診察している。",
+          "cue": "病人",
+          "id": "patient__患者"
+        }
+      ],
+      "coreImage": {
+        "headline": "形容詞「我慢強い」だけじゃない。名詞では「患者」。",
+        "lead": "patient は形容詞「我慢強い・忍耐強い」が定番ですが、名詞では「患者」を指します。実はこの二つは語源が同じで、「(治療を)じっと耐えて受ける人」が「患者」です。冠詞 a / the がつき、複数 patients になっていれば名詞「患者」のサインです。"
+      },
+      "faces": [
+        {
+          "name": "〈忍耐〉",
+          "meaning": "形容詞「我慢強い、忍耐強い」",
+          "type": "be patient (with 〜)",
+          "note": "Be patient!「落ち着いて」。反意語は impatient「いらいらした」。"
+        },
+        {
+          "name": "〈病人〉",
+          "meaning": "名詞「患者」",
+          "type": "a / the patient(s)",
+          "note": "冠詞・複数形がつく。see a patient「患者を診る」。"
+        }
+      ],
+      "trivia": "<b>「我慢強い」と「患者」は同じ語源です</b>。ラテン語 patiens「耐え忍ぶ」が元で、「(痛みや治療を)じっと耐え忍ぶ人」が名詞の「患者」になりました。同じ語源の語に passive「受け身の」、passion「(キリストの)受難・情熱」があり、いずれも「受ける・耐える」感覚を共有しています。"
+    },
+    {
+      "id": "fair",
+      "word": "fair",
+      "trap": "公平な",
+      "senses": [
+        {
+          "en": "She has fair hair and light blue eyes.",
+          "jpBefore": "彼女は",
+          "answer": "金髪の",
+          "jpAfter": "で、薄い青色の目をしている。",
+          "jpFull": "彼女は金髪で、薄い青色の目をしている。",
+          "cue": "色白・金髪",
+          "id": "fair__金髪の"
+        },
+        {
+          "en": "We have a fair chance of winning the match.",
+          "jpBefore": "私たちはその試合に",
+          "answer": "まあまあの",
+          "jpAfter": "勝算がある。",
+          "jpFull": "私たちはその試合にまあまあの勝算がある。",
+          "cue": "そこそこ",
+          "id": "fair__まあまあの"
+        }
+      ],
+      "coreImage": {
+        "headline": "「公平な」だけじゃない。髪が「金髪の」、程度が「まあまあの」。",
+        "lead": "fair は「公平な」が定番ですが、もとは「美しい・きれいな」が古い意味でした。そこから髪や肌の色が明るい〈色白・金髪〉「金髪の・色白の」、程度が悪くない〈そこそこ〉「まあまあの」へと広がります。文脈ごとに「公平」とは別の顔を見せる多義語です。"
+      },
+      "faces": [
+        {
+          "name": "〈色白・金髪〉",
+          "meaning": "「金髪の、色白の」",
+          "type": "fair hair / skin",
+          "note": "髪・肌の色が明るいこと。dark「黒髪の・浅黒い」と対比。"
+        },
+        {
+          "name": "〈そこそこ〉",
+          "meaning": "「まあまあの、かなりの」",
+          "type": "a fair amount / chance",
+          "note": "a fair number of「かなりの数の」。悪くないが特別でもない程度。"
+        }
+      ],
+      "trivia": "<b>fair の古い意味は「美しい・きれいな」です</b>。童話の鏡が言う “the fairest of them all”「いちばん美しい者」がその名残です。そこから髪や肌が明るい〈金髪・色白〉、天気が良い「晴れた」（fair weather）へ広がりました。「公平な」も「(えこひいきのない)きれいなやり方」という発想から生まれた、比較的新しい意味です。"
+    },
+    {
+      "id": "fine",
+      "word": "fine",
+      "trap": "素晴らしい",
+      "senses": [
+        {
+          "en": "He had to pay a heavy fine for speeding.",
+          "jpBefore": "彼はスピード違反で重い",
+          "answer": "罰金",
+          "jpAfter": "を払わねばならなかった。",
+          "jpFull": "彼はスピード違反で重い罰金を払わねばならなかった。",
+          "cue": "ペナルティ",
+          "id": "fine__罰金"
+        },
+        {
+          "en": "Be sure to read the fine print before you sign.",
+          "jpBefore": "署名する前に、必ず",
+          "answer": "細かい",
+          "jpAfter": "文字の部分を読みなさい。",
+          "jpFull": "署名する前に、必ず細かい文字の部分を読みなさい。",
+          "cue": "微細",
+          "id": "fine__細かい"
+        }
+      ],
+      "coreImage": {
+        "headline": "「素晴らしい」だけじゃない。名詞で「罰金」、形容詞で「細かい」。",
+        "lead": "fine は「素晴らしい・元気な」が定番ですが、まったく別の顔があります。名詞では「罰金」（pay a fine）、形容詞では「細かい・微細な」（fine print「細かい字」）です。「罰金」は法律語、「細かい」は粒子や線の細さを表し、いずれも定番訳とは無関係に文脈で決まります。"
+      },
+      "faces": [
+        {
+          "name": "〈ペナルティ〉",
+          "meaning": "名詞「罰金、科料」",
+          "type": "pay a fine / a fine for 〜",
+          "note": "動詞で「罰金を科す」も。a parking fine「駐車違反の罰金」。"
+        },
+        {
+          "name": "〈微細〉",
+          "meaning": "「細かい、微細な、精巧な」",
+          "type": "fine print / sand / line",
+          "note": "fine print「(契約の)細かい字」、a fine line「微妙な境界」。"
+        }
+      ],
+      "trivia": "<b>fine には「素晴らしい」とは無関係の顔があります</b>。名詞「罰金」（a fine for speeding）は法律語で、もとは「(争いを)終わらせるための支払い」（finish と同根）が語源です。形容詞「細かい」は fine sand「細かい砂」、fine print「(契約書の)細かい字」のように、粒や線が細いさまを表します。"
     }
   ],
   "levels": [
@@ -2351,6 +3014,39 @@
         "find",
         "learn",
         "work"
+      ]
+    },
+    {
+      "id": "level8",
+      "name": "Level 8",
+      "wordIds": [
+        "fire",
+        "fix",
+        "develop",
+        "head",
+        "sound"
+      ]
+    },
+    {
+      "id": "level9",
+      "name": "Level 9",
+      "wordIds": [
+        "matter",
+        "count",
+        "last",
+        "stand",
+        "tell"
+      ]
+    },
+    {
+      "id": "level10",
+      "name": "Level 10",
+      "wordIds": [
+        "leave",
+        "race",
+        "patient",
+        "fair",
+        "fine"
       ]
     }
   ]
