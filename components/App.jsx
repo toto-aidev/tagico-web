@@ -10,7 +10,7 @@ import { HomeScreen, WordbookScreen } from '@/components/Home';
 import { QuizScreen, ResultScreen } from '@/components/Quiz';
 import { MyWordbookScreen, StatsScreen } from '@/components/Extra';
 import { SurveyPrompt } from '@/components/Survey';
-import { getLevel } from '@/lib/content';
+import { getLevel, WORDS } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
 import * as srs from '@/lib/srs';
@@ -191,6 +191,14 @@ export default function App() {
   // 初回マウント前（SSR / ハイドレーション直後）は背景だけのプレースホルダー
   if (!appState) return <div className="min-h-screen bg-slate-50" />;
 
+  // プレビュー環境（VERCEL_ENV=preview）では全単語をデフォルトアンロック扱いにする。
+  // ロック判定は appState.completed の有無で行われるため、全 wordId を completed に含めた
+  // 仮の appState を下流に渡す。localStorage は書き換えず読み取り専用の上書きにとどめる。
+  // production（tagico-web.vercel.app）では isPreviewMode()=false のため効かない。
+  const effectiveAppState = store.isPreviewMode()
+    ? { ...appState, completed: WORDS.map((w) => w.id) }
+    : appState;
+
   // SRS: 今日の復習件数を計算（srsState が null の間は 0 扱い）
   const todayStr = srs.todayLocalStr();
   const todaySrsItems = srsState ? srs.getTodayReviewItems(srsState, todayStr) : [];
@@ -220,7 +228,7 @@ export default function App() {
     return (
       <React.Fragment>
         <HomeScreen
-          appState={appState}
+          appState={effectiveAppState}
           onNavigate={handleNavigate}
           srsReviewCount={srsReviewCount}
           onSrsReview={handleSrsReview}
@@ -235,7 +243,7 @@ export default function App() {
     const sessionDone = new Set(sessionScores.map((s) => s.wordId));
     const currentWordId = screen.wordIds && screen.wordIds[0];
     if (currentWordId) sessionDone.add(currentWordId);
-    const completed = appState.completed || appState.cleared;
+    const completed = effectiveAppState.completed || effectiveAppState.cleared;
 
     // replay モード（「もう一度」）：completed を無視して replayWordIds 全語を対象にする
     const isReplay = !!screen.replay;
@@ -257,9 +265,9 @@ export default function App() {
         levelId={screen.levelId}
         wordIds={screen.wordIds}
         hasNext={hasNext}
-        bookmarks={appState.bookmarks}
+        bookmarks={effectiveAppState.bookmarks}
         onToggleBookmark={handleToggleBookmark}
-        savedSenses={appState.savedSenses}
+        savedSenses={effectiveAppState.savedSenses}
         onToggleSavedSense={handleToggleSavedSense}
         onDone={handleQuizDone}
         onBack={handleQuizBack}
@@ -271,7 +279,7 @@ export default function App() {
 
   if (screen.type === 'review') {
     // sessionPool: このセッションで消化するプール（開始時点で確定・変化しない）
-    const sessionPool = screen.sessionPool || (appState.reviewPool || []);
+    const sessionPool = screen.sessionPool || (effectiveAppState.reviewPool || []);
     // 復習する単語ID：screen.wordIds があればそれ、なければプールの先頭
     const wordIds = screen.wordIds || (sessionPool.length > 0 ? [sessionPool[0]] : []);
     const reviewTotal = sessionPool.length;
@@ -286,9 +294,9 @@ export default function App() {
         levelId={null}
         wordIds={wordIds}
         hasNext={sessionPool.some((id) => !doneInSession.has(id))}
-        bookmarks={appState.bookmarks}
+        bookmarks={effectiveAppState.bookmarks}
         onToggleBookmark={handleToggleBookmark}
-        savedSenses={appState.savedSenses}
+        savedSenses={effectiveAppState.savedSenses}
         onToggleSavedSense={handleToggleSavedSense}
         onDone={handleQuizDone}
         onBack={handleQuizBack}
@@ -319,9 +327,9 @@ export default function App() {
         levelId={null}
         wordIds={wordIds}
         hasNext={sessionWords.some((w) => !doneInSession.has(w.wordId))}
-        bookmarks={appState.bookmarks}
+        bookmarks={effectiveAppState.bookmarks}
         onToggleBookmark={handleToggleBookmark}
-        savedSenses={appState.savedSenses}
+        savedSenses={effectiveAppState.savedSenses}
         onToggleSavedSense={handleToggleSavedSense}
         onDone={handleQuizDone}
         onBack={handleQuizBack}
@@ -337,18 +345,18 @@ export default function App() {
   if (screen.type === 'result')
     return (
       <React.Fragment>
-        <ResultScreen scores={screen.scores} levelId={screen.levelId} appState={appState} onNavigate={handleNavigate} />
+        <ResultScreen scores={screen.scores} levelId={screen.levelId} appState={effectiveAppState} onNavigate={handleNavigate} />
         {surveyOverlay}
       </React.Fragment>
     );
 
   if (screen.type === 'wordbook')
-    return <WordbookScreen appState={appState} onToggleBookmark={handleToggleBookmark} onToggleSavedSense={handleToggleSavedSense} onNavigate={handleNavigate} />;
+    return <WordbookScreen appState={effectiveAppState} onToggleBookmark={handleToggleBookmark} onToggleSavedSense={handleToggleSavedSense} onNavigate={handleNavigate} />;
 
   if (screen.type === 'my')
-    return <MyWordbookScreen appState={appState} onToggleBookmark={handleToggleBookmark} onToggleSavedSense={handleToggleSavedSense} onNavigate={handleNavigate} />;
+    return <MyWordbookScreen appState={effectiveAppState} onToggleBookmark={handleToggleBookmark} onToggleSavedSense={handleToggleSavedSense} onNavigate={handleNavigate} />;
 
-  if (screen.type === 'stats') return <StatsScreen appState={appState} onNavigate={handleNavigate} />;
+  if (screen.type === 'stats') return <StatsScreen appState={effectiveAppState} onNavigate={handleNavigate} />;
 
   return null;
 }
