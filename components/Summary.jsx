@@ -43,26 +43,30 @@ export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
             : [];
 
           return (
-          <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+          <div key={i} className="relative flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
             <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-black text-slate-400 shrink-0 shadow-sm mt-0.5">{i + 1}</span>
             <div className="flex-1 min-w-0">
-              {/* 用法名：最も強調（teal accent + extra bold） */}
-              <p className="font-black text-teal-700 text-[0.95rem] leading-snug">{face.name}</p>
-              {/* 訳：次に強調（中ウェイト・やや濃いグレー） */}
-              <p className="text-slate-600 text-sm font-semibold mt-0.5 leading-snug">{face.meaning}</p>
-              {/* 型：コードっぽく・ミュートカラー */}
-              {face.type && (
-                <span className="inline-block mt-2 px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 text-[0.65rem] font-mono tracking-tight">
-                  {face.type}
-                </span>
-              )}
-              {/* 説明：補足然と・最もミュート */}
-              {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
-              {/* 設問例文の再掲（クイズ答え合わせ後のみ：showExamples=true かつ senseIds がある用法のみ） */}
+              {/* 用法名・訳・型・説明：「忘れがち」ボタンと重ならないよう右パディング */}
+              <div className={onToggleFace ? 'pr-[4.5rem]' : ''}>
+                {/* 用法名：最も強調（teal accent + extra bold） */}
+                <p className="font-black text-teal-700 text-[0.95rem] leading-snug">{face.name}</p>
+                {/* 訳：次に強調（中ウェイト・やや濃いグレー） */}
+                <p className="text-slate-600 text-sm font-semibold mt-0.5 leading-snug">{face.meaning}</p>
+                {/* 型：コードっぽく・ミュートカラー */}
+                {face.type && (
+                  <span className="inline-block mt-2 px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 text-[0.65rem] font-mono tracking-tight">
+                    {face.type}
+                  </span>
+                )}
+                {/* 説明：補足然と・最もミュート */}
+                {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
+              </div>
+              {/* 設問例文の再掲（クイズ答え合わせ後のみ：showExamples=true かつ senseIds がある用法のみ）
+                  ※ 右パディングなし = コンテンツ列のフル幅まで伸びる */}
               {exampleSenses.length > 0 && (
-                <div className="mt-2.5 pt-2.5 border-t border-slate-200/70 flex flex-col gap-2">
+                <div className="mt-2.5 pt-2.5 border-t border-slate-200/70 w-full flex flex-col gap-2">
                   {exampleSenses.map((s) => (
-                    <div key={s.id} className="rounded-xl bg-white border border-slate-200 px-3 py-2">
+                    <div key={s.id} className="w-full rounded-xl bg-white border border-slate-200 px-3 py-2">
                       <p className="text-slate-600 text-[0.78rem] font-semibold leading-snug italic">{s.en}</p>
                       <p className="text-slate-400 text-[0.72rem] font-medium leading-snug mt-0.5">{s.jpFull}</p>
                     </div>
@@ -73,7 +77,7 @@ export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
             {onToggleFace && (
               <button
                 onClick={(e) => { e.stopPropagation(); onToggleFace(word.id, i); }}
-                className={'shrink-0 flex items-center gap-1 px-2.5 py-1 rounded-full text-[0.65rem] font-bold transition-colors active:scale-95 self-start ' + ((savedSet || []).indexOf(word.id + ':' + i) >= 0 ? 'bg-amber-100 text-amber-600' : 'bg-white text-slate-400 border border-slate-200 hover:text-amber-500')}
+                className={'absolute top-2.5 right-2.5 flex items-center gap-1 px-2.5 py-1 rounded-full text-[0.65rem] font-bold transition-colors active:scale-95 ' + ((savedSet || []).indexOf(word.id + ':' + i) >= 0 ? 'bg-amber-100 text-amber-600' : 'bg-white text-slate-400 border border-slate-200 hover:text-amber-500')}
                 title="忘れがちな用法として保存"
               >
                 <Icon name="bookmark" size={11} fill={(savedSet || []).indexOf(word.id + ':' + i) >= 0 ? 'currentColor' : undefined} /> 忘れがち
