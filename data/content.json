@@ -51,29 +51,44 @@
         {
           "name": "〈不特定〉",
           "meaning": "「とある／なんらかの」",
-          "type": "some + 単数可算名詞"
+          "type": "some + 単数可算名詞",
+          "senseIds": [
+            "some__とある"
+          ]
         },
         {
           "name": "〈量〉複数",
           "meaning": "「いくつかの」",
-          "type": "some + 複数可算名詞"
+          "type": "some + 複数可算名詞",
+          "senseIds": [
+            "some__いくらかの"
+          ]
         },
         {
           "name": "〈量〉不可算",
           "meaning": "「いくらかの」",
-          "type": "some + 不可算名詞"
+          "type": "some + 不可算名詞",
+          "senseIds": [
+            "some__いくらかの"
+          ]
         },
         {
           "name": "〈存在〉",
           "meaning": "「〜なものもある／一部の」",
           "type": "some + 複数名詞",
-          "note": "文意が一般論。some 〜, others 〜 のセット表現が頻出。"
+          "note": "文意が一般論。some 〜, others 〜 のセット表現が頻出。",
+          "senseIds": [
+            "some__一部の"
+          ]
         },
         {
           "name": "〈約〉",
           "meaning": "「およそ、約」",
           "type": "some + 数詞",
-          "note": "some twenty years など。"
+          "note": "some twenty years など。",
+          "senseIds": [
+            "some__約"
+          ]
         }
       ],
       "trivia": "〈存在〉用法は <b>some 〜, others 〜</b> とセットで頻出です。例: Some students prefer online classes; others prefer face-to-face.（オンライン授業を好む生徒もいれば、対面を好む生徒もいる）"
@@ -158,43 +173,64 @@
           "name": "前置詞〈資格〉",
           "meaning": "「〜として」",
           "type": "as + 名詞",
-          "note": "SV を伴わない。"
+          "note": "SV を伴わない。",
+          "senseIds": [
+            "as__として"
+          ]
         },
         {
           "name": "接続詞〈時〉",
           "meaning": "「〜する時／〜しながら」",
           "type": "as + S V",
-          "note": "動作の同時性。"
+          "note": "動作の同時性。",
+          "senseIds": [
+            "as__しながら"
+          ]
         },
         {
           "name": "接続詞〈理由〉",
           "meaning": "「〜なので／〜だから」",
           "type": "as + S V",
-          "note": "因果関係。"
+          "note": "因果関係。",
+          "senseIds": [
+            "as__なので"
+          ]
         },
         {
           "name": "接続詞〈比例〉",
           "meaning": "「〜するにつれて」",
           "type": "as + S V",
-          "note": "程度の変化と連動。"
+          "note": "程度の変化と連動。",
+          "senseIds": [
+            "as__につれて"
+          ]
         },
         {
           "name": "接続詞〈様態〉",
           "meaning": "「〜のように／〜の通り」",
           "type": "as + S V",
-          "note": "様子・指示の踏襲。"
+          "note": "様子・指示の踏襲。",
+          "senseIds": [
+            "as__ように"
+          ]
         },
         {
           "name": "接続詞〈譲歩〉",
           "meaning": "「確かに〜だが」",
           "type": "形容詞/副詞/名詞 + as + S V",
-          "note": "倒置形。"
+          "note": "倒置形。",
+          "senseIds": [
+            "as__確かに_だが"
+          ]
         },
         {
           "name": "擬似関係代名詞",
           "meaning": "「〜するような…／〜する…」（訳さない）",
           "type": "such / the same 〜 as ...",
-          "note": "whichやthatといった関係代名詞と同様の働きをします。such / the same とコロケーションが良いです。"
+          "note": "whichやthatといった関係代名詞と同様の働きをします。such / the same とコロケーションが良いです。",
+          "senseIds": [
+            "as__ような"
+          ]
         },
         {
           "name": "as 〜 as 構文〈比較〉",
@@ -255,19 +291,28 @@
           "name": "not A but B 構文",
           "meaning": "「A ではなく B」",
           "type": "not A but B",
-          "note": "決まった形として覚える。"
+          "note": "決まった形として覚える。",
+          "senseIds": [
+            "but__むしろ"
+          ]
         },
         {
           "name": "前置詞〈除外〉",
           "meaning": "「〜を除いて」(=except)",
           "type": "but + 名詞・代名詞",
-          "note": "everyone but me / nothing but a fool など。"
+          "note": "everyone but me / nothing but a fool など。",
+          "senseIds": [
+            "but__以外"
+          ]
         },
         {
           "name": "副詞〈限定〉",
           "meaning": "「ほんの／ただ〜だけ」(=only)",
           "type": "be + but + 名詞",
-          "note": "He is but a child. など。古風な言い回し。"
+          "note": "He is but a child. など。古風な言い回し。",
+          "senseIds": [
+            "but__ほんの"
+          ]
         }
       ],
       "trivia": "<b>cannot but V</b> / <b>cannot help but V</b>（= cannot help doing）「V せざるを得ない」は頻出構文です。この but は「〜以外」の前置詞用法です。"
@@ -332,25 +377,37 @@
           "name": "指示代名詞",
           "meaning": "「あれ／それ」",
           "type": "That + V（名詞単独）",
-          "note": "That is my house. など。"
+          "note": "That is my house. など。",
+          "senseIds": [
+            "that__それ"
+          ]
         },
         {
           "name": "限定詞",
           "meaning": "「あの〜／その〜」",
           "type": "that + 名詞",
-          "note": "that book / those books。"
+          "note": "that book / those books。",
+          "senseIds": [
+            "that__あの"
+          ]
         },
         {
           "name": "関係代名詞",
           "meaning": "「〜する…」（訳さない）",
           "type": "先行詞 + that + 不完全文",
-          "note": "the man that I met。"
+          "note": "the man that I met。",
+          "senseIds": [
+            "that__訳さない"
+          ]
         },
         {
           "name": "副詞（口語）",
           "meaning": "「それほど」",
           "type": "that + 形容詞/副詞",
-          "note": "not that difficult など。"
+          "note": "not that difficult など。",
+          "senseIds": [
+            "that__それほど"
+          ]
         },
         {
           "name": "接続詞〈名詞節〉",
@@ -362,7 +419,10 @@
           "name": "接続詞〈同格〉",
           "meaning": "「〜という…」",
           "type": "名詞 + that + 完全文",
-          "note": "fact / reason / ideaなど、抽象名詞の中身を説明。"
+          "note": "fact / reason / ideaなど、抽象名詞の中身を説明。",
+          "senseIds": [
+            "that__という"
+          ]
         }
       ],
       "trivia": [
@@ -430,7 +490,10 @@
           "name": "〈意志〉",
           "meaning": "「〜する／〜しよう／〜するつもりだ」",
           "type": "人 + will + V",
-          "note": "主語の積極的な意志。"
+          "note": "主語の積極的な意志。",
+          "senseIds": [
+            "will__つもりだ"
+          ]
         },
         {
           "name": "〈推量・予測〉",
@@ -442,24 +505,36 @@
           "name": "〈確定的な未来〉",
           "meaning": "「（訳さない）」",
           "type": "S + will + V（確定的な事実・予定）",
-          "note": "推量が入らないので「だろう」を付けない。"
+          "note": "推量が入らないので「だろう」を付けない。",
+          "senseIds": [
+            "will__訳さない"
+          ]
         },
         {
           "name": "〈習慣・性質〉",
           "meaning": "「よく〜する／〜するものだ」",
           "type": "S + will + V",
-          "note": "一般論を示す際に使う。"
+          "note": "一般論を示す際に使う。",
+          "senseIds": [
+            "will__ものだ"
+          ]
         },
         {
           "name": "〈依頼〉",
           "meaning": "「〜してくれませんか」",
-          "type": "Will you ...?"
+          "type": "Will you ...?",
+          "senseIds": [
+            "will__くれませんか"
+          ]
         },
         {
           "name": "〈強い拒絶〉",
           "meaning": "「どうしても〜ない」(won't)",
           "type": "S + won't + V",
-          "note": "無生物主語にも使う。"
+          "note": "無生物主語にも使う。",
+          "senseIds": [
+            "will__どうしても_ない"
+          ]
         }
       ],
       "trivia": [
@@ -526,31 +601,46 @@
           "name": "〈推量〉",
           "meaning": "「たぶん〜だろう」",
           "type": "S + would + V",
-          "note": "今の事柄への控えめな推量。"
+          "note": "今の事柄への控えめな推量。",
+          "senseIds": [
+            "would__だろう"
+          ]
         },
         {
           "name": "〈過去の習慣〉",
           "meaning": "「よく〜したものだ」",
           "type": "would (often) + V",
-          "note": "often と相性がよい。"
+          "note": "often と相性がよい。",
+          "senseIds": [
+            "would__したものだ"
+          ]
         },
         {
           "name": "〈依頼〉",
           "meaning": "「〜してくれませんか」",
           "type": "Would you ...?",
-          "note": "Will you ...? より丁寧。"
+          "note": "Will you ...? より丁寧。",
+          "senseIds": [
+            "would__くれませんか"
+          ]
         },
         {
           "name": "〈仮定法〉",
           "meaning": "「〜だろうに／のに」",
           "type": "S + would + V（+ if 節）",
-          "note": "現実には起きないことを表す。"
+          "note": "現実には起きないことを表す。",
+          "senseIds": [
+            "would__のに"
+          ]
         },
         {
           "name": "〈控えめな願望〉",
           "meaning": "「〜したいのですが」",
           "type": "would like (to V)",
-          "note": "want の丁寧版。"
+          "note": "want の丁寧版。",
+          "senseIds": [
+            "would__いただきたい"
+          ]
         }
       ],
       "trivia": "②〈過去の習慣〉は <b>used to</b> との違いに注意：used to は「今はもう〜ない」という現在との対比を含み、状態動詞にも使えます。would は状態動詞には使えません。"
@@ -615,31 +705,46 @@
           "name": "〈獲得〉",
           "meaning": "「手に入れる・取る」",
           "type": "get + 名詞",
-          "note": "成果・賞・物などを引き寄せる。"
+          "note": "成果・賞・物などを引き寄せる。",
+          "senseIds": [
+            "get__取る"
+          ]
         },
         {
           "name": "〈到着〉",
           "meaning": "「たどり着く」",
           "type": "get + 場所",
-          "note": "get home / get to the station。"
+          "note": "get home / get to the station。",
+          "senseIds": [
+            "get__着く"
+          ]
         },
         {
           "name": "〈変化〉",
           "meaning": "「〜になる」",
           "type": "get + 形容詞",
-          "note": "状態の変化。get cold / get tired。"
+          "note": "状態の変化。get cold / get tired。",
+          "senseIds": [
+            "get__なる"
+          ]
         },
         {
           "name": "〈理解〉",
           "meaning": "「わかる」",
           "type": "get + it / 内容",
-          "note": "I get it. = 理解をつかむ。"
+          "note": "I get it. = 理解をつかむ。",
+          "senseIds": [
+            "get__わかる"
+          ]
         },
         {
           "name": "〈使役〉",
           "meaning": "「〜してもらう・させる」",
           "type": "get + O + to V",
-          "note": "get + O + C も同じ仲間。"
+          "note": "get + O + C も同じ仲間。",
+          "senseIds": [
+            "get__してもらう"
+          ]
         }
       ]
     },
@@ -693,24 +798,36 @@
         {
           "name": "〈限定〉",
           "meaning": "「〜だけ・〜のみ」",
-          "type": "only + 名詞"
+          "type": "only + 名詞",
+          "senseIds": [
+            "only__だけ_しか_ない"
+          ]
         },
         {
           "name": "〈少なさ強調〉",
           "meaning": "「たった・ほんの」",
-          "type": "only + 数詞"
+          "type": "only + 数詞",
+          "senseIds": [
+            "only__ほんの"
+          ]
         },
         {
           "name": "〈唯一〉",
           "meaning": "「唯一の」",
           "type": "the only + 名詞",
-          "note": "the とのセットが目印。"
+          "note": "the とのセットが目印。",
+          "senseIds": [
+            "only__唯一の"
+          ]
         },
         {
           "name": "〈時の強調〉",
           "meaning": "「〜して初めて」",
           "type": "only + 時の表現",
-          "note": "文頭に出ると後ろが倒置になりやすい。"
+          "note": "文頭に出ると後ろが倒置になりやすい。",
+          "senseIds": [
+            "only__になって初めて"
+          ]
         }
       ],
       "trivia": "文頭の <b>Only + 時/場所 + 倒置</b>（Only then did I understand.）は入試頻出です。only が文頭に出たら倒置を疑いましょう。"
@@ -765,13 +882,19 @@
         {
           "name": "〈完了〉",
           "meaning": "「たった今・ちょうど今」",
-          "type": "have just + 過去分詞"
+          "type": "have just + 過去分詞",
+          "senseIds": [
+            "just__たった今"
+          ]
         },
         {
           "name": "〈少なさ〉",
           "meaning": "「ほんの・たった」",
           "type": "just + 数量",
-          "note": "only と同義。"
+          "note": "only と同義。",
+          "senseIds": [
+            "just__ほんの"
+          ]
         },
         {
           "name": "〈一致〉",
@@ -783,13 +906,19 @@
           "name": "〈やわらげ〉",
           "meaning": "「ちょっと・ただ」",
           "type": "Just + 命令文",
-          "note": "命令・依頼の口調をやわらげる。"
+          "note": "命令・依頼の口調をやわらげる。",
+          "senseIds": [
+            "just__ちょっと"
+          ]
         },
         {
           "name": "形容詞",
           "meaning": "「公正な・正当な」",
           "type": "a just + 名詞",
-          "note": "justice と同語源。"
+          "note": "justice と同語源。",
+          "senseIds": [
+            "just__公正な"
+          ]
         }
       ]
     },
@@ -854,24 +983,36 @@
         {
           "name": "〈所要〉",
           "meaning": "「（時間が）かかる」",
-          "type": "It takes + 時間"
+          "type": "It takes + 時間",
+          "senseIds": [
+            "take__かかる"
+          ]
         },
         {
           "name": "〈利用〉",
           "meaning": "「（乗り物に）乗る」",
-          "type": "take + 交通手段"
+          "type": "take + 交通手段",
+          "senseIds": [
+            "take__乗る"
+          ]
         },
         {
           "name": "〈解釈〉",
           "meaning": "「受け取る・解釈する」",
           "type": "take + 物事 (+ as / 副詞)",
-          "note": "take it personally など。"
+          "note": "take it personally など。",
+          "senseIds": [
+            "take__受け取る"
+          ]
         },
         {
           "name": "〈行動〉",
           "meaning": "「（行動を）とる」",
           "type": "take + a break / action",
-          "note": "決まった名詞とのセットで覚える。"
+          "note": "決まった名詞とのセットで覚える。",
+          "senseIds": [
+            "take__とる"
+          ]
         }
       ],
       "trivia": "<b>bring</b>（持ってくる）との対比で、take は<b>話し手から離れていく方向</b>です。"
@@ -959,32 +1100,50 @@
         {
           "name": "〈同格〉",
           "meaning": "「〜という」",
-          "type": "名詞 + of + 名詞"
+          "type": "名詞 + of + 名詞",
+          "senseIds": [
+            "of__という"
+          ]
         },
         {
           "name": "〈内容〉",
           "meaning": "「〜について」",
-          "type": "think / afraid / information + of"
+          "type": "think / afraid / information + of",
+          "senseIds": [
+            "of__について"
+          ]
         },
         {
           "name": "〈構成要素〉",
           "meaning": "「〜でできた／〜で構成された」",
-          "type": "be made / consist + of"
+          "type": "be made / consist + of",
+          "senseIds": [
+            "of__から・で"
+          ]
         },
         {
           "name": "〈部分・全体〉",
           "meaning": "「〜のうちの／〜の中で」",
-          "type": "数量・最上級 + of + 名詞"
+          "type": "数量・最上級 + of + 名詞",
+          "senseIds": [
+            "of__のうちの・の中で"
+          ]
         },
         {
           "name": "〈性質〉",
           "meaning": "「〜のある／〜という性質の」",
-          "type": "名詞 + of + 抽象名詞"
+          "type": "名詞 + of + 抽象名詞",
+          "senseIds": [
+            "of__という性質を持った"
+          ]
         },
         {
           "name": "〈名詞構文の主語・目的語〉",
           "meaning": "「〜が／〜を」",
-          "type": "動作名詞 + of + 名詞"
+          "type": "動作名詞 + of + 名詞",
+          "senseIds": [
+            "of__を"
+          ]
         },
         {
           "name": "〈分離〉",
@@ -994,7 +1153,10 @@
         {
           "name": "〈原因〉",
           "meaning": "「〜で／〜のために」",
-          "type": "die / be tired + of"
+          "type": "die / be tired + of",
+          "senseIds": [
+            "of__で・のために"
+          ]
         }
       ],
       "trivia": "<b>名詞構文の of</b> は主語にも目的語にもなる：the killing of innocent people は「無実の人々<b>を</b>殺すこと」（目的語）、the lack of him は「彼<b>が</b>いないこと」（主語）。前後の動詞・名詞の関係で見分けましょう。"
@@ -1065,31 +1227,46 @@
           "name": "〈所持・所有〉",
           "meaning": "「〜を持って／〜を身につけて」",
           "type": "名詞 + with + 名詞",
-          "note": "a house with a garden / a man with a beard。"
+          "note": "a house with a garden / a man with a beard。",
+          "senseIds": [
+            "with__を持った"
+          ]
         },
         {
           "name": "〈道具・手段〉",
           "meaning": "「〜を使って／〜で」",
           "type": "動詞 + with + 道具",
-          "note": "write with a pen。文頭では「〜があれば」と条件っぽく訳すことも。"
+          "note": "write with a pen。文頭では「〜があれば」と条件っぽく訳すことも。",
+          "senseIds": [
+            "with__で"
+          ]
         },
         {
           "name": "〈付帯状況〉",
           "meaning": "「OがCの状態で」",
           "type": "with + O + C（分詞・形容詞・前置詞句）",
-          "note": "with his arms folded「腕を組んで」。"
+          "note": "with his arms folded「腕を組んで」。",
+          "senseIds": [
+            "with__の状態で"
+          ]
         },
         {
           "name": "〈原因・理由〉",
           "meaning": "「〜のために／〜によって」",
           "type": "感情・状態 + with + 名詞",
-          "note": "shake with cold / pale with fear。"
+          "note": "shake with cold / pale with fear。",
+          "senseIds": [
+            "with__で・のために"
+          ]
         },
         {
           "name": "〈一致・賛成 / 対立〉",
           "meaning": "「〜に賛成して／〜に対して」",
           "type": "be with / argue with",
-          "note": "Are you with me?（賛成）/ argue with（対立）。"
+          "note": "Are you with me?（賛成）/ argue with（対立）。",
+          "senseIds": [
+            "with__に賛成"
+          ]
         }
       ],
       "trivia": "<b>同じ with でも正反対</b>：be with は「賛成」、argue [fight] with は「対立」です。文脈で見分けましょう。付帯状況の <b>with O C</b>（with his eyes closed など）は和訳で頻出です。"
@@ -1136,7 +1313,10 @@
           "name": "〈所有〉",
           "meaning": "「持っている／〜がある」",
           "type": "have + 名詞",
-          "note": "have a car / have brown eyes。"
+          "note": "have a car / have brown eyes。",
+          "senseIds": [
+            "have__している"
+          ]
         },
         {
           "name": "〈義務〉",
@@ -1148,13 +1328,19 @@
           "name": "〈飲食〉",
           "meaning": "「（食べる・飲む・とる）」",
           "type": "have + 名詞",
-          "note": "have lunch / have a coffee / have a rest。"
+          "note": "have lunch / have a coffee / have a rest。",
+          "senseIds": [
+            "have__とる"
+          ]
         },
         {
           "name": "〈使役〉",
           "meaning": "「〜させる／〜してもらう」",
           "type": "have + O + 原形/過去分詞",
-          "note": "have him call / have it repaired。"
+          "note": "have him call / have it repaired。",
+          "senseIds": [
+            "have__させる・してもらう"
+          ]
         }
       ],
       "trivia": "<b>have + 過去分詞</b>は現在完了形（〜してしまった／〜したことがある）をつくりますが、これは助動詞としての別働きです。意味は文脈しだいで一定の訳が決まらないため、この3用法とは分けて押さえましょう。"
@@ -1202,7 +1388,10 @@
         {
           "name": "⑤〈強調構文〉",
           "meaning": "「（訳さない／〜なのは…だ）」",
-          "type": "It is 〜 that ..."
+          "type": "It is 〜 that ...",
+          "senseIds": [
+            "it__訳さない"
+          ]
         },
         {
           "name": "⑥ it seems/appears that構文",
@@ -1263,13 +1452,19 @@
           "name": "〈物理的分離〉",
           "meaning": "「（表面から）取れて／外れて」",
           "type": "動詞 + off",
-          "note": "come off / fall off / take off「脱ぐ・離陸する」。接触面から離れる。"
+          "note": "come off / fall off / take off「脱ぐ・離陸する」。接触面から離れる。",
+          "senseIds": [
+            "off__取れて・外れて"
+          ]
         },
         {
           "name": "〈出発・立ち去る〉",
           "meaning": "「去って／出かけて」",
           "type": "go / drive / set + off / be off",
-          "note": "I'm off.「じゃあ行くね」。その場から遠ざかる。"
+          "note": "I'm off.「じゃあ行くね」。その場から遠ざかる。",
+          "senseIds": [
+            "off__去って"
+          ]
         },
         {
           "name": "〈電源オフ・停止〉",
@@ -1281,13 +1476,19 @@
           "name": "〈休み〉",
           "meaning": "「（仕事を）休んで」",
           "type": "take + 時間 + off / be off",
-          "note": "a day off / I'm off today。日常のルーティンから離れる。"
+          "note": "a day off / I'm off today。日常のルーティンから離れる。",
+          "senseIds": [
+            "off__休んで"
+          ]
         },
         {
           "name": "〈基準からずれ・割引〉",
           "meaning": "「ずれて／〜引きで」",
           "type": "be a bit off / 数量 + off",
-          "note": "a bit off「少し調子が悪い」/ 10% off「10%引き」。通常から離れる。"
+          "note": "a bit off「少し調子が悪い」/ 10% off「10%引き」。通常から離れる。",
+          "senseIds": [
+            "off__引き"
+          ]
         }
       ],
       "trivia": "<b>off + 食べ物・習慣</b>は「もう欲しくない／離れた」：I've gone off coffee.（コーヒーが飲みたくなくなった）。基準から「離れる」イメージが、味の <b>a bit off</b>（少し傷んでいる）にもつながります。"
@@ -1331,13 +1532,19 @@
           "name": "〈譲歩〉",
           "meaning": "「〜でも、〜しても」",
           "type": "If SV（= even if）",
-          "note": "前提を認めても結論は変わらない。even if で言い換え可。"
+          "note": "前提を認めても結論は変わらない。even if で言い換え可。",
+          "senseIds": [
+            "if__としても"
+          ]
         },
         {
           "name": "〈名詞節〉",
           "meaning": "「〜かどうか」",
           "type": "know / ask / wonder + if SV",
-          "note": "動詞の目的語。whether に置換できるのが目印。"
+          "note": "動詞の目的語。whether に置換できるのが目印。",
+          "senseIds": [
+            "if__かどうか"
+          ]
         },
         {
           "name": "〈仮定法〉",
@@ -1396,19 +1603,28 @@
           "name": "〈継起〉",
           "meaning": "「〜すると」",
           "type": "When SV, SV.",
-          "note": "一般的真理・習慣でよく出る。When you heat ice, it melts."
+          "note": "一般的真理・習慣でよく出る。When you heat ice, it melts.",
+          "senseIds": [
+            "when__すると"
+          ]
         },
         {
           "name": "〈譲歩・対比〉",
           "meaning": "「〜なのに、〜である一方で」",
           "type": "SV when SV.",
-          "note": "つないだ二事が食い違う。though に近い。"
+          "note": "つないだ二事が食い違う。though に近い。",
+          "senseIds": [
+            "when__のに"
+          ]
         },
         {
           "name": "〈条件〉",
           "meaning": "「〜したら、〜する場合には」",
           "type": "When SV, S will V.",
-          "note": "if に近いが、起こることがほぼ確実な前提。"
+          "note": "if に近いが、起こることがほぼ確実な前提。",
+          "senseIds": [
+            "when__たら"
+          ]
         }
       ],
       "trivia": "<b>when と if の差</b>：when は「起こることを前提」に時を示し、if は「起こるか不確実」な条件を立てます。When you arrive, call me.（着いたら＝着く前提）と If you arrive late, call me.（遅れたら＝遅れるかは不明）の差です。"
@@ -1455,19 +1671,28 @@
           "name": "〈任意〉",
           "meaning": "「どんな〜でも／どれでも」",
           "type": "any + 名詞（肯定文）",
-          "note": "任意の一つを選んでも成り立つ。Any colour will do.「何色でもよい」。"
+          "note": "任意の一つを選んでも成り立つ。Any colour will do.「何色でもよい」。",
+          "senseIds": [
+            "any__どんな_でも"
+          ]
         },
         {
           "name": "〈全否定強調〉",
           "meaning": "「少しも（〜ない）」",
           "type": "not 〜 any + 名詞",
-          "note": "全否定を強める。I don't have any water.「水は少しもない」。"
+          "note": "全否定を強める。I don't have any water.「水は少しもない」。",
+          "senseIds": [
+            "any__少しも_ない"
+          ]
         },
         {
           "name": "〈最小限〉",
           "meaning": "「少しでも、一つでも」",
           "type": "疑問文・if 節 + any",
-          "note": "If you feel any worse, call me.「少しでも悪化したら呼んで」。"
+          "note": "If you feel any worse, call me.「少しでも悪化したら呼んで」。",
+          "senseIds": [
+            "any__少しでも"
+          ]
         }
       ],
       "trivia": "<b>any と some の使い分け</b>：肯定文では通常 some を使います（I have some questions.）。any を肯定文に使うと「どんな〜でも」という任意性が出ます（Any question is welcome.）。「いくつかの」と訳したくなったら、それは some のニュアンスです。"
@@ -1505,13 +1730,19 @@
           "name": "〈接続詞・理由〉",
           "meaning": "「というのも、なぜなら」",
           "type": "SV, for SV.",
-          "note": "前文への補足説明。文語的。文頭には置けない（because との差）。"
+          "note": "前文への補足説明。文語的。文頭には置けない（because との差）。",
+          "senseIds": [
+            "for__というのも_だから・ため"
+          ]
         },
         {
           "name": "〈意味上の主語〉",
           "meaning": "「〜が（…する）」",
           "type": "形容詞/名詞 + for X + to do",
-          "note": "It is hard for me to swim.「私が泳ぐのは難しい」。for X が to do の主語。"
+          "note": "It is hard for me to swim.「私が泳ぐのは難しい」。for X が to do の主語。",
+          "senseIds": [
+            "for__が"
+          ]
         }
       ],
       "trivia": [
@@ -1558,13 +1789,19 @@
           "name": "〈認識〉",
           "meaning": "「OがCだとわかる・思う」",
           "type": "find + O + C",
-          "note": "O is C の関係。I found it hard to believe.「信じがたいとわかった」。"
+          "note": "O is C の関係。I found it hard to believe.「信じがたいとわかった」。",
+          "senseIds": [
+            "find__わかる"
+          ]
         },
         {
           "name": "〈発見的自覚〉",
           "meaning": "「気づくとCの状態にいる」",
           "type": "find + oneself + C",
-          "note": "意図しないうちにその状態になっていたと気づく。She found herself a mother.「気づけば母になっていた」。"
+          "note": "意図しないうちにその状態になっていたと気づく。She found herself a mother.「気づけば母になっていた」。",
+          "senseIds": [
+            "find__気づく"
+          ]
         }
       ],
       "trivia": "<b>SVOC の訳のコツ</b>：find / think / believe などの O C は「O＝C」の関係なので、<b>「O が C である」と主語‐述語で訳す</b>と自然になります。I found the test easy.→「テストは易しいとわかった」。"
@@ -1602,13 +1839,19 @@
           "name": "〈習得〉",
           "meaning": "「〜を学ぶ、身につける」",
           "type": "learn + 名詞（技能・知識）",
-          "note": "反復・訓練による習得。learn English「英語を学ぶ」。"
+          "note": "反復・訓練による習得。learn English「英語を学ぶ」。",
+          "senseIds": [
+            "learn__できるようになる"
+          ]
         },
         {
           "name": "〈認識〉",
           "meaning": "「〜を知る・わかる」",
           "type": "learn + 名詞（情報・事実）",
-          "note": "情報を得て知ること。I learned the news.「その知らせを知った」。Weblio でも「〔…のことを〕（聞いて）知る」として立項。"
+          "note": "情報を得て知ること。I learned the news.「その知らせを知った」。Weblio でも「〔…のことを〕（聞いて）知る」として立項。",
+          "senseIds": [
+            "learn__知る・わかる"
+          ]
         },
         {
           "name": "〈習得完了〉",
@@ -1673,19 +1916,28 @@
           "name": "〈作動〉",
           "meaning": "「動く、作動する」",
           "type": "S（機械）+ work",
-          "note": "否定でよく出る。It doesn't work.「動かない・効かない」。"
+          "note": "否定でよく出る。It doesn't work.「動かない・効かない」。",
+          "senseIds": [
+            "work__動く"
+          ]
         },
         {
           "name": "〈機能〉",
           "meaning": "「効く、うまくいく」",
           "type": "S（薬/計画）+ work",
-          "note": "The plan worked.「計画はうまくいった」。"
+          "note": "The plan worked.「計画はうまくいった」。",
+          "senseIds": [
+            "work__効く"
+          ]
         },
         {
           "name": "〈作品〉（名詞）",
           "meaning": "「作品、著作物」",
           "type": "a work / the works of + 作家名",
-          "note": "the works of Shakespeare「シェイクスピアの作品」。Oxford: 'a product of the imagination, especially a painting, a book or a piece of music'。"
+          "note": "the works of Shakespeare「シェイクスピアの作品」。Oxford: 'a product of the imagination, especially a painting, a book or a piece of music'。",
+          "senseIds": [
+            "work__作品"
+          ]
         }
       ],
       "trivia": "<b>It works! の万能さ</b>：work は主語次第で「動く／効く／うまくいく／（手段が）通用する」と訳が変わる便利動詞です。Does this app work offline?「このアプリはオフラインでも動く？」のように、まず主語が何かを見て訳語を選びましょう。"
@@ -1729,13 +1981,19 @@
           "name": "〈程度〉",
           "meaning": "「かなり・やや」",
           "type": "rather + 形容詞/副詞",
-          "note": "程度を示す。文脈・文体・話し手の予想で「かなり」か「やや」かが変わる。"
+          "note": "程度を示す。文脈・文体・話し手の予想で「かなり」か「やや」かが変わる。",
+          "senseIds": [
+            "rather__かなり・やや"
+          ]
         },
         {
           "name": "〈選好〉",
           "meaning": "「どちらかといえば（〜したい）」",
           "type": "would rather do (than)",
-          "note": "好み・選択。I'd rather not.「できれば遠慮したい」。"
+          "note": "好み・選択。I'd rather not.「できれば遠慮したい」。",
+          "senseIds": [
+            "rather__どちらかといえば"
+          ]
         }
       ],
       "trivia": "<b>rather の程度は文脈次第</b>：rather は同じ程度副詞でも、良いこと（rather good「なかなか良い」）にも悪いこと（rather difficult「かなり難しい」）にも付き、しばしば<b>予想とのズレ</b>（意外と〜）をにじませます。どれほど強いかは文脈と話し手の感覚で決まります。"
@@ -1800,31 +2058,46 @@
           "name": "〈起点〉",
           "meaning": "「〜から（外へ）」",
           "type": "動詞 + out of + 場所",
-          "note": "=from。get out of bed / run out of the house。最頻。"
+          "note": "=from。get out of bed / run out of the house。最頻。",
+          "senseIds": [
+            "out of__から_外へ"
+          ]
         },
         {
           "name": "〈動機・原因〉",
           "meaning": "「〜から、〜のために」",
           "type": "out of + 抽象名詞（感情・動機）",
-          "note": "out of curiosity「好奇心から」/ out of kindness「親切心から」。"
+          "note": "out of curiosity「好奇心から」/ out of kindness「親切心から」。",
+          "senseIds": [
+            "out of__から"
+          ]
         },
         {
           "name": "〈不足・枯渇〉",
           "meaning": "「〜が切れて、尽きて」",
           "type": "be / run + out of + 名詞",
-          "note": "=short of。run out of time「時間が尽きる」。"
+          "note": "=short of。run out of time「時間が尽きる」。",
+          "senseIds": [
+            "out of__が切れて"
+          ]
         },
         {
           "name": "〈割合〉",
           "meaning": "「〜のうち、〜の中から」",
           "type": "数詞 + out of + 数詞",
-          "note": "nine out of ten「10のうち9」。分子/分母の関係。"
+          "note": "nine out of ten「10のうち9」。分子/分母の関係。",
+          "senseIds": [
+            "out of__のうち"
+          ]
         },
         {
           "name": "〈状態からの離脱〉",
           "meaning": "「〜でなくなって、〜を外れて」",
           "type": "be out of + 状態名詞",
-          "note": "out of order「故障して」/ out of date「時代遅れで」/ out of fashion「流行遅れで」。"
+          "note": "out of order「故障して」/ out of date「時代遅れで」/ out of fashion「流行遅れで」。",
+          "senseIds": [
+            "out of__故障して"
+          ]
         }
       ],
       "trivia": [
@@ -1862,7 +2135,10 @@
           "name": "〈剥奪〉",
           "meaning": "「人にモノを与えない・認めない」",
           "type": "deny + 人 + モノ",
-          "note": "give の対義。He was denied access.「アクセスを与えられなかった」（受動でよく出る）。"
+          "note": "give の対義。He was denied access.「アクセスを与えられなかった」（受動でよく出る）。",
+          "senseIds": [
+            "deny__与えない・奪う"
+          ]
         }
       ],
       "trivia": [
@@ -1899,7 +2175,10 @@
           "name": "〈技術・コツ〉",
           "meaning": "「技術、コツ、わざ」",
           "type": "the art of 〜",
-          "note": "the art of war「兵法」。熟練を要する技能。"
+          "note": "the art of war「兵法」。熟練を要する技能。",
+          "senseIds": [
+            "art__技術"
+          ]
         }
       ],
       "trivia": "<b>art から派生した二つの形容詞</b>：「美術」由来は <b>artistic</b>「芸術的な」、「技術（人の手わざ）」由来は <b>artificial</b>「人工の」です。同じ art が語源でも意味が分かれます。"
@@ -1953,19 +2232,28 @@
           "name": "〈像・姿〉",
           "meaning": "「像、姿」",
           "type": "image in the mirror",
-          "note": "鏡・水面・レンズに映ったもの、彫像。"
+          "note": "鏡・水面・レンズに映ったもの、彫像。",
+          "senseIds": [
+            "image__姿"
+          ]
         },
         {
           "name": "〈象徴・体現〉",
           "meaning": "「象徴、化身」",
           "type": "an image of 〜",
-          "note": "the very image of his father「父親そっくり（生き写し）」。"
+          "note": "the very image of his father「父親そっくり（生き写し）」。",
+          "senseIds": [
+            "image__象徴"
+          ]
         },
         {
           "name": "〈画像・映像〉",
           "meaning": "「画像、映像」",
           "type": "digital/satellite image",
-          "note": "コンピュータ・カメラ上の像。"
+          "note": "コンピュータ・カメラ上の像。",
+          "senseIds": [
+            "image__画像"
+          ]
         }
       ],
       "trivia": "<b>the (very) image of 〜</b>「〜の生き写し・そっくり」：She is the image of her mother.「彼女は母親にそっくりだ」。「印象」だけでなく「姿・象徴」へ広がる image の幅を示す慣用表現です。"
@@ -2000,7 +2288,10 @@
           "name": "〈上書き・強調〉",
           "meaning": "「それどころか、むしろ」",
           "type": "not …; in fact …",
-          "note": "前言を否定して上書きし、さらに強める。"
+          "note": "前言を否定して上書きし、さらに強める。",
+          "senseIds": [
+            "in fact__それどころか"
+          ]
         }
       ],
       "trivia": "<b>in fact の二面性</b>：直前が肯定なら「実のところ（補強）」、直前が否定なら「それどころか（上書き）」になりがちです。as a matter of fact / actually も同様に、文脈で「実は」と「それどころか」を使い分けましょう。"
@@ -2035,7 +2326,10 @@
           "name": "〈理由の後出し〉",
           "meaning": "「だって、なにしろ〜だから」",
           "type": "After all, SV.（理由の補足）",
-          "note": "前言の根拠を後出し。相手を納得させる。"
+          "note": "前言の根拠を後出し。相手を納得させる。",
+          "senseIds": [
+            "after all__なにしろ"
+          ]
         }
       ],
       "trivia": "<b>位置で見分ける after all</b>：<b>文末</b>なら「結局（予想に反する結果）」、<b>文頭・文中</b>で理由を述べていれば「なにしろ・だって（前言の根拠）」のことが多い。Why worry? After all, it's just a game.「なぜ心配を？だって、ただのゲームじゃないか」。"
@@ -2082,19 +2376,28 @@
           "name": "〈程度・副詞〉",
           "meaning": "「それほど、そんなに」",
           "type": "so + 形容詞/副詞",
-          "note": "≠very。「想定した基準ほど〜だ／ない」と参照先を含む。否定文・比較で多用。"
+          "note": "≠very。「想定した基準ほど〜だ／ない」と参照先を含む。否定文・比較で多用。",
+          "senseIds": [
+            "so__それほど"
+          ]
         },
         {
           "name": "〈様態・代用・副詞〉",
           "meaning": "「そう、そのように」",
           "type": "think/hope/do so, if so",
-          "note": "前に出た節・動詞句を受けて繰り返しを避ける。do so は前出の動作の代用。"
+          "note": "前に出た節・動詞句を受けて繰り返しを避ける。do so は前出の動作の代用。",
+          "senseIds": [
+            "so__そう"
+          ]
         },
         {
           "name": "〈結果・接続詞〉",
           "meaning": "「だから、そのため」",
           "type": "SV, so SV.",
-          "note": "前文を原因、後文を結果として結ぶ。文頭ではなく節と節の間に置く。"
+          "note": "前文を原因、後文を結果として結ぶ。文頭ではなく節と節の間に置く。",
+          "senseIds": [
+            "so__だから"
+          ]
         }
       ],
       "trivia": [
@@ -2141,13 +2444,19 @@
           "name": "〈動作・認識〉",
           "meaning": "「知る、(これから)分かる」",
           "type": "will/soon know",
-          "note": "状態から状態への変化(知らない→知る)を切り取る文脈。未来・助動詞を伴いやすい。"
+          "note": "状態から状態への変化(知らない→知る)を切り取る文脈。未来・助動詞を伴いやすい。",
+          "senseIds": [
+            "know__知る"
+          ]
         },
         {
           "name": "〈識別・判断〉",
           "meaning": "「見分ける、識別する」",
           "type": "know A from B / know the difference",
-          "note": "対象を区別して判別する know。「A と B の違いが分かる」。"
+          "note": "対象を区別して判別する know。「A と B の違いが分かる」。",
+          "senseIds": [
+            "know__見分ける"
+          ]
         }
       ],
       "trivia": "<b>know は状態動詞</b>なので原則 I am knowing とは言えません。一方で <b>get to know</b>「(次第に)知り合う・知るようになる」や <b>will know</b> は「知らない→知っている」への<b>変化</b>を表すため、和訳では「知る」と動作的に訳すのが自然になります。状態か変化かを見抜くのが訳し分けの鍵です。"
@@ -2194,19 +2503,28 @@
           "name": "〈主題〉",
           "meaning": "「〜について、〜に関する」",
           "type": "book/lecture/report on N",
-          "note": "about より専門的・学術的。漫画『チ。』の英題 Orb: On the Movements of the Earth もこの on。受験生の盲点。"
+          "note": "about より専門的・学術的。漫画『チ。』の英題 Orb: On the Movements of the Earth もこの on。受験生の盲点。",
+          "senseIds": [
+            "on__について"
+          ]
         },
         {
           "name": "〈接触〉",
           "meaning": "「〜にくっついて」",
           "type": "on + 面(壁・天井含む)",
-          "note": "on の核イメージは上下ではなく「接触」。a fly on the ceiling のように天井でも on。"
+          "note": "on の核イメージは上下ではなく「接触」。a fly on the ceiling のように天井でも on。",
+          "senseIds": [
+            "on__くっついて"
+          ]
         },
         {
           "name": "〈依存〉",
           "meaning": "「〜次第で、〜に依存して」",
           "type": "depend/rely on N",
-          "note": "土台に乗っている感覚から。「〜を基盤にして・〜にかかっている」。"
+          "note": "土台に乗っている感覚から。「〜を基盤にして・〜にかかっている」。",
+          "senseIds": [
+            "on__次第だ"
+          ]
         }
       ],
       "trivia": "<b>主題の on は about より硬い</b>：日常会話では a book about dogs ですが、学術書・論文・講義では a paper on dogs のように on を使うと専門的な響きになります。類義は <b>of / about / over</b> です。核が「接触」である on は、turn the TV on（電源が回路に「つながる」）のように、物理的接触から比喩的な「進行中・作動中」へも広がります。"
@@ -2259,19 +2577,28 @@
           "name": "〈意味・道理〉",
           "meaning": "「意味、道理、筋」",
           "type": "make sense / in a sense",
-          "note": "make sense「意味が通る・筋が通る」。in a sense「ある意味で」。道理・筋道としての sense。"
+          "note": "make sense「意味が通る・筋が通る」。in a sense「ある意味で」。道理・筋道としての sense。",
+          "senseIds": [
+            "sense__意味"
+          ]
         },
         {
           "name": "〈良識・判断力〉",
           "meaning": "「分別、常識」",
           "type": "common/good sense, have the sense to do",
-          "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。"
+          "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。",
+          "senseIds": [
+            "sense__分別"
+          ]
         },
         {
           "name": "〈意識・〜感〉",
           "meaning": "「意識、〜感」",
           "type": "a sense of belonging / satisfaction / urgency",
-          "note": "a sense of belonging（帰属意識）、a sense of satisfaction（満足感）、a sense of urgency（緊迫感）。抽象名詞と組み合わせて「〜感・〜意識」を表す。"
+          "note": "a sense of belonging（帰属意識）、a sense of satisfaction（満足感）、a sense of urgency（緊迫感）。抽象名詞と組み合わせて「〜感・〜意識」を表す。",
+          "senseIds": [
+            "sense__意識・_感"
+          ]
         }
       ],
       "trivia": "<b>make sense は『意味』用法</b>：sense の「道理・筋」という意味から、make sense は直訳すると「筋を作る」→「意味が通る・筋が通る」となります。主語が物・発言なら「理屈が通る」、It makes sense to do なら「〜するのももっともだ」という意味です。同じ語源でも five senses(感覚)、common sense(良識)とは訳語がまったく変わる多義語の典型です。"
@@ -2318,19 +2645,28 @@
           "name": "〈雇用〉",
           "meaning": "「解雇する、クビにする」",
           "type": "fire 人",
-          "note": "口語的にクビにすること。be fired で「解雇される」。反意語は hire「雇う」。"
+          "note": "口語的にクビにすること。be fired で「解雇される」。反意語は hire「雇う」。",
+          "senseIds": [
+            "fire__解雇する"
+          ]
         },
         {
           "name": "〈射撃〉",
           "meaning": "「発射する、撃つ」",
           "type": "fire (a gun / a shot) at 〜",
-          "note": "銃・砲などを撃つ。fire at「〜に向けて撃つ」。"
+          "note": "銃・砲などを撃つ。fire at「〜に向けて撃つ」。",
+          "senseIds": [
+            "fire__発射する"
+          ]
         },
         {
           "name": "〈連発〉",
           "meaning": "「(質問などを)浴びせる」",
           "type": "fire questions at 人",
-          "note": "比喩的に、質問や言葉を立て続けにぶつける。"
+          "note": "比喩的に、質問や言葉を立て続けにぶつける。",
+          "senseIds": [
+            "fire__浴びせる"
+          ]
         }
       ],
       "trivia": "<b>fire の動詞義はすべて「勢いよく放つ」イメージでつながります</b>。銃を撃つ〈射撃〉が原義に近く、そこから質問を立て続けにぶつける〈連発〉へ広がりました。「解雇する」は「(職場から)放り出す」感覚で、もとは be fired out が縮まった口語表現とされます。"
@@ -2368,13 +2704,19 @@
           "name": "〈確定〉",
           "meaning": "「(日時・価格などを)決める」",
           "type": "fix a date / price",
-          "note": "未定だったものを一つに定める。set a date とほぼ同義。"
+          "note": "未定だったものを一つに定める。set a date とほぼ同義。",
+          "senseIds": [
+            "fix__決める"
+          ]
         },
         {
           "name": "〈固定〉",
           "meaning": "「(視線・注意を)じっと注ぐ」",
           "type": "fix one's eyes / attention on 〜",
-          "note": "fix one's eyes on「〜をじっと見つめる」。一点に据えて動かさない。"
+          "note": "fix one's eyes on「〜をじっと見つめる」。一点に据えて動かさない。",
+          "senseIds": [
+            "fix__じっと注ぐ"
+          ]
         }
       ],
       "trivia": "<b>fix の芯は「動かないように据える」</b>です。物理的に固定する（fix a shelf to the wall）、日程を一つに定める（fix a date）、視線を一点に注ぐ（fix one's eyes）はすべて同じイメージの展開です。「修理する」も「壊れた状態を正常な状態に据え直す」という発想から来ています。"
@@ -2421,19 +2763,28 @@
           "name": "〈発症〉",
           "meaning": "「(病気・症状を)発症する」",
           "type": "develop a disease / fever",
-          "note": "症状が次第に現れること。get よりかたい語感。"
+          "note": "症状が次第に現れること。get よりかたい語感。",
+          "senseIds": [
+            "develop__発症する"
+          ]
         },
         {
           "name": "〈現像〉",
           "meaning": "「(写真を)現像する」",
           "type": "develop film",
-          "note": "フィルムに潜んだ像を薬品で浮かび上がらせる。"
+          "note": "フィルムに潜んだ像を薬品で浮かび上がらせる。",
+          "senseIds": [
+            "develop__現像する"
+          ]
         },
         {
           "name": "〈習得〉",
           "meaning": "「(性質・習慣・能力を)身につける」",
           "type": "develop a habit / skill",
-          "note": "時間をかけて徐々に育てる・養う。"
+          "note": "時間をかけて徐々に育てる・養う。",
+          "senseIds": [
+            "develop__身につける"
+          ]
         }
       ],
       "trivia": "<b>develop は「内にあるものを次第に展開させる」</b>のが芯です。語源は「包みを開く（dis- + envelop）」で、envelope（封筒）と同根です。隠れていた病気が表面化する〈発症〉、フィルムの潜像を浮かび上がらせる〈現像〉は、いずれも「中身が外へ現れる」イメージの典型です。"
@@ -2471,13 +2822,19 @@
           "name": "〈方向〉",
           "meaning": "「(〜へ)向かう、進む」",
           "type": "head for / to 〜",
-          "note": "head for home「家路につく」。目的地へ先頭を切って進む。"
+          "note": "head for home「家路につく」。目的地へ先頭を切って進む。",
+          "senseIds": [
+            "head__向かう"
+          ]
         },
         {
           "name": "〈統率〉",
           "meaning": "「(組織を)率いる、長を務める」",
           "type": "head 組織",
-          "note": "名詞では「(組織の)長」。the head of the school「校長」。"
+          "note": "名詞では「(組織の)長」。the head of the school「校長」。",
+          "senseIds": [
+            "head__率いる"
+          ]
         }
       ],
       "trivia": "<b>head は「先頭・かしら」のイメージが動詞に展開します</b>。組織の「頭」として導けば〈統率〉「率いる」、自分が先頭を切って進めば〈方向〉「向かう」です。なお「(ボールを)頭で打つ」（サッカーのヘディング）も同じ語の動詞義で、身体の「頭」と直結しています。"
@@ -2515,13 +2872,19 @@
           "name": "〈印象〉",
           "meaning": "「(〜のように)思える、聞こえる」",
           "type": "sound + 形容詞 / like 〜",
-          "note": "It sounds good.「よさそうだ」。話を聞いた印象を述べる。"
+          "note": "It sounds good.「よさそうだ」。話を聞いた印象を述べる。",
+          "senseIds": [
+            "sound__思える"
+          ]
         },
         {
           "name": "〈堅実〉",
           "meaning": "「健全な、しっかりした、妥当な」",
           "type": "a sound argument / mind",
-          "note": "形容詞。論理・健康・判断がぐらつかず確かなさま。safe and sound「無事で」。"
+          "note": "形容詞。論理・健康・判断がぐらつかず確かなさま。safe and sound「無事で」。",
+          "senseIds": [
+            "sound__しっかりした"
+          ]
         }
       ],
       "trivia": "<b>形容詞の sound「健全な」は、名詞「音」とは別語源です</b>。「しっかりした・ぐらつかない」が芯で、a sound argument「しっかりした論拠」、a sound mind「健全な精神」、safe and sound「無事で」のように使います。動詞の sound「〜に思える」は「音（声）として聞こえる」→「聞いた印象では」と発展した用法です。"
@@ -2556,7 +2919,10 @@
           "name": "〈重要性〉",
           "meaning": "動詞「重要である、大事だ」",
           "type": "It doesn't matter (that 〜)",
-          "note": "自動詞。否定・疑問文で多用。Does it matter?「それが問題なの？」"
+          "note": "自動詞。否定・疑問文で多用。Does it matter?「それが問題なの？」",
+          "senseIds": [
+            "matter__重要だ"
+          ]
         }
       ],
       "trivia": "<b>動詞の matter「重要だ」は否定文・疑問文で力を発揮します</b>。It doesn't matter.「どうってことない」、What does it matter?「それがどうしたっていうの」が典型です。肯定文でも Every second matters.「一秒一秒が大事だ」のように、「問題にするだけの価値がある＝重要だ」という発想で使われます。"
@@ -2594,13 +2960,19 @@
           "name": "〈重要性〉",
           "meaning": "「重要だ、物を言う」",
           "type": "Every 〜 counts.",
-          "note": "自動詞。「数に入る価値がある」→「大事だ」。It's the thought that counts.「気持ちが大事」。"
+          "note": "自動詞。「数に入る価値がある」→「大事だ」。It's the thought that counts.「気持ちが大事」。",
+          "senseIds": [
+            "count__重要だ"
+          ]
         },
         {
           "name": "〈依存〉",
           "meaning": "「(count on で)頼りにする、当てにする」",
           "type": "count on 人/物",
-          "note": "rely on / depend on とほぼ同義。"
+          "note": "rely on / depend on とほぼ同義。",
+          "senseIds": [
+            "count__頼りにする"
+          ]
         }
       ],
       "trivia": "<b>count は「勘定に入れる」発想で広がります</b>。Every vote counts.「一票一票が物を言う」は「数える価値がある→重要だ」、count on you「君を当てにする」は「君を頭数として勘定に入れる→頼る」という発展です。なお count as「〜とみなす」も「〜として勘定する」という同じ系統の用法です。"
@@ -2638,13 +3010,19 @@
           "name": "〈持続〉",
           "meaning": "動詞「続く、もちこたえる、もつ」",
           "type": "last (for) 期間",
-          "note": "The meeting lasted two hours.「会議は2時間続いた」。continue / endure に近い。"
+          "note": "The meeting lasted two hours.「会議は2時間続いた」。continue / endure に近い。",
+          "senseIds": [
+            "last__もつ"
+          ]
         },
         {
           "name": "〈全否定〉",
           "meaning": "「最も〜しそうにない」",
           "type": "the last 名詞 to do",
-          "note": "「〜する最後の人」→「絶対〜しない人」。強い否定を婉曲に表す。"
+          "note": "「〜する最後の人」→「絶対〜しない人」。強い否定を婉曲に表す。",
+          "senseIds": [
+            "last__そうにない"
+          ]
         }
       ],
       "trivia": "<b>the last person to do は強い否定の婉曲表現です</b>。He is the last man to give up.「彼は最も諦めそうにない男だ」のように、「(やるとしても)順番が一番最後＝事実上やらない」という発想で「決して〜しない」を表します。動詞 last「続く」は形容詞「最後の」とは違い「持続する」意味で、混同しないよう注意が要ります。"
@@ -2682,13 +3060,19 @@
           "name": "〈忍耐〉",
           "meaning": "「我慢する、耐える」",
           "type": "can't stand 〜",
-          "note": "主に否定文。can't stand「我慢できない・大嫌いだ」。"
+          "note": "主に否定文。can't stand「我慢できない・大嫌いだ」。",
+          "senseIds": [
+            "stand__耐えられない"
+          ]
         },
         {
           "name": "〈象徴〉",
           "meaning": "「(stand for で)表す、象徴する」",
           "type": "stand for 〜",
-          "note": "略語の説明で頻出。UN stands for the United Nations. 「支持する」の意もある。"
+          "note": "略語の説明で頻出。UN stands for the United Nations. 「支持する」の意もある。",
+          "senseIds": [
+            "stand__表す"
+          ]
         }
       ],
       "trivia": "<b>can't stand は「立っていられない」発想です</b>。重圧の下でも「立っていられる」のが我慢で、その否定が「耐えられない・大嫌いだ」になります。一方 stand for は「〜の代わりに立つ」→「象徴する・表す」で、略語の説明（UN stands for ...）で頻出します。同じ stand for に「支持する」の意もあります。"
@@ -2726,13 +3110,19 @@
           "name": "〈識別〉",
           "meaning": "「(tell A from B で)見分ける、区別する」",
           "type": "tell A from B / tell the difference",
-          "note": "二つの違いを判別する。tell right from wrong「善悪を見分ける」。"
+          "note": "二つの違いを判別する。tell right from wrong「善悪を見分ける」。",
+          "senseIds": [
+            "tell__見分ける"
+          ]
         },
         {
           "name": "〈判断〉",
           "meaning": "「(can tell で)わかる、見て取れる」",
           "type": "can tell (that 〜)",
-          "note": "証拠・様子から判断して「わかる」。You never can tell.「先のことはわからない」。"
+          "note": "証拠・様子から判断して「わかる」。You never can tell.「先のことはわからない」。",
+          "senseIds": [
+            "tell__わかる"
+          ]
         }
       ],
       "trivia": "<b>tell には「区別をつける・見て取る」系統があります</b>。tell A from B「AとBを見分ける」は「両者の違いを言い当てる」発想で、can はつけてもつけなくても使えます。can tell that 〜「〜だとわかる」は外見や証拠から判断する用法で、I can tell you're tired.「疲れているのが見て取れる」のように使います。"
@@ -2770,13 +3160,19 @@
           "name": "〈放置〉",
           "meaning": "「(leave O C で)〜のままにしておく」",
           "type": "leave O + 形容詞/分詞",
-          "note": "leave the door open「ドアを開けっぱなしにする」。状態を変えず残す。"
+          "note": "leave the door open「ドアを開けっぱなしにする」。状態を変えず残す。",
+          "senseIds": [
+            "leave__ままにしておく"
+          ]
         },
         {
           "name": "〈委任〉",
           "meaning": "「(leave 〜 to で)任せる、ゆだねる」",
           "type": "leave 物事 to 人",
-          "note": "Leave it to me.「私に任せて」。判断・仕事を相手にゆだねる。"
+          "note": "Leave it to me.「私に任せて」。判断・仕事を相手にゆだねる。",
+          "senseIds": [
+            "leave__任せる"
+          ]
         }
       ],
       "trivia": "<b>leave の芯は「その場に残す」です</b>。leave the door open「開けたままにする」は状態を残す〈放置〉、leave it to me「私に任せて」は仕事を相手のもとに残す〈委任〉です。「置き忘れる」（I left my bag on the train.）も「うっかりその場に残す」という同じ発想で、「去る」よりこの「残す」が leave の本質に近いといえます。"
@@ -2811,7 +3207,10 @@
           "name": "〈民族〉",
           "meaning": "「人種、民族」",
           "type": "race / the human race",
-          "note": "the human race「人類」。people of different races「異なる人種の人々」。"
+          "note": "the human race「人類」。people of different races「異なる人種の人々」。",
+          "senseIds": [
+            "race__人種"
+          ]
         }
       ],
       "trivia": "<b>「競走」の race と「人種」の race は別語源の同綴語です</b>。「競走」はノルウェー語系、「人種・民族」はイタリア語 razza 由来とされ、たまたま同じ綴りになりました。the human race「人類」のように「人類全体」を指す用法もあり、差別問題（racism）の文脈では必ずこちらの意味になります。"
@@ -2846,7 +3245,10 @@
           "name": "〈病人〉",
           "meaning": "名詞「患者」",
           "type": "a / the patient(s)",
-          "note": "冠詞・複数形がつく。see a patient「患者を診る」。"
+          "note": "冠詞・複数形がつく。see a patient「患者を診る」。",
+          "senseIds": [
+            "patient__患者"
+          ]
         }
       ],
       "trivia": "<b>「我慢強い」と「患者」は同じ語源です</b>。ラテン語 patiens「耐え忍ぶ」が元で、「(痛みや治療を)じっと耐え忍ぶ人」が名詞の「患者」になりました。同じ語源の語に passive「受け身の」、passion「(キリストの)受難・情熱」があり、いずれも「受ける・耐える」感覚を共有しています。"
@@ -2884,13 +3286,19 @@
           "name": "〈色白・金髪〉",
           "meaning": "「金髪の、色白の」",
           "type": "fair hair / skin",
-          "note": "髪・肌の色が明るいこと。dark「黒髪の・浅黒い」と対比。"
+          "note": "髪・肌の色が明るいこと。dark「黒髪の・浅黒い」と対比。",
+          "senseIds": [
+            "fair__金髪の"
+          ]
         },
         {
           "name": "〈そこそこ〉",
           "meaning": "「まあまあの、かなりの」",
           "type": "a fair amount / chance",
-          "note": "a fair number of「かなりの数の」。悪くないが特別でもない程度。"
+          "note": "a fair number of「かなりの数の」。悪くないが特別でもない程度。",
+          "senseIds": [
+            "fair__まあまあの"
+          ]
         }
       ],
       "trivia": "<b>fair の古い意味は「美しい・きれいな」です</b>。童話の鏡が言う “the fairest of them all”「いちばん美しい者」がその名残です。そこから髪や肌が明るい〈金髪・色白〉、天気が良い「晴れた」（fair weather）へ広がりました。「公平な」も「(えこひいきのない)きれいなやり方」という発想から生まれた、比較的新しい意味です。"
@@ -2928,13 +3336,19 @@
           "name": "〈ペナルティ〉",
           "meaning": "名詞「罰金、科料」",
           "type": "pay a fine / a fine for 〜",
-          "note": "動詞で「罰金を科す」も。a parking fine「駐車違反の罰金」。"
+          "note": "動詞で「罰金を科す」も。a parking fine「駐車違反の罰金」。",
+          "senseIds": [
+            "fine__罰金"
+          ]
         },
         {
           "name": "〈微細〉",
           "meaning": "「細かい、微細な、精巧な」",
           "type": "fine print / sand / line",
-          "note": "fine print「(契約の)細かい字」、a fine line「微妙な境界」。"
+          "note": "fine print「(契約の)細かい字」、a fine line「微妙な境界」。",
+          "senseIds": [
+            "fine__細かい"
+          ]
         }
       ],
       "trivia": "<b>fine には「素晴らしい」とは無関係の顔があります</b>。名詞「罰金」（a fine for speeding）は法律語で、もとは「(争いを)終わらせるための支払い」（finish と同根）が語源です。形容詞「細かい」は fine sand「細かい砂」、fine print「(契約書の)細かい字」のように、粒や線が細いさまを表します。"

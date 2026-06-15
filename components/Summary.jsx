@@ -14,7 +14,19 @@ function highlightBrackets(text) {
   return text.replace(/〈([^〉]+)〉/g, '<b class="font-black text-teal-600">〈$1〉</b>');
 }
 
-export function SummaryBody({ word, savedSet, onToggleFace }) {
+// sense.id → sense オブジェクトの Map を作る（SummaryBody 内で例文再掲に使う）
+function buildSenseMap(senses) {
+  const map = {};
+  for (const s of (senses || [])) {
+    if (s.id) map[s.id] = s;
+  }
+  return map;
+}
+
+// showExamples=true の場合のみ、各 face の下に設問例文を再掲する
+export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
+  const senseMap = showExamples ? buildSenseMap(word.senses) : {};
+
   return (
     <React.Fragment>
       <div className="rounded-2xl p-4 mb-4 bg-amber-50/50 border border-amber-100">
@@ -24,7 +36,13 @@ export function SummaryBody({ word, savedSet, onToggleFace }) {
       </div>
 
       <div className="flex flex-col gap-3">
-        {word.faces.map((face, i) => (
+        {word.faces.map((face, i) => {
+          // この用法に対応する設問例文を収集（face.senseIds がない or showExamples=false なら空）
+          const exampleSenses = showExamples && face.senseIds
+            ? face.senseIds.map((sid) => senseMap[sid]).filter(Boolean)
+            : [];
+
+          return (
           <div key={i} className="flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
             <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-black text-slate-400 shrink-0 shadow-sm mt-0.5">{i + 1}</span>
             <div className="flex-1 min-w-0">
@@ -40,6 +58,17 @@ export function SummaryBody({ word, savedSet, onToggleFace }) {
               )}
               {/* 説明：補足然と・最もミュート */}
               {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
+              {/* 設問例文の再掲（クイズ答え合わせ後のみ：showExamples=true かつ senseIds がある用法のみ） */}
+              {exampleSenses.length > 0 && (
+                <div className="mt-2.5 pt-2.5 border-t border-slate-200/70 flex flex-col gap-2">
+                  {exampleSenses.map((s) => (
+                    <div key={s.id} className="rounded-xl bg-white border border-slate-200 px-3 py-2">
+                      <p className="text-slate-600 text-[0.78rem] font-semibold leading-snug italic">{s.en}</p>
+                      <p className="text-slate-400 text-[0.72rem] font-medium leading-snug mt-0.5">{s.jpFull}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             {onToggleFace && (
               <button
@@ -51,7 +80,8 @@ export function SummaryBody({ word, savedSet, onToggleFace }) {
               </button>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {(Array.isArray(word.trivia) ? word.trivia : (word.trivia ? [word.trivia] : [])).filter(Boolean).map((tv, ti) => (
