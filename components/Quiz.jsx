@@ -131,17 +131,10 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
   const handleCardClick = (senseIdx) => {
     if (ws.phase !== 'quiz') return;
-    // 既にチップが配置されているスロットを再タップ → 解除してプールに戻す（トグル）
-    // フォーカスが同スロットに当たっている場合も解除する
-    if (ws.assignments[senseIdx] !== undefined) {
-      const newAssign = { ...ws.assignments };
-      delete newAssign[senseIdx];
-      sfx.play('tap');
-      updateWs({ assignments: newAssign, focused: senseIdx });
-    } else {
-      // 未配置スロット → フォーカスするだけ
-      updateWs({ focused: senseIdx });
-    }
+    // チップが配置済みのスロットをタップ → フォーカスを移すだけ（選択は解除しない）
+    // 選択を変更したい場合は別のチップをタップすればそのスロットに上書きされる。
+    // （旧: 再タップで選択解除→ユーザーが意図せず選択が消えるバグの修正・改修2）
+    updateWs({ focused: senseIdx });
   };
 
   const handleChipClick = (chip) => {

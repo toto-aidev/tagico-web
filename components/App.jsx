@@ -10,6 +10,11 @@
 //   - ログイン時: localStorage の進捗を Supabase へ push（マージ）し、以後サーバー優先。
 //   - PostHog: 全ユーザー（未ログイン含む）の匿名 ID で D1/D7/D30 継続率を計測。
 //   - Supabase / PostHog の鍵が未設定でも動作する（環境変数 = null → no-op）。
+//
+// 2026-06-16: リロード時の現在地保持を追加（改修1）。
+//   - screen state を localStorage('tagico-session-v1')に保存し、マウント時に復元する。
+//   - ホーム以外の画面（quiz/review/srs-review）にいる場合はリロード後も続きから再開。
+//   - 復元した screen が有効なデータを指している場合のみ適用（存在しない wordId は弾く）。
 
 import React, { useState, useEffect } from 'react';
 import { HomeScreen, WordbookScreen } from '@/components/Home';
@@ -19,12 +24,62 @@ import { SurveyPrompt } from '@/components/Survey';
 import AuthModal from '@/components/AuthModal';
 import AuthButton from '@/components/AuthButton';
 import AccountSheet from '@/components/AccountSheet';
-import { getLevel, WORDS } from '@/lib/content';
+import { getLevel, WORDS, getWord } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
 import * as srs from '@/lib/srs';
 import { clearLocal as clearStoreLocal } from '@/lib/store';
 import { clearLocal as clearSrsLocal } from '@/lib/srs';
+
+// ===== リロード保持：セッション画面状態の localStorage 保存・復元 =====
+const SESSION_SCREEN_KEY = 'tagico-session-v1';
+
+// screen state を localStorage に保存する（ホーム以外のみ）
+function saveSessionScreen(screen) {
+  if (typeof window === 'undefined') return;
+  try {
+    if (!screen || screen.type === 'home' || screen.type === 'result') {
+      // ホーム・結果画面はクリア（再開不要）
+      window.localStorage.removeItem(SESSION_SCREEN_KEY);
+    } else {
+      window.localStorage.setItem(SESSION_SCREEN_KEY, JSON.stringify(screen));
+    }
+  } catch (e) {
+    /* localStorage 不可環境では黙って無視 */
+  }
+}
+
+// 保存済みの screen を読み出して有効性チェックし返す
+// 無効（存在しない wordId など）なら null を返す
+function loadSessionScreen() {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem(SESSION_SCREEN_KEY);
+    if (!raw) return null;
+    const saved = JSON.parse(raw);
+    if (!saved || !saved.type) return null;
+    // quiz/review/srs-review のみ復元対象
+    if (!['quiz', 'review', 'srs-review'].includes(saved.type)) return null;
+    // wordIds が有効か確認（存在しない単語IDなら弾く）
+    const wordIds = saved.wordIds || [];
+    if (wordIds.length === 0) return null;
+    const valid = wordIds.every((id) => !!getWord(id));
+    if (!valid) return null;
+    // sessionPool 内の削除済み wordId をフィルタして返す（指摘B対応）
+    // コンテンツ更新で消えた wordId が sessionPool に残ると QuizScreen が固まるため、
+    // 復元時点で getWord() が undefined を返す ID を除去しておく。
+    if (saved.sessionPool) {
+      saved.sessionPool = saved.sessionPool.filter((id) => !!getWord(id));
+    }
+    // srs-review の sessionWords も同様にフィルタ
+    if (saved.sessionWords) {
+      saved.sessionWords = saved.sessionWords.filter((w) => !!getWord(w.wordId));
+    }
+    return saved;
+  } catch (e) {
+    return null;
+  }
+}
 import { onAuthStateChange, signOut } from '@/lib/auth';
 import { pushProgress } from '@/lib/sync';
 import { initPostHog, identifyUser, resetPostHog } from '@/lib/posthog';
@@ -43,6 +98,14 @@ export default function App() {
     // 基本の初期化（既存処理と変わらない）
     setAppState(store.getState());
     setSrsState(srs.getSrs());
+
+    // リロード保持：保存済み画面状態を復元する（改修1）
+    // appState の読み込みより後に実行されるが、setAppState は非同期のため
+    // screen の復元は appState 読み込みと同タイミングで問題なし。
+    const savedScreen = loadSessionScreen();
+    if (savedScreen) {
+      setScreen(savedScreen);
+    }
     sfx.initSfx();
 
     // PostHog 初期化（鍵未設定なら no-op）
@@ -126,10 +189,16 @@ export default function App() {
     setShowSurvey(false);
   };
 
+  // screen を更新し、同時に localStorage へ保存する（リロード保持・改修1）
+  const updateScreen = (s) => {
+    setScreen(s);
+    saveSessionScreen(s);
+  };
+
   const handleNavigate = (s) => {
     sfx.play('ui'); // タブ/画面遷移の汎用クリック
     setSessionScores([]);
-    setScreen(s);
+    updateScreen(s);
   };
 
   // クイズ画面で「戻る」を押したときの離脱処理。
@@ -199,7 +268,7 @@ export default function App() {
       const sessionPool = screen.sessionPool || (appState.reviewPool || []);
       const nextReviewId = sessionPool.find((id) => !donIds.has(id));
       if (nextReviewId) {
-        setScreen({ type: 'review', wordIds: [nextReviewId], sessionPool });
+        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool });
       } else {
         handleNavigate({ type: 'home' });
       }
@@ -214,7 +283,7 @@ export default function App() {
       const sessionWords = screen.sessionWords || [];
       const nextWord = sessionWords.find((w) => !doneWordIds.has(w.wordId));
       if (nextWord) {
-        setScreen({
+        updateScreen({
           type: 'srs-review',
           wordIds: [nextWord.wordId],
           srsContext: { senseIds: nextWord.senseIds, earliestMiss: nextWord.earliestMiss },
@@ -260,8 +329,8 @@ export default function App() {
       if (levelNowCompleted && !levelWasCompleted) sfx.play('fanfare');
     }
 
-    if (nextWordId) setScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId], replay: isReplay, replayWordIds: isReplay ? replayWordIds : undefined });
-    else setScreen({ type: 'result', levelId: screen.levelId, scores: accumulated });
+    if (nextWordId) updateScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId], replay: isReplay, replayWordIds: isReplay ? replayWordIds : undefined });
+    else updateScreen({ type: 'result', levelId: screen.levelId, scores: accumulated });
   };
 
   // 初回マウント前（SSR / ハイドレーション直後）は背景だけのプレースホルダー
@@ -288,7 +357,7 @@ export default function App() {
     const sessionWords = srs.groupReviewByWord(todaySrsItems);
     if (sessionWords.length === 0) return;
     const first = sessionWords[0];
-    setScreen({
+    updateScreen({
       type: 'srs-review',
       wordIds: [first.wordId],
       srsContext: { senseIds: first.senseIds, earliestMiss: first.earliestMiss },
@@ -342,8 +411,13 @@ export default function App() {
           clearStoreLocal();
           clearSrsLocal();
         }
+        // SESSION_SCREEN_KEY を必ず削除する（指摘A対応）
+        // clearStoreLocal/clearSrsLocal は SESSION_SCREEN_KEY を触らないため、
+        // ここで明示的に消す。flush 成否に関わらず常に消す（別ユーザーへの漏れ防止）。
+        try { window.localStorage.removeItem(SESSION_SCREEN_KEY); } catch (_) { /* ignore */ }
         setAppState(store.getState());
         setSrsState(srs.getSrs());
+        setScreen({ type: 'home' });
         setSession(null);
         resetPostHog();
         setShowAccountSheet(false);
