@@ -1,7 +1,6 @@
 'use client';
 
 // components/Home.jsx — ホーム（クエスト） / 単語帳（tagico-studio/v2-app.jsx の画面部分の移植）
-// 2026-06-14: SRS 復習バナーを追加（srsReviewCount / onSrsReview prop）
 
 import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/components/Icon';
@@ -76,10 +75,8 @@ function TagicoLogo() {
   );
 }
 
-// srsReviewCount: 今日の SRS 復習件数（0なら非表示）
-// onSrsReview: SRS 復習開始ハンドラ
 // rawAppState: プレビューモードの completed 上書き前の実際の進捗（nextLevel/nextWordId 算出に使う）
-export function HomeScreen({ appState, rawAppState, onNavigate, srsReviewCount, onSrsReview, authButton }) {
+export function HomeScreen({ appState, rawAppState, onNavigate, authButton }) {
   const allIds = LEVELS.flatMap((l) => l.wordIds);
   const masteredCount = appState.cleared.filter((id) => allIds.indexOf(id) >= 0).length;
   // 完走判定は completed を使う（誤答・答え見含む）
@@ -193,26 +190,24 @@ export function HomeScreen({ appState, rawAppState, onNavigate, srsReviewCount, 
         </div>
       )}
 
-      {/* SRS 間隔反復の復習バナー（今日の期日が来ている語義がある時のみ） */}
-      {srsReviewCount > 0 && onSrsReview && (
+      {/* 間違い復習カード：プールが空でない時だけ表示 */}
+      {(appState.reviewPool || []).length > 0 && (
         <div className="px-6 mb-4 relative z-10">
           <button
-            onClick={onSrsReview}
-            className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-amber-50 border-2 border-amber-200 hover:border-amber-300 active:scale-[0.98] transition-all"
+            onClick={() => onNavigate({ type: 'review' })}
+            className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-rose-50 border-2 border-rose-200 hover:border-rose-300 active:scale-[0.98] transition-all"
           >
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
-                <Icon name="clock" size={18} />
+              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-500 flex items-center justify-center shrink-0">
+                <Icon name="rotate-ccw" size={18} />
               </div>
               <div className="text-left">
-                <p className="font-black text-base text-amber-800">今日の語義復習</p>
-                <p className="text-xs font-bold text-amber-500">
-                  過去の自分に勝とう — {srsReviewCount} 語義 が期日です
-                </p>
+                <p className="font-black text-base text-rose-700">復習</p>
+                <p className="text-xs font-bold text-rose-400">{(appState.reviewPool || []).length} 語 が待っています</p>
               </div>
             </div>
-            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-black shrink-0">
-              {srsReviewCount}
+            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-rose-500 text-white text-xs font-black shrink-0">
+              {(appState.reviewPool || []).length}
             </span>
           </button>
         </div>

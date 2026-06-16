@@ -451,26 +451,10 @@ export default function App() {
     ? { ...appState, completed: WORDS.map((w) => w.id) }
     : appState;
 
-  // SRS: 今日の復習件数を計算（srsState が null の間は 0 扱い）
-  const todayStr = srs.todayLocalStr();
-  const todaySrsItems = srsState ? srs.getTodayReviewItems(srsState, todayStr) : [];
-  const srsReviewCount = todaySrsItems.length;
-
-  // SRS 復習開始ハンドラ: 今日の復習語義を単語単位にグループ化してセッション開始
-  const handleSrsReview = () => {
-    if (!srsState || srsReviewCount === 0) return;
-    sfx.play('ui');
-    setSessionScores([]);
-    const sessionWords = srs.groupReviewByWord(todaySrsItems);
-    if (sessionWords.length === 0) return;
-    const first = sessionWords[0];
-    updateScreen({
-      type: 'srs-review',
-      wordIds: [first.wordId],
-      srsContext: { senseIds: first.senseIds, earliestMiss: first.earliestMiss },
-      sessionWords,
-    });
-  };
+  // SRS バックエンド：語義単位の復習記録ロジックは休眠中（バナー UI は廃止済み）
+  // 復活させる場合はここのコメントを外し、HomeScreen へ srsReviewCount / onSrsReview を再配線する
+  // const todayStr = srs.todayLocalStr();
+  // const todaySrsItems = srsState ? srs.getTodayReviewItems(srsState, todayStr) : [];
 
   const surveyOverlay = showSurvey ? (
     <SurveyPrompt url={store.SURVEY_URL} onDismiss={dismissSurvey} />
@@ -541,8 +525,6 @@ export default function App() {
           appState={effectiveAppState}
           rawAppState={appState}
           onNavigate={handleNavigate}
-          srsReviewCount={srsReviewCount}
-          onSrsReview={handleSrsReview}
           authButton={authButton}
         />
         {surveyOverlay}
