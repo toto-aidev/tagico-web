@@ -126,17 +126,16 @@ function barColor(pct) {
 // ─── チャートコンポーネント ──────────────────────────────────────────────────────
 
 // (a) 横棒チャート
-function HorizontalBarChart() {
+function HorizontalBarChart({ items }) {
   const maxPct = 100;
   const rowH = 38;
   const labelW = 52;
-  const barAreaW = 100; // %単位で計算しSVGのviewBox 0-100 で使う
-  const svgH = WORD_ACCURACY.length * rowH + 8;
+  const svgH = items.length * rowH + 8;
 
   return (
     <div className="w-full overflow-hidden">
       <svg viewBox={`0 0 ${labelW + 300 + 60} ${svgH}`} className="w-full" aria-label="単語別初回正答率">
-        {WORD_ACCURACY.map((item, i) => {
+        {items.map((item, i) => {
           const y = i * rowH + 4;
           const barW = (item.pct / maxPct) * 260;
           const fill = barColor(item.pct);
@@ -188,7 +187,15 @@ function HorizontalBarChart() {
 }
 
 // (b) リテンション エリアチャート
-function RetentionChart() {
+function RetentionChart({ items }) {
+  // データが1点以下だと折れ線が描けない（i/(length-1) が NaN / pts[0] 参照不可）。ガードは pts 計算より前に置く。
+  if (!items || items.length <= 1) {
+    return (
+      <div className="w-full flex items-center justify-center h-32 text-sm font-bold text-slate-400">
+        データ収集中…
+      </div>
+    );
+  }
   const W = 340;
   const H = 160;
   const padL = 36;
@@ -198,8 +205,8 @@ function RetentionChart() {
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
 
-  const pts = RETENTION.map((d, i) => {
-    const x = padL + (i / (RETENTION.length - 1)) * innerW;
+  const pts = items.map((d, i) => {
+    const x = padL + (i / (items.length - 1)) * innerW;
     const y = padT + (1 - d.pct / 100) * innerH;
     return { x, y, ...d };
   });
@@ -262,7 +269,7 @@ function RetentionChart() {
 }
 
 // (c) 到達レベル分布 縦棒
-function LevelDistChart() {
+function LevelDistChart({ items }) {
   const W = 320;
   const H = 180;
   const padL = 40;
@@ -271,8 +278,8 @@ function LevelDistChart() {
   const padB = 28;
   const innerW = W - padL - padR;
   const innerH = H - padT - padB;
-  const maxCount = Math.max(...LEVEL_DIST.map((d) => d.count));
-  const barW = innerW / LEVEL_DIST.length;
+  const maxCount = Math.max(...items.map((d) => d.count), 1);
+  const barW = innerW / Math.max(items.length, 1);
   const barPad = barW * 0.18;
 
   return (
@@ -291,12 +298,12 @@ function LevelDistChart() {
         );
       })}
 
-      {LEVEL_DIST.map((item, i) => {
+      {items.map((item, i) => {
         const x = padL + i * barW + barPad;
         const bw = barW - barPad * 2;
         const bh = (item.count / (maxCount * 1.1)) * innerH;
         const y = padT + innerH - bh;
-        const prevCount = i > 0 ? LEVEL_DIST[i - 1].count : null;
+        const prevCount = i > 0 ? items[i - 1].count : null;
         const retPct = prevCount ? Math.round((item.count / prevCount) * 100) : null;
 
         return (
@@ -325,7 +332,15 @@ function LevelDistChart() {
 }
 
 // (d) 日次 DAU + クイズ完了 折れ線
-function DailyLineChart() {
+function DailyLineChart({ items }) {
+  // データが1点以下だと折れ線が描けない（i/(length-1) が NaN になる）。Cron初日など。
+  if (!items || items.length <= 1) {
+    return (
+      <div className="w-full flex items-center justify-center h-40 text-sm font-bold text-slate-400">
+        データ収集中…
+      </div>
+    );
+  }
   const W = 380;
   const H = 180;
   const padL = 34;
@@ -337,19 +352,19 @@ function DailyLineChart() {
 
   // 両系列を同一スケールに統一：DAU・クイズ完了の最大値をまとめて求める
   const maxVal = Math.max(
-    Math.max(...DAILY_14.map((d) => d.dau)),
-    Math.max(...DAILY_14.map((d) => d.quiz)),
+    Math.max(...items.map((d) => d.dau)),
+    Math.max(...items.map((d) => d.quiz)),
     1,
   ) * 1.2;
 
-  const dauPts = DAILY_14.map((d, i) => ({
-    x: padL + (i / (DAILY_14.length - 1)) * innerW,
+  const dauPts = items.map((d, i) => ({
+    x: padL + (i / (items.length - 1)) * innerW,
     y: padT + (1 - d.dau / maxVal) * innerH,
     dau: d.dau,
     day: d.day,
   }));
-  const quizPts = DAILY_14.map((d, i) => ({
-    x: padL + (i / (DAILY_14.length - 1)) * innerW,
+  const quizPts = items.map((d, i) => ({
+    x: padL + (i / (items.length - 1)) * innerW,
     y: padT + (1 - d.quiz / maxVal) * innerH,
     quiz: d.quiz,
   }));
@@ -357,8 +372,9 @@ function DailyLineChart() {
   const dauLine = `M${dauPts[0].x},${dauPts[0].y} ` + dauPts.slice(1).map((p) => `L${p.x},${p.y}`).join(' ');
   const quizLine = `M${quizPts[0].x},${quizPts[0].y} ` + quizPts.slice(1).map((p) => `L${p.x},${p.y}`).join(' ');
 
-  // X軸：7日おきにラベル表示
-  const xLabels = DAILY_14.filter((_, i) => i === 0 || i === 6 || i === 13);
+  // X軸：先頭・中間・末尾にラベル表示
+  const midIdx = Math.floor((items.length - 1) / 2);
+  const lastIdx = items.length - 1;
 
   return (
     <div>
@@ -402,10 +418,10 @@ function DailyLineChart() {
           <circle key={i} cx={p.x} cy={p.y} r="3.5" fill="#14b8a6" stroke="#fff" strokeWidth="1.5" />
         ))}
 
-        {/* X軸ラベル（間引き） */}
-        {DAILY_14.map((d, i) => {
-          if (i !== 0 && i !== 6 && i !== 13) return null;
-          const x = padL + (i / (DAILY_14.length - 1)) * innerW;
+        {/* X軸ラベル（先頭・中間・末尾のみ） */}
+        {items.map((d, i) => {
+          if (i !== 0 && i !== midIdx && i !== lastIdx) return null;
+          const x = padL + (i / (items.length - 1)) * innerW;
           return (
             <text key={i} x={x} y={H - 4} textAnchor="middle" fontSize="9" fontWeight="700" fill="#64748b" fontFamily="inherit">
               {d.day}
@@ -418,15 +434,22 @@ function DailyLineChart() {
 }
 
 // (e) ドーナツチャート
-function DonutChart() {
+// LOGIN_DIST の color は固定値をコンポーネント側で保持する
+const DONUT_COLORS = {
+  '匿名':   '#2DD4BF',
+  'メール': '#f59e0b',
+  'Google': '#fb7185',
+};
+
+function DonutChart({ items }) {
   const R = 60;
   const CX = 80;
   const CY = 75;
-  const total = LOGIN_DIST.reduce((s, d) => s + d.pct, 0);
+  const total = items.reduce((s, d) => s + d.pct, 0);
   const stroke = 22;
 
   let cumAngle = -Math.PI / 2; // 上から開始
-  const arcs = LOGIN_DIST.map((item) => {
+  const arcs = items.map((item) => {
     const angle = (item.pct / total) * Math.PI * 2;
     const startAngle = cumAngle;
     cumAngle += angle;
@@ -438,8 +461,10 @@ function DonutChart() {
     const y2 = CY + R * Math.sin(endAngle);
     const largeArc = angle > Math.PI ? 1 : 0;
 
+    const color = item.color ?? DONUT_COLORS[item.label] ?? '#94a3b8';
     return {
       ...item,
+      color,
       d: `M${x1},${y1} A${R},${R} 0 ${largeArc},1 ${x2},${y2}`,
     };
   });
@@ -464,20 +489,20 @@ function DonutChart() {
         <text x={CX} y={CY + 10} textAnchor="middle" fontSize="10" fontWeight="700" fill="#94a3b8" fontFamily="inherit">
           合計 %
         </text>
-        <text x={CX} y={CY + 22} textAnchor="middle" fontSize="9" fill="#cbd5e1" fontFamily="inherit">
-          1,284人
-        </text>
       </svg>
 
       {/* 凡例 */}
       <div className="flex flex-col gap-2.5">
-        {LOGIN_DIST.map((item) => (
-          <div key={item.label} className="flex items-center gap-2">
-            <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
-            <span className="text-sm font-bold text-slate-600">{item.label}</span>
-            <span className="text-sm font-black" style={{ color: item.color }}>{item.pct}%</span>
-          </div>
-        ))}
+        {items.map((item) => {
+          const color = item.color ?? DONUT_COLORS[item.label] ?? '#94a3b8';
+          return (
+            <div key={item.label} className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: color }} />
+              <span className="text-sm font-bold text-slate-600">{item.label}</span>
+              <span className="text-sm font-black" style={{ color }}>{item.pct}%</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -501,18 +526,22 @@ function Card({ title, subtitle, children, className = '' }) {
 
 // ─── KPI ミニカード ───────────────────────────────────────────────────────────────
 
+// delta が null/undefined の場合はバッジを非表示にする（実データ未取得時）
 function KpiCard({ label, value, unit, delta, up, icon }) {
+  const hasDelta = delta !== null && delta !== undefined;
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-4 tg-fadeup">
       <div className="flex items-start justify-between mb-2">
         <span className="text-xl">{icon}</span>
-        <span
-          className={`text-xs font-black px-1.5 py-0.5 rounded-full ${
-            up ? 'bg-teal-50 text-teal-600' : 'bg-rose-50 text-rose-500'
-          }`}
-        >
-          {up ? '▲' : '▼'} {delta.replace(/[+-]/, '')}
-        </span>
+        {hasDelta && (
+          <span
+            className={`text-xs font-black px-1.5 py-0.5 rounded-full ${
+              up ? 'bg-teal-50 text-teal-600' : 'bg-rose-50 text-rose-500'
+            }`}
+          >
+            {up ? '▲' : '▼'} {String(delta).replace(/[+-]/, '')}
+          </span>
+        )}
       </div>
       <div className="flex items-baseline gap-1">
         <span className="text-3xl font-black text-slate-800">{value}</span>
@@ -523,9 +552,35 @@ function KpiCard({ label, value, unit, delta, up, icon }) {
   );
 }
 
-// ─── メインダッシュボード ─────────────────────────────────────────────────────────
+// ─── JST 日時フォーマット ──────────────────────────────────────────────────────────
 
-export default function AnalyticsDashboard() {
+function toJST(isoStr) {
+  try {
+    const d = new Date(isoStr);
+    if (isNaN(d.getTime())) return isoStr;
+    return d.toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+  } catch (_) {
+    return isoStr;
+  }
+}
+
+// ─── メインダッシュボード ─────────────────────────────────────────────────────────
+//
+// data: AnalyticsGate から渡される実スナップショット payload。
+//        null の場合（鍵未設定 / 未ログイン / Cron 未実行 など）はダミー定数にフォールバック。
+//        data の各 slice が空配列の場合も同様にフォールバック。
+
+export default function AnalyticsDashboard({ data }) {
+  const isReal = !!data;
+
+  // 各データ slice を data から取得し、空/未定義なら対応するダミー定数にフォールバック
+  const kpiData = isReal ? buildKpiData(data.kpi) : KPI_DATA;
+  const wordAccuracy = (isReal && data.wordAccuracy?.length > 0) ? data.wordAccuracy : WORD_ACCURACY;
+  const retention    = (isReal && data.retention?.length    > 0) ? data.retention    : RETENTION;
+  const levelDist    = (isReal && data.levelDist?.length    > 0) ? data.levelDist    : LEVEL_DIST;
+  const daily14      = (isReal && data.daily14?.length      > 0) ? data.daily14      : DAILY_14;
+  const loginDist    = (isReal && data.loginDist?.length    > 0) ? data.loginDist    : LOGIN_DIST;
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* 背景ぼかし */}
@@ -538,24 +593,41 @@ export default function AnalyticsDashboard() {
         <header className="mb-8">
           <DashboardLogo />
 
-          {/* ダミーバッジ＋更新日時 */}
+          {/* 実データ / ダミーバッジ＋更新日時 */}
           <div className="flex flex-wrap items-center gap-2 mt-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-black">
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.8" />
-                <path d="M8 5v4M8 11v.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>
-              ダミーデータ（デザイン確認用）
-            </span>
-            <span className="text-xs font-bold text-slate-400">
-              最終更新: 2026-06-16 18:30（ダミー）
-            </span>
+            {isReal ? (
+              <>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-50 border border-teal-200 text-teal-600 text-xs font-black">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  実データ
+                </span>
+                <span className="text-xs font-bold text-slate-400">
+                  最終更新: {toJST(data.generatedAt)} JST
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-600 text-xs font-black">
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.8" />
+                    <path d="M8 5v4M8 11v.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                  ダミーデータ（デザイン確認用）
+                </span>
+                <span className="text-xs font-bold text-slate-400">
+                  最終更新: 2026-06-16 18:30（ダミー）
+                </span>
+              </>
+            )}
           </div>
         </header>
 
         {/* ── KPI スタット行（2×2 → lgで4列） ── */}
         <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6" aria-label="KPI">
-          {KPI_DATA.map((kpi) => (
+          {kpiData.map((kpi) => (
             <KpiCard key={kpi.label} {...kpi} />
           ))}
         </section>
@@ -568,7 +640,7 @@ export default function AnalyticsDashboard() {
             title="単語別 初回正答率（難しい順）"
             subtitle="色: 赤<50%・黄50-70%・緑>70%"
           >
-            <HorizontalBarChart />
+            <HorizontalBarChart items={wordAccuracy} />
           </Card>
 
           {/* (b) リテンション */}
@@ -576,7 +648,7 @@ export default function AnalyticsDashboard() {
             title="継続率（リテンション）"
             subtitle="D1 / D3 / D7 / D14 / D30"
           >
-            <RetentionChart />
+            <RetentionChart items={retention} />
           </Card>
 
           {/* (c) 到達レベル分布 */}
@@ -584,7 +656,7 @@ export default function AnalyticsDashboard() {
             title="到達レベル分布"
             subtitle="▼は前レベルからの残存率"
           >
-            <LevelDistChart />
+            <LevelDistChart items={levelDist} />
           </Card>
 
           {/* (d) 日次 DAU + クイズ完了 */}
@@ -592,28 +664,71 @@ export default function AnalyticsDashboard() {
             title="日次アクティブ＆クイズ完了"
             subtitle="直近14日間"
           >
-            <DailyLineChart />
+            <DailyLineChart items={daily14} />
           </Card>
 
           {/* (e) ログイン方法の内訳（lgではフル幅） */}
           <Card
             title="ログイン方法の内訳"
-            subtitle="全ユーザー（1,284人）"
+            subtitle="全ユーザー比率"
             className="lg:col-span-2"
           >
-            <DonutChart />
+            <DonutChart items={loginDist} />
           </Card>
 
         </section>
 
         {/* ── フッター ── */}
         <footer className="mt-10 text-center">
-          <p className="text-xs font-bold text-slate-400">
-            ※ 表示はすべてダミーデータです。実データ連携は次フェーズで実装します。
-          </p>
+          {!isReal && (
+            <p className="text-xs font-bold text-slate-400">
+              ※ 表示はすべてダミーデータです。実データ連携は Supabase 設定後に自動で切り替わります。
+            </p>
+          )}
         </footer>
 
       </div>
     </div>
   );
+}
+
+// ─── KPI data ビルダー（実データ → KpiCard props 配列に変換） ──────────────────
+
+function buildKpiData(kpi) {
+  if (!kpi) return KPI_DATA;
+  const fmt = (n) => typeof n === 'number' ? n.toLocaleString('ja-JP') : String(n ?? 0);
+  return [
+    {
+      label: '累計ユーザー',
+      value: fmt(kpi.totalUsers),
+      unit: '人',
+      delta: kpi.totalUsersDelta ?? null,
+      up: kpi.totalUsersDelta > 0,
+      icon: '👥',
+    },
+    {
+      label: '今日のアクティブ',
+      value: fmt(kpi.todayActive),
+      unit: '人',
+      delta: kpi.todayActiveDelta ?? null,
+      up: kpi.todayActiveDelta > 0,
+      icon: '⚡',
+    },
+    {
+      label: 'クイズ完了数',
+      value: fmt(kpi.totalQuizzes),
+      unit: '回',
+      delta: kpi.totalQuizzesDelta ?? null,
+      up: kpi.totalQuizzesDelta > 0,
+      icon: '🎯',
+    },
+    {
+      label: '平均初回正答率',
+      value: String(kpi.avgFirstTryPct ?? 0),
+      unit: '%',
+      delta: kpi.avgFirstTryPctDelta ?? null,
+      up: kpi.avgFirstTryPctDelta > 0,
+      icon: '🧠',
+    },
+  ];
 }
