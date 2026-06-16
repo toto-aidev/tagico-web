@@ -370,6 +370,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
                 <Icon name="lightbulb" size={18} fill="currentColor" />
               </div>
               <h3 className="font-black text-slate-700 text-lg">用法まとめ</h3>
+              <span className="text-[0.65rem] font-bold text-slate-400 leading-none">{word.faces.length}用法</span>
               {onToggleBookmark && <div className="ml-auto"><BookmarkButton active={(bookmarks || []).indexOf(word.id) >= 0} onClick={() => onToggleBookmark(word.id)} /></div>}
             </div>
             <SummaryBody word={word} savedSet={savedSenses} onToggleFace={onToggleSavedSense} showExamples={true} />
