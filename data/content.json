@@ -238,7 +238,11 @@
           "name": "as 〜 as 構文〈比較〉",
           "meaning": "「同じくらい」",
           "type": "as [比較級の原型] as + S V",
-          "note": "決まった形として覚える。"
+          "note": "決まった形として覚える。",
+          "example": {
+            "en": "This bridge is as long as that one.",
+            "jpFull": "この橋はあの橋と同じくらい長い。"
+          }
         }
       ],
       "trivia": [
@@ -287,7 +291,11 @@
         {
           "name": "接続詞〈逆接〉",
           "meaning": "「しかし」",
-          "type": "S V, but S V"
+          "type": "S V, but S V",
+          "example": {
+            "en": "I tried hard, but I failed.",
+            "jpFull": "私は懸命に努力したが、失敗した。"
+          }
         },
         {
           "name": "not A but B 構文",
@@ -399,7 +407,11 @@
           "name": "接続詞〈名詞節〉",
           "meaning": "「〜と（いうこと）」",
           "type": "動詞など + that + 完全文",
-          "note": "I think that S V など。"
+          "note": "I think that S V など。",
+          "example": {
+            "en": "I believe that honesty is the best policy.",
+            "jpFull": "私は正直が最善の策だと信じている。"
+          }
         },
         {
           "name": "接続詞〈同格〉",
@@ -494,7 +506,11 @@
           "name": "〈推量・予測〉",
           "meaning": "「〜するだろう」",
           "type": "天気・状況・他者 + will + V",
-          "note": "不確実なことへの予想。話し手の推量が入る。"
+          "note": "不確実なことへの予想。話し手の推量が入る。",
+          "example": {
+            "en": "It will rain this afternoon.",
+            "jpFull": "今日の午後は雨が降るだろう。"
+          }
         },
         {
           "name": "〈意志〉",
@@ -917,7 +933,11 @@
           "name": "〈一致〉",
           "meaning": "「まさに・ちょうど」",
           "type": "just + what / the 〜",
-          "note": "ぴったりの一致。"
+          "note": "ぴったりの一致。",
+          "example": {
+            "en": "This jacket is just my size.",
+            "jpFull": "この上着はまさに私のサイズだ。"
+          }
         },
         {
           "name": "形容詞",
@@ -988,13 +1008,21 @@
         {
           "name": "〈携行〉",
           "meaning": "「持っていく」",
-          "type": "take + 物"
+          "type": "take + 物",
+          "example": {
+            "en": "Take an umbrella in case it rains.",
+            "jpFull": "雨が降るといけないので、傘を持っていきなさい。"
+          }
         },
         {
           "name": "〈同行〉",
           "meaning": "「（人を）連れていく」",
           "type": "take + 人 + 場所",
-          "note": "目的語が人なら「連れていく」。"
+          "note": "目的語が人なら「連れていく」。",
+          "example": {
+            "en": "My mother took me to the zoo.",
+            "jpFull": "母は私を動物園に連れていってくれた。"
+          }
         },
         {
           "name": "〈行動〉",
@@ -1105,7 +1133,11 @@
         {
           "name": "〈所有・所属〉",
           "meaning": "「〜の」",
-          "type": "名詞 + of + 名詞"
+          "type": "名詞 + of + 名詞",
+          "example": {
+            "en": "The roof of the house is red.",
+            "jpFull": "その家の屋根は赤い。"
+          }
         },
         {
           "name": "〈内容〉",
@@ -1158,7 +1190,11 @@
         {
           "name": "〈分離〉",
           "meaning": "「〜から」",
-          "type": "rob / deprive A + of + B"
+          "type": "rob / deprive A + of + B",
+          "example": {
+            "en": "The thief robbed her of her purse.",
+            "jpFull": "泥棒は彼女から財布を奪った。"
+          }
         },
         {
           "name": "〈原因〉",
@@ -1233,7 +1269,11 @@
           "name": "〈同伴〉",
           "meaning": "「〜と一緒に」",
           "type": "with + 人",
-          "note": "go with / live with。"
+          "note": "go with / live with。",
+          "example": {
+            "en": "I went to the movies with my friends.",
+            "jpFull": "私は友達と一緒に映画を見に行った。"
+          }
         },
         {
           "name": "〈道具・手段〉",
@@ -1336,7 +1376,11 @@
           "name": "〈義務〉",
           "meaning": "「〜しなければならない」",
           "type": "have to + V",
-          "note": "must に近い。外からの事情・規則（客観）。"
+          "note": "must に近い。外からの事情・規則（客観）。",
+          "example": {
+            "en": "You have to wear a seatbelt in the car.",
+            "jpFull": "車の中ではシートベルトを着けなければならない。"
+          }
         },
         {
           "name": "〈使役〉",
@@ -1384,22 +1428,38 @@
         {
           "name": "①〈指示語〉",
           "meaning": "「それ／そのこと」",
-          "type": "it（既出の物・事を指す）"
+          "type": "it（既出の物・事を指す）",
+          "example": {
+            "en": "I lost my umbrella, so I have to buy a new one. Where can I find it?",
+            "jpFull": "傘をなくしたので、新しいのを買わないといけない。それはどこで手に入るだろう。"
+          }
         },
         {
           "name": "②〈非人称〉",
           "meaning": "「（訳さない）」",
-          "type": "It + be / V（天気・時間・季節・寒暖・明暗・距離）"
+          "type": "It + be / V（天気・時間・季節・寒暖・明暗・距離）",
+          "example": {
+            "en": "It is getting dark outside.",
+            "jpFull": "外が暗くなってきた。"
+          }
         },
         {
           "name": "③〈状況〉",
           "meaning": "「（訳さない）」",
-          "type": "慣用的な固定表現（SV it C など）"
+          "type": "慣用的な固定表現（SV it C など）",
+          "example": {
+            "en": "How is it going with your new job?",
+            "jpFull": "新しい仕事の調子はどう。"
+          }
         },
         {
           "name": "④〈形式主語・目的語構文〉",
           "meaning": "「（訳さない）」",
-          "type": "It V … {to do / that SV} ／ SV it … {to do / that SV}"
+          "type": "It V … {to do / that SV} ／ SV it … {to do / that SV}",
+          "example": {
+            "en": "It is important to keep your promises.",
+            "jpFull": "約束を守ることは大切だ。"
+          }
         },
         {
           "name": "⑤〈強調構文〉",
@@ -1412,7 +1472,11 @@
         {
           "name": "⑥ it seems/appears that構文",
           "meaning": "「（訳さない）」",
-          "type": "It seems / appears that …"
+          "type": "It seems / appears that …",
+          "example": {
+            "en": "It seems that they have already left.",
+            "jpFull": "彼らはもう出発してしまったようだ。"
+          }
         }
       ],
       "trivia": [
@@ -1488,7 +1552,11 @@
           "name": "〈電源オフ・停止〉",
           "meaning": "「（電源などを）切って／オフで」",
           "type": "switch / turn + off",
-          "note": "on の反対。繋がっていた回路が切れる。"
+          "note": "on の反対。繋がっていた回路が切れる。",
+          "example": {
+            "en": "Please turn off the lights before you leave.",
+            "jpFull": "出かける前に電気を消してください。"
+          }
         },
         {
           "name": "〈休み〉",
@@ -1546,7 +1614,11 @@
           "name": "〈条件〉",
           "meaning": "「〜ば、〜たら、〜なら、〜場合」",
           "type": "If SV, SV.",
-          "note": "実現しうる前提を立てる。最も基本。"
+          "note": "実現しうる前提を立てる。最も基本。",
+          "example": {
+            "en": "If it rains tomorrow, we will stay home.",
+            "jpFull": "明日雨が降れば、私たちは家にいるつもりだ。"
+          }
         },
         {
           "name": "〈名詞節〉",
@@ -1570,7 +1642,11 @@
           "name": "〈仮定法〉",
           "meaning": "「（もし）〜なら（…のに）」",
           "type": "If S were/過去形 …, S would/could …",
-          "note": "現実に反する仮定。帰結節に would/could/might。"
+          "note": "現実に反する仮定。帰結節に would/could/might。",
+          "example": {
+            "en": "If I were rich, I would travel around the world.",
+            "jpFull": "もし私が金持ちなら、世界中を旅するのに。"
+          }
         }
       ],
       "trivia": [
@@ -1619,7 +1695,11 @@
           "name": "〈時〉",
           "meaning": "「〜する時（に）」",
           "type": "When SV, SV.",
-          "note": "二つの出来事が同じ時間帯にある。最も基本。"
+          "note": "二つの出来事が同じ時間帯にある。最も基本。",
+          "example": {
+            "en": "I was reading a book when the phone rang.",
+            "jpFull": "電話が鳴ったとき、私は本を読んでいた。"
+          }
         },
         {
           "name": "〈継起〉",
@@ -1809,7 +1889,11 @@
           "name": "〈他動詞〉",
           "meaning": "「〜を見つける」",
           "type": "find + O",
-          "note": "基本義。探していたもの・偶然のものに行き当たる。"
+          "note": "基本義。探していたもの・偶然のものに行き当たる。",
+          "example": {
+            "en": "I finally found my keys under the sofa.",
+            "jpFull": "私はようやくソファの下で鍵を見つけた。"
+          }
         },
         {
           "name": "〈認識〉",
@@ -1885,13 +1969,21 @@
           "name": "〈習得完了〉",
           "meaning": "「〜できるようになる」",
           "type": "learn + to do",
-          "note": "過程を経た習得の完成。learned to swim「泳げるようになった」。"
+          "note": "過程を経た習得の完成。learned to swim「泳げるようになった」。",
+          "example": {
+            "en": "She learned to drive last summer.",
+            "jpFull": "彼女は去年の夏、車を運転できるようになった。"
+          }
         },
         {
           "name": "〈伝聞〉",
           "meaning": "「〜と知る・〜と聞いて知る」",
           "type": "learn + that節",
-          "note": "I learned that he was sick.「彼が病気だと知った」。情報を聞いて知ること。"
+          "note": "I learned that he was sick.「彼が病気だと知った」。情報を聞いて知ること。",
+          "example": {
+            "en": "I learned that the museum was closed on Mondays.",
+            "jpFull": "私はその美術館が月曜は休館だと知った。"
+          }
         }
       ],
       "trivia": [
@@ -1958,7 +2050,11 @@
           "name": "〈労働〉",
           "meaning": "「働く、勤める」",
           "type": "S（人）+ work",
-          "note": "基本義。work for / work at / work as。"
+          "note": "基本義。work for / work at / work as。",
+          "example": {
+            "en": "My father works at a bank in the city.",
+            "jpFull": "父は市内の銀行で働いている。"
+          }
         },
         {
           "name": "〈作品〉（名詞）",
@@ -2016,7 +2112,11 @@
           "name": "〈対比〉",
           "meaning": "「むしろ、いっそ」",
           "type": "A rather than B",
-          "note": "二択の比較。BというよりA。"
+          "note": "二択の比較。BというよりA。",
+          "example": {
+            "en": "She chose to walk rather than take the bus.",
+            "jpFull": "彼女はバスに乗るよりむしろ歩くことを選んだ。"
+          }
         },
         {
           "name": "〈選好〉",
@@ -2163,7 +2263,11 @@
           "name": "〈否定〉",
           "meaning": "「否定する、認めない」",
           "type": "deny + doing / that SV",
-          "note": "事実・関与を否定。否定の that 節は取れず deny doing が普通。"
+          "note": "事実・関与を否定。否定の that 節は取れず deny doing が普通。",
+          "example": {
+            "en": "He denied breaking the window.",
+            "jpFull": "彼は窓を割ったことを否定した。"
+          }
         },
         {
           "name": "〈剥奪〉",
@@ -2203,7 +2307,11 @@
           "name": "〈美術・芸術〉",
           "meaning": "「美術、芸術」",
           "type": "art / the arts",
-          "note": "a work of art「芸術作品」。形容詞は artistic。"
+          "note": "a work of art「芸術作品」。形容詞は artistic。",
+          "example": {
+            "en": "She is studying modern art at college.",
+            "jpFull": "彼女は大学で現代美術を学んでいる。"
+          }
         },
         {
           "name": "〈技術・コツ〉",
@@ -2271,7 +2379,11 @@
           "name": "〈印象〉",
           "meaning": "「印象、イメージ」",
           "type": "public/brand image",
-          "note": "人・企業などが与える心象。"
+          "note": "人・企業などが与える心象。",
+          "example": {
+            "en": "The company is trying to improve its public image.",
+            "jpFull": "その会社は世間の印象を良くしようとしている。"
+          }
         },
         {
           "name": "〈像・姿〉",
@@ -2320,7 +2432,11 @@
           "name": "〈具体化・補強〉",
           "meaning": "「実際（は）、実のところ」",
           "type": "…, in fact …",
-          "note": "見かけ・予想に対し事実を提示。具体化・補強。"
+          "note": "見かけ・予想に対し事実を提示。具体化・補強。",
+          "example": {
+            "en": "He looks young, but in fact he is over sixty.",
+            "jpFull": "彼は若く見えるが、実際は60歳を超えている。"
+          }
         },
         {
           "name": "〈上書き・強調〉",
@@ -2360,7 +2476,11 @@
           "name": "〈帰結〉",
           "meaning": "「結局、やはり」",
           "type": "… after all.（文末）",
-          "note": "予想に反する結末。He came after all.「結局やって来た」。"
+          "note": "予想に反する結末。He came after all.「結局やって来た」。",
+          "example": {
+            "en": "We were worried, but he passed the exam after all.",
+            "jpFull": "私たちは心配したが、彼は結局試験に合格した。"
+          }
         },
         {
           "name": "〈理由の後出し〉",
@@ -2480,7 +2600,11 @@
           "name": "〈状態〉",
           "meaning": "「知っている、分かっている」",
           "type": "have known / know O",
-          "note": "進行形不可。完了形で継続を表す。最も基本の用法。"
+          "note": "進行形不可。完了形で継続を表す。最も基本の用法。",
+          "example": {
+            "en": "I have known her since we were children.",
+            "jpFull": "私は子どものころから彼女を知っている。"
+          }
         },
         {
           "name": "〈動作・認識〉",
@@ -2626,7 +2750,11 @@
           "name": "〈感覚〉",
           "meaning": "「感覚、〜感」",
           "type": "the five senses / a keen sense of smell",
-          "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。"
+          "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。",
+          "example": {
+            "en": "Dogs have a keen sense of smell.",
+            "jpFull": "犬は鋭い嗅覚を持っている。"
+          }
         },
         {
           "name": "〈意識・〜感〉",
@@ -2980,7 +3108,11 @@
           "name": "〈問題・物質〉",
           "meaning": "名詞「問題、事柄、物質」",
           "type": "a matter of 〜 / 物質としての matter",
-          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。"
+          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。",
+          "example": {
+            "en": "Finishing on time is just a matter of practice.",
+            "jpFull": "時間どおりに終えるのは練習の問題にすぎない。"
+          }
         }
       ],
       "trivia": [
@@ -3271,7 +3403,11 @@
           "name": "〈競走〉",
           "meaning": "「競走、レース、競争」",
           "type": "a race / race against 〜",
-          "note": "the arms race「軍拡競争」。動詞で「疾走する」も。定番の意味。"
+          "note": "the arms race「軍拡競争」。動詞で「疾走する」も。定番の意味。",
+          "example": {
+            "en": "He won the hundred-meter race at the school festival.",
+            "jpFull": "彼は学校祭で100メートル競走に勝った。"
+          }
         },
         {
           "name": "〈民族〉",
@@ -3311,7 +3447,11 @@
           "name": "〈忍耐〉",
           "meaning": "形容詞「我慢強い、忍耐強い」",
           "type": "be patient (with 〜)",
-          "note": "Be patient!「落ち着いて」。反意語は impatient「いらいらした」。"
+          "note": "Be patient!「落ち着いて」。反意語は impatient「いらいらした」。",
+          "example": {
+            "en": "Please be patient with the children.",
+            "jpFull": "子どもたちに対しては辛抱強く接してください。"
+          }
         },
         {
           "name": "〈病人〉",
