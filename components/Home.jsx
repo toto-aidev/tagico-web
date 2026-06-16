@@ -78,14 +78,18 @@ function TagicoLogo() {
 
 // srsReviewCount: 今日の SRS 復習件数（0なら非表示）
 // onSrsReview: SRS 復習開始ハンドラ
-export function HomeScreen({ appState, onNavigate, srsReviewCount, onSrsReview, authButton }) {
+// rawAppState: プレビューモードの completed 上書き前の実際の進捗（nextLevel/nextWordId 算出に使う）
+export function HomeScreen({ appState, rawAppState, onNavigate, srsReviewCount, onSrsReview, authButton }) {
   const allIds = LEVELS.flatMap((l) => l.wordIds);
   const masteredCount = appState.cleared.filter((id) => allIds.indexOf(id) >= 0).length;
   // 完走判定は completed を使う（誤答・答え見含む）
   const completed = appState.completed || appState.cleared;
+  // nextLevel/nextWordId の計算はプレビューモードの上書きを受けない実際の進捗で行う。
+  // rawAppState がない場合（非プレビュー・通常）は appState と同じ。
+  const rawCompleted = rawAppState ? (rawAppState.completed || rawAppState.cleared) : completed;
 
-  const nextLevel = LEVELS.find((l) => l.wordIds.some((id) => !completed.includes(id)));
-  const nextWordId = nextLevel && nextLevel.wordIds.find((id) => !completed.includes(id));
+  const nextLevel = LEVELS.find((l) => l.wordIds.some((id) => !rawCompleted.includes(id)));
+  const nextWordId = nextLevel && nextLevel.wordIds.find((id) => !rawCompleted.includes(id));
 
   // 現在のレベル（次にやるレベル。全完走なら最後のレベル）
   const curLevel = nextLevel || LEVELS[LEVELS.length - 1];

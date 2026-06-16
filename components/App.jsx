@@ -336,6 +336,7 @@ export default function App() {
       <React.Fragment>
         <HomeScreen
           appState={effectiveAppState}
+          rawAppState={appState}
           onNavigate={handleNavigate}
           srsReviewCount={srsReviewCount}
           onSrsReview={handleSrsReview}
