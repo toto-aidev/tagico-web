@@ -1078,14 +1078,13 @@
           "id": "of__のうちの・の中で"
         },
         {
-          "en": "the discovery of America",
-          "jpBefore": "アメリカ",
-          "answer": "を",
-          "jpAfter": "発見すること",
-          "jpFull": "アメリカを発見すること",
-          "cue": "名詞構文の目的語",
-          "hint": "名詞構文として",
-          "id": "of__を"
+          "en": "He is a man of great courage.",
+          "jpBefore": "彼は大変な勇気",
+          "answer": "という性質を持った",
+          "jpAfter": "男だ。",
+          "jpFull": "彼はとても勇気のある男だ。",
+          "cue": "性質",
+          "id": "of__という性質を持った"
         }
       ],
       "coreImage": {
@@ -1149,15 +1148,6 @@
           "senseIds": [
             "of__を"
           ]
-        },
-        {
-          "name": "〈分離〉",
-          "meaning": "「〜から」",
-          "type": "rob / deprive A + of + B",
-          "example": {
-            "en": "The thief robbed her of her purse.",
-            "jpFull": "泥棒は彼女から財布を奪った。"
-          }
         },
         {
           "name": "〈原因〉",
