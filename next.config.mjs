@@ -1,5 +1,13 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // lockfile 警告を抑制：ワークスペース検索をプロジェクトルートに限定する
+  outputFileTracingRoot: __dirname,
   // 完全クライアントSPA。Vercel 標準デプロイ・静的エクスポートのどちらでも動く。
   // 静的ホスティング（GitHub Pages 等）に出すときは下の行を有効化して `next build` → out/ を配信。
   // output: 'export',

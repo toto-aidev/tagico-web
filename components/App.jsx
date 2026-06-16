@@ -30,6 +30,9 @@ import * as sfx from '@/lib/sfx';
 import * as srs from '@/lib/srs';
 import { clearLocal as clearStoreLocal } from '@/lib/store';
 import { clearLocal as clearSrsLocal } from '@/lib/srs';
+import { onAuthStateChange, signOut } from '@/lib/auth';
+import { pushProgress } from '@/lib/sync';
+import { initPostHog, identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
 
 // ===== リロード保持：セッション画面状態の localStorage 保存・復元 =====
 const SESSION_SCREEN_KEY = 'tagico-session-v1';
@@ -100,9 +103,6 @@ function loadSessionScreen() {
     return null;
   }
 }
-import { onAuthStateChange, signOut } from '@/lib/auth';
-import { pushProgress } from '@/lib/sync';
-import { initPostHog, identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
 
 export default function App() {
   const [screen, setScreen] = useState({ type: 'home' });
