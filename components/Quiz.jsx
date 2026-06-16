@@ -365,12 +365,14 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
             {/* 用法まとめ */}
             <div className="tg-fadeup rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
-            <div className="flex items-end gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-500 flex items-center justify-center">
                 <Icon name="lightbulb" size={18} fill="currentColor" />
               </div>
-              <h3 className="font-black text-slate-700 text-lg">用法まとめ</h3>
-              <span className="text-xs font-bold text-slate-500 leading-none">{word.faces.length}つ</span>
+              <div className="flex items-baseline gap-1">
+                <h3 className="font-black text-slate-700 text-lg">用法まとめ</h3>
+                <span className="text-xs font-bold text-slate-500 leading-none">（{word.faces.length}つ）</span>
+              </div>
               {onToggleBookmark && <div className="ml-auto"><BookmarkButton active={(bookmarks || []).indexOf(word.id) >= 0} onClick={() => onToggleBookmark(word.id)} /></div>}
             </div>
             <SummaryBody word={word} savedSet={savedSenses} onToggleFace={onToggleSavedSense} showExamples={true} />
