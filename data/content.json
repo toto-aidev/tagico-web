@@ -1430,8 +1430,8 @@
           "meaning": "「それ／そのこと」",
           "type": "it（既出の物・事を指す）",
           "example": {
-            "en": "I lost my umbrella, so I have to buy a new one. Where can I find it?",
-            "jpFull": "傘をなくしたので、新しいのを買わないといけない。それはどこで手に入るだろう。"
+            "en": "It is my umbrella.",
+            "jpFull": "それは私の傘です。"
           }
         },
         {
@@ -1468,15 +1468,6 @@
           "senseIds": [
             "it__訳さない"
           ]
-        },
-        {
-          "name": "⑥ it seems/appears that構文",
-          "meaning": "「（訳さない）」",
-          "type": "It seems / appears that …",
-          "example": {
-            "en": "It seems that they have already left.",
-            "jpFull": "彼らはもう出発してしまったようだ。"
-          }
         }
       ],
       "trivia": [
@@ -2115,7 +2106,7 @@
           "note": "二択の比較。BというよりA。",
           "example": {
             "en": "She chose to walk rather than take the bus.",
-            "jpFull": "彼女はバスに乗るよりむしろ歩くことを選んだ。"
+            "jpFull": "彼女はバスに乗るより歩くことを選んだ。"
           }
         },
         {
@@ -3105,13 +3096,23 @@
           ]
         },
         {
-          "name": "〈問題・物質〉",
-          "meaning": "名詞「問題、事柄、物質」",
-          "type": "a matter of 〜 / 物質としての matter",
-          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。",
+          "name": "〈問題〉",
+          "meaning": "名詞「問題、事柄」",
+          "type": "a matter of 〜",
+          "note": "a matter of time「時間の問題」。a matter of fact「事実の問題」。頻出の名詞義。",
           "example": {
             "en": "Finishing on time is just a matter of practice.",
             "jpFull": "時間どおりに終えるのは練習の問題にすぎない。"
+          }
+        },
+        {
+          "name": "〈物質〉",
+          "meaning": "名詞「物質、素材」",
+          "type": "matter（不可算）",
+          "note": "物理・化学の文脈での「物質」。gray matter「灰白質」など。",
+          "example": {
+            "en": "Everything in the universe is made of matter.",
+            "jpFull": "宇宙にあるものはすべて物質でできている。"
           }
         }
       ],
