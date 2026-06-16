@@ -46,21 +46,19 @@ export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
           <div key={i} className="relative flex items-start gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
             <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-xs font-black text-slate-400 shrink-0 shadow-sm mt-0.5">{i + 1}</span>
             <div className="flex-1 min-w-0">
-              {/* 用法名・訳・型・説明：「忘れがち」ボタンと重ならないよう右パディング */}
-              <div className={onToggleFace ? 'pr-[4.5rem]' : ''}>
-                {/* 用法名：最も強調（teal accent + extra bold） */}
-                <p className="font-black text-teal-700 text-[0.95rem] leading-snug">{face.name}</p>
-                {/* 訳：次に強調（中ウェイト・やや濃いグレー） */}
-                <p className="text-slate-600 text-sm font-semibold mt-0.5 leading-snug">{face.meaning}</p>
-                {/* 型：コードっぽく・ミュートカラー */}
-                {face.type && (
-                  <span className="inline-block mt-2 px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 text-[0.65rem] font-mono tracking-tight">
-                    {face.type}
-                  </span>
-                )}
-                {/* 説明：補足然と・最もミュート */}
-                {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
-              </div>
+              {/* 用法名：「忘れがち」ボタンと同行になるため、この行だけ右クリアランスを確保 */}
+              <p className={`font-black text-teal-700 text-[0.95rem] leading-snug${onToggleFace ? ' pr-[4.5rem]' : ''}`}>{face.name}</p>
+              {/* 訳・型・説明：ボタンより下に来るためフル幅（クリアランス不要） */}
+              {/* 訳：次に強調（中ウェイト・やや濃いグレー） */}
+              <p className="text-slate-600 text-sm font-semibold mt-0.5 leading-snug">{face.meaning}</p>
+              {/* 型：コードっぽく・ミュートカラー */}
+              {face.type && (
+                <span className="inline-block mt-2 px-2 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-500 text-[0.65rem] font-mono tracking-tight">
+                  {face.type}
+                </span>
+              )}
+              {/* 説明：補足然と・最もミュート */}
+              {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
               {/* 設問例文の再掲（クイズ答え合わせ後のみ：showExamples=true かつ senseIds がある用法のみ）
                   ※ 右パディングなし = コンテンツ列のフル幅まで伸びる */}
               {exampleSenses.length > 0 && (
