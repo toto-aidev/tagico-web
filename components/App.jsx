@@ -23,8 +23,10 @@ import { getLevel, WORDS } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
 import * as srs from '@/lib/srs';
-import { onAuthStateChange, getSession } from '@/lib/auth';
-import { pushProgress, pullProgress } from '@/lib/sync';
+import { clearLocal as clearStoreLocal } from '@/lib/store';
+import { clearLocal as clearSrsLocal } from '@/lib/srs';
+import { onAuthStateChange, signOut } from '@/lib/auth';
+import { pushProgress } from '@/lib/sync';
 import { initPostHog, identifyUser, resetPostHog } from '@/lib/posthog';
 
 export default function App() {
@@ -59,9 +61,13 @@ export default function App() {
 
     // Supabase Auth: 初回セッション取得 + Auth 状態変化リスナー登録
     // Supabase が未設定（supabase === null）の場合は onAuthStateChange が no-op を返す
-    // 注意: コールバック内で session state を参照すると古い値になるため、
-    //       setSession に関数形式を使い、イベント名（_event）でログアウトを判定する。
-    const unsubscribe = onAuthStateChange(async (newSession) => {
+    //
+    // イベント名（event）を見てログアウトと匿名ロードを区別する:
+    //   SIGNED_IN / TOKEN_REFRESHED / INITIAL_SESSION(session!=null): ログイン/リフレッシュ
+    //   INITIAL_SESSION(session=null): 匿名ユーザーのリロード → localStorage を消さない
+    //   SIGNED_OUT: supabase.auth.signOut() が呼ばれた時だけ（ここでは到達しない。
+    //               明示ログアウトは onLogout ハンドラで flush → clear する）
+    const unsubscribe = onAuthStateChange(async (event, newSession) => {
       setSession(newSession);
 
       if (newSession && newSession.user) {
@@ -78,44 +84,34 @@ export default function App() {
         if (mergedState) {
           store.saveState(mergedState);
           setAppState(mergedState);
+        } else {
+          // mergedState が null のケース:
+          //   - 所有者ガード発火（別ユーザーBの初回ログイン）: pushProgress 内で
+          //     clearStoreLocal が済んでいるため localStorage は既定値。
+          //     React メモリを即同期しないと B の画面に A の進捗が残るので必ず反映する。
+          //   - 新規ユーザーB（サーバー行なし）: マウント時の既定値と一致するので no-op 相当。
+          setAppState(store.getState());
         }
         if (mergedSrs) {
           srs.saveSrs(mergedSrs);
           setSrsState(mergedSrs);
+        } else {
+          // 同上（SRS も同じ理由で必ず既定値を反映する）
+          setSrsState(srs.getSrs());
         }
-      } else if (!newSession) {
-        // ログアウト: PostHog の anonymous ID に戻す
+      } else {
+        // session が null のケース（INITIAL_SESSION(匿名)/TOKEN_REFRESHED失敗/SIGNED_OUT 等）:
+        // localStorage は絶対にクリアしない（匿名リロードで進捗が消えるバグを防ぐ）。
+        // PostHog の匿名 ID をリセットするのみ。
+        // 明示ログアウト時のクリアは onLogout ハンドラで flush 後に行う（下記参照）。
         resetPostHog();
       }
     });
 
-    // 初回マウント時に既存セッションを確認（ページリロード後の自動ログイン維持）
-    getSession().then(async (existingSession) => {
-      if (existingSession && existingSession.user) {
-        setSession(existingSession);
-        identifyUser(existingSession.user.id, { email: existingSession.user.email });
-        // pull して最新の進捗をローカルとマージ
-        const serverData = await pullProgress(existingSession.user.id);
-        if (serverData) {
-          const localState = store.getState();
-          const localSrs = srs.getSrs();
-          // pushProgress がマージを担う（pull + merge + upsert を一括）
-          const { mergedState, mergedSrs } = await pushProgress(
-            existingSession.user.id,
-            localState,
-            localSrs
-          );
-          if (mergedState) {
-            store.saveState(mergedState);
-            setAppState(mergedState);
-          }
-          if (mergedSrs) {
-            srs.saveSrs(mergedSrs);
-            setSrsState(mergedSrs);
-          }
-        }
-      }
-    });
+    // supabase-js v2 は onAuthStateChange が INITIAL_SESSION イベントを
+    // マウント直後に発火し、現行セッションをコールバックに渡す。
+    // そのため getSession().then(pushProgress) は不要（二重発火の原因になる）。
+    // リロード時のログイン状態復元・進捗 push は上の onAuthStateChange で完結する。
 
     return () => {
       window.removeEventListener('pointerdown', unlock);
@@ -322,7 +318,32 @@ export default function App() {
   const accountSheet = showAccountSheet ? (
     <AccountSheet
       session={session}
-      onLogout={() => {
+      onLogout={async () => {
+        // 明示ログアウト時のフロー（順序厳守）:
+        // 1. ログイン中の有効 JWT でサーバーへ flush（signOut より前に実行することで
+        //    RLS の auth.uid() 照合が通る。flush 後に JWT を破棄する）
+        // 2. signOut（JWT 破棄）
+        // 3. flush が成功した場合のみ clearStoreLocal/clearSrsLocal
+        //    （flush 失敗時はローカルに残してデータを守る安全弁）
+        // 4. メモリ上の state を既定値にリセット
+        const logoutUserId = session && session.user ? session.user.id : null;
+        let flushOk = false;
+        if (logoutUserId) {
+          const localState = store.getState();
+          const localSrs = srs.getSrs();
+          const { error } = await pushProgress(logoutUserId, localState, localSrs);
+          flushOk = !error;
+        } else {
+          // 未ログイン状態からのログアウト（通常は起きないが念のため）
+          flushOk = true;
+        }
+        await signOut();
+        if (flushOk) {
+          clearStoreLocal();
+          clearSrsLocal();
+        }
+        setAppState(store.getState());
+        setSrsState(srs.getSrs());
         setSession(null);
         resetPostHog();
         setShowAccountSheet(false);

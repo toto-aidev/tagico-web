@@ -14,12 +14,11 @@
 //
 // props:
 //   session: Session — Supabase セッション（null の場合は何も表示しない）
-//   onLogout: () => void — signOut後に App.jsx の session state をリセット
+//   onLogout: () => Promise<void> — flush → signOut → clear の順序を担保する非同期コールバック（App.jsx 実装）
 //   onClose: () => void — シートを閉じる
 
 import React, { useState, useEffect } from 'react';
 import Icon from '@/components/Icon';
-import { signOut } from '@/lib/auth';
 import { supabase } from '@/lib/supabase';
 
 export default function AccountSheet({ session, onLogout, onClose }) {
@@ -159,10 +158,11 @@ export default function AccountSheet({ session, onLogout, onClose }) {
   };
 
   // ログアウト処理
+  // onLogout が flush → signOut → clear の順序を担保する（App.jsx 参照）。
+  // ここでは await してから onClose するだけ。
   const handleLogout = async () => {
     setIsLoggingOut(true);
-    await signOut();
-    if (onLogout) onLogout();
+    if (onLogout) await onLogout();
     onClose();
   };
 
