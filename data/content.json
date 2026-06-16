@@ -128,16 +128,6 @@
           "id": "as__につれて"
         },
         {
-          "en": "She hummed as she cooked.",
-          "jpBefore": "彼女は料理を",
-          "answer": "しながら",
-          "jpAfter": "鼻歌を歌った。",
-          "jpFull": "彼女は料理をしながら鼻歌を歌った。",
-          "cue": "接続詞〈時〉",
-          "hint": "hum＝「鼻歌を歌う」",
-          "id": "as__しながら"
-        },
-        {
           "en": "Do it as I showed you.",
           "jpBefore": "私がやって見せた",
           "answer": "ように",
@@ -155,15 +145,6 @@
           "cue": "接続詞〈譲歩〉",
           "hint": "wise＝「賢い」",
           "id": "as__確かに_だが"
-        },
-        {
-          "en": "Such books as I have are old.",
-          "jpBefore": "私が持っている",
-          "answer": "ような",
-          "jpAfter": "本は、どれも古い。",
-          "jpFull": "私が持っているような本は、どれも古い。",
-          "cue": "擬似関係代名詞",
-          "id": "as__ような"
         }
       ],
       "coreImage": {
@@ -1097,15 +1078,6 @@
           "id": "of__のうちの・の中で"
         },
         {
-          "en": "He is a man of great courage.",
-          "jpBefore": "彼は大変な勇気",
-          "answer": "という性質を持った",
-          "jpAfter": "男だ。",
-          "jpFull": "彼はとても勇気のある男だ。",
-          "cue": "性質",
-          "id": "of__という性質を持った"
-        },
-        {
           "en": "the discovery of America",
           "jpBefore": "アメリカ",
           "answer": "を",
@@ -1114,15 +1086,6 @@
           "cue": "名詞構文の目的語",
           "hint": "名詞構文として",
           "id": "of__を"
-        },
-        {
-          "en": "He died of cancer.",
-          "jpBefore": "彼はがん",
-          "answer": "で・のために",
-          "jpAfter": "亡くなった。",
-          "jpFull": "彼はがんで亡くなった。",
-          "cue": "原因",
-          "id": "of__で・のために"
         }
       ],
       "coreImage": {
