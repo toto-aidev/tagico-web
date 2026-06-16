@@ -190,7 +190,7 @@ export function BottomNav({ active, onNavigate }) {
         {items.map((it) => {
           const on = active === it.key;
           return (
-            <button key={it.key} onClick={() => onNavigate(it.screen)} className={'flex flex-col items-center gap-1 transition-colors ' + (on ? 'text-teal-500' : 'text-slate-400 hover:text-slate-600')}>
+            <button key={it.key} onClick={() => onNavigate(it.screen, { isUserAction: true })} className={'flex flex-col items-center gap-1 transition-colors ' + (on ? 'text-teal-500' : 'text-slate-400 hover:text-slate-600')}>
               <div className={'px-3 py-1.5 rounded-xl ' + (on ? 'bg-teal-50' : '')}>
                 <Icon name={it.icon} size={22} fill={on && (it.icon === 'play' || it.icon === 'tag') ? 'currentColor' : undefined} />
               </div>

@@ -60,6 +60,18 @@ function loadSessionScreen() {
     if (!saved || !saved.type) return null;
     // quiz/review/srs-review のみ復元対象
     if (!['quiz', 'review', 'srs-review'].includes(saved.type)) return null;
+
+    // review 型補完フォールバック：
+    // handleNavigate が sessionPool と wordIds を補完してから saveSessionScreen を呼ぶ設計のため、
+    // 通常このブランチには到達しない（デッドコード）。
+    // 将来 sessionPool だけ持つ save パスが追加された場合の安全網として残す。
+    if (saved.type === 'review' && (!saved.wordIds || saved.wordIds.length === 0)) {
+      const pool = (saved.sessionPool || []).filter((id) => !!getWord(id));
+      if (pool.length === 0) return null;
+      saved.sessionPool = pool;
+      saved.wordIds = [pool[0]];
+    }
+
     // wordIds が有効か確認（存在しない単語IDなら弾く）
     const wordIds = saved.wordIds || [];
     if (wordIds.length === 0) return null;
@@ -82,7 +94,7 @@ function loadSessionScreen() {
 }
 import { onAuthStateChange, signOut } from '@/lib/auth';
 import { pushProgress } from '@/lib/sync';
-import { initPostHog, identifyUser, resetPostHog } from '@/lib/posthog';
+import { initPostHog, identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
 
 export default function App() {
   const [screen, setScreen] = useState({ type: 'home' });
@@ -135,7 +147,16 @@ export default function App() {
 
       if (newSession && newSession.user) {
         // ログイン / セッション更新: PostHog でユーザーを識別 + 進捗を Supabase へ push（マージ）
-        identifyUser(newSession.user.id, { email: newSession.user.email });
+        // identifyUser には UUID のみ渡す（email 等の PII は渡さない）
+        identifyUser(newSession.user.id);
+        // SIGNED_IN（新規ログイン）のみ login イベントを発火。
+        // INITIAL_SESSION（リロード時のセッション復元）・TOKEN_REFRESHED は送らない。
+        // method は "email"（マジックリンク）または "google" を provider 情報から判定。
+        if (event === 'SIGNED_IN') {
+          const provider = newSession.user?.app_metadata?.provider || 'email';
+          const method = provider === 'google' ? 'google' : 'email';
+          captureEvent('login', { method });
+        }
 
         const localState = store.getState();
         const localSrs = srs.getSrs();
@@ -195,9 +216,27 @@ export default function App() {
     saveSessionScreen(s);
   };
 
-  const handleNavigate = (s) => {
+  // handleNavigate: 画面遷移の共通ハンドラ。
+  // isUserAction=true のときだけ tab_view を送信する。
+  // クイズ/復習/リトライ完了後の自動ホーム復帰など、プログラム起点の遷移では false を渡す。
+  const handleNavigate = (s, { isUserAction = false } = {}) => {
     sfx.play('ui'); // タブ/画面遷移の汎用クリック
+    // tab_view はユーザーが実際にボトムナビをタップした時のみ送信する。
+    // 自動遷移（クイズ完了後のホーム戻り等）では isUserAction=false のため送らない。
+    const TAB_SCREENS = ['home', 'wordbook', 'my', 'stats'];
+    if (isUserAction && TAB_SCREENS.includes(s.type)) {
+      captureEvent('tab_view', { tab: s.type });
+    }
     setSessionScores([]);
+    // review 型でホームから遷移する場合、sessionPool と wordIds が無い状態で
+    // saveSessionScreen が呼ばれると、リロード時に復元できない（wordIds が空で null 返却）。
+    // ここで sessionPool（= appState.reviewPool）と先頭 wordId を補完しておく。
+    if (s.type === 'review' && !s.sessionPool) {
+      const pool = appState ? (appState.reviewPool || []) : [];
+      const enriched = { ...s, sessionPool: pool, wordIds: pool.length > 0 ? [pool[0]] : [] };
+      updateScreen(enriched);
+      return;
+    }
     updateScreen(s);
   };
 
@@ -213,7 +252,15 @@ export default function App() {
     handleNavigate({ type: 'home' });
   };
 
-  const handleToggleBookmark = (wordId) => setAppState((s) => store.toggleBookmark(s, wordId));
+  const handleToggleBookmark = (wordId) => {
+    setAppState((s) => {
+      const next = store.toggleBookmark(s, wordId);
+      // toggleBookmark 後の状態でブックマーク有無を判定してイベント送信
+      const on = (next.bookmarks || []).includes(wordId);
+      captureEvent('bookmark_toggled', { word: wordId, on });
+      return next;
+    });
+  };
   const handleToggleSavedSense = (wordId, senseIdx) =>
     setAppState((s) => store.toggleSavedSense(s, wordId, senseIdx));
 
@@ -268,8 +315,12 @@ export default function App() {
       const sessionPool = screen.sessionPool || (appState.reviewPool || []);
       const nextReviewId = sessionPool.find((id) => !donIds.has(id));
       if (nextReviewId) {
-        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool });
+        // reviewedCount を保存しておき、リロード後のカウンター表示を正しく復元する（指摘1対応）
+        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: accumulated.length });
       } else {
+        // 間違い復習セッション完了
+        const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
+        captureEvent('review_completed', { count: accumulated.length, correct: totalCorrect });
         handleNavigate({ type: 'home' });
       }
       return;
@@ -283,13 +334,18 @@ export default function App() {
       const sessionWords = screen.sessionWords || [];
       const nextWord = sessionWords.find((w) => !doneWordIds.has(w.wordId));
       if (nextWord) {
+        // reviewedCount を保存しておき、リロード後のカウンター表示を正しく復元する（レビュー指摘2対応）
         updateScreen({
           type: 'srs-review',
           wordIds: [nextWord.wordId],
           srsContext: { senseIds: nextWord.senseIds, earliestMiss: nextWord.earliestMiss },
           sessionWords,
+          reviewedCount: accumulated.length,
         });
       } else {
+        // SRS 復習セッション完了
+        const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
+        captureEvent('review_completed', { count: accumulated.length, correct: totalCorrect });
         handleNavigate({ type: 'home' });
       }
       return;
@@ -317,7 +373,7 @@ export default function App() {
           (id) => !sessionDone.has(id) && !(newAppState.completed || newAppState.cleared).includes(id)
         );
 
-    // 効果音：この回答でレベルを「今」全完走＝解禁したらファンファーレ。
+    // 効果音・level_cleared イベント：この回答でレベルを「今」全完走＝解禁したらファンファーレ。
     // 完走判定は completed で行う（誤答・答え見含む）。replay 中は鳴らさない（既存完走済みのため）。
     if (!isReplay) {
       const newCompleted = newAppState.completed || newAppState.cleared;
@@ -326,7 +382,10 @@ export default function App() {
         allWordIds.length > 0 && allWordIds.every((id) => newCompleted.includes(id));
       const levelWasCompleted =
         allWordIds.length > 0 && allWordIds.every((id) => prevCompleted.includes(id));
-      if (levelNowCompleted && !levelWasCompleted) sfx.play('fanfare');
+      if (levelNowCompleted && !levelWasCompleted) {
+        sfx.play('fanfare');
+        captureEvent('level_cleared', { level: screen.levelId });
+      }
     }
 
     if (nextWordId) updateScreen({ type: 'quiz', levelId: screen.levelId, wordIds: [nextWordId], replay: isReplay, replayWordIds: isReplay ? replayWordIds : undefined });
@@ -419,6 +478,7 @@ export default function App() {
         setSrsState(srs.getSrs());
         setScreen({ type: 'home' });
         setSession(null);
+        captureEvent('logout');
         resetPostHog();
         setShowAccountSheet(false);
       }}
@@ -479,6 +539,8 @@ export default function App() {
         onBack={handleQuizBack}
         levelWordIndex={levelWordIndex}
         levelWordCount={levelWordCount}
+        isReplay={!!screen.replay}
+        isRetry={!!screen.isRetry}
       />
     );
   }
@@ -490,7 +552,11 @@ export default function App() {
     const wordIds = screen.wordIds || (sessionPool.length > 0 ? [sessionPool[0]] : []);
     const reviewTotal = sessionPool.length;
     // 位置表示：復習モードは「復習 n/N」表示（sessionScores で何問目か）
-    const reviewIndex = sessionScores.length;
+    // リロード後は sessionScores が [] にリセットされるため、screen.reviewedCount（保存済みのリロード前進捗）を
+    // ベースに、リロード後に解いた分（sessionScores.length）を加算する（レビュー指摘1対応）。
+    // XOR（どちらかを使う）では、リロード後に次の語に進む際に reviewedCount が accumulated.length で
+    // 上書きされて逆戻りする。加算にすることで pre-reload + post-reload 進捗が正しく合算される。
+    const reviewIndex = (screen.reviewedCount || 0) + sessionScores.length;
 
     const doneInSession = new Set(sessionScores.map((s) => s.wordId));
     if (wordIds[0]) doneInSession.add(wordIds[0]);
@@ -523,7 +589,8 @@ export default function App() {
         : null
     );
     const reviewTotal = sessionWords.length;
-    const reviewIndex = sessionScores.length;
+    // srs-review も review と同様にリロード後のカウンターを復元する（レビュー指摘2対応）
+    const reviewIndex = (screen.reviewedCount || 0) + sessionScores.length;
     const doneInSession = new Set(sessionScores.map((s) => s.wordId));
     if (wordIds[0]) doneInSession.add(wordIds[0]);
 

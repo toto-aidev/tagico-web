@@ -15,6 +15,7 @@ import { SummaryBody, BookmarkButton } from '@/components/Summary';
 import { getWord, getLevel, LEVELS } from '@/lib/content';
 import { seededShuffle } from '@/lib/store';
 import * as sfx from '@/lib/sfx';
+import { captureEvent } from '@/lib/posthog';
 
 const IRREGULAR = {
   bear: ['bears', 'bore', 'borne', 'bearing'],
@@ -72,7 +73,9 @@ function fireConfetti() {
 
 // isSrsReview: true なら SRS 語義単位の復習モード（「過去の自分」演出を表示）
 // srsContext: { senseIds: string[], earliestMiss: string|null } — 今回復習対象の情報
-export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount, isReviewMode, isSrsReview, srsContext }) {
+// isReplay: true なら「もう一度」リプレイセッション（answer_result / quiz_completed に is_replay フラグを付与）
+// isRetry: true なら結果画面の誤答リトライ（answer_result / quiz_completed に is_retry フラグを付与）
+export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, onToggleBookmark, savedSenses, onToggleSavedSense, onDone, onBack, levelWordIndex, levelWordCount, isReviewMode, isSrsReview, srsContext, isReplay, isRetry }) {
   const level = getLevel(levelId);
   const wordIds = propWordIds || (level && level.wordIds) || [];
 
@@ -161,6 +164,18 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
       sfx.play('wrong'); // 一部不正解：柔らかい低めの音
     }
     const trapHit = Object.values(ws.assignments).includes(word.trap);
+    // answer_result: 語義単位の正誤（どの語義を間違えたか集計用）
+    // is_replay / is_retry フラグを付与することで PostHog 側で「初回のみ」フィルタが可能になる
+    word.senses.forEach((s, i) => {
+      captureEvent('answer_result', {
+        word: word.id,
+        sense_id: s.id || (word.id + '__' + i),
+        is_correct: ws.assignments[i] === s.answer,
+        trap_hit: trapHit,
+        is_replay: !!isReplay,
+        is_retry: !!isRetry,
+      });
+    });
     updateWs({ phase: 'revealed', trapHit });
   };
 
@@ -169,6 +184,17 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     sfx.play('ui'); // 「答えを見る」：汎用クリック
     const auto = {};
     word.senses.forEach((s, i) => { auto[i] = s.answer; });
+    // 「答えを見る」は全語義をミス扱い（自力正解ではないため）
+    word.senses.forEach((s, i) => {
+      captureEvent('answer_result', {
+        word: word.id,
+        sense_id: s.id || (word.id + '__' + i),
+        is_correct: false,
+        trap_hit: false,
+        is_replay: !!isReplay,
+        is_retry: !!isRetry,
+      });
+    });
     updateWs({ assignments: auto, phase: 'revealed', trapHit: false, seeAnswer: true });
   };
 
@@ -180,10 +206,24 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     // senseResults: 語義単位の正誤（SRS に渡すため sense.id を含める）
     // 「答えを見る」を使った場合は全語義をミス扱い（自力正解ではないため SRS 全リセット対象）
     const senseResults = word.senses.map((s, i) => ({
-      senseId: s.id || (word.id + ':' + i), // id がない場合はフォールバック（移行期対策）
+      senseId: s.id || (word.id + '__' + i), // id がない場合のフォールバック。handleReveal の fallback と区切り文字を '__' に統一（SRS キー形式に合わせる）
       correct: ws.seeAnswer ? false : ws.assignments[i] === s.answer,
     }));
     const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit, seeAnswer: ws.seeAnswer || false, senseResults }];
+    // quiz_completed: 1単語分のクイズが完了した時点で送信
+    // is_replay / is_retry フラグで初回受験を PostHog 側でフィルタできる
+    // seeAnswer=true 時: auto-fill で assignments===answer になるため correct===total になるが、
+    // これは自力正解ではない。PostHog には 0 と報告する（レビュー指摘3対応）。
+    const reportedCorrect = ws.seeAnswer ? 0 : correct;
+    captureEvent('quiz_completed', {
+      word: word.id,
+      level: levelId || null,
+      correct: reportedCorrect,
+      total: word.senses.length,
+      all_correct: !ws.seeAnswer && correct === word.senses.length,
+      is_replay: !!isReplay,
+      is_retry: !!isRetry,
+    });
     setScores(newScores);
     if (wordIdx < wordIds.length - 1) setWordIdx((i) => i + 1);
     else onDone(newScores);
@@ -207,7 +247,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         // reviewedOn / checkpoints に正誤が記録されるようにするため）
         // 「答えを見る」を使った場合は全語義をミス扱い
         senseResults: w.senses.map((s, i) => ({
-          senseId: s.id || (w.id + ':' + i),
+          senseId: s.id || (w.id + '__' + i), // handleNext と同じ '__' 区切りで統一
           correct: st.seeAnswer ? false : st.assignments[i] === s.answer,
         })),
       }));
