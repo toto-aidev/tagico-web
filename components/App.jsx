@@ -87,6 +87,14 @@ function loadSessionScreen() {
     if (saved.sessionWords) {
       saved.sessionWords = saved.sessionWords.filter((w) => !!getWord(w.wordId));
     }
+    // F2修正（2026-06-16）：doneWordIds を復元し、削除済み語をフィルタする。
+    // リロード前に解いた語のIDを蓄積しておくことで、リロード後も「解答済み集合」が
+    // 正しく維持され、解答済み語が再出題されるバグを防ぐ。
+    if (saved.doneWordIds) {
+      saved.doneWordIds = saved.doneWordIds.filter((id) => !!getWord(id));
+    } else {
+      saved.doneWordIds = [];
+    }
     return saved;
   } catch (e) {
     return null;
@@ -240,13 +248,16 @@ export default function App() {
     //   ※旧「加算方式 (reviewedCount + sessionScores.length)」は二重計上（5/4 等）の原因のため不採用。
     if (s.type === 'review' && !s.sessionPool) {
       const pool = appState ? (appState.reviewPool || []) : [];
-      const enriched = { ...s, sessionPool: pool, wordIds: pool.length > 0 ? [pool[0]] : [], reviewedCount: 0 };
+      // F2修正（2026-06-16）：doneWordIds: [] でセッション開始時の解答済み集合を初期化する。
+      // reviewedCount: 0 は F1修正で追加済み。両者をセットで初期化することで、
+      // リロード後も「どこまで解いたか」が正しく追跡できる状態でセッションが始まる。
+      const enriched = { ...s, sessionPool: pool, wordIds: pool.length > 0 ? [pool[0]] : [], reviewedCount: 0, doneWordIds: [] };
       updateScreen(enriched);
       return;
     }
-    // srs-review / review（sessionPool 指定あり）でも reviewedCount を 0 にリセット
+    // srs-review / review（sessionPool 指定あり）でも reviewedCount と doneWordIds を 0/[] にリセット
     if (s.type === 'review' || s.type === 'srs-review') {
-      updateScreen({ ...s, reviewedCount: 0 });
+      updateScreen({ ...s, reviewedCount: 0, doneWordIds: [] });
       return;
     }
     updateScreen(s);
@@ -322,10 +333,16 @@ export default function App() {
     if (screen.type === 'review') {
       const accumulated = [...sessionScores, ...scores];
       setSessionScores(accumulated);
-      const donIds = new Set(accumulated.map((s) => s.wordId));
+      // F2修正（2026-06-16）：解答済み集合を doneWordIds（永続化済み）+ 今回の scores で構築する。
+      // リロード前に解いた語は screen.doneWordIds に保存されており、sessionScores は
+      // リロード時に空（[]）にリセットされるため、accumulated だけでは解答済み集合が
+      // 不完全になる。永続版 doneWordIds をベースにすることでリロード跨ぎの重複出題を防ぐ。
+      const prevDoneIds = screen.doneWordIds || [];
+      const newDoneIds = [...new Set([...prevDoneIds, ...scores.map((s) => s.wordId)])];
+      const doneSet = new Set(newDoneIds);
       // 今回のセッション開始時点のプールから、まだ解いていない語を次として選ぶ
       const sessionPool = screen.sessionPool || (appState.reviewPool || []);
-      const nextReviewId = sessionPool.find((id) => !donIds.has(id));
+      const nextReviewId = sessionPool.find((id) => !doneSet.has(id));
       if (nextReviewId) {
         // F1修正（2026-06-16）：reviewedCount の更新方式を変更。
         //   旧式: reviewedCount = accumulated.length（= sessionScores.length + 今回の語数）
@@ -337,7 +354,8 @@ export default function App() {
         //     → セッション中に語を1語解くたびに1増える単調増加カウンター。
         //       表示式 reviewedCount || sessionScores.length では reviewedCount が truthy の間
         //       優先されるため、非リロード・リロード後どちらでも正しい累積値を表示できる。
-        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: (screen.reviewedCount || 0) + scores.length });
+        // doneWordIds も更新してリロード跨ぎで蓄積する（F2修正）。
+        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: (screen.reviewedCount || 0) + scores.length, doneWordIds: newDoneIds });
       } else {
         // 間違い復習セッション完了
         const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
@@ -351,19 +369,26 @@ export default function App() {
     if (screen.type === 'srs-review') {
       const accumulated = [...sessionScores, ...scores];
       setSessionScores(accumulated);
-      const doneWordIds = new Set(accumulated.map((s) => s.wordId));
+      // F2修正（2026-06-16）：review 分岐と同様に、解答済み集合を永続版 doneWordIds で管理する。
+      // リロード時に sessionScores が空になっても、screen.doneWordIds に保存済みの
+      // 解答済み語は失われない。
+      const prevDoneIds = screen.doneWordIds || [];
+      const newDoneIds = [...new Set([...prevDoneIds, ...scores.map((s) => s.wordId)])];
+      const doneWordIdsSet = new Set(newDoneIds);
       const sessionWords = screen.sessionWords || [];
-      const nextWord = sessionWords.find((w) => !doneWordIds.has(w.wordId));
+      const nextWord = sessionWords.find((w) => !doneWordIdsSet.has(w.wordId));
       if (nextWord) {
         // F1修正（2026-06-16、srs-review 分岐）：review 分岐と同様に
         // reviewedCount = (前のreviewedCount || 0) + scores.length で単調増加させる。
         // 表示式では reviewedCount || sessionScores.length を使う（表示ロジック側を参照）。
+        // doneWordIds も更新してリロード跨ぎで蓄積する（F2修正）。
         updateScreen({
           type: 'srs-review',
           wordIds: [nextWord.wordId],
           srsContext: { senseIds: nextWord.senseIds, earliestMiss: nextWord.earliestMiss },
           sessionWords,
           reviewedCount: (screen.reviewedCount || 0) + scores.length,
+          doneWordIds: newDoneIds,
         });
       } else {
         // SRS 復習セッション完了
@@ -587,7 +612,9 @@ export default function App() {
     //       sessionScores.length（= 0）が使われ、表示は 0 → 「1/N語目」（正しい）。
     const reviewIndex = screen.reviewedCount || sessionScores.length;
 
-    const doneInSession = new Set(sessionScores.map((s) => s.wordId));
+    // F2修正：hasNext 判定も永続版 doneWordIds を含める（sessionScores はリロードで空に戻るため、
+    // リロード後の最終語で「結果を見る」ではなく「次の単語へ」と誤表示されるのを防ぐ）。
+    const doneInSession = new Set([...(screen.doneWordIds || []), ...sessionScores.map((s) => s.wordId)]);
     if (wordIds[0]) doneInSession.add(wordIds[0]);
     return (
       <QuizScreen
@@ -622,7 +649,8 @@ export default function App() {
     // 旧式: (screen.reviewedCount || 0) + sessionScores.length → 二重計上
     // 新式: screen.reviewedCount || sessionScores.length → review 分岐の説明を参照
     const reviewIndex = screen.reviewedCount || sessionScores.length;
-    const doneInSession = new Set(sessionScores.map((s) => s.wordId));
+    // F2修正：hasNext 判定も永続版 doneWordIds を含める（リロード後の最終語の誤ラベル防止）。
+    const doneInSession = new Set([...(screen.doneWordIds || []), ...sessionScores.map((s) => s.wordId)]);
     if (wordIds[0]) doneInSession.add(wordIds[0]);
 
     return (
