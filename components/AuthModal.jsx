@@ -149,7 +149,7 @@ export default function AuthModal({ onClose }) {
                 disabled={status === 'sending'}
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-teal-400 text-white font-black text-sm shadow-[0_4px_0_0_#14b8a6] active:shadow-[0_0px_0_0_#14b8a6] active:translate-y-[4px] disabled:opacity-60 disabled:cursor-not-allowed transition-all"
               >
-                {status === 'sending' ? '送信中…' : 'マジックリンクを送信'}
+                {status === 'sending' ? '送信中…' : 'ログイン用リンクをメールで送る'}
               </button>
             </form>
 
