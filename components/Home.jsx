@@ -180,7 +180,7 @@ export function HomeScreen({ appState, onNavigate, srsReviewCount, onSrsReview, 
           >
             <div className="text-left">
               <p className="text-xs font-bold text-teal-50 uppercase tracking-wider mb-1">Continue Quest</p>
-              <p className="font-black text-xl">{nextLevel.name}</p>
+              <p className="font-black text-xl">{nextLevel.name}{nextWordId && getWord(nextWordId) ? <span className="font-bold text-base text-white/70"> · {getWord(nextWordId).word}</span> : null}</p>
             </div>
             <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-full backdrop-blur-sm">
               <Icon name="play" size={20} fill="currentColor" className="ml-1" />
