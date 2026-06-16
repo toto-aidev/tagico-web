@@ -231,10 +231,22 @@ export default function App() {
     // review 型でホームから遷移する場合、sessionPool と wordIds が無い状態で
     // saveSessionScreen が呼ばれると、リロード時に復元できない（wordIds が空で null 返却）。
     // ここで sessionPool（= appState.reviewPool）と先頭 wordId を補完しておく。
+    // また reviewedCount: 0 を明示的に設定する（F1修正）：
+    //   表示式（App 下部）は OR：`reviewIndex = screen.reviewedCount || sessionScores.length`。
+    //   handleQuizDone は1語解くごとに reviewedCount を単調増加（+ scores.length）で保存する。
+    //   セッション開始時に reviewedCount: 0 を置くことで、初回語は 0（falsy）→ sessionScores.length(=0)
+    //   が使われ「1/N」と正しく出る。以降は reviewedCount（truthy）が優先され、
+    //   非リロード・リロード後どちらも正しい累積値（解いた語数）を表示できる。
+    //   ※旧「加算方式 (reviewedCount + sessionScores.length)」は二重計上（5/4 等）の原因のため不採用。
     if (s.type === 'review' && !s.sessionPool) {
       const pool = appState ? (appState.reviewPool || []) : [];
-      const enriched = { ...s, sessionPool: pool, wordIds: pool.length > 0 ? [pool[0]] : [] };
+      const enriched = { ...s, sessionPool: pool, wordIds: pool.length > 0 ? [pool[0]] : [], reviewedCount: 0 };
       updateScreen(enriched);
+      return;
+    }
+    // srs-review / review（sessionPool 指定あり）でも reviewedCount を 0 にリセット
+    if (s.type === 'review' || s.type === 'srs-review') {
+      updateScreen({ ...s, reviewedCount: 0 });
       return;
     }
     updateScreen(s);
@@ -315,8 +327,17 @@ export default function App() {
       const sessionPool = screen.sessionPool || (appState.reviewPool || []);
       const nextReviewId = sessionPool.find((id) => !donIds.has(id));
       if (nextReviewId) {
-        // reviewedCount を保存しておき、リロード後のカウンター表示を正しく復元する（指摘1対応）
-        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: accumulated.length });
+        // F1修正（2026-06-16）：reviewedCount の更新方式を変更。
+        //   旧式: reviewedCount = accumulated.length（= sessionScores.length + 今回の語数）
+        //     → 非リロード時: 表示 reviewedCount || sessionScores.length で
+        //       reviewedCount が sessionScores.length と同じ値になるので正常に見えるが、
+        //       リロード後の再カウントで accumulated が前回リロード分を引き継がずに
+        //       reviewedCount が 1 に戻るバグがある。
+        //   新式: reviewedCount = (前のreviewedCount) + scores.length
+        //     → セッション中に語を1語解くたびに1増える単調増加カウンター。
+        //       表示式 reviewedCount || sessionScores.length では reviewedCount が truthy の間
+        //       優先されるため、非リロード・リロード後どちらでも正しい累積値を表示できる。
+        updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: (screen.reviewedCount || 0) + scores.length });
       } else {
         // 間違い復習セッション完了
         const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
@@ -334,13 +355,15 @@ export default function App() {
       const sessionWords = screen.sessionWords || [];
       const nextWord = sessionWords.find((w) => !doneWordIds.has(w.wordId));
       if (nextWord) {
-        // reviewedCount を保存しておき、リロード後のカウンター表示を正しく復元する（レビュー指摘2対応）
+        // F1修正（2026-06-16、srs-review 分岐）：review 分岐と同様に
+        // reviewedCount = (前のreviewedCount || 0) + scores.length で単調増加させる。
+        // 表示式では reviewedCount || sessionScores.length を使う（表示ロジック側を参照）。
         updateScreen({
           type: 'srs-review',
           wordIds: [nextWord.wordId],
           srsContext: { senseIds: nextWord.senseIds, earliestMiss: nextWord.earliestMiss },
           sessionWords,
-          reviewedCount: accumulated.length,
+          reviewedCount: (screen.reviewedCount || 0) + scores.length,
         });
       } else {
         // SRS 復習セッション完了
@@ -551,12 +574,18 @@ export default function App() {
     // 復習する単語ID：screen.wordIds があればそれ、なければプールの先頭
     const wordIds = screen.wordIds || (sessionPool.length > 0 ? [sessionPool[0]] : []);
     const reviewTotal = sessionPool.length;
-    // 位置表示：復習モードは「復習 n/N」表示（sessionScores で何問目か）
-    // リロード後は sessionScores が [] にリセットされるため、screen.reviewedCount（保存済みのリロード前進捗）を
-    // ベースに、リロード後に解いた分（sessionScores.length）を加算する（レビュー指摘1対応）。
-    // XOR（どちらかを使う）では、リロード後に次の語に進む際に reviewedCount が accumulated.length で
-    // 上書きされて逆戻りする。加算にすることで pre-reload + post-reload 進捗が正しく合算される。
-    const reviewIndex = (screen.reviewedCount || 0) + sessionScores.length;
+    // 位置表示：復習モードは「復習 n/N」表示
+    // F1修正（2026-06-16）：
+    //   旧式: (screen.reviewedCount || 0) + sessionScores.length
+    //   → reviewedCount = accumulated.length（= sessionScores.length + 1）なので
+    //     reviewedCount + sessionScores.length で二重計上になっていた。
+    //   新式: screen.reviewedCount || sessionScores.length
+    //   → reviewedCount が設定されていれば（=語を1問以上解いたフラグが立てば）それを優先。
+    //     非リロード時: reviewedCount = accumulated.length（正しい語数）が優先される。
+    //     リロード後:  sessionScores = [] なので reviewedCount（保存値）が優先される。
+    //     セッション開始直後: handleNavigate で reviewedCount: 0 を設定済み。0 は falsy なので
+    //       sessionScores.length（= 0）が使われ、表示は 0 → 「1/N語目」（正しい）。
+    const reviewIndex = screen.reviewedCount || sessionScores.length;
 
     const doneInSession = new Set(sessionScores.map((s) => s.wordId));
     if (wordIds[0]) doneInSession.add(wordIds[0]);
@@ -589,8 +618,10 @@ export default function App() {
         : null
     );
     const reviewTotal = sessionWords.length;
-    // srs-review も review と同様にリロード後のカウンターを復元する（レビュー指摘2対応）
-    const reviewIndex = (screen.reviewedCount || 0) + sessionScores.length;
+    // srs-review も review と同様に F1修正を適用（レビュー指摘2対応 + 二重計上解消）
+    // 旧式: (screen.reviewedCount || 0) + sessionScores.length → 二重計上
+    // 新式: screen.reviewedCount || sessionScores.length → review 分岐の説明を参照
+    const reviewIndex = screen.reviewedCount || sessionScores.length;
     const doneInSession = new Set(sessionScores.map((s) => s.wordId));
     if (wordIds[0]) doneInSession.add(wordIds[0]);
 
