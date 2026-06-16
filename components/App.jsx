@@ -4,16 +4,27 @@
 // tagico-studio/v2-app.jsx の App の移植。
 // 進捗は localStorage（'tagico-v2-state'）にあるため、SSR とのハイドレーション不一致を
 // 避けるべく、マウント後に getState() を読んでから描画する（それまでは背景のみ）。
+//
+// 2026-06-16: 任意ログイン＋進捗同期（Supabase Auth）＋PostHog 継続率計測を追加。
+//   - ログインは任意。未ログインでも全機能を使える（localStorage は変更なし）。
+//   - ログイン時: localStorage の進捗を Supabase へ push（マージ）し、以後サーバー優先。
+//   - PostHog: 全ユーザー（未ログイン含む）の匿名 ID で D1/D7/D30 継続率を計測。
+//   - Supabase / PostHog の鍵が未設定でも動作する（環境変数 = null → no-op）。
 
 import React, { useState, useEffect } from 'react';
 import { HomeScreen, WordbookScreen } from '@/components/Home';
 import { QuizScreen, ResultScreen } from '@/components/Quiz';
 import { MyWordbookScreen, StatsScreen } from '@/components/Extra';
 import { SurveyPrompt } from '@/components/Survey';
+import AuthModal from '@/components/AuthModal';
+import AuthButton from '@/components/AuthButton';
 import { getLevel, WORDS } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
 import * as srs from '@/lib/srs';
+import { onAuthStateChange, getSession } from '@/lib/auth';
+import { pushProgress, pullProgress } from '@/lib/sync';
+import { initPostHog, identifyUser, resetPostHog } from '@/lib/posthog';
 
 export default function App() {
   const [screen, setScreen] = useState({ type: 'home' });
@@ -21,14 +32,19 @@ export default function App() {
   const [sessionScores, setSessionScores] = useState([]);
   const [showSurvey, setShowSurvey] = useState(false); // Level 1 完走後アンケート誘導（一度きり）
   const [srsState, setSrsState] = useState(null); // SRS データ（マウント後に読む）
+  const [session, setSession] = useState(null); // Supabase Auth セッション（null = 未ログイン）
+  const [showAuthModal, setShowAuthModal] = useState(false); // AuthModal 表示フラグ
 
   useEffect(() => {
+    // 基本の初期化（既存処理と変わらない）
     setAppState(store.getState());
-    setSrsState(srs.getSrs()); // SRS データを localStorage から読む
-    sfx.initSfx(); // ミュート状態を localStorage から同期
+    setSrsState(srs.getSrs());
+    sfx.initSfx();
+
+    // PostHog 初期化（鍵未設定なら no-op）
+    initPostHog();
 
     // iOS/モバイル Safari の autoplay 対策：最初のユーザー操作で AudioContext を unlock/resume。
-    // pointerdown / keydown / touchstart のいずれか最初の1回で解放（以後はリスナー解除）。
     const unlock = () => {
       sfx.unlockAudio();
       window.removeEventListener('pointerdown', unlock);
@@ -38,12 +54,74 @@ export default function App() {
     window.addEventListener('pointerdown', unlock);
     window.addEventListener('keydown', unlock);
     window.addEventListener('touchstart', unlock);
+
+    // Supabase Auth: 初回セッション取得 + Auth 状態変化リスナー登録
+    // Supabase が未設定（supabase === null）の場合は onAuthStateChange が no-op を返す
+    // 注意: コールバック内で session state を参照すると古い値になるため、
+    //       setSession に関数形式を使い、イベント名（_event）でログアウトを判定する。
+    const unsubscribe = onAuthStateChange(async (newSession) => {
+      setSession(newSession);
+
+      if (newSession && newSession.user) {
+        // ログイン / セッション更新: PostHog でユーザーを識別 + 進捗を Supabase へ push（マージ）
+        identifyUser(newSession.user.id, { email: newSession.user.email });
+
+        const localState = store.getState();
+        const localSrs = srs.getSrs();
+        const { mergedState, mergedSrs } = await pushProgress(
+          newSession.user.id,
+          localState,
+          localSrs
+        );
+        if (mergedState) {
+          store.saveState(mergedState);
+          setAppState(mergedState);
+        }
+        if (mergedSrs) {
+          srs.saveSrs(mergedSrs);
+          setSrsState(mergedSrs);
+        }
+      } else if (!newSession) {
+        // ログアウト: PostHog の anonymous ID に戻す
+        resetPostHog();
+      }
+    });
+
+    // 初回マウント時に既存セッションを確認（ページリロード後の自動ログイン維持）
+    getSession().then(async (existingSession) => {
+      if (existingSession && existingSession.user) {
+        setSession(existingSession);
+        identifyUser(existingSession.user.id, { email: existingSession.user.email });
+        // pull して最新の進捗をローカルとマージ
+        const serverData = await pullProgress(existingSession.user.id);
+        if (serverData) {
+          const localState = store.getState();
+          const localSrs = srs.getSrs();
+          // pushProgress がマージを担う（pull + merge + upsert を一括）
+          const { mergedState, mergedSrs } = await pushProgress(
+            existingSession.user.id,
+            localState,
+            localSrs
+          );
+          if (mergedState) {
+            store.saveState(mergedState);
+            setAppState(mergedState);
+          }
+          if (mergedSrs) {
+            srs.saveSrs(mergedSrs);
+            setSrsState(mergedSrs);
+          }
+        }
+      }
+    });
+
     return () => {
       window.removeEventListener('pointerdown', unlock);
       window.removeEventListener('keydown', unlock);
       window.removeEventListener('touchstart', unlock);
+      unsubscribe();
     };
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const dismissSurvey = () => {
     store.markSurveyPrompted(); // 「答える」「あとで」どちらでも以後は再表示しない
@@ -224,6 +302,23 @@ export default function App() {
     <SurveyPrompt url={store.SURVEY_URL} onDismiss={dismissSurvey} />
   ) : null;
 
+  // AuthButton: ホームヘッダー右上に配置するコンポーネント（他の画面には表示しない）
+  const authButton = (
+    <AuthButton
+      session={session}
+      onLogin={() => setShowAuthModal(true)}
+      onLogout={() => {
+        setSession(null);
+        resetPostHog();
+      }}
+    />
+  );
+
+  // AuthModal: ログインモーダル（showAuthModal が true のときのみ表示）
+  const authModal = showAuthModal ? (
+    <AuthModal onClose={() => setShowAuthModal(false)} />
+  ) : null;
+
   if (screen.type === 'home')
     return (
       <React.Fragment>
@@ -232,8 +327,10 @@ export default function App() {
           onNavigate={handleNavigate}
           srsReviewCount={srsReviewCount}
           onSrsReview={handleSrsReview}
+          authButton={authButton}
         />
         {surveyOverlay}
+        {authModal}
       </React.Fragment>
     );
 

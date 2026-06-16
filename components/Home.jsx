@@ -78,7 +78,7 @@ function TagicoLogo() {
 
 // srsReviewCount: 今日の SRS 復習件数（0なら非表示）
 // onSrsReview: SRS 復習開始ハンドラ
-export function HomeScreen({ appState, onNavigate, srsReviewCount, onSrsReview }) {
+export function HomeScreen({ appState, onNavigate, srsReviewCount, onSrsReview, authButton }) {
   const allIds = LEVELS.flatMap((l) => l.wordIds);
   const masteredCount = appState.cleared.filter((id) => allIds.indexOf(id) >= 0).length;
   // 完走判定は completed を使う（誤答・答え見含む）
@@ -133,6 +133,8 @@ export function HomeScreen({ appState, onNavigate, srsReviewCount, onSrsReview }
           <TagicoLogo />
           <div className="flex items-center gap-2">
             <SfxToggle />
+            {/* 任意ログインボタン（AuthButton）— App.jsx から渡される。未ログイン時は「保存」、ログイン中はアバター */}
+            {authButton || null}
             <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white shadow-sm border border-slate-100">
               <Icon name="flame" size={16} color={appState.streakDays > 0 ? '#f43f5e' : '#cbd5e1'} />
               <span className={'font-black ' + (appState.streakDays > 0 ? 'text-rose-500' : 'text-slate-400')}>{appState.streakDays}</span>

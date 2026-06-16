@@ -11,9 +11,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
     "@vercel/analytics": "^1.6.1",
     "canvas-confetti": "^1.9.3",
     "next": "^15.3.3",
+    "posthog-js": "^1.386.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
