@@ -166,9 +166,11 @@
           "meaning": "「〜する時／〜しながら」",
           "type": "as + S V",
           "note": "動作の同時性。",
-          "senseIds": [
-            "as__しながら"
-          ]
+          "senseIds": [],
+          "example": {
+            "en": "She hummed as she cooked.",
+            "jpFull": "彼女は料理をしながら鼻歌を歌った。"
+          }
         },
         {
           "name": "接続詞〈理由〉",
@@ -211,9 +213,11 @@
           "meaning": "「〜するような…／〜する…」（訳さない）",
           "type": "such / the same 〜 as ...",
           "note": "whichやthatといった関係代名詞と同様の働きをします。such / the same とコロケーションが良いです。",
-          "senseIds": [
-            "as__ような"
-          ]
+          "senseIds": [],
+          "example": {
+            "en": "Such books as I have are old.",
+            "jpFull": "私が持っているような本は、どれも古い。"
+          }
         },
         {
           "name": "as 〜 as 構文〈比較〉",
@@ -1145,17 +1149,21 @@
           "name": "〈名詞構文の主語・目的語〉",
           "meaning": "「〜が／〜を」",
           "type": "動作名詞 + of + 名詞",
-          "senseIds": [
-            "of__を"
-          ]
+          "senseIds": [],
+          "example": {
+            "en": "the discovery of America",
+            "jpFull": "アメリカを発見すること"
+          }
         },
         {
           "name": "〈原因〉",
           "meaning": "「〜で／〜のために」",
           "type": "die / be tired + of",
-          "senseIds": [
-            "of__で・のために"
-          ]
+          "senseIds": [],
+          "example": {
+            "en": "He died of cancer.",
+            "jpFull": "彼はがんで亡くなった。"
+          }
         }
       ],
       "trivia": [
