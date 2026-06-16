@@ -122,7 +122,7 @@ export default function AuthModal({ onClose }) {
               進捗を保存する
             </h2>
             <p className="text-sm text-slate-500 mb-5 leading-relaxed">
-              ログインすると学習進捗・SRS記録が端末をまたいで同期されます。ログインなしでも全機能を使えます。
+              ログインすると学習進捗・復習の記録が端末をまたいで同期されます。ログインなしでも全機能を使えます。
             </p>
 
             {/* エラー表示 */}
