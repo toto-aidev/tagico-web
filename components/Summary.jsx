@@ -23,6 +23,54 @@ function buildSenseMap(senses) {
   return map;
 }
 
+// 不規則活用の代替形辞書（見出し語 → その語が例文中に出うる形を列挙）
+const IRREGULAR_FORMS = {
+  will:  ['will', "won't", 'would'],
+  get:   ['get', 'gets', 'got', 'gotten', 'getting'],
+  have:  ['have', 'has', 'had', 'having'],
+  find:  ['find', 'finds', 'found', 'finding'],
+  fix:   ['fix', 'fixes', 'fixed', 'fixing'],
+  deny:  ['deny', 'denies', 'denied', 'denying'],
+};
+
+// 見出し語 wordStr に対して「例文中の一致を探す」正規表現を組み立てる
+//   - 不規則変化語：辞書の各形を alternation で完全マッチ
+//   - スペース含む句（out of 等）：句全体を部分マッチ
+//   - 4文字以上の規則語：語根前方一致（stem + [a-z']* ）で -s/-ed/-ing/-er 等を吸収
+//   - 3文字以下の短語（as/of/if 等）：完全マッチ（\bWORD\b）
+function buildHighlightPattern(wordStr) {
+  const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const key = wordStr.toLowerCase();
+  if (IRREGULAR_FORMS[key]) {
+    const alt = IRREGULAR_FORMS[key].map(esc).join('|');
+    return new RegExp(`(\\b(?:${alt})\\b)`, 'i');
+  }
+  const e = esc(wordStr);
+  if (/\s/.test(wordStr)) return new RegExp(`(${e})`, 'i');
+  if (wordStr.length >= 4) return new RegExp(`(\\b${e}[a-z']*)`, 'i');
+  return new RegExp(`(\\b${e}\\b)`, 'i');
+}
+
+// 例文英文の主役語（highlight）だけ <em> で囲む。残りは通常表示。
+// highlight：見出し語文字列（word.word）。マッチしない場合は斜体なしで全文をそのまま返す。
+function renderExampleEn(en, highlight) {
+  if (!en) return null;
+  if (!highlight) return <span>{en}</span>;
+  const pattern = buildHighlightPattern(highlight);
+  const parts = en.split(pattern);
+  if (parts.length === 1) {
+    // マッチしない場合（想定外の形）: 斜体なしで表示（エラーにしない）
+    return <span>{en}</span>;
+  }
+  return (
+    <span>
+      {parts.map((part, idx) =>
+        part && pattern.test(part) ? <em key={idx}>{part}</em> : <span key={idx}>{part}</span>
+      )}
+    </span>
+  );
+}
+
 // showExamples=true の場合のみ、各 face の下に設問例文を再掲する
 export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
   const senseMap = showExamples ? buildSenseMap(word.senses) : {};
@@ -59,18 +107,34 @@ export function SummaryBody({ word, savedSet, onToggleFace, showExamples }) {
               )}
               {/* 説明：補足然と・最もミュート */}
               {face.note && <p className="text-slate-400 text-[0.72rem] font-medium mt-1.5 leading-relaxed">{face.note}</p>}
-              {/* 設問例文の再掲（クイズ答え合わせ後のみ：showExamples=true かつ senseIds がある用法のみ）
-                  ※ 右パディングなし = コンテンツ列のフル幅まで伸びる */}
-              {exampleSenses.length > 0 && (
-                <div className="mt-2.5 pt-2.5 border-t border-slate-200/70 w-full flex flex-col gap-2">
-                  {exampleSenses.map((s) => (
-                    <div key={s.id} className="w-full rounded-xl bg-white border border-slate-200 px-3 py-2">
-                      <p className="text-slate-600 text-[0.78rem] font-semibold leading-snug italic">{s.en}</p>
-                      <p className="text-slate-400 text-[0.72rem] font-medium leading-snug mt-0.5">{s.jpFull}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
+              {/* 例文の表示：senseIds 由来（設問例文）優先、なければ face インライン例文を使う */}
+              {showExamples && (() => {
+                const hasSenseExamples = exampleSenses.length > 0;
+                const hasInlineExample = face.example && face.example.en;
+                if (!hasSenseExamples && !hasInlineExample) return null;
+                return (
+                  <div className="mt-2.5 pt-2.5 border-t border-slate-200/70 w-full flex flex-col gap-2">
+                    {hasSenseExamples
+                      ? exampleSenses.map((s) => (
+                          <div key={s.id} className="w-full rounded-xl bg-white border border-slate-200 px-3 py-2">
+                            <p className="text-slate-600 text-[0.78rem] font-semibold leading-snug">
+                              {renderExampleEn(s.en, s.highlight || word.word)}
+                            </p>
+                            <p className="text-slate-400 text-[0.72rem] font-medium leading-snug mt-0.5">{s.jpFull}</p>
+                          </div>
+                        ))
+                      : (
+                          <div className="w-full rounded-xl bg-white border border-slate-200 px-3 py-2">
+                            <p className="text-slate-600 text-[0.78rem] font-semibold leading-snug">
+                              {renderExampleEn(face.example.en, face.example.highlight || word.word)}
+                            </p>
+                            <p className="text-slate-400 text-[0.72rem] font-medium leading-snug mt-0.5">{face.example.jpFull}</p>
+                          </div>
+                        )
+                    }
+                  </div>
+                );
+              })()}
             </div>
             {onToggleFace && (
               <button
