@@ -365,7 +365,7 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
 
             {/* 用法まとめ */}
             <div className="tg-fadeup rounded-3xl p-5 bg-white border-2 border-slate-100 shadow-sm">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-end gap-2 mb-4">
               <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-500 flex items-center justify-center">
                 <Icon name="lightbulb" size={18} fill="currentColor" />
               </div>
