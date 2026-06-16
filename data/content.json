@@ -491,6 +491,12 @@
       },
       "faces": [
         {
+          "name": "〈推量・予測〉",
+          "meaning": "「〜するだろう」",
+          "type": "天気・状況・他者 + will + V",
+          "note": "不確実なことへの予想。話し手の推量が入る。"
+        },
+        {
           "name": "〈意志〉",
           "meaning": "「〜する／〜しよう／〜するつもりだ」",
           "type": "人 + will + V",
@@ -498,12 +504,6 @@
           "senseIds": [
             "will__つもりだ"
           ]
-        },
-        {
-          "name": "〈推量・予測〉",
-          "meaning": "「〜するだろう」",
-          "type": "天気・状況・他者 + will + V",
-          "note": "不確実なことへの予想。話し手の推量が入る。"
         },
         {
           "name": "〈確定的な未来〉",
@@ -602,6 +602,15 @@
       },
       "faces": [
         {
+          "name": "〈仮定法〉",
+          "meaning": "「〜だろうに／のに」",
+          "type": "S + would + V（+ if 節）",
+          "note": "現実には起きないことを表す。",
+          "senseIds": [
+            "would__のに"
+          ]
+        },
+        {
           "name": "〈推量〉",
           "meaning": "「たぶん〜だろう」",
           "type": "S + would + V",
@@ -626,15 +635,6 @@
           "note": "Will you ...? より丁寧。",
           "senseIds": [
             "would__くれませんか"
-          ]
-        },
-        {
-          "name": "〈仮定法〉",
-          "meaning": "「〜だろうに／のに」",
-          "type": "S + would + V（+ if 節）",
-          "note": "現実には起きないことを表す。",
-          "senseIds": [
-            "would__のに"
           ]
         },
         {
@@ -708,6 +708,15 @@
       },
       "faces": [
         {
+          "name": "〈変化〉",
+          "meaning": "「〜になる」",
+          "type": "get + 形容詞",
+          "note": "状態の変化。get cold / get tired。",
+          "senseIds": [
+            "get__なる"
+          ]
+        },
+        {
           "name": "〈獲得〉",
           "meaning": "「手に入れる・取る」",
           "type": "get + 名詞",
@@ -723,15 +732,6 @@
           "note": "get home / get to the station。",
           "senseIds": [
             "get__着く"
-          ]
-        },
-        {
-          "name": "〈変化〉",
-          "meaning": "「〜になる」",
-          "type": "get + 形容詞",
-          "note": "状態の変化。get cold / get tired。",
-          "senseIds": [
-            "get__なる"
           ]
         },
         {
@@ -818,21 +818,21 @@
           ]
         },
         {
-          "name": "〈唯一〉",
-          "meaning": "「唯一の」",
-          "type": "the only + 名詞",
-          "note": "the とのセットが目印。",
-          "senseIds": [
-            "only__唯一の"
-          ]
-        },
-        {
           "name": "〈時の強調〉",
           "meaning": "「〜して初めて」",
           "type": "only + 時の表現",
           "note": "文頭に出ると後ろが倒置になりやすい。",
           "senseIds": [
             "only__になって初めて"
+          ]
+        },
+        {
+          "name": "〈唯一〉",
+          "meaning": "「唯一の」",
+          "type": "the only + 名詞",
+          "note": "the とのセットが目印。",
+          "senseIds": [
+            "only__唯一の"
           ]
         }
       ],
@@ -896,6 +896,15 @@
           ]
         },
         {
+          "name": "〈やわらげ〉",
+          "meaning": "「ちょっと・ただ」",
+          "type": "Just + 命令文",
+          "note": "命令・依頼の口調をやわらげる。",
+          "senseIds": [
+            "just__ちょっと"
+          ]
+        },
+        {
           "name": "〈少なさ〉",
           "meaning": "「ほんの・たった」",
           "type": "just + 数量",
@@ -909,15 +918,6 @@
           "meaning": "「まさに・ちょうど」",
           "type": "just + what / the 〜",
           "note": "ぴったりの一致。"
-        },
-        {
-          "name": "〈やわらげ〉",
-          "meaning": "「ちょっと・ただ」",
-          "type": "Just + 命令文",
-          "note": "命令・依頼の口調をやわらげる。",
-          "senseIds": [
-            "just__ちょっと"
-          ]
         },
         {
           "name": "形容詞",
@@ -978,6 +978,14 @@
       },
       "faces": [
         {
+          "name": "〈所要〉",
+          "meaning": "「（時間が）かかる」",
+          "type": "It takes + 時間",
+          "senseIds": [
+            "take__かかる"
+          ]
+        },
+        {
           "name": "〈携行〉",
           "meaning": "「持っていく」",
           "type": "take + 物"
@@ -989,11 +997,12 @@
           "note": "目的語が人なら「連れていく」。"
         },
         {
-          "name": "〈所要〉",
-          "meaning": "「（時間が）かかる」",
-          "type": "It takes + 時間",
+          "name": "〈行動〉",
+          "meaning": "「（行動を）とる」",
+          "type": "take + a break / action",
+          "note": "決まった名詞とのセットで覚える。",
           "senseIds": [
-            "take__かかる"
+            "take__とる"
           ]
         },
         {
@@ -1011,15 +1020,6 @@
           "note": "take it personally など。",
           "senseIds": [
             "take__受け取る"
-          ]
-        },
-        {
-          "name": "〈行動〉",
-          "meaning": "「（行動を）とる」",
-          "type": "take + a break / action",
-          "note": "決まった名詞とのセットで覚える。",
-          "senseIds": [
-            "take__とる"
           ]
         }
       ],
@@ -1108,14 +1108,6 @@
           "type": "名詞 + of + 名詞"
         },
         {
-          "name": "〈同格〉",
-          "meaning": "「〜という」",
-          "type": "名詞 + of + 名詞",
-          "senseIds": [
-            "of__という"
-          ]
-        },
-        {
           "name": "〈内容〉",
           "meaning": "「〜について」",
           "type": "think / afraid / information + of",
@@ -1124,19 +1116,27 @@
           ]
         },
         {
-          "name": "〈構成要素〉",
-          "meaning": "「〜でできた／〜で構成された」",
-          "type": "be made / consist + of",
-          "senseIds": [
-            "of__から・で"
-          ]
-        },
-        {
           "name": "〈部分・全体〉",
           "meaning": "「〜のうちの／〜の中で」",
           "type": "数量・最上級 + of + 名詞",
           "senseIds": [
             "of__のうちの・の中で"
+          ]
+        },
+        {
+          "name": "〈同格〉",
+          "meaning": "「〜という」",
+          "type": "名詞 + of + 名詞",
+          "senseIds": [
+            "of__という"
+          ]
+        },
+        {
+          "name": "〈構成要素〉",
+          "meaning": "「〜でできた／〜で構成された」",
+          "type": "be made / consist + of",
+          "senseIds": [
+            "of__から・で"
           ]
         },
         {
@@ -1236,21 +1236,21 @@
           "note": "go with / live with。"
         },
         {
-          "name": "〈所持・所有〉",
-          "meaning": "「〜を持って／〜を身につけて」",
-          "type": "名詞 + with + 名詞",
-          "note": "a house with a garden / a man with a beard。",
-          "senseIds": [
-            "with__を持った"
-          ]
-        },
-        {
           "name": "〈道具・手段〉",
           "meaning": "「〜を使って／〜で」",
           "type": "動詞 + with + 道具",
           "note": "write with a pen。文頭では「〜があれば」と条件っぽく訳すことも。",
           "senseIds": [
             "with__で"
+          ]
+        },
+        {
+          "name": "〈所持・所有〉",
+          "meaning": "「〜を持って／〜を身につけて」",
+          "type": "名詞 + with + 名詞",
+          "note": "a house with a garden / a man with a beard。",
+          "senseIds": [
+            "with__を持った"
           ]
         },
         {
@@ -1339,21 +1339,21 @@
           "note": "must に近い。外からの事情・規則（客観）。"
         },
         {
-          "name": "〈飲食〉",
-          "meaning": "「（食べる・飲む・とる）」",
-          "type": "have + 名詞",
-          "note": "have lunch / have a coffee / have a rest。",
-          "senseIds": [
-            "have__とる"
-          ]
-        },
-        {
           "name": "〈使役〉",
           "meaning": "「〜させる／〜してもらう」",
           "type": "have + O + 原形/過去分詞",
           "note": "have him call / have it repaired。",
           "senseIds": [
             "have__させる・してもらう"
+          ]
+        },
+        {
+          "name": "〈飲食〉",
+          "meaning": "「（食べる・飲む・とる）」",
+          "type": "have + 名詞",
+          "note": "have lunch / have a coffee / have a rest。",
+          "senseIds": [
+            "have__とる"
           ]
         }
       ],
@@ -1549,21 +1549,21 @@
           "note": "実現しうる前提を立てる。最も基本。"
         },
         {
-          "name": "〈譲歩〉",
-          "meaning": "「〜でも、〜しても」",
-          "type": "If SV（= even if）",
-          "note": "前提を認めても結論は変わらない。even if で言い換え可。",
-          "senseIds": [
-            "if__としても"
-          ]
-        },
-        {
           "name": "〈名詞節〉",
           "meaning": "「〜かどうか」",
           "type": "know / ask / wonder + if SV",
           "note": "動詞の目的語。whether に置換できるのが目印。",
           "senseIds": [
             "if__かどうか"
+          ]
+        },
+        {
+          "name": "〈譲歩〉",
+          "meaning": "「〜でも、〜しても」",
+          "type": "If SV（= even if）",
+          "note": "前提を認めても結論は変わらない。even if で言い換え可。",
+          "senseIds": [
+            "if__としても"
           ]
         },
         {
@@ -1631,21 +1631,21 @@
           ]
         },
         {
-          "name": "〈譲歩・対比〉",
-          "meaning": "「〜なのに、〜である一方で」",
-          "type": "SV when SV.",
-          "note": "つないだ二事が食い違う。though に近い。",
-          "senseIds": [
-            "when__のに"
-          ]
-        },
-        {
           "name": "〈条件〉",
           "meaning": "「〜したら、〜する場合には」",
           "type": "When SV, S will V.",
           "note": "if に近いが、起こることがほぼ確実な前提。",
           "senseIds": [
             "when__たら"
+          ]
+        },
+        {
+          "name": "〈譲歩・対比〉",
+          "meaning": "「〜なのに、〜である一方で」",
+          "type": "SV when SV.",
+          "note": "つないだ二事が食い違う。though に近い。",
+          "senseIds": [
+            "when__のに"
           ]
         }
       ],
@@ -1753,21 +1753,21 @@
       },
       "faces": [
         {
-          "name": "〈接続詞・理由〉",
-          "meaning": "「というのも、なぜなら」",
-          "type": "SV, for SV.",
-          "note": "前文への補足説明。文語的。文頭には置けない（because との差）。",
-          "senseIds": [
-            "for__というのも_だから・ため"
-          ]
-        },
-        {
           "name": "〈意味上の主語〉",
           "meaning": "「〜が（…する）」",
           "type": "形容詞/名詞 + for X + to do",
           "note": "It is hard for me to swim.「私が泳ぐのは難しい」。for X が to do の主語。",
           "senseIds": [
             "for__が"
+          ]
+        },
+        {
+          "name": "〈接続詞・理由〉",
+          "meaning": "「というのも、なぜなら」",
+          "type": "SV, for SV.",
+          "note": "前文への補足説明。文語的。文頭には置けない（because との差）。",
+          "senseIds": [
+            "for__というのも_だから・ため"
           ]
         }
       ],
@@ -1937,10 +1937,13 @@
       },
       "faces": [
         {
-          "name": "〈労働〉",
-          "meaning": "「働く、勤める」",
-          "type": "S（人）+ work",
-          "note": "基本義。work for / work at / work as。"
+          "name": "〈機能〉",
+          "meaning": "「効く、うまくいく」",
+          "type": "S（薬/計画）+ work",
+          "note": "The plan worked.「計画はうまくいった」。",
+          "senseIds": [
+            "work__効く"
+          ]
         },
         {
           "name": "〈作動〉",
@@ -1952,13 +1955,10 @@
           ]
         },
         {
-          "name": "〈機能〉",
-          "meaning": "「効く、うまくいく」",
-          "type": "S（薬/計画）+ work",
-          "note": "The plan worked.「計画はうまくいった」。",
-          "senseIds": [
-            "work__効く"
-          ]
+          "name": "〈労働〉",
+          "meaning": "「働く、勤める」",
+          "type": "S（人）+ work",
+          "note": "基本義。work for / work at / work as。"
         },
         {
           "name": "〈作品〉（名詞）",
@@ -2004,12 +2004,6 @@
       },
       "faces": [
         {
-          "name": "〈対比〉",
-          "meaning": "「むしろ、いっそ」",
-          "type": "A rather than B",
-          "note": "二択の比較。BというよりA。"
-        },
-        {
           "name": "〈程度〉",
           "meaning": "「かなり・やや」",
           "type": "rather + 形容詞/副詞",
@@ -2017,6 +2011,12 @@
           "senseIds": [
             "rather__かなり・やや"
           ]
+        },
+        {
+          "name": "〈対比〉",
+          "meaning": "「むしろ、いっそ」",
+          "type": "A rather than B",
+          "note": "二択の比較。BというよりA。"
         },
         {
           "name": "〈選好〉",
@@ -2089,15 +2089,6 @@
       },
       "faces": [
         {
-          "name": "〈起点〉",
-          "meaning": "「〜から（外へ）」",
-          "type": "動詞 + out of + 場所",
-          "note": "=from。get out of bed / run out of the house。最頻。",
-          "senseIds": [
-            "out of__から_外へ"
-          ]
-        },
-        {
           "name": "〈動機・原因〉",
           "meaning": "「〜から、〜のために」",
           "type": "out of + 抽象名詞（感情・動機）",
@@ -2116,12 +2107,12 @@
           ]
         },
         {
-          "name": "〈割合〉",
-          "meaning": "「〜のうち、〜の中から」",
-          "type": "数詞 + out of + 数詞",
-          "note": "nine out of ten「10のうち9」。分子/分母の関係。",
+          "name": "〈起点〉",
+          "meaning": "「〜から（外へ）」",
+          "type": "動詞 + out of + 場所",
+          "note": "=from。get out of bed / run out of the house。最頻。",
           "senseIds": [
-            "out of__のうち"
+            "out of__から_外へ"
           ]
         },
         {
@@ -2131,6 +2122,15 @@
           "note": "out of order「故障して」/ out of date「時代遅れで」/ out of fashion「流行遅れで」。",
           "senseIds": [
             "out of__故障して"
+          ]
+        },
+        {
+          "name": "〈割合〉",
+          "meaning": "「〜のうち、〜の中から」",
+          "type": "数詞 + out of + 数詞",
+          "note": "nine out of ten「10のうち9」。分子/分母の関係。",
+          "senseIds": [
+            "out of__のうち"
           ]
         }
       ],
@@ -2259,6 +2259,15 @@
       },
       "faces": [
         {
+          "name": "〈画像・映像〉",
+          "meaning": "「画像、映像」",
+          "type": "digital/satellite image",
+          "note": "コンピュータ・カメラ上の像。",
+          "senseIds": [
+            "image__画像"
+          ]
+        },
+        {
           "name": "〈印象〉",
           "meaning": "「印象、イメージ」",
           "type": "public/brand image",
@@ -2280,15 +2289,6 @@
           "note": "the very image of his father「父親そっくり（生き写し）」。",
           "senseIds": [
             "image__象徴"
-          ]
-        },
-        {
-          "name": "〈画像・映像〉",
-          "meaning": "「画像、映像」",
-          "type": "digital/satellite image",
-          "note": "コンピュータ・カメラ上の像。",
-          "senseIds": [
-            "image__画像"
           ]
         }
       ],
@@ -2544,21 +2544,21 @@
       },
       "faces": [
         {
-          "name": "〈主題〉",
-          "meaning": "「〜について、〜に関する」",
-          "type": "book/lecture/report on N",
-          "note": "about より専門的・学術的。漫画『チ。』の英題 Orb: On the Movements of the Earth もこの on。受験生の盲点。",
-          "senseIds": [
-            "on__について"
-          ]
-        },
-        {
           "name": "〈接触〉",
           "meaning": "「〜にくっついて」",
           "type": "on + 面(壁・天井含む)",
           "note": "on の核イメージは上下ではなく「接触」。a fly on the ceiling のように天井でも on。",
           "senseIds": [
             "on__くっついて"
+          ]
+        },
+        {
+          "name": "〈主題〉",
+          "meaning": "「〜について、〜に関する」",
+          "type": "book/lecture/report on N",
+          "note": "about より専門的・学術的。漫画『チ。』の英題 Orb: On the Movements of the Earth もこの on。受験生の盲点。",
+          "senseIds": [
+            "on__について"
           ]
         },
         {
@@ -2614,12 +2614,6 @@
       },
       "faces": [
         {
-          "name": "〈感覚〉",
-          "meaning": "「感覚、〜感」",
-          "type": "the five senses / a keen sense of smell",
-          "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。"
-        },
-        {
           "name": "〈意味・道理〉",
           "meaning": "「意味、道理、筋」",
           "type": "make sense / in a sense",
@@ -2629,13 +2623,10 @@
           ]
         },
         {
-          "name": "〈良識・判断力〉",
-          "meaning": "「分別、常識」",
-          "type": "common/good sense, have the sense to do",
-          "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。",
-          "senseIds": [
-            "sense__分別"
-          ]
+          "name": "〈感覚〉",
+          "meaning": "「感覚、〜感」",
+          "type": "the five senses / a keen sense of smell",
+          "note": "視覚・聴覚など身体の知覚。a sense of guilt「罪悪感」のように心理的な「〜感」にも。"
         },
         {
           "name": "〈意識・〜感〉",
@@ -2644,6 +2635,15 @@
           "note": "a sense of belonging（帰属意識）、a sense of satisfaction（満足感）、a sense of urgency（緊迫感）。抽象名詞と組み合わせて「〜感・〜意識」を表す。",
           "senseIds": [
             "sense__意識・_感"
+          ]
+        },
+        {
+          "name": "〈良識・判断力〉",
+          "meaning": "「分別、常識」",
+          "type": "common/good sense, have the sense to do",
+          "note": "状況をわきまえる判断力。common sense「常識」、have the sense to do「〜するだけの分別がある」。",
+          "senseIds": [
+            "sense__分別"
           ]
         }
       ],
@@ -2690,21 +2690,21 @@
       },
       "faces": [
         {
-          "name": "〈雇用〉",
-          "meaning": "「解雇する、クビにする」",
-          "type": "fire 人",
-          "note": "口語的にクビにすること。be fired で「解雇される」。反意語は hire「雇う」。",
-          "senseIds": [
-            "fire__解雇する"
-          ]
-        },
-        {
           "name": "〈射撃〉",
           "meaning": "「発射する、撃つ」",
           "type": "fire (a gun / a shot) at 〜",
           "note": "銃・砲などを撃つ。fire at「〜に向けて撃つ」。",
           "senseIds": [
             "fire__発射する"
+          ]
+        },
+        {
+          "name": "〈雇用〉",
+          "meaning": "「解雇する、クビにする」",
+          "type": "fire 人",
+          "note": "口語的にクビにすること。be fired で「解雇される」。反意語は hire「雇う」。",
+          "senseIds": [
+            "fire__解雇する"
           ]
         },
         {
@@ -2812,6 +2812,15 @@
       },
       "faces": [
         {
+          "name": "〈習得〉",
+          "meaning": "「(性質・習慣・能力を)身につける」",
+          "type": "develop a habit / skill",
+          "note": "時間をかけて徐々に育てる・養う。",
+          "senseIds": [
+            "develop__身につける"
+          ]
+        },
+        {
           "name": "〈発症〉",
           "meaning": "「(病気・症状を)発症する」",
           "type": "develop a disease / fever",
@@ -2827,15 +2836,6 @@
           "note": "フィルムに潜んだ像を薬品で浮かび上がらせる。",
           "senseIds": [
             "develop__現像する"
-          ]
-        },
-        {
-          "name": "〈習得〉",
-          "meaning": "「(性質・習慣・能力を)身につける」",
-          "type": "develop a habit / skill",
-          "note": "時間をかけて徐々に育てる・養う。",
-          "senseIds": [
-            "develop__身につける"
           ]
         }
       ],
@@ -2968,12 +2968,6 @@
       },
       "faces": [
         {
-          "name": "〈問題・物質〉",
-          "meaning": "名詞「問題、事柄、物質」",
-          "type": "a matter of 〜 / 物質としての matter",
-          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。"
-        },
-        {
           "name": "〈重要性〉",
           "meaning": "動詞「重要である、大事だ」",
           "type": "It doesn't matter (that 〜)",
@@ -2981,6 +2975,12 @@
           "senseIds": [
             "matter__重要だ"
           ]
+        },
+        {
+          "name": "〈問題・物質〉",
+          "meaning": "名詞「問題、事柄、物質」",
+          "type": "a matter of 〜 / 物質としての matter",
+          "note": "a matter of time「時間の問題」。物理では「物質」。定番の名詞義。"
         }
       ],
       "trivia": [
@@ -3017,21 +3017,21 @@
       },
       "faces": [
         {
-          "name": "〈重要性〉",
-          "meaning": "「重要だ、物を言う」",
-          "type": "Every 〜 counts.",
-          "note": "自動詞。「数に入る価値がある」→「大事だ」。It's the thought that counts.「気持ちが大事」。",
-          "senseIds": [
-            "count__重要だ"
-          ]
-        },
-        {
           "name": "〈依存〉",
           "meaning": "「(count on で)頼りにする、当てにする」",
           "type": "count on 人/物",
           "note": "rely on / depend on とほぼ同義。",
           "senseIds": [
             "count__頼りにする"
+          ]
+        },
+        {
+          "name": "〈重要性〉",
+          "meaning": "「重要だ、物を言う」",
+          "type": "Every 〜 counts.",
+          "note": "自動詞。「数に入る価値がある」→「大事だ」。It's the thought that counts.「気持ちが大事」。",
+          "senseIds": [
+            "count__重要だ"
           ]
         }
       ],
@@ -3357,21 +3357,21 @@
       },
       "faces": [
         {
-          "name": "〈色白・金髪〉",
-          "meaning": "「金髪の、色白の」",
-          "type": "fair hair / skin",
-          "note": "髪・肌の色が明るいこと。dark「黒髪の・浅黒い」と対比。",
-          "senseIds": [
-            "fair__金髪の"
-          ]
-        },
-        {
           "name": "〈そこそこ〉",
           "meaning": "「まあまあの、かなりの」",
           "type": "a fair amount / chance",
           "note": "a fair number of「かなりの数の」。悪くないが特別でもない程度。",
           "senseIds": [
             "fair__まあまあの"
+          ]
+        },
+        {
+          "name": "〈色白・金髪〉",
+          "meaning": "「金髪の、色白の」",
+          "type": "fair hair / skin",
+          "note": "髪・肌の色が明るいこと。dark「黒髪の・浅黒い」と対比。",
+          "senseIds": [
+            "fair__金髪の"
           ]
         }
       ],
@@ -3409,21 +3409,21 @@
       },
       "faces": [
         {
-          "name": "〈ペナルティ〉",
-          "meaning": "名詞「罰金、科料」",
-          "type": "pay a fine / a fine for 〜",
-          "note": "動詞で「罰金を科す」も。a parking fine「駐車違反の罰金」。",
-          "senseIds": [
-            "fine__罰金"
-          ]
-        },
-        {
           "name": "〈微細〉",
           "meaning": "「細かい、微細な、精巧な」",
           "type": "fine print / sand / line",
           "note": "fine print「(契約の)細かい字」、a fine line「微妙な境界」。",
           "senseIds": [
             "fine__細かい"
+          ]
+        },
+        {
+          "name": "〈ペナルティ〉",
+          "meaning": "名詞「罰金、科料」",
+          "type": "pay a fine / a fine for 〜",
+          "note": "動詞で「罰金を科す」も。a parking fine「駐車違反の罰金」。",
+          "senseIds": [
+            "fine__罰金"
           ]
         }
       ],
