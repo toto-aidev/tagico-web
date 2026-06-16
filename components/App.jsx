@@ -18,6 +18,7 @@ import { MyWordbookScreen, StatsScreen } from '@/components/Extra';
 import { SurveyPrompt } from '@/components/Survey';
 import AuthModal from '@/components/AuthModal';
 import AuthButton from '@/components/AuthButton';
+import AccountSheet from '@/components/AccountSheet';
 import { getLevel, WORDS } from '@/lib/content';
 import * as store from '@/lib/store';
 import * as sfx from '@/lib/sfx';
@@ -34,6 +35,7 @@ export default function App() {
   const [srsState, setSrsState] = useState(null); // SRS データ（マウント後に読む）
   const [session, setSession] = useState(null); // Supabase Auth セッション（null = 未ログイン）
   const [showAuthModal, setShowAuthModal] = useState(false); // AuthModal 表示フラグ
+  const [showAccountSheet, setShowAccountSheet] = useState(false); // AccountSheet 表示フラグ
 
   useEffect(() => {
     // 基本の初期化（既存処理と変わらない）
@@ -307,16 +309,26 @@ export default function App() {
     <AuthButton
       session={session}
       onLogin={() => setShowAuthModal(true)}
-      onLogout={() => {
-        setSession(null);
-        resetPostHog();
-      }}
+      onOpenAccount={() => setShowAccountSheet(true)}
     />
   );
 
   // AuthModal: ログインモーダル（showAuthModal が true のときのみ表示）
   const authModal = showAuthModal ? (
     <AuthModal onClose={() => setShowAuthModal(false)} />
+  ) : null;
+
+  // AccountSheet: ログイン中アバタータップで開くアカウント情報シート
+  const accountSheet = showAccountSheet ? (
+    <AccountSheet
+      session={session}
+      onLogout={() => {
+        setSession(null);
+        resetPostHog();
+        setShowAccountSheet(false);
+      }}
+      onClose={() => setShowAccountSheet(false)}
+    />
   ) : null;
 
   if (screen.type === 'home')
@@ -331,6 +343,7 @@ export default function App() {
         />
         {surveyOverlay}
         {authModal}
+        {accountSheet}
       </React.Fragment>
     );
 

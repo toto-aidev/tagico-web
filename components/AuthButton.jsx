@@ -3,20 +3,16 @@
 // components/AuthButton.jsx — ホームヘッダー右上の最小ログインボタン
 //
 // 未ログイン時: 「保存」の小ボタン → AuthModal を開く
-// ログイン中:  メールの頭文字アバター → クリックでサインアウト確認
+// ログイン中:  メールの頭文字アバター → タップで AccountSheet を開く
 //
 // props:
 //   session: Session | null — Supabase セッション（null = 未ログイン）
 //   onLogin: () => void — ボタンを押したら AuthModal を開く
-//   onLogout: () => void — サインアウト処理を呼ぶ
+//   onOpenAccount: () => void — アバタータップで AccountSheet を開く（ログイン中のみ）
 
-import React, { useState } from 'react';
-import Icon from '@/components/Icon';
-import { signOut } from '@/lib/auth';
+import React from 'react';
 
-export default function AuthButton({ session, onLogin, onLogout }) {
-  const [showConfirm, setShowConfirm] = useState(false);
-
+export default function AuthButton({ session, onLogin, onOpenAccount }) {
   if (!session) {
     // 未ログイン: 「保存」ボタン
     return (
@@ -34,42 +30,14 @@ export default function AuthButton({ session, onLogin, onLogout }) {
     );
   }
 
-  // ログイン中: 頭文字アバター
+  // ログイン中: 頭文字アバター → タップで AccountSheet を開く
   const userEmail = session.user?.email || '';
   const initial = userEmail ? userEmail[0].toUpperCase() : '?';
 
-  if (showConfirm) {
-    // サインアウト確認（インライン表示）
-    return (
-      <div className="flex items-center gap-1.5">
-        <span className="text-xs text-slate-500 font-medium hidden sm:block truncate max-w-[120px]">
-          {userEmail}
-        </span>
-        <button
-          onClick={async () => {
-            setShowConfirm(false);
-            await signOut();
-            if (onLogout) onLogout();
-          }}
-          className="h-9 px-3 rounded-full bg-red-50 text-red-500 text-xs font-bold hover:bg-red-100 active:scale-95 transition-all border border-red-100"
-        >
-          ログアウト
-        </button>
-        <button
-          onClick={() => setShowConfirm(false)}
-          className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow-sm border border-slate-100 text-slate-400 hover:text-slate-600 active:scale-95 transition-all"
-          aria-label="キャンセル"
-        >
-          <Icon name="x" size={14} strokeWidth={2.5} />
-        </button>
-      </div>
-    );
-  }
-
   return (
     <button
-      onClick={() => setShowConfirm(true)}
-      aria-label={`ログイン中: ${userEmail}（クリックでサインアウト）`}
+      onClick={onOpenAccount}
+      aria-label={`ログイン中: ${userEmail}（タップでアカウント情報を表示）`}
       className="w-9 h-9 flex items-center justify-center rounded-full bg-teal-400 text-white text-xs font-black shadow-sm active:scale-95 transition-all"
     >
       {initial}
