@@ -79,13 +79,13 @@ export default function App() {
     setAppState(newAppState);
 
     // SRS: 語義単位ミスを記録
-    // SRS 復習モード中の再ミスは recordReviewMiss で +1日後期日を追加
+    // SRS 復習モード中の再ミス（「答えを見る」含む）は recordReviewMiss でチェックポイント全リセット
     if (srsState) {
       const today = srs.todayLocalStr();
       const srsMisses = store.extractSrsMisses(scores);
       let newSrsState = srsState;
       if (screen.type === 'srs-review') {
-        // 復習中の再ミス: +1日後期日追加
+        // 復習中の再ミス: 誤答日起点で +1/+3/+7/+30 を全リセット
         srsMisses.forEach(({ senseId }) => {
           newSrsState = srs.recordReviewMiss(newSrsState, senseId, today);
         });

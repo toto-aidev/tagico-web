@@ -185,9 +185,10 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
     if (wordIdx < wordIds.length - 1) sfx.play('next'); // 次の単語へ：軽い上昇のひと押し
     const correct = word.senses.filter((s, i) => ws.assignments[i] === s.answer).length;
     // senseResults: 語義単位の正誤（SRS に渡すため sense.id を含める）
+    // 「答えを見る」を使った場合は全語義をミス扱い（自力正解ではないため SRS 全リセット対象）
     const senseResults = word.senses.map((s, i) => ({
       senseId: s.id || (word.id + ':' + i), // id がない場合はフォールバック（移行期対策）
-      correct: ws.assignments[i] === s.answer,
+      correct: ws.seeAnswer ? false : ws.assignments[i] === s.answer,
     }));
     const newScores = [...scores, { wordId: word.id, correct, total: word.senses.length, trapHit: ws.trapHit, seeAnswer: ws.seeAnswer || false, senseResults }];
     setScores(newScores);
@@ -211,9 +212,10 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
         seeAnswer: st.seeAnswer || false,
         // handleNext と同様に語義単位の正誤を含める（SRS 復習モードで「戻る」を押しても
         // reviewedOn / checkpoints に正誤が記録されるようにするため）
+        // 「答えを見る」を使った場合は全語義をミス扱い
         senseResults: w.senses.map((s, i) => ({
           senseId: s.id || (w.id + ':' + i),
-          correct: st.assignments[i] === s.answer,
+          correct: st.seeAnswer ? false : st.assignments[i] === s.answer,
         })),
       }));
     onBack(revealedScores);
@@ -400,8 +402,9 @@ export function QuizScreen({ levelId, wordIds: propWordIds, hasNext, bookmarks, 
               })}
             </div>
             <div className="flex gap-3">
-              <button onClick={handleRevealAnswers} className="px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-500 font-bold text-sm hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
-                <Icon name="eye" size={18} />
+              <button onClick={handleRevealAnswers} className="px-4 py-3.5 rounded-2xl bg-slate-100 text-slate-500 font-bold text-sm hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5">
+                <Icon name="eye" size={16} />
+                答えを見る
               </button>
               <button
                 onClick={handleReveal}
