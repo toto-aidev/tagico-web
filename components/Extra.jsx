@@ -112,7 +112,7 @@ export function MyWordbookScreen({ appState, onToggleBookmark, onToggleSavedSens
               </div>
               {isOpen && (
                 <div className="tg-fadeup px-4 pb-4 border-t border-slate-100 pt-4">
-                  <SummaryBody word={word} savedSet={appState.savedSenses} onToggleFace={onToggleSavedSense} />
+                  <SummaryBody word={word} savedSet={appState.savedSenses} onToggleFace={onToggleSavedSense} showExamples={true} />
                 </div>
               )}
             </div>

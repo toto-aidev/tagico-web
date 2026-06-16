@@ -414,7 +414,7 @@ export function WordbookScreen({ appState, onToggleBookmark, onToggleSavedSense,
                             <span className="text-xs font-bold text-slate-400">{(appState.bookmarks || []).indexOf(id) >= 0 ? 'マイ単語帳に保存済み' : 'マイ単語帳に保存'}</span>
                           </div>
                         )}
-                        <SummaryBody word={word} savedSet={appState.savedSenses} onToggleFace={onToggleSavedSense} />
+                        <SummaryBody word={word} savedSet={appState.savedSenses} onToggleFace={onToggleSavedSense} showExamples={true} />
                       </div>
                     )}
                   </div>
