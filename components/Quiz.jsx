@@ -33,6 +33,20 @@ const IRREGULAR = {
   have: ['has', 'had', 'having'],
   find: ['finds', 'found', 'finding'],
   deny: ['denies', 'denied', 'denying'],
+  // native 版からの逆輸入（D: ハイライト精度向上）
+  make: ['makes', 'made', 'making'],
+  come: ['comes', 'came', 'coming'],
+  see: ['sees', 'saw', 'seen', 'seeing'],
+  give: ['gives', 'gave', 'given', 'giving'],
+  go: ['goes', 'went', 'gone', 'going'],
+  think: ['thinks', 'thought', 'thinking'],
+  feel: ['feels', 'felt', 'feeling'],
+  keep: ['keeps', 'kept', 'keeping'],
+  put: ['puts', 'put', 'putting'],    // 過去形・過去分詞は原形と同形だが明示
+  bring: ['brings', 'brought', 'bringing'],
+  stand: ['stands', 'stood', 'standing'],
+  let: ['lets', 'let', 'letting'],    // 同上
+  set: ['sets', 'set', 'setting'],    // 同上
 };
 
 function splitAtWord(sentence, baseWord) {
