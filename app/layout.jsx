@@ -1,13 +1,9 @@
 import { Outfit, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
-import { Analytics } from '@vercel/analytics/next';
-import PostHogProvider from '@/components/PostHogProvider';
+import PrivacyConsentProvider from '@/components/PrivacyConsentProvider';
 import './globals.css';
 
-// 計測は二層構造:
-//   1. Vercel Web Analytics（Cookieレス・PV/UU 自動計測）— <Analytics /> で設定済み
-//   2. PostHog（継続率計測 D1/D7/D30 / カスタムイベント）— <PostHogProvider> で初期化
-//      NEXT_PUBLIC_POSTHOG_KEY が未設定なら PostHog は no-op（公開を壊さない）。
-// どちらも Vercel 本番・ローカル・プレビューで挙動が変わらず安全。
+// Vercel Web Analytics と PostHog は、PrivacyConsentProvider が
+// 利用者の任意同意を確認した後だけ初期化・送信する。
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -65,10 +61,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja" className={`${outfit.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
-        <PostHogProvider>
+        <PrivacyConsentProvider>
           {children}
-        </PostHogProvider>
-        <Analytics />
+        </PrivacyConsentProvider>
       </body>
     </html>
   );

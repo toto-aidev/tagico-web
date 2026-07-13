@@ -32,7 +32,8 @@ import { clearLocal as clearStoreLocal } from '@/lib/store';
 import { clearLocal as clearSrsLocal } from '@/lib/srs';
 import { onAuthStateChange, signOut } from '@/lib/auth';
 import { pushProgress } from '@/lib/sync';
-import { initPostHog, identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
+import { identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
+import { usePrivacyConsent } from '@/components/PrivacyConsentProvider';
 
 // ===== リロード保持：セッション画面状態の localStorage 保存・復元 =====
 const SESSION_SCREEN_KEY = 'tagico-session-v1';
@@ -105,6 +106,7 @@ function loadSessionScreen() {
 }
 
 export default function App() {
+  const privacyConsent = usePrivacyConsent();
   const [screen, setScreen] = useState({ type: 'home' });
   const [appState, setAppState] = useState(null); // マウント後に localStorage から読む
   const [sessionScores, setSessionScores] = useState([]);
@@ -127,9 +129,6 @@ export default function App() {
       setScreen(savedScreen);
     }
     sfx.initSfx();
-
-    // PostHog 初期化（鍵未設定なら no-op）
-    initPostHog();
 
     // iOS/モバイル Safari の autoplay 対策：最初のユーザー操作で AudioContext を unlock/resume。
     const unlock = () => {
@@ -212,6 +211,13 @@ export default function App() {
       unsubscribe();
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 同意後にすでにログイン済みだった場合も、匿名イベントとユーザーIDを正しく紐付ける。
+  useEffect(() => {
+    if (privacyConsent.isAllowed && session?.user?.id) {
+      identifyUser(session.user.id);
+    }
+  }, [privacyConsent.isAllowed, session?.user?.id]);
 
   const dismissSurvey = () => {
     store.markSurveyPrompted(); // 「答える」「あとで」どちらでも以後は再表示しない
