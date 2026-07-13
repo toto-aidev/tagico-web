@@ -13,7 +13,6 @@
 //   onSuccess?: (session) => void — ログイン完了後のコールバック（AuthStateChange が呼ぶため通常は不要）
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Icon from '@/components/Icon';
 import { signInWithEmail, signInWithGoogle } from '@/lib/auth';
 import { supabase } from '@/lib/supabase';
@@ -170,9 +169,6 @@ export default function AuthModal({ onClose }) {
               Google でログイン
             </button>
 
-            <p className="text-xs text-slate-400 text-center mt-4 leading-relaxed">
-              続行することで<Link href="/legal/terms" className="font-bold text-teal-700 underline underline-offset-2">利用規約</Link>と<Link href="/legal/privacy" className="font-bold text-teal-700 underline underline-offset-2">プライバシーポリシー</Link>に同意したものとします。18歳未満の方は、保護者の同意を得てください。
-            </p>
           </>
         )}
       </div>

@@ -5,11 +5,10 @@
 // 進捗は localStorage（'tagico-v2-state'）にあるため、SSR とのハイドレーション不一致を
 // 避けるべく、マウント後に getState() を読んでから描画する（それまでは背景のみ）。
 //
-// 2026-06-16: 任意ログイン＋進捗同期（Supabase Auth）＋PostHog 継続率計測を追加。
+// 2026-06-16: 任意ログイン＋進捗同期（Supabase Auth）を追加。
 //   - ログインは任意。未ログインでも全機能を使える（localStorage は変更なし）。
 //   - ログイン時: localStorage の進捗を Supabase へ push（マージ）し、以後サーバー優先。
-//   - PostHog: 全ユーザー（未ログイン含む）の匿名 ID で D1/D7/D30 継続率を計測。
-//   - Supabase / PostHog の鍵が未設定でも動作する（環境変数 = null → no-op）。
+//   - Supabase の鍵が未設定でも動作する（環境変数 = null → no-op）。
 //
 // 2026-06-16: リロード時の現在地保持を追加（改修1）。
 //   - screen state を localStorage('tagico-session-v1')に保存し、マウント時に復元する。
@@ -32,8 +31,6 @@ import { clearLocal as clearStoreLocal } from '@/lib/store';
 import { clearLocal as clearSrsLocal } from '@/lib/srs';
 import { onAuthStateChange, signOut } from '@/lib/auth';
 import { pushProgress } from '@/lib/sync';
-import { identifyUser, resetPostHog, captureEvent } from '@/lib/posthog';
-import { usePrivacyConsent } from '@/components/PrivacyConsentProvider';
 
 // ===== リロード保持：セッション画面状態の localStorage 保存・復元 =====
 const SESSION_SCREEN_KEY = 'tagico-session-v1';
@@ -106,7 +103,6 @@ function loadSessionScreen() {
 }
 
 export default function App() {
-  const privacyConsent = usePrivacyConsent();
   const [screen, setScreen] = useState({ type: 'home' });
   const [appState, setAppState] = useState(null); // マウント後に localStorage から読む
   const [sessionScores, setSessionScores] = useState([]);
@@ -149,22 +145,11 @@ export default function App() {
     //   INITIAL_SESSION(session=null): 匿名ユーザーのリロード → localStorage を消さない
     //   SIGNED_OUT: supabase.auth.signOut() が呼ばれた時だけ（ここでは到達しない。
     //               明示ログアウトは onLogout ハンドラで flush → clear する）
-    const unsubscribe = onAuthStateChange(async (event, newSession) => {
+    const unsubscribe = onAuthStateChange(async (_event, newSession) => {
       setSession(newSession);
 
       if (newSession && newSession.user) {
-        // ログイン / セッション更新: PostHog でユーザーを識別 + 進捗を Supabase へ push（マージ）
-        // identifyUser には UUID のみ渡す（email 等の PII は渡さない）
-        identifyUser(newSession.user.id);
-        // SIGNED_IN（新規ログイン）のみ login イベントを発火。
-        // INITIAL_SESSION（リロード時のセッション復元）・TOKEN_REFRESHED は送らない。
-        // method は "email"（マジックリンク）または "google" を provider 情報から判定。
-        if (event === 'SIGNED_IN') {
-          const provider = newSession.user?.app_metadata?.provider || 'email';
-          const method = provider === 'google' ? 'google' : 'email';
-          captureEvent('login', { method });
-        }
-
+        // ログイン / セッション更新: 進捗を Supabase へ push（マージ）
         const localState = store.getState();
         const localSrs = srs.getSrs();
         const { mergedState, mergedSrs } = await pushProgress(
@@ -193,9 +178,7 @@ export default function App() {
       } else {
         // session が null のケース（INITIAL_SESSION(匿名)/TOKEN_REFRESHED失敗/SIGNED_OUT 等）:
         // localStorage は絶対にクリアしない（匿名リロードで進捗が消えるバグを防ぐ）。
-        // PostHog の匿名 ID をリセットするのみ。
         // 明示ログアウト時のクリアは onLogout ハンドラで flush 後に行う（下記参照）。
-        resetPostHog();
       }
     });
 
@@ -212,13 +195,6 @@ export default function App() {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // 同意後にすでにログイン済みだった場合も、匿名イベントとユーザーIDを正しく紐付ける。
-  useEffect(() => {
-    if (privacyConsent.isAllowed && session?.user?.id) {
-      identifyUser(session.user.id);
-    }
-  }, [privacyConsent.isAllowed, session?.user?.id]);
-
   const dismissSurvey = () => {
     store.markSurveyPrompted(); // 「答える」「あとで」どちらでも以後は再表示しない
     setShowSurvey(false);
@@ -231,16 +207,8 @@ export default function App() {
   };
 
   // handleNavigate: 画面遷移の共通ハンドラ。
-  // isUserAction=true のときだけ tab_view を送信する。
-  // クイズ/復習/リトライ完了後の自動ホーム復帰など、プログラム起点の遷移では false を渡す。
-  const handleNavigate = (s, { isUserAction = false } = {}) => {
+  const handleNavigate = (s) => {
     sfx.play('ui'); // タブ/画面遷移の汎用クリック
-    // tab_view はユーザーが実際にボトムナビをタップした時のみ送信する。
-    // 自動遷移（クイズ完了後のホーム戻り等）では isUserAction=false のため送らない。
-    const TAB_SCREENS = ['home', 'wordbook', 'my', 'stats'];
-    if (isUserAction && TAB_SCREENS.includes(s.type)) {
-      captureEvent('tab_view', { tab: s.type });
-    }
     setSessionScores([]);
     // review 型でホームから遷移する場合、sessionPool と wordIds が無い状態で
     // saveSessionScreen が呼ばれると、リロード時に復元できない（wordIds が空で null 返却）。
@@ -281,15 +249,8 @@ export default function App() {
     handleNavigate({ type: 'home' });
   };
 
-  const handleToggleBookmark = (wordId) => {
-    setAppState((s) => {
-      const next = store.toggleBookmark(s, wordId);
-      // toggleBookmark 後の状態でブックマーク有無を判定してイベント送信
-      const on = (next.bookmarks || []).includes(wordId);
-      captureEvent('bookmark_toggled', { word: wordId, on });
-      return next;
-    });
-  };
+  const handleToggleBookmark = (wordId) =>
+    setAppState((s) => store.toggleBookmark(s, wordId));
   const handleToggleSavedSense = (wordId, senseIdx) =>
     setAppState((s) => store.toggleSavedSense(s, wordId, senseIdx));
 
@@ -364,8 +325,6 @@ export default function App() {
         updateScreen({ type: 'review', wordIds: [nextReviewId], sessionPool, reviewedCount: (screen.reviewedCount || 0) + scores.length, doneWordIds: newDoneIds });
       } else {
         // 間違い復習セッション完了
-        const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
-        captureEvent('review_completed', { count: accumulated.length, correct: totalCorrect });
         handleNavigate({ type: 'home' });
       }
       return;
@@ -398,8 +357,6 @@ export default function App() {
         });
       } else {
         // SRS 復習セッション完了
-        const totalCorrect = accumulated.reduce((s, r) => s + r.correct, 0);
-        captureEvent('review_completed', { count: accumulated.length, correct: totalCorrect });
         handleNavigate({ type: 'home' });
       }
       return;
@@ -438,7 +395,6 @@ export default function App() {
         allWordIds.length > 0 && allWordIds.every((id) => prevCompleted.includes(id));
       if (levelNowCompleted && !levelWasCompleted) {
         sfx.play('fanfare');
-        captureEvent('level_cleared', { level: screen.levelId });
       }
     }
 
@@ -516,8 +472,6 @@ export default function App() {
         setSrsState(srs.getSrs());
         setScreen({ type: 'home' });
         setSession(null);
-        captureEvent('logout');
-        resetPostHog();
         setShowAccountSheet(false);
       }}
       onClose={() => setShowAccountSheet(false)}
@@ -575,8 +529,6 @@ export default function App() {
         onBack={handleQuizBack}
         levelWordIndex={levelWordIndex}
         levelWordCount={levelWordCount}
-        isReplay={!!screen.replay}
-        isRetry={!!screen.isRetry}
       />
     );
   }

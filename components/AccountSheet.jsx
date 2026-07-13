@@ -18,7 +18,6 @@
 //   onClose: () => void — シートを閉じる
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Icon from '@/components/Icon';
 import { supabase } from '@/lib/supabase';
 
@@ -324,12 +323,6 @@ export default function AccountSheet({ session, onLogout, onClose }) {
           {isLoggingOut ? 'ログアウト中…' : 'ログアウト'}
         </button>
 
-        <div className="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] font-semibold text-slate-400">
-          <Link href="/legal/terms" onClick={onClose} className="hover:text-teal-600">利用規約</Link>
-          <Link href="/legal/privacy" onClick={onClose} className="hover:text-teal-600">プライバシー</Link>
-          <Link href="/privacy-choices" onClick={onClose} className="hover:text-teal-600">分析設定</Link>
-          <Link href="/support" onClick={onClose} className="hover:text-teal-600">サポート</Link>
-        </div>
       </div>
     </div>
   );

@@ -1,9 +1,5 @@
 import { Outfit, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
-import PrivacyConsentProvider from '@/components/PrivacyConsentProvider';
 import './globals.css';
-
-// Vercel Web Analytics と PostHog は、PrivacyConsentProvider が
-// 利用者の任意同意を確認した後だけ初期化・送信する。
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -61,9 +57,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ja" className={`${outfit.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
-        <PrivacyConsentProvider>
-          {children}
-        </PrivacyConsentProvider>
+        {children}
       </body>
     </html>
   );
