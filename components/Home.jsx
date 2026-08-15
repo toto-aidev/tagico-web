@@ -143,6 +143,20 @@ export function HomeScreen({ appState, rawAppState, onNavigate, authButton }) {
           </div>
         </div>
 
+        {/* iOS版リリース送客バナー（常設・閉じるボタンなし。2026-08-14 App Storeリリースに伴い追加） */}
+        <a
+          href="https://apps.apple.com/jp/app/id6782758192"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between gap-3 mb-4 px-4 py-3 rounded-2xl bg-slate-800 shadow-sm hover:bg-slate-700 active:scale-[0.98] transition-all"
+        >
+          <div>
+            <p className="text-white font-black text-sm leading-tight">iOS版が出ました</p>
+            <p className="text-teal-300 font-bold text-xs mt-0.5">App Store で見る →</p>
+          </div>
+          <Icon name="chevron-right" size={18} color="#5eead4" />
+        </a>
+
         <div className="bg-white rounded-3xl p-5 shadow-sm border border-slate-100">
           {/* 累計マスター数（分母なし。単語が増えても伸び続けるコレクション指標） */}
           <div className="flex items-center justify-between mb-4">

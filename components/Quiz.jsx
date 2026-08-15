@@ -506,6 +506,22 @@ export function ResultScreen({ scores, levelId, appState, onNavigate }) {
         </p>
       </div>
 
+      {/* iOS版送客CTA（結果直後＝最も転換する場所。2026-08-14 App Storeリリースに伴い追加） */}
+      <div className="px-6 pb-2 relative z-10">
+        <a
+          href="https://apps.apple.com/jp/app/id6782758192"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="tg-fadeup flex flex-col gap-1 px-5 py-4 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_6px_0_0_#0f172a] active:shadow-[0_0px_0_0_#0f172a] active:translate-y-[6px] transition-all"
+        >
+          <p className="text-slate-300 text-xs font-bold leading-snug">このβ版は48語です。</p>
+          <p className="text-slate-300 text-xs font-bold leading-snug">iOS版には300語収録しています。</p>
+          <p className="text-white font-black text-base mt-1 flex items-center gap-1">
+            App Store で見る <Icon name="chevron-right" size={16} strokeWidth={3} color="#5eead4" />
+          </p>
+        </a>
+      </div>
+
       <div className="flex-1 min-h-0 px-6 pb-6 flex flex-col gap-4 overflow-y-auto relative z-10">
         <h2 className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-2">単語別スコア</h2>
 
