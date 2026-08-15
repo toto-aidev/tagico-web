@@ -506,17 +506,17 @@ export function ResultScreen({ scores, levelId, appState, onNavigate }) {
         </p>
       </div>
 
-      {/* iOS版送客CTA（結果直後＝最も転換する場所。2026-08-14 App Storeリリースに伴い追加） */}
+      {/* iOS版送客CTA（結果直後＝最も転換する場所。2026-08-14 App Storeリリースに伴い追加。
+          2026-08-15: 縦の占有を抑えるため2行構成に圧縮（前2行を1文へ統合・py-4→py-3・mt-1を除去） */}
       <div className="px-6 pb-2 relative z-10">
         <a
           href="https://apps.apple.com/jp/app/id6782758192"
           target="_blank"
           rel="noopener noreferrer"
-          className="tg-fadeup flex flex-col gap-1 px-5 py-4 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_6px_0_0_#0f172a] active:shadow-[0_0px_0_0_#0f172a] active:translate-y-[6px] transition-all"
+          className="tg-fadeup flex flex-col gap-0.5 px-5 py-3 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 shadow-[0_5px_0_0_#0f172a] active:shadow-[0_0px_0_0_#0f172a] active:translate-y-[5px] transition-all"
         >
-          <p className="text-slate-300 text-xs font-bold leading-snug">このβ版は48語です。</p>
-          <p className="text-slate-300 text-xs font-bold leading-snug">iOS版には300語収録しています。</p>
-          <p className="text-white font-black text-base mt-1 flex items-center gap-1">
+          <p className="text-slate-300 text-xs font-bold leading-snug">このβ版は48語。iOS版は300語収録しています。</p>
+          <p className="text-white font-black text-base flex items-center gap-1">
             App Store で見る <Icon name="chevron-right" size={16} strokeWidth={3} color="#5eead4" />
           </p>
         </a>

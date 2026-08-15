@@ -152,7 +152,7 @@ export function HomeScreen({ appState, rawAppState, onNavigate, authButton }) {
         >
           <div>
             <p className="text-white font-black text-sm leading-tight">iOS版が出ました</p>
-            <p className="text-teal-300 font-bold text-xs mt-0.5">App Store で見る →</p>
+            <p className="text-teal-300 font-bold text-xs mt-0.5">App Store で見る</p>
           </div>
           <Icon name="chevron-right" size={18} color="#5eead4" />
         </a>
